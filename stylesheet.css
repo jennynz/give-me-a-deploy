@@ -1,0 +1,215 @@
+/* BODY & PAGE LAYOUT */
+
+body {
+    background-color: #FFFFFF;
+    margin-top: 7%;
+    /*margin-left: 10%;*/
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.index-page-wrap {
+	width: 40%;
+	margin: 0 auto;
+	min-width: 260px;
+    max-width: 600px;
+	/*position: relative;
+	left: middle;*/
+}
+
+.about-page-wrap {
+	width: 40%;
+	margin: 0 auto;
+	min-width: 260px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.docs-page-wrap {
+	width: 40%;
+	margin: 0 auto;
+	min-width: 260px;
+    max-width: 500px;
+    text-align: left;
+}
+
+
+/* HEADER & TEXT STYLES */
+
+h1 {
+	font-family: Arial, sans-serif;
+	color: #999;
+	font-size: 1.5em;
+	padding-top: 0.2em;
+	padding-bottom: 0;
+}
+
+h2 {
+	font-family: Arial, sans-serif;
+	color: #666;
+	font-size: 1em;
+	padding-top: 0;
+	padding-bottom: 0.5em;
+}
+
+h6 {
+	font-family: Arial, sans-serif;
+	color: #444;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+/* LINKS & COLOUR */
+
+a {
+	color: #999;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #008080;
+	text-decoration: none;
+}
+
+a:active {
+	color: #FF7700;
+	text-decoration: none; 
+}
+
+.orange {
+	color: #FF7700;
+	display: inline;
+}
+
+.teal {
+	color: #008080;
+	display: inline;
+}
+
+a.anchor {
+	color: #777;
+	text-decoration: none;
+}
+
+
+/* TABLE ELEMENTS */
+
+table {
+    font-family: Arial, sans-serif;
+	color: #666;
+	font-size: 0.8em;
+}
+
+table.form {
+	width: 100%;
+	max-width: 500px;
+	background-color: #E6E6E6;
+    border: 1px solid #008080;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+table.source {
+	width: 100%;
+	max-width: 500px;
+	background-color: #E6E6E6;
+    border: 1px solid #008080;
+    padding: 20px;
+    padding-right: 30px;
+    margin: 0 auto;
+}
+
+.table-header {
+	text-align: center;
+	padding-left: 20px;
+}
+
+.label {
+	text-align: right;
+	padding-right: 10px;
+	width: 30%;
+}
+
+.input-field {
+	text-align: left;
+}
+
+.table-footer {
+	text-align: center;
+}
+
+/* TEXT INPUT FIELDS */
+
+input[type="text"] {
+	font-family: Arial, Sans-Serif;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+    border: solid 1px #BBBBBB;
+    width: 90%;
+}
+
+input[type="text"]:focus {
+    color: #008080;
+    border: solid 1px #FF7700;
+}
+
+
+/* DROPDOWN */
+
+select {
+	text-align: left;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+    border: solid 1px #BBBBBB;
+}
+
+select:focus {
+    color: #008080;
+    border: solid 1px #FF7700;
+}
+
+/* CHECKBOXES */
+
+.checkbox-field {
+	text-align: left;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+}
+
+input[type=checkbox] {  
+
+}  
+
+
+/* BUTTONS */
+
+.button {
+	appearance: button; /* CSS3 */	
+	-webkit-appearance: button; /* Safari and Chrome */
+	-moz-appearance: button; /* Firefox */
+	-ms-appearance: button; /* Internet Explorer */
+	-o-appearance: button; /* Opera */
+    font: menu;
+    color: #444;
+    display: inline-block;
+    padding: 4px 12px;
+}
+
+
+/* FOOTER */
+
+.footer {
+	font-family: Arial, sans-serif;
+	color: #666;
+	font-size: 0.8em;
+	text-align: center;
+}
