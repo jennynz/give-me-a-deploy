@@ -3,7 +3,6 @@
 
 <head>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-	<link type="text/css" rel="stylesheet" href="prettify.css"/>
 	<title>Give Me A Vagrant - Local VMs on demand</title>
 	<!--
 	<base href="C:/Users/jennysa/Documents/">
@@ -11,10 +10,9 @@
 	<!-- YUI seed file
 	<script src="http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js"></script> -->
 	<script type="text/javascript" src="script.js" ></script>
-	<script type="text/javascript" src="prettify.js?lang=lisp&skin=desert"></script>
 </head>
 
-<body onload="prettyPrint()">
+<body>
 	
 	<div class="index-page-wrap">
 		
@@ -95,14 +93,17 @@
 		<h2>Simply <div class="teal">save</div> the following source code and run the command <div class="teal">vagrant up</div>.</h2>
 		<br>
 
-		</div>
 		<table title="Vagrantfile Output" class="source">
 			<tr>
 				<td>
 
-					Copy to clipboard button & Download sourcefile button coming.
+					<input type="button" onClick="clipboard();" class="button" value="Copy to clipboard" title="Copy Vagrantfile source code to clipboard"></input>
+					 
+					<input type="button" onClick="clipboard();" class="button" value="Download Vagrantfile" title="Save to a local directory"></input>
 					
-<pre class="prettyprint">
+					<br><br>
+
+<div class="source"><xmp>
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -144,7 +145,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Check that it's worked within vagrant
   config.vm.provision :shell, path: "check_install.sh"
 
-end</pre>
+end
+</xmp></div>
+
 				</td>
 			</tr>
 		</table>
