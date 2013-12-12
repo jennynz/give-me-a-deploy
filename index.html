@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<!--<script src="js/script.js"></script>-->
+	<script src="js/script.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<title>Give Me A Vagrant - Local VMs on demand</title>
@@ -11,16 +11,6 @@
 	Use later to make relative links for ../give-me-a-deploy/index.html etc.-->
 	<!-- YUI seed file
 	<script src="http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js"></script> -->
-	<script>
-	$(document).ready(function(){
-  	  $("#up").click(function(){
-        $("#slide").slideUp("slow","swing");
-  	  });
-	  $("#down").click(function(){
-        $("#slide").slideDown("slow","swing");
-      });
-	});
-	</script>
 </head>
 
 <body>
@@ -102,6 +92,7 @@
 				</tr>
 			</table>
 		</form>
+	</div>
 
 
 
@@ -113,29 +104,24 @@
 
 
 
-<span id="slide">
+	<span id="slide">
+
 
 		<a name="source-code"><br></a>
 
 		<h1>Your provisioned <div class="orange">Vagrantfile</div> is ready</h1>
 
 		<h2>Simply <div class="teal">save</div> the following source code and run the command <div class="teal">vagrant up</div>.</h2>
-		<br>
 
-		<table title="Vagrantfile Output" class="source">
-			<tr>
-				<td>
+		<input type="button" onClick="clipboard();" class="button" value="Copy to clipboard"></input>
+		 
+		<input type="button" onClick="clipboard();" class="button" value="Download Vagrantfile" title="Save to a local directory"></input>
 
-					<input type="button" onClick="clipboard();" class="button" value="Copy to clipboard"></input>
-					 
-					<input type="button" onClick="clipboard();" class="button" value="Download Vagrantfile" title="Save to a local directory"></input>
-
-					<input type="button" class="button" id="up" value="Start Over"></input>
+		<input type="button" class="button" id="up" value="Start Over"></input>
 					
-					<br><br>
+		<br><br>
 
-<div class="source"><xmp>
-# -*- mode: ruby -*-
+<div class="source"><xmp># -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -176,24 +162,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Check that it's worked within vagrant
   config.vm.provision :shell, path: "check_install.sh"
 
-end
-</xmp></div>
+end</xmp></div>
 
-				</td>
-			</tr>
-		</table>
+	</span>
 
-		</span>
-
-		<br><br>
+	<br><br>
 
 		<div class="footer">
 		<a href="index.html" title="Give-Me-A-Vagrant Home">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html" title="About the Give-Me-A-Vagrant Project">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top" title="Back to Top">Top</a>
 		</div>
 
-		<br><br><br><br>
-
-	</div>
+	<br><br><br><br>
 
 </body>
 </html>
