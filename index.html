@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+	<!--<script src="js/script.js"></script>-->
+	<script src="js/jquery-1.10.2.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<title>Give Me A Vagrant - Local VMs on demand</title>
 	<!--
@@ -9,14 +11,23 @@
 	Use later to make relative links for ../give-me-a-deploy/index.html etc.-->
 	<!-- YUI seed file
 	<script src="http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js"></script> -->
-	<script type="text/javascript" src="script.js" ></script>
+	<script>
+	$(document).ready(function(){
+  	  $("#up").click(function(){
+        $("#slide").slideUp("slow","swing");
+  	  });
+	  $("#down").click(function(){
+        $("#slide").slideDown("slow","swing");
+      });
+	});
+	</script>
 </head>
 
 <body>
 	
 	<div class="index-page-wrap">
 		
-		<img id="Logo" src = "oh_logo.png" alt="Logo"/>
+		<img id="Logo" src = "oh_logo.png" alt="Logo" name="top"/>
 		
 		<br><br>
 		
@@ -25,7 +36,7 @@
 		<h2>Provide us with some details and we'll give you a <div class="teal">Vagrantfile</div> which you can use to boot up your <div class="teal">customised local VM</div>.</h2>
 		<br>
 
-		<form name="vmdetails" id="vmdetails" onsubmit="document.forms["vmdetails"]submit();">
+		<form name="vmdetails" id="vmdetails" onsubmit="">
 			<table title="VM Details Form" class="form">
 				<tr>
 					<td class="table-header" colspan="2">
@@ -81,14 +92,32 @@
 				<tr>
 					<td colspan="2" class="table-footer">
 						<br>
-						<input type="submit" formaction="#source-code" onclick="#source-code" class="button" value="Generate Source Code">
+						
+						<input type="submit" class="button" id="down" value="Generate Source Code">
+						
 						<input type="reset" formaction="URL" class="button">
+
+						<br>
 					</td>
 				</tr>
 			</table>
 		</form>
 
-		<a name="source-code"><h1 style="page-break-before: always">Your provisioned <div class="orange">Vagrantfile</div> is ready</h1></a>
+
+
+
+
+
+
+
+
+
+
+<span id="slide">
+
+		<a name="source-code"><br></a>
+
+		<h1>Your provisioned <div class="orange">Vagrantfile</div> is ready</h1>
 
 		<h2>Simply <div class="teal">save</div> the following source code and run the command <div class="teal">vagrant up</div>.</h2>
 		<br>
@@ -97,9 +126,11 @@
 			<tr>
 				<td>
 
-					<input type="button" onClick="clipboard();" class="button" value="Copy to clipboard" title="Copy Vagrantfile source code to clipboard"></input>
+					<input type="button" onClick="clipboard();" class="button" value="Copy to clipboard"></input>
 					 
 					<input type="button" onClick="clipboard();" class="button" value="Download Vagrantfile" title="Save to a local directory"></input>
+
+					<input type="button" class="button" id="up" value="Start Over"></input>
 					
 					<br><br>
 
@@ -152,12 +183,15 @@ end
 			</tr>
 		</table>
 
+		</span>
+
 		<br><br>
 
 		<div class="footer">
-		<a href="index.html" title="Give-Me-A-Vagrant Home">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html" title="About the Give-Me-A-Vagrant Project">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a>
-		<br><br>
+		<a href="index.html" title="Give-Me-A-Vagrant Home">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html" title="About the Give-Me-A-Vagrant Project">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top" title="Back to Top">Top</a>
 		</div>
+
+		<br><br><br><br>
 
 	</div>
 

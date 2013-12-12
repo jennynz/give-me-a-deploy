@@ -13,8 +13,8 @@ body {
 	margin: 0 auto;
 	min-width: 260px;
     max-width: 600px;
-	/*position: relative;
-	left: middle;*/
+	position: relative;
+	left: middle;
 }
 
 .about-page-wrap {
@@ -142,6 +142,10 @@ table.source {
     padding: 20px;
 }
 
+#slide {
+	display: none;
+}
+
 div.source {
 	width: 420px;
 	padding: 20px;
@@ -248,6 +252,14 @@ input[type=checkbox] {
     display: inline-block;
     padding: 4px 12px;
 }
+
+button {
+	font: menu;
+    color: #444;
+    display: inline-block;
+    padding: 4px 12px;
+}
+
 
 
 /* FOOTER */
