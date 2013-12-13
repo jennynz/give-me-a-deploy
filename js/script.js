@@ -1,17 +1,11 @@
-// Copy source code to clipboard
-function clipboard() 
+function SelectAll(id)
 {
-holdtext.innerText = copytext.innerText;
-Copied = holdtext.createTextRange();
-Copied.execCommand("Copy");
+    document.getElementById(id).focus();
+    document.getElementById(id).select();
 }
 
-// Slider down to source code
-/*$(document).ready(function(){
-  $("#up").click(function(){
-    $("#slide").slideUp("slow","swing");
-  });
-  $("#down").click(function(){
-    $("#slide").slideDown("slow","swing");
-  });
-});*/
+// Create a YUI sandbox on your page.
+YUI().use('node', 'event', function (Y) {
+    // The Node and Event modules are loaded and ready to use.
+    // Your code goes here!
+});

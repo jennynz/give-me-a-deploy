@@ -9,9 +9,10 @@ body {
 }
 
 .index-page-wrap {
-	width: 40%;
+	width: 80%;
 	margin: auto auto;
 	min-width: 260px;
+	max-width: 460px;
 }
 
 .about-page-wrap {
@@ -92,12 +93,23 @@ a {
 
 a:hover {
 	color: #008080;
-	text-decoration: none;
 }
+
 
 a:active {
 	color: #FF7700;
-	text-decoration: none; 
+}
+
+a.headerlink {
+	color: #008080;
+}
+
+a.headerlink:hover {
+	color: #FF7700;
+}
+
+a.headerlink:active {
+	color: #999;
 }
 
 .orange {
@@ -112,7 +124,6 @@ a:active {
 
 a.anchor {
 	color: #777;
-	text-decoration: none;
 }
 
 
@@ -132,11 +143,55 @@ table.form {
     padding: 20px;
 }
 
-#slide {
-	display: auto;
+#saveInfo {
+	display: none;
+	color: #444;
+	font-size: 0.8em;
 }
 
-div.source {
+#whitespace {
+	background-color: #FFF;
+	width: 50px;
+	height: 500px;
+	margin: 0 auto;
+	display: block;
+}
+
+textarea#source {
+	width: 100%;
+	min-width: 260px;
+	height: auto;
+	margin-right: 20px;
+	margin-left: -20px;
+	padding: 20px; 
+    overflow-x:; hidden;
+    -ms-overflow-x: hidden;
+    background-color: #E6E6E6;
+    border: 1px solid #008080;
+    font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
+    font-size: 0.8em;
+    color: #333;
+    text-align: left;
+}
+textarea#source::-webkit-scrollbar {
+	width: 10px;
+}
+textarea#source::-webkit-scrollbar-track {
+    background-color: #E6E6E6;
+}
+textarea#source::-webkit-scrollbar-thumb {
+	background-color: #008080;
+}
+
+textarea#source:focus {
+    color: #008080;
+    border: solid 1px #FF7700;
+}
+textarea#source:focus::-webkit-scrollbar-thumb {
+	background-color: #FF7700;
+}
+
+/*div#source {
 	max-width: 600px;
 	min-width: 260px;
 	padding: 20px;
@@ -146,22 +201,23 @@ div.source {
     -ms-overflow-y: hidden;
     background-color: #E6E6E6;
     border: 1px solid #008080;
+}
+
+pre#sourcecode {
     font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
-    font-size: 1em;
+    font-size: 0.8em;
     color: #333;
     text-align: left;
 }
-div.source::-webkit-scrollbar {
+div#source::-webkit-scrollbar {
 	height: 10px;
 }
-div.source::-webkit-scrollbar-track {
+div#source::-webkit-scrollbar-track {
     background-color: #E6E6E6;
 }
-div.source::-webkit-scrollbar-thumb {
-	/*border-radius: 10px;*/
+div#source::-webkit-scrollbar-thumb {
 	background-color: #008080;
-    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);*/
-}
+}*/
 
 .table-header {
 	text-align: center;
@@ -259,4 +315,5 @@ button {
 .footer {
 	color: #666;
 	font-size: 0.8em;
+	text-align: center;
 }

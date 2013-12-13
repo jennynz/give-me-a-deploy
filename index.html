@@ -4,17 +4,14 @@
 <head>
 	<script src="js/script.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<title>Give Me A Vagrant - Local VMs on demand</title>
-	<!--
-	<base href="C:/Users/jennysa/Documents/">
-	Use later to make relative links for ../give-me-a-deploy/index.html etc.-->
-	<!-- YUI seed file
-	<script src="http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js"></script> -->
 </head>
 
 <body>
-	
+
 	<div class="index-page-wrap">
 		
 		<img id="Logo" src = "oh_logo.png" alt="Logo" name="top"/>
@@ -24,9 +21,8 @@
 		<h1><div class="orange">Instant VMs</div> at your fingertips</h1>
 
 		<h2>Provide us with some details and we'll give you a <div class="teal">Vagrantfile</div> which you can use to boot up your <div class="teal">customised local VM</div>.</h2>
-		<br>
 
-		<form name="vmdetails" id="vmdetails" onsubmit="">
+		<form name="vmdetails" id="vmdetails">
 			<table title="VM Details Form" class="form">
 				<tr>
 					<td class="table-header" colspan="2">
@@ -35,7 +31,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Email*</td>	<!--the label class will have text aligning left-->
+					<td class="label">Email*</td>
 					<td class="input-field">
 						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" title="Email" required>
 					</td>
@@ -82,8 +78,8 @@
 				<tr>
 					<td colspan="2" class="table-footer">
 						<br>
-						
-						<input type="submit" class="button" id="down" value="Generate Source Code">
+
+						<input type="submit" class="button" value="Generate Source Code" onClick="window.location='#lower';">
 						
 						<input type="reset" formaction="URL" class="button">
 
@@ -94,34 +90,26 @@
 		</form>
 	</div>
 
+	<br><br>
 
+	<div class="footer">
+		<a href="index.html" title="Give-Me-A-Vagrant Home">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html" title="About the Give-Me-A-Vagrant Project">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top" title="Back to Top">Top</a>
+	</div>
 
+	<div id="whitespace">&nbsp</div>
 
+	<a class="anchor" name="lower"><h1>Your provisioned <div class="orange">Vagrantfile</div> is ready</h1></a>
 
+	<h2>Simply <a class="headerlink" id="showSaveInfo">save</a> the following source code and run the command <a href="docs.html" class="headerlink" title="Click to go to documentation & help">vagrant up</a>.</h2>
 
-
-
-
-
-
-	<span id="slide">
-
-
-		<a name="source-code"><br></a>
-
-		<h1>Your provisioned <div class="orange">Vagrantfile</div> is ready</h1>
-
-		<h2>Simply <div class="teal">save</div> the following source code and run the command <div class="teal">vagrant up</div>.</h2>
-
-		<input type="button" onClick="clipboard();" class="button" value="Copy to clipboard"></input>
-		 
-		<input type="button" onClick="clipboard();" class="button" value="Download Vagrantfile" title="Save to a local directory"></input>
-
-		<input type="button" class="button" id="up" value="Start Over"></input>
-					
+	<span id="saveInfo">
+		Simply click anywhere on the source code below to select all,<br>Ctrl+C and paste into your text editor.
 		<br><br>
+	</span>
 
-<div class="source"><xmp># -*- mode: ruby -*-
+	<div class="index-page-wrap">
+	<textarea rows="40" name="source" id="source" onClick="SelectAll('source');">
+# -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -162,15 +150,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Check that it's worked within vagrant
   config.vm.provision :shell, path: "check_install.sh"
 
-end</xmp></div>
-
-	</span>
+end</textarea>		
+	</div>
 
 	<br><br>
 
-		<div class="footer">
+	<div class="footer">
 		<a href="index.html" title="Give-Me-A-Vagrant Home">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html" title="About the Give-Me-A-Vagrant Project">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top" title="Back to Top">Top</a>
-		</div>
+	</div>
 
 	<br><br><br><br>
 
