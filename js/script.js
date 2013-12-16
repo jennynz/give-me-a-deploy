@@ -8,20 +8,25 @@ function GetCode()
 	// Get VM details
 	var details = document.getElementById("vmdetails");
 	var os = document.getElementById("os").value;
-	//var os = details.elements[2].value;
 
 	// Generate string variables.
 	var box = os + "-x64-vbox4210-nocm";
 	var boxurl =  "http://puppet-vagrant-boxes.puppetlabs.com/" + box + ".box"
 	
 	// Generate complete vagrant script.
-	var vagrantcode = GenerateSourceCode(box, boxurl);
+	vagrantcode = GenerateSourceCode(box, boxurl);
 
 	// Print source code to textbox.
 	PrintToTextbox(vagrantcode);
 
 	// Jump down to the textbox section.
 	window.location = "#lower";
+
+	// Save file as "Vagrantfile" to client's machine.
+	if (document.vmdetails.savefile.checked) {
+
+	}
+
 }
 
 function GenerateSourceCode(box, boxurl)
@@ -63,5 +68,9 @@ function GenerateSourceCode(box, boxurl)
 
 function PrintToTextbox(text) {
 	var sourcetextbox = document.getElementById("source");
-	sourcetextbox.value += text;
+	sourcetextbox.value = text;
+}
+
+function SaveFile(text) {
+
 }

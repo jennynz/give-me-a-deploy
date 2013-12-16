@@ -47,7 +47,7 @@
 					<td class="input-field">
 						<select id="os" required>
 						  <option value="">--</option>
-						  <option value="centos-64-">Centos</option>
+						  <option value="centos-64">Centos</option>
 						  <option value="ubuntu-server-10044">Ubuntu</option>
 						</select>
 					</td>
@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" class="table-footer">
-						<br>
+						<input type="checkbox" name="savefile" id="savefile"> Save file automatically to local machine.<br><br>
 
 						<input type="button" class="button" value="Generate Source Code" onClick="GetCode();">
 						
@@ -102,7 +102,7 @@
 
 	<div class="index-page-wrap">
 
-	<textarea rows="37" name="source" id="source" onClick="SelectAll('source');"></textarea>
+	<textarea rows="37" name="source" id="source" onClick="SelectAll('source');" spellcheck="false"></textarea>
 
 	</div>
 
