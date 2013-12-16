@@ -1,21 +1,32 @@
-function SelectAll(id)
-{
+function SelectAll(id) {
     document.getElementById(id).focus();
     document.getElementById(id).select();
 }
 
-function GenerateSourceCode()
+function GetCode()
 {
+	// Get VM details
 	var details = document.getElementById("vmdetails");
 	var os = document.getElementById("os").value;
 	//var os = details.elements[2].value;
 
+	// Generate string variables.
 	var box = os + "-x64-vbox4210-nocm";
 	var boxurl =  "http://puppet-vagrant-boxes.puppetlabs.com/" + box + ".box"
 	
-	var vagrantcode =
+	// Generate complete vagrant script.
+	var vagrantcode = GenerateSourceCode(box, boxurl);
 
-	"# -*- mode: ruby -*-" + '\n' +
+	// Print source code to textbox.
+	PrintToTextbox(vagrantcode);
+
+	// Jump down to the textbox section.
+	window.location = "#lower";
+}
+
+function GenerateSourceCode(box, boxurl)
+{
+	return ("# -*- mode: ruby -*-" + '\n' +
 	"# vi: set ft=ruby :" + '\n\n' +
 
 	"# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!" + '\n' +
@@ -47,11 +58,10 @@ function GenerateSourceCode()
 	"  puppet.manifest_file  = \"site.pp\"" + '\n' + 
 	"end" + '\n\n' +
 
-	"end";
-	
-	//document.write(boxurl);
+	"end");
+}
 
+function PrintToTextbox(text) {
 	var sourcetextbox = document.getElementById("source");
-	sourcetextbox.value += vagrantcode;
-	window.location = "#lower";
+	sourcetextbox.value += text;
 }
