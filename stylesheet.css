@@ -16,7 +16,7 @@ body {
 }
 
 .about-page-wrap {
-	width: 40%;
+	width: 50%;
 	margin: 0 auto;
 	min-width: 260px;
     max-width: 500px;
@@ -24,7 +24,7 @@ body {
 }
 
 .docs-page-wrap {
-	width: 40%;
+	width: 75%;
 	margin: 0 auto;
 	min-width: 260px;
     max-width: 500px;

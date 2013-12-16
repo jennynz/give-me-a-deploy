@@ -7,63 +7,58 @@ function SelectAll(id) {
 
 function GetCode()
 {
-	// Get VM details
-	var details = document.getElementById("vmdetails");
-	var os = document.getElementById("os").value;
-	var vmname = document.getElementById("vmname").value;
-
 	// Check that the given VM name is valid.
-	ValidateVMName(vmname);
+	var vmname = ValidateVMName();
 
-	// Generate string variables.
-	var box = os + "-x64-vbox4210-nocm";
-	var boxurl =  "http://puppet-vagrant-boxes.puppetlabs.com/" + box + ".box";
-	
 	// Generate complete vagrant script.
-	vagrantcode = GenerateSourceCode(box, boxurl, vmname);
+	vagrantcode = GenerateSourceCode(vmname);
 
 	// Print source code to textbox.
 	PrintToTextbox(vagrantcode);
 
 	// Save file as "Vagrantfile" to client's machine.
-	if (document.vmdetails.savefile.checked) {
+	/*if (document.vmdetails.savefile.checked) {
 		SaveFile(vagrantcode);
-	};
+	};*/
 
 }
 
 
 
-function ValidateVMName(vmname)
-{
-	var nameStart = vmname[0].charCodeAt();
+function ValidateVMName() {
+	
+	var vmname = document.getElementById("vmname").value;	// Get the vmname from the form.
+	var nameStart = vmname[0].charCodeAt();	// Convert the first character into its ASCII code to check that it is valid.
+
 	if ((nameStart == 45) || (nameStart == 46)) {
 		alert("The hostname cannot start with a hyphen or dot.");
 		document.getElementById("vmdetails").reset();
 		return;
 	}
-
-	for (var i = 0; i < vmname.length; i++) {	
-
+	for (var i = 0; i < vmname.length; i++) {	// Check that each character in the name is valid.
 		var nameCheck = vmname[i].charCodeAt();
-
-		if (!(((nameCheck > 64) && (nameCheck < 91)) || ((nameCheck > 96) && (nameCheck < 123)) || ((nameCheck > 47) && (nameCheck < 58)) || ((nameCheck == 45) || (nameCheck == 46))  ))
-		{
+		if (!(((nameCheck > 64) && (nameCheck < 91)) || ((nameCheck > 96) && (nameCheck < 123)) || ((nameCheck > 47) && (nameCheck < 58)) || ((nameCheck == 45) || (nameCheck == 46))  )) {
 			alert("The hostname for the VM should only contain letters, numbers, hyphens or dots.\n It cannot start with a hyphen or dot.\n Please try again.");
 			document.getElementById("vmdetails").reset();
 			return;
 		}
 	}
-
-	// Jump down to the textbox section.
-	window.location = "#lower";
-
+	window.location = "#lower"; 	// Jump down to the textbox section.
+	return vmname;
 }
 
 
 
-function GenerateSourceCode(box, boxurl, vmname)
+function GenerateSourceCode(vmname)
 {
+	// Get VM details from form.
+	var os = document.getElementById("os").value;
+
+	// Generate string variables.
+	var box = os + "-x64-vbox4210-nocm";
+	var boxurl =  "http://puppet-vagrant-boxes.puppetlabs.com/" + box + ".box";
+	
+	// Return code to be output into textbox
 	return ("# -*- mode: ruby -*-" + '\n' +
 	"# vi: set ft=ruby :" + '\n\n' +
 
@@ -111,9 +106,7 @@ function PrintToTextbox(text) {
 
 
 
-function SaveFile(text) {
-	/*
-
+/*function SaveFile(text) {
 	Likely that a server side language is required for this.
 
 	var fso = new ActiveXObject("Scripting.FileSystemObject");
@@ -121,5 +114,5 @@ function SaveFile(text) {
 	s.WriteLine("# -*- mode: ruby -*-");
 	s.WriteLine("# vi: set ft=ruby :\n");
 	s.WriteLine("# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!")
-	s.Close();*/
-}
+	s.Close();
+}*/
