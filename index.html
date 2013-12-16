@@ -14,7 +14,7 @@
 
 	<div class="index-page-wrap">
 		
-		<img id="Logo" src = "oh_logo.png" alt="Logo" name="top"/>
+		<a href="index.html"><img id="Logo" src = "oh_logo.png" alt="Logo" name="top"/></a>
 		
 		<br><br>
 		
@@ -45,9 +45,10 @@
 				<tr>
 					<td class="label">Operating System*</td>
 					<td class="input-field">
-						<select required>
-						  <option value="ubuntu">Ubuntu</option>
-						  <option value="centos">Centos</option>
+						<select id="os" required>
+						  <option value="">--</option>
+						  <option value="centos-64-">Centos</option>
+						  <option value="ubuntu-server-10044">Ubuntu</option>
 						</select>
 					</td>
 				</tr>
@@ -67,21 +68,13 @@
 						<input type="text" id="VMName" autocapitalize="off" value="Point us at your Puppet scripts in SVN and we'll provision the VM." title="Puppet Scripts">
 					</td>
 				</tr>
-				<!-- 
-				<tr>
-					<td class="label">Extend life of VM</td>
-					<td>
-						<h6>Coming soon</h6>
-					</td>
-				</tr>
-				-->
 				<tr>
 					<td colspan="2" class="table-footer">
 						<br>
 
-						<input type="submit" class="button" value="Generate Source Code" onClick="window.location='#lower';">
+						<input type="button" class="button" value="Generate Source Code" onClick="GenerateSourceCode();">
 						
-						<input type="reset" formaction="URL" class="button">
+						<input type="reset" id="reset" class="button">
 
 						<br>
 					</td>
@@ -100,57 +93,17 @@
 
 	<a class="anchor" name="lower"><h1>Your provisioned <div class="orange">Vagrantfile</div> is ready</h1></a>
 
-	<h2>Simply <a class="headerlink" id="showSaveInfo">save</a> the following source code and run the command <a href="docs.html" class="headerlink" title="Click to go to documentation & help">vagrant up</a>.</h2>
+	<h2>Simply <a class="headerlink" id="showSaveInfo">save</a> the following source code as "<a href="docs.html" class="orange">Vagrantfile</a>" and run the command <a href="docs.html" class="headerlink" title="Click to go to documentation & help">vagrant up</a>.</h2>
 
 	<span id="saveInfo">
-		Simply click anywhere on the source code below to select all,<br>Ctrl+C and paste into your text editor.
+		Just click anywhere on the source code below to select all,<br>Ctrl+C and paste into your text editor.
 		<br><br>
 	</span>
 
 	<div class="index-page-wrap">
-	<textarea rows="40" name="source" id="source" onClick="SelectAll('source');">
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
 
-# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = "2"
+	<textarea rows="38" name="source" id="source" onClick="SelectAll('source');"></textarea>
 
-PORT_NUMBER_GUEST = 19080
-PORT_NUMBER_HOST = 19080
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
-  # Allocate the VM more memory
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1536"]
-  end
- 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos-64-x64-vbox4210-nocm"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box"
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine.
-  config.vm.network :forwarded_port, guest: PORT_NUMBER_GUEST, host: PORT_NUMBER_HOST
-
-  # Install Puppet
-  config.vm.provision :shell, path: "install_puppet.sh"
-
-  config.vm.provision :puppet do |puppet|
-    #puppet.options = "--verbose --debug"
-    puppet.module_path  = "modules/puppet-ohp"
-    puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "site.pp"
-  
-  end
-
-  # Check that it's worked within vagrant
-  config.vm.provision :shell, path: "check_install.sh"
-
-end</textarea>		
 	</div>
 
 	<br><br>
