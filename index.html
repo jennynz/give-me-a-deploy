@@ -21,7 +21,7 @@
 		
 		<h1><div class="orange">Instant VMs</div> at your fingertips</h1>
 
-		<h2>Provide us with some details and we'll give you a <div class="teal">Vagrantfile</div> which you can use to boot up your <div class="teal">customised local VM</div>.</h2>
+		<h2>Provide us with some details and we'll give you a <div class="teal">Vagrantfile</div> which you can use to boot up your <div class="teal">customised VM</div>.</h2>
 
 		<form name="vmdetails" id="vmdetails">
 			<table class="form">
@@ -35,6 +35,14 @@
 					<td class="label">Email*</td>
 					<td class="input-field">
 						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
+					</td>
+				</tr>
+				<tr>
+					<td class="label">Virtual Environment*</td>
+					<td class="radio-field">
+						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv"> <a href="http://www.vagrantup.com" target="_blank">Vagrant</a> - your local machine<br>
+						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> <a href="http://ocd-devstack/" target="_blank">Devstack</a> - local OpenStack server at Orion<br>
+						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> <a href="http://www.hpcloud.com" target="_blank">HP Cloud</a><br>
 					</td>
 				</tr>
 				<tr>
@@ -89,6 +97,16 @@
 	<div class="footer">
 		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
+
+
+<!--
+File downloading js
+zip file js
+
+Solution.zip
+svn exports... PlatformBuild, ant dependencies
+-->
+
 
 	<div id="whitespace">&nbsp</div>
 

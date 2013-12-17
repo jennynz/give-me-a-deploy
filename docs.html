@@ -25,8 +25,9 @@
 
 		<ul>
 			<li class="star"><a href="#doc1">How to boot your VM</a></li>
-			<li class="star"><a href="#doc2">Configuring Puppet Modules</a></li>
-			<li class="star"><a href="#doc3">Further Information</a></li>
+			<li class="star"><a href="#doc2">Manual access to your VM</a></li>
+			<li class="star"><a href="#doc3">Configuring Puppet Modules</a></li>
+			<li class="star"><a href="#doc4">Further Information</a></li>
 		</ul>
 
 		<a name="doc1"><h3>How to boot your VM</h3></a>
@@ -40,14 +41,26 @@
 			</ol>
 		</p>
 
-		<a name="doc2"><h3>Configuring Puppet Modules</h3></a>
+		<a name="doc2"><h3>Manual access to your VM</h3></a>
+
+		<p>
+			For a <b>Vagrant</b> VM, access your virtual machine by ssh'ing into the box with the command, 'ssh vagrant'.<br><br>
+
+			For <b>OpenStack</b>, log in to <a href="http://ocd-devstack/">DevStack</a> with the username as 'admin' and the password being 'orionsys'. Go to 'project', and click 'instances'. You may manually terminate your instance from this GUI panel, and it is recommended that you do so if you have finished with your VM to save on server resources.<br>
+			You can gain access into the instance, 'ssh root@192.168.50.3' with the IP of your instance.<br><br>
+
+			For <b>HP Cloud</b> or key pairing and authentication and all that mumbo-jumbo, I wouldn't have a clue.
+
+		</p>
+
+		<a name="doc3"><h3>Configuring Puppet Modules</h3></a>
 
 		<p>
 			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b class="orange">manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
 
 		</p>
 
-		<a name="doc3"><h3>Further Information</h3></a>
+		<a name="doc4"><h3>Further Information</h3></a>
 
 		<p>
 			For detailed instructions, necessary prerequisite applications and installation tips, please see the links below.
