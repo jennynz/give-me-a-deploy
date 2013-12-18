@@ -98,16 +98,16 @@ function GenerateSourceCode(vmname,vmenv)
 		"end" + '\n\n' + 
 		 
 		"# Every Vagrant VM requires a box to build off of." + '\n' +
-		"config.vm.box = " + box + '\n\n' + 
+		"config.vm.box = '" + box + "'\n\n" + 
 
 		"# The url from where the config.vm.box will be fetched if it doesn't already exist on the host machine." + '\n' + 
-		"config.vm.box_url = " + boxurl + '\n\n' +
+		"config.vm.box_url = '" + boxurl + "'\n\n" +
 
 		"# Set the name of the host machine." + '\n' +
 	  	"config.vm.hostname = '" + vmname + "'" + '\n\n' + 
 
 		"# Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine." + '\n' + 
-		"config.vm.network :forwarded_port, guest: 19080, host: 19080" + '\n\n' + 
+		"config.vm.network 'forwarded_port', guest: 19080, host: 19080" + '\n\n' + 
 
 		"# Install Puppet" + '\n' + 
 	 	"config.vm.provision :shell, path: 'install_puppet.sh'" + '\n\n' + 
@@ -196,26 +196,17 @@ function GenerateSourceCode(vmname,vmenv)
 
 		"Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|" + '\n\n' + 
 
-		"# Allocate the VM more memory" + '\n' + 
-		"config.vm.provider :virtualbox do |vb|" + '\n' + 
-		"  vb.customize ['modifyvm', :id, '--memory', '1536']" + '\n' +
-		"end" + '\n\n' + 
-		 
 		"# Every Vagrant VM requires a box to build off of." + '\n' +
-		"config.vm.box = " + box + '\n\n' + 
+		"config.vm.box = '" + box + "'\n\n" + 
 
 		"# The url from where the config.vm.box will be fetched if it doesn't already exist on the host machine." + '\n' + 
-		"config.vm.box_url = " + boxurl + '\n\n' +
+		"config.vm.box_url = '" + boxurl + "'\n\n" +
 
 		"# Set the name of the host machine." + '\n' +
-	  	"config.vm.hostname = '" + vmname + "'" + '\n\n' + 
+	  	"config.vm.hostname = '" + vmname + "'\n\n" + 
 
 		"# Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine." + '\n' + 
-		"config.vm.network :forwarded_port, guest: 19080, host: 19080" + '\n\n' + 
-
-		"# Install Puppet" + '\n\n' + 
-
-	 	"# Install OHP with Puppet modules" + '\n\n' + 
+		"config.vm.network 'forwarded_port', guest: 19080, host: 19080" + '\n\n' + 
 
 		"end");
 
