@@ -1,16 +1,19 @@
 var container = document.querySelector('#container');
-var typer = container.querySelector('[contenteditable]');
+var source = container.querySelector('#source');
 var output = container.querySelector('output');
 
 const MIME_TYPE = 'text/plain';
 
-// Rockstars use event delegation!
+
+
 document.body.addEventListener('dragstart', function(e) {
   var a = e.target;
   if (a.classList.contains('dragout')) {
     e.dataTransfer.setData('DownloadURL', a.dataset.downloadurl);
   }
 }, false);
+
+
 
 document.body.addEventListener('dragend', function(e) {
   var a = e.target;
@@ -19,6 +22,8 @@ document.body.addEventListener('dragend', function(e) {
   }
 }, false);
 
+
+
 document.addEventListener('keydown', function(e) {
   if (e.keyCode == 27) {  // Esc
     document.querySelector('details').open = false;
@@ -26,6 +31,8 @@ document.addEventListener('keydown', function(e) {
     document.querySelector('details').open = true;
   }
 }, false);
+
+
 
 var cleanUp = function(a) {
   a.textContent = 'Downloaded';
@@ -37,6 +44,8 @@ var cleanUp = function(a) {
   }, 1500);
 };
 
+
+
 var downloadFile = function() {
   window.URL = window.webkitURL || window.URL;
 
@@ -46,7 +55,7 @@ var downloadFile = function() {
     output.innerHTML = '';
   }
 
-  var bb = new Blob([typer.textContent], {type: MIME_TYPE});
+  var bb = new Blob(#source.textContent, {type: MIME_TYPE});
 
   var a = document.createElement('a');
   a.download = container.querySelector('input[type="text"]').value;
@@ -67,14 +76,15 @@ var downloadFile = function() {
     cleanUp(this);
   };
 };
-</script>
-<script>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-22014378-1']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-22014378-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();

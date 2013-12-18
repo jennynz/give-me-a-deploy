@@ -1,9 +1,15 @@
+output:hover + aside {
+  opacity: 1;
+}
+
+
+
 /* BODY & PAGE LAYOUT */
 
 body {
     background-color: #FFFFFF;
     margin-top: 7%;
-    /*margin-left: 10%;*/
+    /*margleft: 10%;*/
     font-family: Arial, Verdana, Helvetica, sans-serif;
     text-align: center;
 }
@@ -48,7 +54,7 @@ h3 {
 	color: #666;
 	font-size: 0.9em;
 	padding-top: 1em;
-	padding-bottom: 0.2em;
+	padding-bottom: 0.5em;
 	margin: 0px;
 }
 
@@ -87,45 +93,42 @@ li.star {
 /* LINKS & COLOUR */
 
 a {
-	color: #999;
+	color: #888;
 	text-decoration: none;
+	/* HOVER OUT SLOWLY */
+	-webkit-transition: 0.5s ease-in-out;
+  	-moz-transition: 0.5s ease-in-out;
+  	-o-transition: 0.5s ease-in-out;
+  	-ms-transition: 0.5s ease-in-out;
+  	transition: 0.5s ease-in-out;
 }
 
 a:hover {
-	color: #008080;
-}
-
-
-a:active {
 	color: #FF7700;
+	/* HOVER IN FAST */
+	-webkit-transition: 0s;
+  	-moz-transition: 0s;
+  	-o-transition: 0s;
+  	-ms-transition: 0s;
+  	transition: 0s;
 }
 
-a.headerlink {
-	color: #008080;
-}
+a:active {color: #008080;}
 
-a.headerlink:hover {
-	color: #FF7700;
-}
+a.headerlink {color: #008080;}
+a.headerlink:hover {color: #FF7700;}
+a.headerlink:active {color: #999;}
 
-a.headerlink:active {
-	color: #999;
-}
+a.anchor {color: #777;}
 
-.orange {
-	color: #FF7700;
-	display: inline;
-}
+a#download {color: #008080; font-weight: bold;}
+a#download:hover {color: #FF7700;}
+a#download:active {color: #999;}
 
-.teal {
-	color: #008080;
-	display: inline;
-}
+i {color: #999;}
 
-a.anchor {
-	color: #777;
-}
-
+.orange {color: #FF7700; display: inline;}
+.teal {color: #008080; display: inline;}
 
 /* TABLE ELEMENTS */
 
@@ -143,10 +146,14 @@ table.form {
     padding: 20px;
 }
 
-#saveInfo {
+div#saveInfo {
 	display: none;
 	color: #444;
 	font-size: 0.8em;
+	width: 60%;
+	margin: auto auto;
+	min-width: 260px;
+	max-width: 650px;
 }
 
 #whitespace {
@@ -159,10 +166,10 @@ table.form {
 
 textarea#source {
 	width: 100%;
-	min-width: 260px;
+	mwidth: 260px;
 	height: auto;
-	margin-right: 20px;
-	margin-left: -20px;
+	margright: 20px;
+	margleft: -20px;
 	padding: 20px; 
     overflow-x:; hidden;
     -ms-overflow-x: hidden;
@@ -191,34 +198,6 @@ textarea#source:focus::-webkit-scrollbar-thumb {
 	background-color: #FF7700;
 }
 
-/*div#source {
-	max-width: 600px;
-	min-width: 260px;
-	padding: 20px;
-    margin: 0 auto;
-    overflow: auto;
-    overflow-y: hidden;
-    -ms-overflow-y: hidden;
-    background-color: #E6E6E6;
-    border: 1px solid #008080;
-}
-
-pre#sourcecode {
-    font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
-    font-size: 0.8em;
-    color: #333;
-    text-align: left;
-}
-div#source::-webkit-scrollbar {
-	height: 10px;
-}
-div#source::-webkit-scrollbar-track {
-    background-color: #E6E6E6;
-}
-div#source::-webkit-scrollbar-thumb {
-	background-color: #008080;
-}*/
-
 .table-header {
 	text-align: center;
 	padding-left: 20px;
@@ -243,7 +222,7 @@ div#source::-webkit-scrollbar-thumb {
 input[type="text"] {
 	font-family: Arial, Sans-Serif;
     color: #444;
-    margin-bottom: 5px;
+    margbottom: 5px;
     display: block;
     padding: 4px;
     border: solid 1px #BBBBBB;
@@ -261,7 +240,7 @@ input[type="text"]:focus {
 select {
 	text-align: left;
     color: #444;
-    margin-bottom: 5px;
+    margbottom: 5px;
     display: block;
     padding: 4px;
     border: solid 1px #BBBBBB;
@@ -277,7 +256,7 @@ select:focus {
 .checkbox-field, .radio-field {
 	text-align: left;
     color: #444;
-    margin-bottom: 5px;
+    margbottom: 5px;
     display: block;
     padding: 4px;
 }
@@ -313,7 +292,7 @@ button {
 /* FOOTER */
 
 .footer {
-	color: #666;
 	font-size: 0.8em;
 	text-align: center;
+	color: #666;
 }

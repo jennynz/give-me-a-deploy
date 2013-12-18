@@ -5,6 +5,26 @@ function SelectAll(id) {
 
 
 
+function DownloadSourceCode() {
+
+	var content = document.getElementById("source").value;
+
+	// If HTML5 compatible, do this.
+	if (1 == 1) {
+		var pom = document.createElement('a');
+		pom.setAttribute('href', 'data:application/plain;charset=utf-8,' + encodeURIComponent(content));
+		pom.setAttribute('download', 'Vagrantfile');
+		pom.click();
+
+	// Otherwise use data:URI which downloads it to a file called "download" (can't specify file name).
+	} else {
+		uriContent = "data:application/octet-stream," + encodeURIComponent(content);
+		newWindow = window.open(uriContent, 'neuesDokument');
+	}
+}
+
+
+
 function GetCode()
 {
 	// Check that the given VM name is valid.
