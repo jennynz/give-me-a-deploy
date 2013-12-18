@@ -27,7 +27,7 @@ function DownloadZip() {
 
 function DownloadSourceCode() {
 
-	//var content = document.getElementById("source").value;
+	var content = document.getElementById("source").value;
 
 	// If HTML5 compatible, do this.
 	if (1 == 1) {
