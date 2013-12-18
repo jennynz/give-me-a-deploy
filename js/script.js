@@ -141,6 +141,9 @@ function GenerateSourceCode(vmname,vmenv)
 		"  puppet.manifest_file  = 'site.pp'" + '\n' + 
 		"end" + '\n\n' +
 
+		"# Check that it's worked within vagrant" + '\n' +
+  		"config.vm.provision :shell, path: 'check_install.sh'" + '\n\n' +
+
 		"end");
 
 	} else if (vmenv=="devstackenv") {
