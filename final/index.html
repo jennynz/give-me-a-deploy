@@ -5,8 +5,7 @@
 	<script src="js/script.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.js"></script>
-	<script src="js/modernizr.js"></script>
-	<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+	<script src="http://yui.yahooapis.com/3.14.0/build/yui/yui-min.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
 	<title>Give Me A Vagrant - Local VMs on demand</title>
@@ -41,7 +40,7 @@
 				<tr>
 					<td class="label">Virtual Environment*</td>
 					<td class="radio-field" required>
-						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv" checked> <a href="http://www.vagrantup.com" target="_blank">Vagrant</a> - your local machine<br>
+						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv"> <a href="http://www.vagrantup.com" target="_blank">Vagrant</a> - your local machine<br>
 						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> <a href="http://ocd-devstack/" target="_blank">Devstack</a> - local OpenStack server at Orion<br>
 						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> <a href="http://www.hpcloud.com" target="_blank">HP Cloud</a><br>
 					</td>
@@ -56,6 +55,7 @@
 					<td class="label">Operating System*</td>
 					<td class="input-field">
 						<select id="os" required>
+						  <option value="">--</option>
 						  <option value="centos-64">Centos</option>
 						  <option value="ubuntu-server-10044">Ubuntu</option>
 						</select>
@@ -74,7 +74,7 @@
 				<tr>
 					<td class="label">Puppet Scripts</td>
 					<td class="input-field">
-						<input type="text" id="VMName" autocapitalize="off" placeholder="Point us at your Puppet scripts in SVN and we'll provision the VM.">
+						<input type="text" id="VMName" autocapitalize="off" value="Point us at your Puppet scripts in SVN and we'll provision the VM.">
 					</td>
 				</tr>
 				<tr>
@@ -115,16 +115,17 @@ svn exports... PlatformBuild, ant dependencies
 
 	<h2>Simply <a class="headerlink" id="showSaveInfo">save</a> the following source code as "Vagrantfile" and run the command <a href="docs.html" class="headerlink" title="Click for documentation, FAQs and help">vagrant up</a>.</h2>
 
-	<div id="saveInfo">
-		Just <b>click</b> anywhere in the source code textarea below to select all, <b>Ctrl+C</b> and <b>paste</b> into your text editor,<br>
-		or <a id="download" onclick="DownloadSourceCode()">click here to download directly</a>.<br><br>
-		<i>Only HTML5-compatible browsers will download the file with the correct name, otherwise the downloaded file's name will have to be manually changed to "Vagrantfile".<br>
-			N.B. Vagrantfile has no extension.</i>
+	<span id="saveInfo">
+		Just click anywhere in the source code textarea below to select all,<br>
+		Ctrl+C and paste into your text editor,<br>
+		or <a href="source.txt" download="mytext.txt">click here to download</a>.
 		<br><br>
-	</div>
+	</span>
 
 	<div class="index-page-wrap">
-		<textarea rows="40" name="source" id="source" onClick="SelectAll('source');" spellcheck="false"></textarea>
+
+	<textarea rows="40" name="source" id="source" onClick="SelectAll('source');" spellcheck="false"></textarea>
+
 	</div>
 
 	<br><br>

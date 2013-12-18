@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+	<link rel="shortcut icon" href="favicon.ico">
+	<title>Give Me A Vagrant - Local VMs on demand | Documentation, FAQs & Help</title>
+</head>
+
+<body>
+
+	<div class="docs-page-wrap">
+		
+		<a href="index.html"><img id="Logo" src="oh_logo.png" alt="Logo" name="top"/></a>
+
+		<br><br>
+
+		<h1>
+		<a href="#documentation" title="How to boot your VM"><div class="orange">Documentation</div></a>, 
+		<a href="#faqs"><div class="orange">FAQs</div></a> & 
+		<a href="#help"><div class="orange">Help</div></a>
+	</h1>
+
+		<a name="documentation"><h2>Documentation</h2></a>
+
+		<ul>
+			<li class="star"><a href="#doc1">How to boot your VM</a></li>
+			<li class="star"><a href="#doc2">Manual access to your VM</a></li>
+			<li class="star"><a href="#doc3">Configuring Puppet Modules</a></li>
+			<li class="star"><a href="#doc4">Further Information</a></li>
+		</ul>
+
+		<a name="doc1"><h3>How to boot your VM</h3></a>
+
+		<p>
+			<ol>
+				<li>Save the source code into a file called "Vagrantfile" in a directory (N.B. no file extension).</li>
+				<li>Navigate to the directory in your command prompt.</li>
+				<li>Run "vagrant up"</li>
+				<li>To tear down the VM after using, run "vagrant destroy -f"
+			</ol>
+		</p>
+
+		<a name="doc2"><h3>Manual access to your VM</h3></a>
+
+		<p>
+			For a <b>Vagrant</b> VM, access your virtual machine by ssh'ing into the box with the command, 'ssh vagrant'.<br><br>
+
+			For <b>OpenStack</b>, log in to <a href="http://ocd-devstack/">DevStack</a> with the username as 'admin' and the password being 'orionsys'. Go to 'project', and click 'instances'. You may manually terminate your instance from this GUI panel, and it is recommended that you do so if you have finished with your VM to save on server resources.<br>
+			You can gain access into the instance, 'ssh root@192.168.50.3' with the IP of your instance.<br><br>
+
+			For <b>HP Cloud</b> or key pairing and authentication and all that mumbo-jumbo, I wouldn't have a clue.
+
+		</p>
+
+		<a name="doc3"><h3>Configuring Puppet Modules</h3></a>
+
+		<p>
+			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b class="orange">manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
+
+		</p>
+
+		<a name="doc4"><h3>Further Information</h3></a>
+
+		<p>
+			For detailed instructions, necessary prerequisite applications and installation tips, please see the links below.
+			<ul>
+				<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
+				<li><a href="http://stash/users/jennysa/repos/give-me-a-vagrant/browse" title="Give-Me-A-Vagrant git repository on Stash" target="_blank">Source code</a> Stash repository</li>	
+				<li>Woki introduction to <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived VMs</a>.</li>
+				<li><a href="https://puphpet.com/" title="PuPHPet - online GUI configurator for Puppet & Vagrant" target="_blank">PuPHPet</a> - the online GUI configurator for Puppet & Vagrant which this app was based off</li>
+			</ul>
+		</p><br>
+
+		<a name="faqs"><h2>Troubleshooting & FAQs</h2></a>
+
+		<ul>
+			<li><a href="#faq1">Booting is taking ages.</a></li>
+			<li><a href="#faq2">My application is not working on my browser.</a></li>
+			<li><a href="#faq3">My "vagrant up" stops before provisioning, but with no errors.</a></li>
+		</ul>
+
+		<h3><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
+		<p>The entire vagrant up process can take even over 10 minutes depending on the speed of your host machine.</p>
+
+		<h3><a name="faq2" class="anchor">My application is not working on my browser.</a></h3>
+		<p>Beta versions may not have full cross-browser capability yet. Please use a final release version of the application.</p>
+		
+		<h3><a name="faq3" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
+		<p>The command "vagrant up" should be able to take you through the entire booting up, installation and configuration. If this is not the case, and you are being returned with a prompt before the source code has completed, it may be due to the line endings setting on your text editor. Make sure that your line endings are set to Unix.<br>
+		e.g. on Sublime Text 2, go to View > Line Endings > and select Unix.<br>
+		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p>
+
+		<br>
+
+		<a name="help"><h2>Help</h2></a>
+
+		<p>If you require any further assistance, please contact a member of the <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD team</a>.</p>
+
+		</div>
+
+		<br><br>
+
+		<div class="footer">
+		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
+		</div>
+
+		<br><br><br><br>
+
+	</div>
+</body>
+</html>
