@@ -122,9 +122,9 @@ a.headerlink:active {color: #999;}
 
 a.anchor {color: #777;}
 
-a#download {color: #008080; font-weight: bold;}
-a#download:hover {color: #FF7700;}
-a#download:active {color: #999;}
+a.downloadlink {color: #008080; font-weight: bold;}
+a.downloadlink:hover {color: #FF7700;}
+a.downloadlink:active {color: #999;}
 
 i {color: #999;}
 

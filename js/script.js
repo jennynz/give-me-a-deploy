@@ -3,11 +3,31 @@ function SelectAll(id) {
     document.getElementById(id).select();
 }
 
+function DownloadZip() {
+  
+  var content = document.getElementById("source").value;
+
+  var zip = new JSZip();
+  zip.file("Vagrantfile", content);
+
+  // data URI
+  document.getElementById('dataURI').href = "data:application/zip;base64," + zip.generate();
+
+  // Blob
+  var blobLink = document.getElementById('blob');
+  try {
+    blobLink.download = "here-is-your-vagrant.zip";
+    blobLink.href = window.URL.createObjectURL(zip.generate({type:"blob"}));
+  } catch(e) {
+    blobLink.innerHTML += " (not supported on this browser)";
+  }
+};
+
 
 
 function DownloadSourceCode() {
 
-	var content = document.getElementById("source").value;
+	//var content = document.getElementById("source").value;
 
 	// If HTML5 compatible, do this.
 	if (1 == 1) {

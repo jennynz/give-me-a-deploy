@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+	Downloading Zip Files on the client side
+	========================================
 
+	http://stuk.github.io/jszip/
+
+-->
 <head>
 	<script src="js/script.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.js"></script>
+	<script src="js/jszip.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
 	<title>Give Me A Vagrant - Local VMs on demand</title>
@@ -106,9 +113,14 @@
 
 	<div id="saveInfo">
 		Just <b>click</b> anywhere in the source code textarea below to select all, <b>Ctrl+C</b> and <b>paste</b> into your text editor,<br>
-		or <a id="download" onclick="DownloadSourceCode()">click here to download directly</a>.<br><br>
+		or <a id="download" class="downloadlink" onclick="DownloadSourceCode()">click here to download directly</a>.<br>
 		<i>Only HTML5-compatible browsers will download the file with the correct name, otherwise the downloaded file's name will have to be manually changed to "Vagrantfile".<br>
 			N.B. Vagrantfile has no extension.</i>
+		<br><br>
+		<a id="dataURI" class="downloadlink" onclick="DownloadZip()">Download in a zip file by data URI</a><br>
+		<i>The file will just be called "download" with no extension, or a very awkward character string on Firefox, but it works and unzips on a zip manager like 7-Zip)</i><br>
+		<a id="blob" class="downloadlink" onclick="DownloadZip()">Download zip file as a blob</a><br>
+		<i>This rocks, but the blob url attribute is currently only supported by Chrome and Firefox >=20.</i>
 		<br><br>
 	</div>
 
