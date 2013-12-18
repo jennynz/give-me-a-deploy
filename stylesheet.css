@@ -118,7 +118,7 @@ a:active {color: #008080;}
 
 a.headerlink {color: #008080; border-bottom: dotted 2px #bbb;}
 a.headerlink:hover {color: #FF7700; border-bottom: dotted 2px #ff7700;}
-a.headerlink:active {color: #999;}
+a.headerlink:active {color: #999; border-bottom: dotted 2px #999;}
 
 a.anchor {color: #777;}
 

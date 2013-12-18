@@ -1,8 +1,12 @@
+// Single-click select all text in source code textarea
 function SelectAll(id) {
     document.getElementById(id).focus();
     document.getElementById(id).select();
 }
 
+
+
+// Download Vagrantfile in a zip
 function DownloadZip() {
   
   var content = document.getElementById("source").value;
@@ -25,6 +29,7 @@ function DownloadZip() {
 
 
 
+// Download Vagrantfile as a single file
 function DownloadSourceCode() {
 
 	var content = document.getElementById("source").value;
@@ -45,6 +50,7 @@ function DownloadSourceCode() {
 
 
 
+// Generate and display customised source code
 function GetCode()
 {
 	// Check that the given VM name is valid.
@@ -58,16 +64,11 @@ function GetCode()
 
 	// Print source code to textbox.
 	PrintToTextbox(vagrantcode);
-
-	// Save file as "Vagrantfile" to client's machine.
-	/*if (document.vmdetails.savefile.checked) {
-		SaveFile(vagrantcode);
-	};*/
-
 }
 
 
 
+// Check that the given VM name is valid
 function ValidateVMName() {
 	
 	var vmname = document.getElementById("vmname").value;	// Get the vmname from the form.
@@ -92,6 +93,7 @@ function ValidateVMName() {
 
 
 
+// String up the source code with the right customisation
 function GenerateSourceCode(vmname,vmenv)
 {
 	// Get VM details from form.
@@ -190,10 +192,11 @@ function GenerateSourceCode(vmname,vmenv)
 		"end" + '\n\n' +
 
 		"# Install Puppet" + '\n' + 
-	 	"config.vm.provision :shell, path: 'install_puppet.sh'" + '\n\n' + 
+	 	"config.vm.provision :shell, path: 'setup.sh'" + '\n\n' + 
 
 	 	"# Install OHP with Puppet modules" + '\n' + 
 		"config.vm.provision :puppet do |puppet|" + '\n' + 
+		"  # puppet.options = '--verbose --debug'" + '\n' +
 		"  puppet.module_path  = 'modules/puppet-ohp'" + '\n' +
 		"  puppet.manifests_path = 'manifests'" + '\n' +
 		"  puppet.manifest_file  = 'site.pp'" + '\n' + 
@@ -236,20 +239,8 @@ function GenerateSourceCode(vmname,vmenv)
 
 
 
+// Display generated source code in texarea
 function PrintToTextbox(text) {
 	var sourcetextbox = document.getElementById("source");
 	sourcetextbox.value = text;
 }
-
-
-
-/*function SaveFile(text) {
-	Likely that a server side language is required for this.
-
-	var fso = new ActiveXObject("Scripting.FileSystemObject");
-	var s = fso.CreateTextFile("vagrantfile.txt", true);
-	s.WriteLine("# -*- mode: ruby -*-");
-	s.WriteLine("# vi: set ft=ruby :\n");
-	s.WriteLine("# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!")
-	s.Close();
-}*/
