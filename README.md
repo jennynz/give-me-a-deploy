@@ -8,11 +8,6 @@ It will eventually be able to output not only a source code, but also a download
 
 Give-Me-A-Vagrant is entirely client-side, written in HTML, CSS and JS.
 
-/final
-------
-
-This repository includes many files which have been used for testing potential features and script libraries. The **"final" directory** is the latest working version of Give-Me-A-Vagrant with only the strictly necessary scripts and files included. If you wish to try the app out, checkout this directory.
-
 /give-me-a-deploy
 ----------------
 
