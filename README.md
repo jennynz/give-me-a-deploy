@@ -13,7 +13,7 @@ Give-Me-A-Vagrant is entirely client-side, written in HTML, CSS and JS.
 
 This repository includes many files which have been used for testing potential features and script libraries. The **"final" directory** is the latest working version of Give-Me-A-Vagrant with only the strictly necessary scripts and files included. If you wish to try the app out, checkout this directory.
 
-Give-Me-A-Deploy
+/give-me-a-deploy
 ----------------
 
 The **directory "give-me-a-deploy"** holds files for a prototype skeleton of what a web app that actually spins up and automatically destroys short-lived VMs might look like. None of the functions currently work.
