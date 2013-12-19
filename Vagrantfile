@@ -18,4 +18,7 @@ config.vm.hostname = 'portal-vm'
 # Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.
 config.vm.network 'forwarded_port', guest: 19080, host: 19080
 
+# Set up the environment for the automated Puppet installation of OHP.
+config.vm.provision "shell", path: "setup.sh"
+
 end

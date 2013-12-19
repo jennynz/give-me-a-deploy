@@ -31,6 +31,11 @@ Some sort of ant source build.xml file or something to download the things like 
 Might not even need to run a separate file, could maybe do it all with setup.sh from the initial shell provisioning in vagrant up!
 
 
+Running 'vagrant up'
+--------------------
+
+If your line endings are set to Windows, they will have to be changed to Linux, or 'vagrant provision' will have to be run when the prompt is returned after 'vagrant up'.
+
 
 /give-me-a-deploy
 ----------------
