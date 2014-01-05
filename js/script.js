@@ -19,6 +19,9 @@ function DownloadZip() {
 
   // Blob
   var blobLink = document.getElementById('blob');
+  
+  // If vmenv == 'vagrantenv', download along with setup.sh and vagrantupforme.sh
+
   try {
     blobLink.download = "here-is-your-vagrant.zip";
     blobLink.href = window.URL.createObjectURL(zip.generate({type:"blob"}));
@@ -131,18 +134,8 @@ function GenerateSourceCode(vmname,vmenv)
 		"# Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine." + '\n' + 
 		"config.vm.network 'forwarded_port', guest: 19080, host: 19080" + '\n\n' + 
 
-		"# Install Puppet" + '\n' + 
-	 	"config.vm.provision :shell, path: 'install_puppet.sh'" + '\n\n' + 
-
-	 	"# Install OHP with Puppet modules" + '\n' + 
-		"config.vm.provision :puppet do |puppet|" + '\n' + 
-		"  puppet.module_path  = 'modules/puppet-ohp'" + '\n' +
-		"  puppet.manifests_path = 'manifests'" + '\n' +
-		"  puppet.manifest_file  = 'site.pp'" + '\n' + 
-		"end" + '\n\n' +
-
-		"# Check that it's worked within vagrant" + '\n' +
-  		"config.vm.provision :shell, path: 'check_install.sh'" + '\n\n' +
+		"# Run shell script to carry through to OHP installation" + '\n' + 
+	 	"config.vm.provision :shell, path: 'setup.sh'" + '\n\n' + 
 
 		"end");
 
