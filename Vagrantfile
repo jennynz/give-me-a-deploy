@@ -15,10 +15,10 @@ config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vb
 # Set the name of the host machine.
 config.vm.hostname = 'portal-vm'
 
-# Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.
+# Create a forwarded port mapping which allows access to a specific port within the guest machine from a port on the host machine.
 config.vm.network 'forwarded_port', guest: 19080, host: 19080
 
 # Set up the environment for the automated Puppet installation of OHP.
-config.vm.provision "shell", path: "setup.sh"
+config.vm.provision "shell", path: "vagrantsetup_ohpinstall.sh"
 
 end
