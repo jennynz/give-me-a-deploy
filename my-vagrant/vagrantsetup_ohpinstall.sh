@@ -8,10 +8,10 @@
 sudo service iptables stop
 
 # Set up variables
-portalversion = '8.4.0.beta';
-foundationversion = '7.2.0.beta'; # Just use the most recent foundation version
-baseurl = '/vagrant';
-installer = 'platform-linux-x64.sh';
+portalversion='8.4.0.beta';
+foundationversion='7.2.0.beta'; # Just use the most recent foundation version
+base_url='/vagrant';
+installer='platform-linux-x64.sh';
 
 cd ${base_url}
 
@@ -24,7 +24,7 @@ touch manifests/site.pp
 cat > manifests/site.pp <<EOL
 node default {
   class { 'ohp':
-  	base_url => '${baseurl}',
+  	base_url => '${base_url}',
   	installer => '${installer}',
   	node_type => 'frontend',
   	group_name => 'my_group',
@@ -43,11 +43,18 @@ EOL
 
 # Download OHP provisioning installer from Ivy.
 wget http://ivy-rep-ro/orchestral/provisioning-installer/${foundationversion}/installers/${installer} --user=ivy-http --password=YouSayHello
-#wget http://ivy-http:YouSayHello@ivy-rep-ro/orchestral/provisioning-installer/7.2.0.beta/installers/platform-linux-x64.sh
+#works when running script manually inside vagrant: wget http://ivy-http:YouSayHello@ivy-rep-ro/orchestral/provisioning-installer/7.2.0.beta/installers/platform-linux-x64.sh
+
 
 
 # Solution zip
 # ============
+
+# Install ant, retrieve dependencies in the puppet-ohp directory with the build.xml file.
+sudo yum install ant -y
+cd modules/puppet-ohp
+ant retrieve.groovy.dependencies
+cd ${base_url}
 
 # Create and write the files required for a solution package
 cd modules/solution
@@ -77,21 +84,11 @@ cat > build.xml <<EOL
 </project>
 EOL
 
-cd #{baseurl}
+cd ${base_url}
 
 # Create a solution.zip package downloaded from Ivy into the base url (the required files e.g. PlatformBuild, build.xml and tooling are copied across already).
 JAVA_HOME=/opt/java1.7 ant create.custom.solution.package
 ls -lh
-
-
-# Ant Dependencies
-# ================
-
-# Install ant, retrieve dependencies in the puppet-ohp directory with the build.xml file.
-sudo yum install ant -y
-cd modules/puppet-ohp
-ant retrieve.groovy.dependencies
-
 
 
 
