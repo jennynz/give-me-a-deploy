@@ -19,6 +19,6 @@ VAGRANTFILE_API_VERSION = '2'
 	config.vm.network 'forwarded_port', guest: 19080, host: 19080
 
 	# Set up the environment for the automated Puppet installation of OHP.
-	config.vm.provision "shell", path: "vagrantsetup_ohpinstall.sh"
+	config.vm.provision "shell", path: "install.sh"
 
 end
