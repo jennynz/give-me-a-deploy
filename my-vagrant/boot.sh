@@ -7,13 +7,12 @@ mkdir frontend
 mkdir -p modules/solution # The name of this directory will eventually become the solution zip with the name $nameOfDirectory.zip
 mkdir manifests
 
-# SSH keys would be required so that the user isn't always prompted for the password.
-# Required directories for a solution package
+# Required directovaries for a solution package
 git svn clone -rHEAD http://subversion/src/Orchestral/Framework/PlatformBuild/trunk
 mv trunk PlatformBuild
 mv PlatformBuild/ ./modules/
 
-git clone http://jennysa@stash/scm/ocd/tooling.git
+git clone ssh://git@stash:7999/ocd/tooling.git
 mv tooling/ ./modules/
 
 # git clone http://jennysa@stash/scm/~jamesha/bamboo-ohp-solution.git
@@ -24,7 +23,7 @@ mv tooling/ ./modules/
 
 # Git clone Puppet modules and build.xml file for ant retrieve.
 cd modules
-git clone http://jennysa@stash/scm/puppet/puppet-ohp.git
+git clone ssh://git@stash:7999/puppet/puppet-ohp.git
 cd ..
 
 vagrant up
