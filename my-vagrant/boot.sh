@@ -27,3 +27,5 @@ git clone ssh://git@stash:7999/puppet/puppet-ohp.git
 cd ..
 
 vagrant up
+
+# try putting tooling/ and solution/ in /vagrant, not modules/

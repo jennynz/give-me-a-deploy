@@ -75,10 +75,8 @@ cat > build.xml <<EOL
 EOL
 
 # Create a solution.zip package downloaded from Ivy into the base url
-cd modules/solution
 ant create.custom.solution.package
-sudo mv solution.zip /opt/orionhealth/solution.zip
-sudo cp /opt/orionhealth/solution.zip /vagrant
+sudo mv /vagrant/modules/solution/solution.zip /vagrant
 
 
 
@@ -209,10 +207,13 @@ yum install puppet -y
 
 # Install Puppet standard library for junit dependencies.
 sudo puppet module install --force puppetlabs/stdlib --modulepath=/vagrant/modules/puppet-ohp
-#sudo puppet module install --force puppetlabs/stdlib
 
 # Run puppet install with specified module paths and manifest file.
+sudo /opt/orionhealth/jre/bin/java -cp ohp-groovy-configure-lib/
 sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp
+
+sudo chown orion /opt/orionhealth/response.varfile
+sudo cp /vagrant/solution.zip /opt/orionhealth/solution.zip
 
 # Make the OHP provisioning installer executable.
 chmod +x /vagrant/platform-linux-x64.sh
@@ -221,11 +222,8 @@ chmod +x /vagrant/platform-linux-x64.sh
 cd modules/puppet-ohp
 ant retrieve.groovy.dependencies
 
-chown orion /opt/orionhealth/response.varfile
 sudo -i -u orion
 /opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile
-cd /opt/orionhealth
-/opt/orionhealth/jre/bin/java -cp ohp-groovy-configure-lib/* #groovy.ui.GroovyMain configure-ohp.groovy
 /opt/orionhealth/bin/server.sh start
 
 
@@ -235,5 +233,5 @@ cd /opt/orionhealth
 #################################
 
 /opt/orionhealth/bin/server.sh status
-wget "http://localhost:19080/conductor"
-wget "http://localhost:19080/concerto"
+# wget "http://localhost:19080/conductor"
+# wget "http://localhost:19080/concerto"
