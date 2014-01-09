@@ -15,7 +15,7 @@
 
 		<br><br>
 
-		<h1>
+		<h1 class="docs">
 		<a href="#documentation" title="How to boot your VM"><div class="orange">Documentation</div></a>, 
 		<a href="#faqs"><div class="orange">FAQs</div></a> & 
 		<a href="#help"><div class="orange">Help</div></a>
@@ -23,7 +23,7 @@
 
 		<p>This information can also be found <a href="http://woki/display/IntDev/Give-Me-A-Vagrant" title="Give-Me-A-Vagrant - Integrated Development">here</a> on the Woki.</p>
 
-		<a name="documentation"><h2>Documentation</h2></a>
+		<a name="documentation"><h2 class="docs">Documentation</h2></a>
 
 		<ul>
 			<li class="star"><a href="#doc1">How to boot your VM</a></li>
@@ -32,7 +32,7 @@
 			<li class="star"><a href="#doc4">Further Information</a></li>
 		</ul>
 
-		<a name="doc1"><h3>How to boot your VM</h3></a>
+		<a name="doc1"><h3 class="docs">How to boot your VM</h3></a>
 
 		<p>
 			<ol>
@@ -43,7 +43,7 @@
 			</ol>
 		</p>
 
-		<a name="doc2"><h3>Manual access to your VM</h3></a>
+		<a name="doc2"><h3 class="docs">Manual access to your VM</h3></a>
 
 		<p>
 			For a <b>Vagrant</b> VM, access your virtual machine by ssh'ing into the box with the command, 'ssh vagrant'.<br><br>
@@ -55,14 +55,14 @@
 
 		</p>
 
-		<a name="doc3"><h3>Configuring Puppet Modules</h3></a>
+		<a name="doc3"><h3 class="docs">Configuring Puppet Modules</h3></a>
 
 		<p>
 			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b class="orange">manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
 
 		</p>
 
-		<a name="doc4"><h3>Further Information</h3></a>
+		<a name="doc4"><h3 class="docs">Further Information</h3></a>
 
 		<p>
 			For detailed instructions, necessary prerequisite applications and installation tips, please see the links below.
@@ -74,7 +74,7 @@
 			</ul>
 		</p><br>
 
-		<a name="faqs"><h2>Troubleshooting & FAQs</h2></a>
+		<a name="faqs"><h2 class="docs">Troubleshooting & FAQs</h2></a>
 
 		<ul>
 			<li><a href="#faq1">Booting is taking ages.</a></li>
@@ -82,20 +82,20 @@
 			<li><a href="#faq3">My "vagrant up" stops before provisioning, but with no errors.</a></li>
 		</ul>
 
-		<h3><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
+		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
 		<p>The entire vagrant up process can take even over 10 minutes depending on the speed of your host machine.</p>
 
-		<h3><a name="faq2" class="anchor">My application is not working on my browser.</a></h3>
+		<h3 class="docs"><a name="faq2" class="anchor">My application is not working on my browser.</a></h3>
 		<p>Beta versions may not have full cross-browser capability yet. Please use a final release version of the application.</p>
 		
-		<h3><a name="faq3" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
+		<h3 class="docs"><a name="faq3" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
 		<p>The command "vagrant up" should be able to take you through the entire booting up, installation and configuration. If this is not the case, and you are being returned with a prompt before the source code has completed, it may be due to the line endings setting on your text editor. Make sure that your line endings are set to Unix.<br>
 		e.g. on Sublime Text 2, go to View > Line Endings > and select Unix.<br>
 		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p>
 
 		<br>
 
-		<a name="help"><h2>Help</h2></a>
+		<a name="help"><h2 class="docs">Help</h2></a>
 
 		<p>If you require any further assistance, please contact a member of the <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD team</a>.</p>
 

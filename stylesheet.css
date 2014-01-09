@@ -8,7 +8,7 @@ output:hover + aside {
 
 body {
     background-color: #FFF;
-    margin-top: 7%;
+    margin-top: 6%;
     font-family: Arial, Verdana, Helvetica, sans-serif;
 }
 
@@ -28,10 +28,10 @@ body {
 }
 
 .docs-page-wrap {
-	width: 75%;
+	width: 80%;
 	margin: 0 auto;
 	min-width: 260px;
-    max-width: 500px;
+    max-width: 800px;
     text-align: left;
 }
 
@@ -41,12 +41,28 @@ body {
 h1 {
 	color: #999;
 	font-size: 1.5em;
-	text-align: center
+	text-align: center;
 }
+
+h1.docs, h1.about {
+	font-size: 2em;
+	text-align: left;
+}
+
+h2.docs, h2.about {
+	font-size: 1.5em;
+	text-align: left;
+}
+
+h3.docs {
+	font-size: 1em;
+	text-align: left;
+}
+
 
 h2 {
 	color: #444;
-	font-size: 1em;
+	font-size: 1.2em;
 	text-align: center;
 }
 
@@ -135,6 +151,12 @@ i {color: #999;}
 .orange {color: #FF7700; display: inline;}
 .teal {color: #008080; display: inline;}
 
+img#logo {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
 /* TABLE ELEMENTS */
 
 table {
@@ -147,8 +169,23 @@ table.form {
 	width: 100%;
 	max-width: 500px;
 	background-color: #E6E6E6;
-    border: 1px solid #008080;
+    border: 1px solid #999;
     padding: 20px;
+    -webkit-transition: 0.5s ease-in-out;
+  	-moz-transition: 0.5s ease-in-out;
+  	-o-transition: 0.5s ease-in-out;
+  	-ms-transition: 0.5s ease-in-out;
+  	transition: 0.5s ease-in-out;
+}
+
+table.form:hover {
+    border-color: #ff7700;
+    box-shadow: 0 0 4px #ff7700;
+    -webkit-transition: 0s;
+  	-moz-transition: 0s;
+  	-o-transition: 0s;
+  	-ms-transition: 0s;
+  	transition: 0s;
 }
 
 div.hiddenInfo {
@@ -185,16 +222,16 @@ textarea.source {
 	min-width: 260px;
 	margin-right: 20px;
 	margin-left: -20px;
-	padding: 20px; 
+	padding: 20px;
     overflow-x: hidden;
     -ms-overflow-x: hidden;
-    /*background-color: rgb(230, 230, 230);*/
     background-color: rgba(200, 200, 200, 0.5);
     border: 1px solid #008080;
     font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
     font-size: 0.8em;
     color: #333;
     text-align: left;
+    resize: vertical;
 }
 textarea.source::-webkit-scrollbar {
 	width: 10px;
@@ -256,6 +293,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
     color: #008080;
+    outline: none;
     border: solid 1px #FF7700;
 }
 
@@ -273,6 +311,7 @@ select {
 
 select:focus {
     color: #008080;
+    outline: none;
     border: solid 1px #FF7700;
 }
 

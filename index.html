@@ -24,15 +24,14 @@
 
 <body>
 
-	<div class="index-page-wrap">
-		
-		<a href="index.html"><img id="Logo" src = "oh_logo.png" alt="Logo" name="top"/></a>
-		
-		<br><br>
-		
-		<h1><div class="orange">Instant VMs</div> at your fingertips</h1>
+			
+	<center><a href="index.html"><img id="logo" src="oh_logo.png" name="top"/></a></center><br>
+	
+	<h1><div class="orange">Instant VMs</div> at your fingertips</h1>
 
-		<h2>Provide us with some details and we'll give you a <div class="teal">Vagrantfile</div> which you can use to boot up your <div class="teal">customised VM</div>.</h2>
+	<h2>Provide us with a few details and we'll give you some <div class="teal">scripts</div><br>which boot up your <div class="teal">customised Vagrant</div> machine.</h2>
+
+	<div class="index-page-wrap">
 
 		<form name="vmdetails" id="vmdetails">
 			<table class="form">
@@ -137,21 +136,19 @@
 		Other browsers:<br>
 		<a id="dataURI" class="downloadlink" onclick="DownloadZip()" title="Why are you even using IE?">Download all in a zip by data URI</a><br>
 		<i>(Supported by most browsers but downloaded file has no extension and may not be recognised by your zip file manager. Use a file archiver like <a href="http://www.7-zip.org/">7-Zip</a>).</i>
-		<br><br>
+		<br><br><br>
 
 	</div>
 
 	<div class="index-page-wrap">
 
 		<a class="headerlink" id="showbootInfo" onclick="DownloadSourceCode('vagrantenvbootsource', 'boot.sh')">&#8595; boot.sh</a>
-		<span class="hiddenInfoSub" id="bootInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of provisioning your customised virtual machine. It clones git repositories off Stash, spins up a Vagrant virtual enironment and provisions it with the OH products.
-			<br><br>
+		<span class="hiddenInfoSub" id="bootInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of booting and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
 		</span>
 		<textarea rows="40" name="vagrantenvbootsource" class="source" id="vagrantenvbootsource" onClick="SelectAll('vagrantenvbootsource');" spellcheck="false"></textarea><br><br>
 		
 		<a class="headerlink" id="showvagrantfileInfo" onclick="DownloadSourceCode('vagrantenvvagrantfilesource', 'Vagrantfile')">&#8595; Vagrantfile</a>
-		<span class="hiddenInfoSub" id="vagrantfileInfo">&nbsp;is the configuration file which allows boot.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.
-			<br><br>
+		<span class="hiddenInfoSub" id="vagrantfileInfo">&nbsp;is the configuration file which allows boot.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
 		</span>
 		<textarea rows="40" name="vagrantenvvagrantfilesource" class="source" id="vagrantenvvagrantfilesource" onClick="SelectAll('vagrantenvvagrantfilesource');" spellcheck="false"></textarea><br><br>
 		
@@ -159,8 +156,7 @@
 		<span class="hiddenInfoSub" id="installInfo">&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
 		Once Platform and Portal have been installed and started, you can access them here:<br>
 		<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>
-		<a href="http://localhost:19080/concerto" target="_blank">http://localhost:19080/concerto</a>
-		<br><br>
+		<a href="http://localhost:19080/concerto" target="_blank">http://localhost:19080/concerto</a><br><br>
 		</span>
 
 		<textarea rows="40" name="vagrantenvinstallsource" class="source" id="vagrantenvinstallsource" onClick="SelectAll('vagrantenvinstallsource');" spellcheck="false"></textarea>

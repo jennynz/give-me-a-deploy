@@ -20,9 +20,9 @@ cd ${base_url}
 # ====================
 
 # java-1.7.0-openjdk  Default Java version on Vagrant is 1.6, but 1.7 required.
-# ant-apache-regexp   Fix error: "No supported regular expression matcher found: java.lang.ClassNotFoundException: org.apache.tools.ant.util.regexp.Jdk14RegexpRegexp"
+# ant-apache-regexp   Fix error: 'No supported regular expression matcher found: java.lang.ClassNotFoundException: org.apache.tools.ant.util.regexp.Jdk14RegexpRegexp'
 # ant                 Apache ant for 
-# ant-jsch            Needed for "ant create.custom.solution.package" later.
+# ant-jsch            Needed for 'ant create.custom.solution.package' later.
 sudo yum install java-1.7.0-openjdk ant-apache-regexp ant ant-jsch -y
 
 # Specify that Java 1.7 should be used instead of the default 1.6
@@ -32,7 +32,7 @@ export JAVA_HOME=/usr/lib/jvm/jre-1.7.0
 wget http://ivy-rep-ro/apache/ant/1.9.2/jars/ant-junit.jar -P modules/PlatformBuild/anttasks --user=ivy-http --password=YouSayHello
 wget http://ivy-rep-ro/opensource/com.jcraft.jsch/0.1.50/jars/com.jcraft.jsch-nodist.jar -P modules/PlatformBuild/anttasks --user=ivy-http --password=YouSayHello
 
-# Line 21 in build-tasks.xml (cloned from PlatformBuild/trunk in svn) needs to be edited to include path to ant-junit jar file
+# Line 17 in build-tasks.xml (cloned from PlatformBuild/trunk in svn) needs to be edited to include path to ant-junit jar file
 sed -i -e '17s/.*/\t\t\t<taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask" classpath="${common.build.dir}\/anttasks\/ant-junit.jar"\/>/' ./modules/PlatformBuild/build-tasks.xml
 
 # Download OHP provisioning installer from Ivy.
@@ -65,8 +65,8 @@ version.servicepack=0
 EOL
 
 cat > build.xml <<EOL
-<project name="SolutionTest">
-	<import file="../tooling/build-ocd-solution.xml"/>
+<project name='SolutionTest'>
+	<import file='../tooling/build-ocd-solution.xml'/>
 </project>
 EOL
 
@@ -102,22 +102,22 @@ EOL
 
 touch frontend/EnvironmentalConfig.xml.erb
 cat > frontend/EnvironmentalConfig.xml.erb <<EOL
-<?xml version="1.0" encoding="UTF-8"?><com.orchestral.core.configuration.api_6_0.ConfigurationService xmlns="http://www.orionhealth.com/configuration" version="3" type="SNAPSHOT" label="Environmental Configuration">
+<?xml version='1.0' encoding='UTF-8'?><com.orchestral.core.configuration.api_6_0.ConfigurationService xmlns='http://www.orionhealth.com/configuration' version='3' type='SNAPSHOT' label='Environmental Configuration'>
   <!-- NB: This is a fixture used for the system tests for the OHP class, this file is not used to deploy any real solution -->
-  <com.orchestral.core.database.impl.DatabaseServerImpl id="primaryServer">
+  <com.orchestral.core.database.impl.DatabaseServerImpl id='primaryServer'>
     <adminConnectionDetails>
       <com.orchestral.core.database.impl.ConnectionDetailsImpl>
-        <driver null="true"/>
-        <parameters null="true"/>
+        <driver null='true'/>
+        <parameters null='true'/>
         <user>
           <com.orchestral.core.database.impl.UserDetailsImpl>
-            <password null="true"/>
-            <username null="true"/>
+            <password null='true'/>
+            <username null='true'/>
           </com.orchestral.core.database.impl.UserDetailsImpl>
         </user>
       </com.orchestral.core.database.impl.ConnectionDetailsImpl>
     </adminConnectionDetails>
-    <defaultTablespace null="true"/>
+    <defaultTablespace null='true'/>
     <displayName>Primary Database Server</displayName>
     <host><%=@config_database_hostname%></host>
     <port>1521</port>
@@ -127,13 +127,13 @@ cat > frontend/EnvironmentalConfig.xml.erb <<EOL
   </com.orchestral.core.database.impl.DatabaseServerImpl>
 
   <!-- Database Driver -->
-  <com.orchestral.core.database.impl.OracleThinDatabaseDriver id="oracleDriver">
+  <com.orchestral.core.database.impl.OracleThinDatabaseDriver id='oracleDriver'>
     <className>oracle.jdbc.OracleDriver</className>
     <displayName>Oracle Thin</displayName>
     <type>ORACLE</type>
     <urlFormat>jdbc:oracle:thin:@&lt;%=host%&gt;&lt;%if port%&gt;:&lt;%=port%&gt;&lt;%else%&gt;:1521&lt;%end if%&gt;&lt;%if serviceId!=null &amp;&amp; serviceId.length()&gt;0%&gt;:&lt;%=serviceId%&gt;&lt;%end if%&gt;</urlFormat>
   </com.orchestral.core.database.impl.OracleThinDatabaseDriver>
-  <com.orchestral.core.database.impl.DatabasePoolingProfileImpl id="defaultPoolingProfile">
+  <com.orchestral.core.database.impl.DatabasePoolingProfileImpl id='defaultPoolingProfile'>
     <adjustPeriod>600</adjustPeriod>
     <connCheckLevel>2</connCheckLevel>
     <connMaxAge>5</connMaxAge>
@@ -160,9 +160,9 @@ cat > frontend/EnvironmentalConfig.xml.erb <<EOL
     <connectionDetails>
       <com.orchestral.core.database.impl.ConnectionDetailsImpl>
         <driver>
-          <com.orchestral.core.database.impl.OracleThinDatabaseDriver refId="oracleDriver"/>
+          <com.orchestral.core.database.impl.OracleThinDatabaseDriver refId='oracleDriver'/>
         </driver>
-        <parameters null="true"/>
+        <parameters null='true'/>
         <user>
           <com.orchestral.core.database.impl.UserDetailsImpl>
             <password><%=@config_database_password%></password>
@@ -173,14 +173,14 @@ cat > frontend/EnvironmentalConfig.xml.erb <<EOL
     </connectionDetails>
     <databaseName/>
     <databaseServer>
-      <com.orchestral.core.database.impl.DatabaseServerImpl refId="primaryServer"/>
+      <com.orchestral.core.database.impl.DatabaseServerImpl refId='primaryServer'/>
     </databaseServer>
     <id><%=id%></id>
-    <initSql null="true"/>
+    <initSql null='true'/>
     <poolingProfile>
-      <com.orchestral.core.database.impl.DatabasePoolingProfileImpl refId="defaultPoolingProfile"/>
+      <com.orchestral.core.database.impl.DatabasePoolingProfileImpl refId='defaultPoolingProfile'/>
     </poolingProfile>
-    <tablespace null="true"/>
+    <tablespace null='true'/>
   </com.orchestral.core.database.PhysicalDatabase>
   <% end %>
 
@@ -214,19 +214,19 @@ sudo cp /vagrant/solution.zip /opt/orionhealth/solution.zip
 cd modules/puppet-ohp
 ant retrieve.groovy.dependencies
 
-# Change to root user, execute platform installer
+# Change to orion user, execute platform installer
 chmod +x /vagrant/platform-linux-x64.sh
-sudo chown orion /opt/orionhealth/response.varfile
-sudo -i -u orion
-/opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile
 
 # ERROR: This installer will not run as the root user on UNIX systems. Please create a service user and run the installer as that user instead.
 # Does work when vagrant ssh and go from sudo -i -u orion though!!
+# sudo chown orion /opt/orionhealth/response.varfile
+# sudo -i -u orion
+/opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile
 
 # Start applications
 /opt/orionhealth/bin/server.sh start
 
 # Check status to verify successful installation
 /opt/orionhealth/bin/server.sh status
-# wget "http://localhost:19080/conductor"
-# wget "http://localhost:19080/concerto"
+# wget 'http://localhost:19080/conductor'
+# wget 'http://localhost:19080/concerto'
