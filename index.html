@@ -9,7 +9,11 @@
 -->
 <head>
 	<script src="js/script.js"></script>
-	<script src="js/generate-source-code.js"></script>
+	<script src="js/generate-vagrant-scripts.js"></script>
+	<script src="js/generate-devstack-scripts.js"></script>
+	<script src="js/generate-hpcloud-scripts.js"></script>
+	<script src="js/generate-empty-vagrantfile.js"></script>
+	<script src="js/download-files.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
 	<script src="js/jquery.js"></script>
 	<script src="js/jszip.js"></script>
@@ -50,7 +54,7 @@
 						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv" checked> <a href="http://www.vagrantup.com" target="_blank">Vagrant</a> - your local machine<br>
 						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> <a href="http://ocd-devstack/" target="_blank">DevStack</a> - local OpenStack server at Orion<br>
 						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> <a href="http://www.hpcloud.com" target="_blank">HP Cloud</a><br>
-						<input type="radio" name="vmenv" id="emptyenv" value="emptyenv"> Empty Vagrant<br>
+						<input type="radio" name="vmenv" id="emptyenv" value="emptyenv"> Empty Vagrant (no provisioning)<br>
 					</td>
 				</tr>
 				<tr>
@@ -105,28 +109,153 @@
 		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
 
-	<div id="whitespace">&nbsp</div>
 
-	<a class="anchor" name="lower"><br></a>
-	<h1>Your provisioned <div class="orange">Vagrantfile</div> is ready</h1>
 
-	<h2>Simply <a class="headerlink" id="showSaveInfo">save</a> the following source code as "Vagrantfile" and run the command <a href="docs.html" class="headerlink" title="Click for documentation, FAQs and help">vagrant up</a>.</h2>
 
-	<div id="saveInfo">
-		Just <b>click</b> anywhere in the source code textarea below to select all, <b>Ctrl+C</b> and <b>paste</b> into your text editor,<br>
-		or <a id="download" class="downloadlink" onclick="DownloadSourceCode()">click here to download the file directly</a>.<br>
-		<i>Only HTML5-compatible browsers will download the file with the correct name, otherwise the downloaded file's name will have to be manually changed to "Vagrantfile".<br>
+
+
+
+	<div id="whitespace">&nbsp;</div>
+
+	<a class="anchor" name="vagrantcode"><br></a>
+	<h1>Your provisioned <div class="orange">Vagrant</div> is ready</h1>
+
+	<h2>Simply <a class="headerlink" id="showvagrantInfo">save</a> these three scripts separately in the same directory,<br>
+	then run <a href="docs.html" class="headerlink" title="Click for documentation, FAQs and help">boot.sh</a>.</h2>
+
+	<div class="hiddenInfo" id="vagrantInfo">
+		Just <b>click</b> anywhere in the source code textarea below to select all, copy and paste into your text editor and save as the file names indicated, or click their names to download the files directly.<br>
+
+		<i>If your browser is HTML5-compatible, the downloaded files will already have their correct names.<br>
+			If not, please manually rename the files.<br>
 			N.B. Vagrantfile has no extension.</i>
 		<br><br>
-		<a id="dataURI" class="downloadlink" onclick="DownloadZip()">Download in a zip file by data URI</a><br>
-		<i>The file will just be called "download" with no extension, or a very awkward character string on Firefox, but it works and unzips on a zip manager like 7-Zip)</i><br>
-		<a id="blob" class="downloadlink" onclick="DownloadZip()">Download zip file as a blob</a><br>
-		<i>This rocks, but the blob url attribute is currently only supported by Chrome and Firefox >=20.</i>
+
+		Chrome or Firefox v.20 and above:<br>
+		<a id="blob" class="downloadlink" onclick="DownloadZip()">Download all in a zip as a blob</a><br><br>
+
+		Other browsers:<br>
+		<a id="dataURI" class="downloadlink" onclick="DownloadZip()" title="Why are you even using IE?">Download all in a zip by data URI</a><br>
+		<i>(Supported by most browsers but downloaded file has no extension and may not be recognised by your zip file manager. Use a file archiver like <a href="http://www.7-zip.org/">7-Zip</a>).</i>
+		<br><br>
+
+	</div>
+
+	<div class="index-page-wrap">
+
+		<a class="headerlink" id="showbootInfo" onclick="DownloadSourceCode('vagrantenvbootsource', 'boot.sh')">&#8595; boot.sh</a>
+		<span class="hiddenInfoSub" id="bootInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of provisioning your customised virtual machine. It clones git repositories off Stash, spins up a Vagrant virtual enironment and provisions it with the OH products.
+			<br><br>
+		</span>
+		<textarea rows="40" name="vagrantenvbootsource" class="source" id="vagrantenvbootsource" onClick="SelectAll('vagrantenvbootsource');" spellcheck="false"></textarea><br><br>
+		
+		<a class="headerlink" id="showvagrantfileInfo" onclick="DownloadSourceCode('vagrantenvvagrantfilesource', 'Vagrantfile')">&#8595; Vagrantfile</a>
+		<span class="hiddenInfoSub" id="vagrantfileInfo">&nbsp;is the configuration file which allows boot.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.
+			<br><br>
+		</span>
+		<textarea rows="40" name="vagrantenvvagrantfilesource" class="source" id="vagrantenvvagrantfilesource" onClick="SelectAll('vagrantenvvagrantfilesource');" spellcheck="false"></textarea><br><br>
+		
+		<a class="headerlink" id="showinstallInfo" onclick="DownloadSourceCode('vagrantenvinstallsource', 'install.sh')">&#8595; install.sh</a>
+		<span class="hiddenInfoSub" id="installInfo">&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
+		Once Platform and Portal have been installed and started, you can access them here:<br>
+		<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>
+		<a href="http://localhost:19080/concerto" target="_blank">http://localhost:19080/concerto</a>
+		<br><br>
+		</span>
+
+		<textarea rows="40" name="vagrantenvinstallsource" class="source" id="vagrantenvinstallsource" onClick="SelectAll('vagrantenvinstallsource');" spellcheck="false"></textarea>
+
+	</div>
+
+	<br><br>
+
+	<div class="footer">
+		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div id="whitespace">&nbsp;</div>
+
+	<a class="anchor" name="devstackcode"><br></a>
+	<h1>Your provisioned Vagrantfile for <div class="orange">DevStack</div> is ready</h1>
+
+	<h2><a class="headerlink" id="showdevstackInfo">But not actually</a> because we haven't written it yet.</h2>
+
+	<div class="hiddenInfo" id="devstackInfo">
+		Give-Me-A-Vagrant for <a href="http://ocd-devstack/" target="_blank">DevStack</a> is currently in development!<br>
+		Apologies for any inconvenience.
 		<br><br>
 	</div>
 
 	<div class="index-page-wrap">
-		<textarea rows="40" name="source" id="source" onClick="SelectAll('source');" spellcheck="false"></textarea>
+		<textarea rows="40" name="devstackenvsource" class="source" id="devstackenvsource" onClick="SelectAll('devstackenvsource');" spellcheck="false"></textarea>
+	</div>
+
+	<br><br>
+
+	<div class="footer">
+		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
+	</div>
+
+
+
+
+
+
+
+	<div id="whitespace">&nbsp;</div>
+	<a class="anchor" name="hpcloudcode"><br></a>
+	<h1>Your provisioned Vagrantfile for <div class="orange">HP Cloud</div> is ready</h1>
+
+	<h2><a class="headerlink" id="showhpcloudInfo">Kidding</a>, it's in dev.</h2>
+
+	<div class="hiddenInfo" id="hpcloudInfo">
+		Give-Me-A-Vagrant for <a href="http://www.hpcloud.com" target="_blank">HP Cloud</a> is currently in development!<br>
+		Apologies for any inconvenience.
+		<br><br>
+	</div>
+
+	<div class="index-page-wrap">
+		<textarea rows="40" name="hpcloudenvsource" class="source" id="hpcloudenvsource" onClick="SelectAll('hpcloudenvsource');" spellcheck="false"></textarea>
+	</div>
+
+	<br><br>
+
+	<div class="footer">
+		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
+	</div>
+	
+
+
+
+
+
+
+
+
+	<div id="whitespace">&nbsp;</div>
+
+	<a class="anchor" name="emptycode"><br></a>
+	<h1>Your <div class="orange">Vagrantfile</div> is ready</h1>
+
+	<h2>Simply <a class="headerlink" id="showemptyInfo">save</a> the following source code as "Vagrantfile" and run the command <a href="docs.html" class="headerlink" title="Click for documentation, FAQs and help">vagrant up</a>.</h2>
+
+	<div class="hiddenInfo" id="emptyInfo">
+		Just <b>click</b> anywhere in the source code textarea below to select all, copy and paste into your text editor and save as "Vagrantfile", or <a class="downloadlink" onclick="DownloadSourceCode('emptyenvsource')">click here to download the file directly</a>.<br>
+		<i>Only HTML5-compatible browsers will download the file with the correct name, otherwise the downloaded file's name will have to be manually changed to "Vagrantfile".<br>
+			N.B. If renaming the file, please note that <b>Vagrantfile has no extension</b>.</i>
+		<br><br>
+	</div>
+
+	<div class="index-page-wrap">
+		<textarea rows="40" name="emptyenvsource" class="source" id="emptyenvsource" onClick="SelectAll('emptyenvsource', 'Vagrantfile');" spellcheck="false"></textarea>
 	</div>
 
 	<br><br>

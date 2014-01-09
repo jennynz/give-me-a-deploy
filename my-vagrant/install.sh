@@ -10,38 +10,34 @@ sudo service iptables stop
 # Set up variables
 portalversion='8.4.0.beta';
 foundationversion='7.2.0.beta';
-base_url='/vagrant';
 installer='platform-linux-x64.sh';
+base_url='/vagrant';
 
 cd ${base_url}
 
-# Install dependencies, make modifications to cloned files
-# ========================================================
+
+# Install dependencies
+# ====================
 
 # java-1.7.0-openjdk  Default Java version on Vagrant is 1.6, but 1.7 required.
 # ant-apache-regexp   Fix error: "No supported regular expression matcher found: java.lang.ClassNotFoundException: org.apache.tools.ant.util.regexp.Jdk14RegexpRegexp"
-# ant
+# ant                 Apache ant for 
 # ant-jsch            Needed for "ant create.custom.solution.package" later.
 sudo yum install java-1.7.0-openjdk ant-apache-regexp ant ant-jsch -y
 
 # Specify that Java 1.7 should be used instead of the default 1.6
 export JAVA_HOME=/usr/lib/jvm/jre-1.7.0
 
-# These two jar files can also be found in the /lib directory in C:/apache-ant-1.9.2
-# mv ant-junit.jar ./modules/PlatformBuild/anttasks
-# mv jsch-0.1.50.jar ./modules/PlatformBuild/anttasks
+# Install necessary .jar files into ant library directory
 wget http://ivy-rep-ro/apache/ant/1.9.2/jars/ant-junit.jar -P modules/PlatformBuild/anttasks --user=ivy-http --password=YouSayHello
 wget http://ivy-rep-ro/opensource/com.jcraft.jsch/0.1.50/jars/com.jcraft.jsch-nodist.jar -P modules/PlatformBuild/anttasks --user=ivy-http --password=YouSayHello
 
-# Line 21 in build-tasks.xml edited to include path to ant-junit jar file (remember \ delimiter for forward slashes and tabs)
+# Line 21 in build-tasks.xml (cloned from PlatformBuild/trunk in svn) needs to be edited to include path to ant-junit jar file
 sed -i -e '17s/.*/\t\t\t<taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask" classpath="${common.build.dir}\/anttasks\/ant-junit.jar"\/>/' ./modules/PlatformBuild/build-tasks.xml
 
-# Provisioning installer
-# ======================
-
 # Download OHP provisioning installer from Ivy.
-# To run manually inside vagrant: wget http://ivy-http:YouSayHello@ivy-rep-ro/orchestral/provisioning-insaller/7.2.0.beta/installers/platform-linux-x64.sh
 wget http://ivy-rep-ro/orchestral/provisioning-installer/${foundationversion}/installers/${installer} --user=ivy-http --password=YouSayHello
+
 
 # Solution zip
 # ============
@@ -74,22 +70,19 @@ cat > build.xml <<EOL
 </project>
 EOL
 
-# Create a solution.zip package downloaded from Ivy into the base url
+# Create a solution.zip package downloaded from Ivy, and move into the base url
 ant create.custom.solution.package
-sudo mv /vagrant/modules/solution/solution.zip /vagrant
+sudo mv ${base_url}/modules/solution/solution.zip ${base_url}
 
 
 
-##########################################
-# Puppet install OHP with Puppet modules #
-##########################################
-
-# OHP Puppet Install configuration
-# ================================
+####################################
+# Install OHP using Puppet modules #
+####################################
 
 cd ${base_url}
 
-# Write to the site.pp file in /manifests and the environmental config file in /frontend
+# Write site.pp file in /manifests and environmental config file in /frontend
 touch manifests/site.pp
 cat > manifests/site.pp <<EOL
 node default {
@@ -208,30 +201,32 @@ yum install puppet -y
 # Install Puppet standard library for junit dependencies.
 sudo puppet module install --force puppetlabs/stdlib --modulepath=/vagrant/modules/puppet-ohp
 
-# Run puppet install with specified module paths and manifest file.
+# 
 sudo /opt/orionhealth/jre/bin/java -cp ohp-groovy-configure-lib/
+
+# Run Puppet installation of OHP, specifying module paths and manifest file.
 sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp
 
-sudo chown orion /opt/orionhealth/response.varfile
+# Copy across the solution.zip to the installation directory.
 sudo cp /vagrant/solution.zip /opt/orionhealth/solution.zip
 
-# Make the OHP provisioning installer executable.
-chmod +x /vagrant/platform-linux-x64.sh
-
-# Retrieve dependencies in the puppet-ohp directory with the build.xml file.
+# Retrieve ant dependencies in the puppet-ohp directory which contains the build.xml.
 cd modules/puppet-ohp
 ant retrieve.groovy.dependencies
 
+# Change to root user, execute platform installer
+chmod +x /vagrant/platform-linux-x64.sh
+sudo chown orion /opt/orionhealth/response.varfile
 sudo -i -u orion
 /opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile
+
+# ERROR: This installer will not run as the root user on UNIX systems. Please create a service user and run the installer as that user instead.
+# Does work when vagrant ssh and go from sudo -i -u orion though!!
+
+# Start applications
 /opt/orionhealth/bin/server.sh start
 
-
-
-#################################
-# Check the installation of OHP #
-#################################
-
+# Check status to verify successful installation
 /opt/orionhealth/bin/server.sh status
 # wget "http://localhost:19080/conductor"
 # wget "http://localhost:19080/concerto"

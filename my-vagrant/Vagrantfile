@@ -4,7 +4,7 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = '2'
 
-	Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	# Every Vagrant VM requires a box to build off of.
 	config.vm.box = 'centos-64-x64-vbox4210-nocm'
@@ -15,10 +15,10 @@ VAGRANTFILE_API_VERSION = '2'
 	# Set the name of the host machine.
 	config.vm.hostname = 'portal-vm'
 
-	# Create a forwarded port mapping which allows access to a specific port within the guest machine from a port on the host machine.
+	# Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.
 	config.vm.network 'forwarded_port', guest: 19080, host: 19080
 
-	# Set up the environment for the automated Puppet installation of OHP.
-	config.vm.provision "shell", path: "install.sh"
+	# Set up VM and Puppet install OHP.
+	config.vm.provision 'shell', path: 'install.sh'
 
 end

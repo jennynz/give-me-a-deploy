@@ -6,53 +6,6 @@ function SelectAll(id) {
 
 
 
-// Download Vagrantfile in a zip
-function DownloadZip() {
-  
-  var content = document.getElementById("source").value;
-
-  var zip = new JSZip();
-  zip.file("Vagrantfile", content);
-
-  // data URI
-  document.getElementById('dataURI').href = "data:application/zip;base64," + zip.generate();
-
-  // Blob
-  var blobLink = document.getElementById('blob');
-  
-  // If vmenv == 'vagrantenv', download along with setup.sh and vagrantupforme.sh
-
-  try {
-    blobLink.download = "here-is-your-vagrant.zip";
-    blobLink.href = window.URL.createObjectURL(zip.generate({type:"blob"}));
-  } catch(e) {
-    blobLink.innerHTML += " (not supported on this browser)";
-  }
-};
-
-
-
-// Download Vagrantfile as a single file
-function DownloadSourceCode() {
-
-	var content = document.getElementById("source").value;
-
-	// If HTML5 compatible, do this.
-	if (1 == 1) {
-		var pom = document.createElement('a');
-		pom.setAttribute('href', 'data:application/plain;charset=utf-8,' + encodeURIComponent(content));
-		pom.setAttribute('download', 'Vagrantfile');
-		pom.click();
-
-	// Otherwise use data:URI which downloads it to a file called "download" (can't specify file name).
-	} else {
-		uriContent = "data:application/octet-stream," + encodeURIComponent(content);
-		newWindow = window.open(uriContent, 'neuesDokument');
-	}
-}
-
-
-
 // Generate and display customised source code
 function GetCode()
 {
@@ -62,17 +15,28 @@ function GetCode()
 	// Specify the VM environment.
 	vmenv = document.querySelector('input[name="vmenv"]:checked').value;
 
-	// Generate complete script(s).
-	if (vmenv=="vagrantenv") {vagrantcode = GenerateVagrantScripts(vmname, vmenv);}
-	else if (vmenv=="devstackenv") {vagrantcode = GenerateDevStackScripts(vmname, vmenv);}
-	else if (vmenv=="hpcloudenv") {vagrantcode = GenerateHPCloudScripts(vmname, vmenv);}
-	else if (vmenv=="emptyvagrant") {vagrantcode = GenerateEmptyVagrantfile(vmname, vmenv);}
+	// Generate complete script(s) and print to respective textboxes.
+	if (vmenv=="vagrantenv") {
+		window.location = "#vagrantcode";
+		PrintToTextbox(GenerateVagrantBoot(vmname), "vagrantenvboot");
+		PrintToTextbox(GenerateVagrantfile(vmname), "vagrantenvvagrantfile");
+		PrintToTextbox(GenerateVagrantInstall(vmname), "vagrantenvinstall");
+		
+	} else if (vmenv=="devstackenv") {
+		window.location = "#devstackcode";
+		PrintToTextbox(GenerateDevStackScripts(vmname), vmenv);
+		
+	} else if (vmenv=="hpcloudenv") {
+		window.location = "#hpcloudcode";
+		PrintToTextbox(GenerateHPCloudScripts(vmname), vmenv);
+		
+	} else if (vmenv=="emptyenv") {
+		window.location = "#emptycode";
+		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
+		
+	}
 
-	// Print source code to textbox.
-	PrintToTextbox(vagrantcode);
 }
-
-
 
 // Check that the given VM name is valid
 function ValidateVMName() {
@@ -93,13 +57,12 @@ function ValidateVMName() {
 			return;
 		}
 	}
-	window.location = "#lower"; 	// Jump down to the textbox section.
 	return vmname;
 }
 
-
 // Display generated source code in texarea
-function PrintToTextbox(text) {
-	var sourcetextbox = document.getElementById("source");
-	sourcetextbox.value = text;
+function PrintToTextbox(code, printlocation) {
+	printlocation = printlocation + "source";
+	var sourcetextbox = document.getElementById(printlocation);
+	sourcetextbox.value = code;
 }

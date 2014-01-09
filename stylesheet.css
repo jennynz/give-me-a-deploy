@@ -9,10 +9,7 @@ output:hover + aside {
 body {
     background-color: #FFF;
     margin-top: 7%;
-    /*margin-left: 5%;
-    margin-right: 5%;*/
     font-family: Arial, Verdana, Helvetica, sans-serif;
-    text-align: center;
 }
 
 .index-page-wrap {
@@ -44,11 +41,13 @@ body {
 h1 {
 	color: #999;
 	font-size: 1.5em;
+	text-align: center
 }
 
 h2 {
 	color: #444;
 	font-size: 1em;
+	text-align: center;
 }
 
 h3 {
@@ -126,6 +125,11 @@ a.downloadlink {color: #008080; font-weight: bold;}
 a.downloadlink:hover {color: #FF7700;}
 a.downloadlink:active {color: #999;}
 
+#showbootInfo, #showvagrantfileInfo, #showinstallInfo {
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
+	border-bottom: none;
+}
+
 i {color: #999;}
 
 .orange {color: #FF7700; display: inline;}
@@ -147,14 +151,25 @@ table.form {
     padding: 20px;
 }
 
-div#saveInfo {
+div.hiddenInfo {
 	display: none;
 	color: #444;
 	font-size: 0.8em;
-	width: 60%;
 	margin: auto auto;
 	min-width: 260px;
 	max-width: 650px;
+	text-align: center
+}
+
+span.hiddenInfoSub {
+	display: none;
+	color: #444;
+	font-size: 0.8em;
+	min-width: 260px;
+	max-width: 650px;
+	text-align: left;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
+	margin-top: -1.2em;
 }
 
 #whitespace {
@@ -165,38 +180,47 @@ div#saveInfo {
 	display: block;
 }
 
-textarea#source {
+textarea.source {
 	width: 100%;
-	mwidth: 260px;
-	height: auto;
-	margright: 20px;
-	margleft: -20px;
+	min-width: 260px;
+	margin-right: 20px;
+	margin-left: -20px;
 	padding: 20px; 
-    overflow-x:; hidden;
+    overflow-x: hidden;
     -ms-overflow-x: hidden;
-    background-color: #E6E6E6;
+    /*background-color: rgb(230, 230, 230);*/
+    background-color: rgba(200, 200, 200, 0.5);
     border: 1px solid #008080;
     font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
     font-size: 0.8em;
     color: #333;
     text-align: left;
 }
-textarea#source::-webkit-scrollbar {
+textarea.source::-webkit-scrollbar {
 	width: 10px;
 }
-textarea#source::-webkit-scrollbar-track {
+textarea.source::-webkit-scrollbar-track {
     background-color: #E6E6E6;
 }
-textarea#source::-webkit-scrollbar-thumb {
+textarea.source::-webkit-scrollbar-thumb {
 	background-color: #008080;
 }
 
-textarea#source:focus {
+textarea.source:focus {
     color: #008080;
     border: solid 1px #FF7700;
 }
-textarea#source:focus::-webkit-scrollbar-thumb {
+textarea.source:focus::-webkit-scrollbar-thumb {
 	background-color: #FF7700;
+}
+
+textarea#vagrantenvbootsource, #vagrantenvvagrantfilesource, #vagrantenvinstallsource {
+	height: 150px;
+	margin-top: 0px;
+}
+
+textarea#emptyenvsource {
+	height: 380px;
 }
 
 .table-header {
@@ -223,7 +247,7 @@ textarea#source:focus::-webkit-scrollbar-thumb {
 input[type="text"] {
 	font-family: Arial, Sans-Serif;
     color: #444;
-    margbottom: 5px;
+    margin-bottom: 5px;
     display: block;
     padding: 4px;
     border: solid 1px #BBBBBB;
@@ -241,7 +265,7 @@ input[type="text"]:focus {
 select {
 	text-align: left;
     color: #444;
-    margbottom: 5px;
+    margin-bottom: 5px;
     display: block;
     padding: 4px;
     border: solid 1px #BBBBBB;
@@ -257,7 +281,7 @@ select:focus {
 .checkbox-field, .radio-field {
 	text-align: left;
     color: #444;
-    margbottom: 5px;
+    margin-bottom: 5px;
     display: block;
     padding: 4px;
 }
