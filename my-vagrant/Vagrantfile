@@ -6,6 +6,11 @@ VAGRANTFILE_API_VERSION = '2'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
+	# Allocate the VM more memory.
+	config.vm.provider :virtualbox do |vb|
+	  vb.customize ["modifyvm", :id, "--memory", "768"]
+	end
+
 	# Every Vagrant VM requires a box to build off of.
 	config.vm.box = 'centos-64-x64-vbox4210-nocm'
 
@@ -16,7 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.hostname = 'portal-vm'
 
 	# Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.
-	config.vm.network 'forwarded_port', guest: 19080, host: 19080
+	config.vm.network 'forwarded_port', guest: 19080, host: 19180
 
 	# Set up VM and Puppet install OHP.
 	config.vm.provision 'shell', path: 'install.sh'

@@ -201,7 +201,7 @@ yum install puppet -y
 # Install Puppet standard library for junit dependencies.
 sudo puppet module install --force puppetlabs/stdlib --modulepath=/vagrant/modules/puppet-ohp
 
-# 
+# Set the class path for java.
 sudo /opt/orionhealth/jre/bin/java -cp ohp-groovy-configure-lib/
 
 # Run Puppet installation of OHP, specifying module paths and manifest file.
@@ -214,19 +214,16 @@ sudo cp /vagrant/solution.zip /opt/orionhealth/solution.zip
 cd modules/puppet-ohp
 ant retrieve.groovy.dependencies
 
-# Change to orion user, execute platform installer
+# Change to orion user (this installer will not run as the root user on UNIX systems. Create a service user and run the installer as that user instead, execute platform installer
 chmod +x /vagrant/platform-linux-x64.sh
-
-# ERROR: This installer will not run as the root user on UNIX systems. Please create a service user and run the installer as that user instead.
-# Does work when vagrant ssh and go from sudo -i -u orion though!!
-# sudo chown orion /opt/orionhealth/response.varfile
-# sudo -i -u orion
+sudo chown orion /vagrant/platform-linux-x64.sh
+sudo chown orion /opt/orionhealth/response.varfile
+su orion << 'EOF'
 /opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile
+EOF
 
 # Start applications
 /opt/orionhealth/bin/server.sh start
 
 # Check status to verify successful installation
 /opt/orionhealth/bin/server.sh status
-# wget 'http://localhost:19080/conductor'
-# wget 'http://localhost:19080/concerto'

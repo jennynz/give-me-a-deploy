@@ -42,12 +42,6 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Email*</td>
-					<td class="input-field">
-						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
-					</td>
-				</tr>
-				<tr>
 					<td class="label">Virtual Environment*</td>
 					<td class="radio-field" required>
 						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv" checked> <a href="http://www.vagrantup.com" target="_blank">Vagrant</a> - your local machine<br>
@@ -71,7 +65,13 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
+				<tr id="email">
+					<td class="label">Email*</td>
+					<td class="input-field">
+						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
+					</td>
+				</tr>
+				<tr id="products">
 					<td class="label">Products</td>
 					<td class="checkbox-field">
 						<input type="checkbox" name="products" value="portal8.4beta"> Portal 8.4 beta<br>
@@ -81,7 +81,7 @@
 						<input type="checkbox" name="products" value="cdrportal"> CDR Portal<br>
 					</td>
 				</tr>
-				<tr>
+				<tr id="puppetscripts">
 					<td class="label">Puppet Scripts</td>
 					<td class="input-field">
 						<input type="text" id="VMName" autocapitalize="off" placeholder="Point us at your Puppet scripts in SVN and we'll provision the VM.">

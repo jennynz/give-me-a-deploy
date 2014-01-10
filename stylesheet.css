@@ -136,6 +136,8 @@ a.headerlink:hover {color: #FF7700; border-bottom: dotted 2px #ff7700;}
 a.headerlink:active {color: #999; border-bottom: dotted 2px #999;}
 
 a.anchor {color: #777;}
+a.current {color: #008080; font-style: none; font-weight: bold; border-bottom: dotted 1px #008080;}
+
 
 a.downloadlink {color: #008080; font-weight: bold;}
 a.downloadlink:hover {color: #FF7700;}
@@ -156,6 +158,9 @@ img#logo {
 	margin-right: auto;
 }
 
+img.star {
+	margin: 0px 10px -3px 20px;
+}
 
 /* TABLE ELEMENTS */
 
@@ -186,6 +191,10 @@ table.form:hover {
   	-o-transition: 0s;
   	-ms-transition: 0s;
   	transition: 0s;
+}
+
+span.docslink {
+	white-space: nowrap;
 }
 
 div.hiddenInfo {
@@ -326,7 +335,6 @@ select:focus {
 }
 
 input[type=checkbox] {  
-
 }  
 
 

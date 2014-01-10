@@ -5,7 +5,7 @@ mkdir frontend
 mkdir -p modules/solution
 mkdir manifests
 
-# Cloning required files from Stash.
+# Cloning required files from Stash and move into appropriate directories.
 git svn clone -rHEAD http://subversion/src/Orchestral/Framework/PlatformBuild/trunk
 mv trunk PlatformBuild
 mv PlatformBuild/ ./modules/
@@ -16,5 +16,5 @@ mv tooling/ ./modules/
 git clone ssh://git@stash:7999/puppet/puppet-ohp.git
 mv puppet-ohp/ ./modules
 
-# Boot up the VM
+# Boot VM.
 vagrant up
