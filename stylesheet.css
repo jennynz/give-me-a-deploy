@@ -79,6 +79,24 @@ h3.docs {
 	text-align: left;
 }
 
+h4.docs {
+	color: #666;
+	font-size: 0.9em;
+	font-weight: bold;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin: 0px;
+}
+
+h4.docsSub {
+	color: #666;
+	font-size: 1.25em;
+	font-weight: bold;
+	padding-top: 1em;
+	padding-bottom: 0em;
+	margin: 0px;
+}
+
 
 h2 {
 	color: #444;
@@ -87,7 +105,7 @@ h2 {
 }
 
 h3 {
-	color: #666;
+	color: #444;
 	font-size: 0.9em;
 	padding-top: 1em;
 	padding-bottom: 0.5em;
@@ -124,6 +142,12 @@ li.star {
     list-style: none;
     padding-left: 25px;
     line-height: 20px;
+}
+
+li.docsSub {
+	color: #444;
+	font-size: 1em;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
 }
 
 /* LINKS & COLOUR */
@@ -239,6 +263,14 @@ td.content {
 	text-align: left;
 }
 
+.radio-field {
+	text-align: left;
+    color: #444;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+}
+
 td.table-footer {
 	text-align: center;
 }
@@ -302,14 +334,14 @@ textarea.source {
 	margin-right: 20px;
 	margin-left: -20px;
 	padding: 20px;
-    overflow-x: hidden;
-    -ms-overflow-x: hidden;
     background-color: rgba(200, 200, 200, 0.5);
     border: 1px solid #008080;
     font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
     font-size: 0.8em;
     color: #333;
     text-align: left;
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
     resize: vertical;
 }
 textarea.source::-webkit-scrollbar {
@@ -337,11 +369,19 @@ textarea#vagrantenvbootsource, #vagrantenvvagrantfilesource, #vagrantenvinstalls
 }
 
 textarea#emptyenvsource {
-	height: 380px;
+	height: 450px;
 }
 
+textarea#products {
+	width: 90%;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
+	font-size: 1em;
+	color: #444;
+    padding: 4px;
+    border: solid 1px #BBBBBB;
+}
 
-/* TEXT INPUT FIELDS */
+/* INPUT FIELDS */
 
 input[type="text"], input[type="number"] {
 	font-family: Arial, Sans-Serif;
@@ -354,20 +394,20 @@ input[type="text"], input[type="number"] {
 
 input[type="text"] {
     width: 90%;
+    text-align: left;
 }
 
 input[type="number"] {
 	width: 50px;
+	display: inline;
+	text-align: right;
 }
 
-input[type="text"]:focus, input[type="number"]:focus {
+input[type="text"]:focus, input[type="number"]:focus, textarea#products:focus {
     color: #008080;
     outline: none;
     border: solid 1px #FF7700;
 }
-
-
-/* DROPDOWN */
 
 select {
 	text-align: left;
@@ -383,22 +423,6 @@ select:focus {
     outline: none;
     border: solid 1px #FF7700;
 }
-
-/* CHECKBOXES */
-
-.checkbox-field, .radio-field {
-	text-align: left;
-    color: #444;
-    margin-bottom: 5px;
-    display: block;
-    padding: 4px;
-}
-
-input[type=checkbox] {  
-}  
-
-
-/* BUTTONS */
 
 .button {
 	appearance: button; /* CSS3 */	

@@ -31,39 +31,60 @@
 		</p>
 
 		<div class="docsSub">
-			This option on Give-Me-A-Vagrant simply outputs a Vagrantfile with a few necessary parameters pre-configured for convenience. It is very simple to boot, and you may add any provisioning you wish.
+			This option on Give-Me-A-Vagrant simply outputs a Vagrantfile with a few parameters pre-configured for your convenience. It is very simple to boot, and you may add any provisioning you wish.
 		</div>
 
 
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
 
 		<ul>
-			<li class="star"><a href="#doc1">Booting up your VM</a></li>
-			<li class="star"><a href="#doc2">Accessing your VM</a></li>
-			<li class="star"><a href="#doc3">Provisioning your VM on $ vagrant up</a></li>
-			<li class="star"><a href="#doc4">Further Information</a></li>
+			<li class="star"><a href="#boot">Booting up your VM</a></li>
+			<li class="star"><a href="#provision">Provisioning your VM</a></li>
+			<li class="star"><a href="#access">Accessing your VM</a></li>
+			<li class="star"><a href="#destroy">Destroying your VM</a></li>
+			<li class="star"><a href="#furtherInfo">Further Information</a></li>
 		</ul>
 
-		<a name="doc1"><h3 class="docs">Booting up your VM</h3></a>
+		<a name="boot"><h3 class="docs">Booting up your VM</h3></a>
 
 		<div class="code">
 			$ cd to/your/Vagrantfile/directory<br>
 			$ vagrant up
 		</div>
 
-		<a name="doc2"><h3 class="docs">Accessing your VM</h3></a>
-		
-		<div class="code">
-			$ vagrant ssh
-		</div>
+		<p>
+			Booting up your Vagrant VM simply requires you to move to the directory with your Vagrantfile in a command terminal
+		</p><br>
 
-		<a name="doc3"><h3 class="docs">Provisioning your VM on $ vagrant up</h3></a>
+		<h4 class="docs">Installation System Requirements</h4>
+		<p>
+			In order for the scripts to run successfully, please install the following on your <b>local</b> machine:
+			<ul>
+				<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+				<li><a href="http://www.vagrantup.com">Vagrant</a></li>
+				<li><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
+			</ul>
+		</p>
+
+		<a name="provision"><h3 class="docs">Provisioning your VM</h3></a>
 
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</p><br>
 
-		<a name="doc4"><h3 class="docs">Further Information</h3></a>
+		<a name="access"><h3 class="docs">Accessing your VM</h3></a>
+		
+		<div class="code">
+			$ vagrant ssh
+		</div>
+
+		<a name="destroy"><h3 class="docs">Destroying your VM</h3></a>
+		
+		<div class="code">
+			$ vagrant destroy -f
+		</div>
+
+		<a name="furtherInfo"><h3 class="docs">Further Information</h3></a>
 
 		<p>
 			<ul>

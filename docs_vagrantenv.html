@@ -32,6 +32,17 @@
 
 		<div class="docsSub">
 			The "Provisioned Vagrant" option on Give-Me-A-Vagrant gives you three scripts which work together to boot up your VM and install OH applications on it. All you need to do is call <b>boot.sh</b>, and it'll do the rest itself automatically.
+
+			<h4 class="docsSub">tl;dr</h4>
+			<ul>
+				<li class="docsSub">All three scripts in the same directory.</li>
+				<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairing</a> on Stash account and cloning permissions for <a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a>, <a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> and Subversion repository <a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> (all Dev and Testing should have this already).</li>
+				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
+				<li class="docsSub">Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.
+				<li class="docsSub"><span class="teal">$ boot.sh</span> to kick off the entire booting and installation process.</li>
+				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
+				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
+			</ul>
 		</div>
 
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
@@ -47,7 +58,7 @@
 		<a name="usingGMAV"><h3 class="docs">Using Give-Me-A-Vagrant for a provisioned VM</h3></a>
 
 		<p>
-			For working provisioned Vagrant source code to be output by GMAV, you are required to enter a few details which allow you to customise your Vagrant VM. However, the form is set with <i>pre-selected defaults</i> so that if you were to simply click "Generate Source Code" without making any changes to the form upon the loading of the page, the generated source code will output a fully functional Vagrant provisioned with Portal 8.4 beta.<br>
+			For working provisioned Vagrant source code to be output by GMAV, you are required to enter a few details which allow you to customise your Vagrant VM. However, the form is set with <i>pre-selected defaults</i> so that if you were to simply click "Generate Source Code" without making any changes to the form upon the loading of the page, the generated source code will output a fully functional CentOS Vagrant with 768 MB of memory allocated, and provisioned with Portal 8.4 beta.<br>
 			* Required fields, cannot be left blank.<br><br>
 		</p>
 
@@ -65,21 +76,21 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">Operating System*</td>
-				<td class="content">
-					The Linux OS which you would like installed on your VM before the installation of OH applications. <i>CentOS</i>
-				</td>
-			</tr>
-			<tr>
 				<td class="docs-label">Host Port*</td>
 				<td class="content">
 					This only requires configuring if you have more than one VM running, where you would have to specify different host ports for each VM to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
 				</td>
 			</tr>
 			<tr>
+				<td class="docs-label">Memory*</td>
+				<td class="content">
+					Customise the allocation of base memory to your VM. <i>768 MB</i>
+				</td>
+			</tr>
+			<tr>
 				<td class="docs-label">Products <span class="indev">IN DEV!</span></td>
 				<td class="content">
-					Which Orion Health application you would like pre-installed on your Vagrant machine. <i>Portal 8.4 beta</i>
+					Which Orion Health application you would like pre-installed on your Vagrant machine. The code that you write in here is directly written out to a solutionVersion.yaml file which is used to create a solution.zip for the OHP installation, so it is important that the formatting is exactly as seen in the example shown e.g. indentation is two spaces, each application on a new line with the correct characterisation for version number. <i>Portal 8.4.0.beta with Foundation 7.2.0.beta</i>
 				</td>
 			</tr>
 			<tr>
@@ -92,15 +103,37 @@
 
 		<a name="howToBoot"><h3 class="docs">How to boot your VM</h3></a>
 
-		<ol>
-			<li>Save the source code into a file called "Vagrantfile" in a directory (N.B. no file extension).</li>
-			<li>Navigate to the directory in your command prompt.</li>
-			<li>Run "vagrant up"</li>
-			<li>To tear down the VM after using, run "vagrant destroy -f"</li>
-		</ol>
+		<div class="code">
+			$ cd to/your/script/directory<br>
+			$ boot.sh<br>
+			...<br>
+			$ vagrant destroy -f
+		</div>
 
-		<p>Installation System Requirements: In order for the scripts to run successfully, <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>, <a href="http://www.vagrantup.com">Vagrant</a> and <a href="http://git-scm.com/downloads">Git version control</a> (for cloning Stash repositories) must be installed on your computer.
-		</p>	
+		<p>
+			Firstly, ensure that the three generated scripts (boot.sh, Vagrantfile, install.sh) are all located in the same directory.<br>
+			When you run the shell script, boot.sh, it will clone the required git repositories into the correct directories it creates, call the Vagrantfile in the same directory with "vagrant up" to boot up the VM, which will in turn call its shell provisioning script, install.sh, which completed the installation of the Orion Health applications.<br><br>	
+
+			To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by boot.sh or install.sh will still exist, so you may need to delete these manually.
+		</p><br>
+
+		<h4 class="docs">Installation System Requirements</h4>
+		<p>In order for the scripts to run successfully, please install the following on your <b>local</b> machine:</p>
+		<ul>
+			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+			<li><a href="http://www.vagrantup.com">Vagrant</a></li>
+			<li><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
+		</ul>
+
+		<p><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairs</a> must be set up on your Stash account, and cloning permissions granted to the following repositories (all Dev and Testing should have this already):</p>
+		<ul>
+			<li><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a> on Stash</li>
+			<li><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> on Stash</li>
+			<li><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> on Subversion (SVN supports credential caching)</li>
+		</ul>
+		
+		<p>You do not have to clone these repositories prior to boot.sh yourself; the script will do it for you. If your Stash key pairs and SVN credentials are set up, the entire process after boot.sh should require no further action from teh
+		</p>
 
 		<a name="manualAccess"><h3 class="docs">Manual access to your VM</h3></a>
 
@@ -111,14 +144,13 @@
 			You can gain access into the instance, 'ssh root@192.168.50.3' with the IP of your instance.<br><br>
 
 			For <b>HP Cloud</b> or key pairing and authentication and all that mumbo-jumbo, I wouldn't have a clue.
-		</p>
+		</p><br>
 
 		<a name="configuringPuppet"><h3 class="docs">Configuring Puppet Modules</h3></a>
 
 		<p>
 			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b>manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
-
-		</p>
+		</p><br>
 
 		<a name="furtherInfo"><h3 class="docs">Further Information</h3></a>
 
@@ -151,7 +183,7 @@
 		</div>
 
 		<h3 class="docs"><a name="faq2" class="anchor">My application is not working on my browser.</a></h3>
-		<p>Beta versions may not have full cross-browser capability yet. Please use a final release version of the application.</p>
+		<p>Beta versions may not have full cross-browser capability yet. Please use a final release version of the application.</p><br>
 		
 		<h3 class="docs"><a name="faq3" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
 		<p>The command "vagrant up" should be able to take you through the entire booting up, installation and configuration. If this is not the case, and you are being returned with a prompt before the source code has completed, it may be due to the line endings setting on your text editor. Make sure that your line endings are set to Unix.<br>
@@ -159,9 +191,7 @@
 		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p><br>
 
 		<h3 class="docs"><a name="faq4" class="anchor">My vagrant won't boot due to port collisions.</a></h3>
-		<p>The vagrant VM is configured with hard-coded port forwarding, and so you cannot have two vagrants from this app running on your machine at the same time currently. Either destroy any existing VMs before running boot.sh, or change the port numbers in Vagrantfile yourself from "19080" to a port of your choice.</p>
-
-		<br>
+		<p>The vagrant VM is configured with hard-coded port forwarding, and so you cannot have two vagrants from this app running on your machine at the same time currently. Either destroy any existing VMs before running boot.sh, or change the port numbers in Vagrantfile yourself from "19080" to a port of your choice.</p><br>
 
 		<a name="help"><h2 class="docs">Help</h2></a>
 

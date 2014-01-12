@@ -57,18 +57,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Operating System*</td>
-					<td class="input-field">
-						<select id="os" required>
-						  <option value="centos-64">CentOS</option>
-						  <option value="ubuntu-server-10044">Ubuntu</option>
-						</select>
-					</td>
-				</tr>
-				<tr>
 					<td class="label">Host Port*</td>
 					<td class="input-field">
 						<input type="number" id="hostport" value="19080">
+					</td>
+				</tr>
+				<tr>
+					<td class="label">Memory*</td>
+					<td class="input-field">
+						<input type="number" id="memory" value="768"> MB
 					</td>
 				</tr>
 				<tr id="email">
@@ -80,11 +77,10 @@
 				<tr id="products">
 					<td class="label">Products <span class="indev">IN DEV!</span></td>
 					<td class="checkbox-field">
-						<input type="checkbox" name="products" value="portal8.4beta" checked> Portal 8.4 beta<br>
-						<input type="checkbox" name="products" value="portal8.3"> Portal 8.3<br>
-						<input type="checkbox" name="products" value="portal8.2"> Portal 8.2<br>
-						<input type="checkbox" name="products" value="portal8.1"> Portal 8.1<br>
-						<input type="checkbox" name="products" value="cdrportal"> CDR Portal<br>
+						<textarea rows="4" id="products" spellcheck="false">ohp_applications:
+  foundation: 7.2.0.beta
+  portal: 8.4.0.beta
+						</textarea>
 					</td>
 				</tr>
 				<tr id="puppetscripts">

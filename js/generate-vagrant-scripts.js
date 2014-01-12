@@ -27,13 +27,9 @@ function GenerateVagrantBoot(vmname) {
 
 function GenerateVagrantfile(vmname) {
 	// Get VM details from form.
+	var memory = document.getElementById("memory").value;
 	var hostport = document.getElementById("hostport").value;
-	var os = document.getElementById("os").value;
 
-	// Generate string variables.
-	var box = os + "-x64-vbox4210-nocm";
-	var boxurl =  "http://puppet-vagrant-boxes.puppetlabs.com/" + box + ".box";
-	
 	// Return code to be output into textbox
 	return (
 		"# -*- mode: ruby -*-\n" +
@@ -46,14 +42,14 @@ function GenerateVagrantfile(vmname) {
 
 		"  # Allocate the VM more memory.\n" +
 		"  config.vm.provider :virtualbox do |vb|\n" +
-	  	"    vb.customize [\"modifyvm\", :id, \"--memory\", \"768\"]\n" +
+	  	"    vb.customize [\"modifyvm\", :id, \"--memory\", \"" + memory + "\"]\n" +
 		"  end\n\n" +
 
 		"  # Every Vagrant VM requires a box to build off of.\n" +
-		"  config.vm.box = '" + box + "'\n\n" + 
+		"  config.vm.box = 'centos-64-x64-vbox4210-nocm'\n\n" + 
 
 		"  # The url from where the config.vm.box will be fetched if it doesn't already exist on the host machine.\n" + 
-		"  config.vm.box_url = '" + boxurl + "'\n\n" +
+		"  config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box'\n\n" +
 
 		"  # Set the name of the host machine.\n" +
 	  	"  config.vm.hostname = '" + vmname + "'\n\n" + 
