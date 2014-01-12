@@ -16,30 +16,81 @@
 
 		<br><br>
 
-		<h1 class="docs">Give-Me-A-Vagrant<br>
-		<a href="#documentation" title="How to boot your VM"><div class="orange">Documentation</div></a>, 
-		<a href="#faqs"><div class="orange">FAQs</div></a> & 
-		<a href="#help"><div class="orange">Help</div></a>
+		<h1 class="docs">Give-Me-A-Vagrant: Provisioned Vagrant<br>
+		<a href="#documentation" class="docsTitleLink">Documentation</a>, 
+		<a href="#faqs" class="docsTitleLink">FAQs</a> & 
+		<a href="#help" class="docsTitleLink">Help</a>
 		</h1>
 
 		<p>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_vagrantenv.html" class="current">Vagrant</a></span>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_devstackenv.html">DevStack</a></span>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_hpcloudenv.html">HP Cloud</a></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_vagrantenv.html" class="current">Provisioned Vagrant</a></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_emptyenv.html">Empty Vagrant</a></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Vagrant" title="Give-Me-A-Vagrant - Integrated Development">Docs on Woki</a></span>
-		</p><br>
+		</p>
+
+		<div class="docsSub">
+			The "Provisioned Vagrant" option on Give-Me-A-Vagrant gives you three scripts which work together to boot up your VM and install OH applications on it. All you need to do is call <b>boot.sh</b>, and it'll do the rest itself automatically.
+		</div>
 
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
 
 		<ul>
-			<li class="star"><a href="#doc1">How to boot your VM</a></li>
-			<li class="star"><a href="#doc2">Manual access to your VM</a></li>
-			<li class="star"><a href="#doc3">Configuring Puppet Modules</a></li>
-			<li class="star"><a href="#doc4">Further Information</a></li>
+			<li class="star"><a href="#usingGMAV">Using Give-Me-A-Vagrant for a provisioned VM</a></li>
+			<li class="star"><a href="#howToBoot">How to boot your VM</a></li>
+			<li class="star"><a href="#manualAccess">Manual access to your VM</a></li>
+			<li class="star"><a href="#configuringPuppet">Configuring Puppet Modules</a></li>
+			<li class="star"><a href="#furtherInfo">Further Information</a></li>
 		</ul>
 
-		<a name="doc1"><h3 class="docs">How to boot your VM</h3></a>
+		<a name="usingGMAV"><h3 class="docs">Using Give-Me-A-Vagrant for a provisioned VM</h3></a>
+
+		<p>
+			For working provisioned Vagrant source code to be output by GMAV, you are required to enter a few details which allow you to customise your Vagrant VM. However, the form is set with <i>pre-selected defaults</i> so that if you were to simply click "Generate Source Code" without making any changes to the form upon the loading of the page, the generated source code will output a fully functional Vagrant provisioned with Portal 8.4 beta.<br>
+			* Required fields, cannot be left blank.<br><br>
+		</p>
+
+		<table class="docs">
+			<tr>
+				<td class="docs-label">Virtual Environment*</td>
+				<td class="content">
+					"Provisioned Vagrant" checked. <i>Provisioned Vagrant</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">VM Name*</td>
+				<td class="content">
+					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Operating System*</td>
+				<td class="content">
+					The Linux OS which you would like installed on your VM before the installation of OH applications. <i>CentOS</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Host Port*</td>
+				<td class="content">
+					This only requires configuring if you have more than one VM running, where you would have to specify different host ports for each VM to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Products <span class="indev">IN DEV!</span></td>
+				<td class="content">
+					Which Orion Health application you would like pre-installed on your Vagrant machine. <i>Portal 8.4 beta</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Puppet Scripts <span class="indev">IN DEV!</span></td>
+				<td class="content">
+					Point us at your Puppet scripts in Subversion, and we'll provision the VM with your own configuration of Portal. <i>http://subversion/src/Orchestral/Framework/PlatformBuild/trunk</i>
+				</td>
+			</tr>
+		</table>
+
+		<a name="howToBoot"><h3 class="docs">How to boot your VM</h3></a>
 
 		<ol>
 			<li>Save the source code into a file called "Vagrantfile" in a directory (N.B. no file extension).</li>
@@ -48,17 +99,10 @@
 			<li>To tear down the VM after using, run "vagrant destroy -f"</li>
 		</ol>
 
-		<h4>Installation System Requirements</h4>
+		<p>Installation System Requirements: In order for the scripts to run successfully, <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a>, <a href="http://www.vagrantup.com">Vagrant</a> and <a href="http://git-scm.com/downloads">Git version control</a> (for cloning Stash repositories) must be installed on your computer.
+		</p>	
 
-		<p>In order for the scripts to run successfully, the following dependencies must be installed on your computer:</p>
-
-		<ul>
-			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
-			<li><a href="http://www.vagrantup.com">Vagrant</a></li>
-			<li><a href="http://git-scm.com/downloads">Git version control</a>, for cloning Stash repositories</li>
-		</ul>
-
-		<a name="doc2"><h3 class="docs">Manual access to your VM</h3></a>
+		<a name="manualAccess"><h3 class="docs">Manual access to your VM</h3></a>
 
 		<p>
 			For a <b>Vagrant</b> VM, access your virtual machine by ssh'ing into the box with the command, 'ssh vagrant'.<br><br>
@@ -67,17 +111,16 @@
 			You can gain access into the instance, 'ssh root@192.168.50.3' with the IP of your instance.<br><br>
 
 			For <b>HP Cloud</b> or key pairing and authentication and all that mumbo-jumbo, I wouldn't have a clue.
-
 		</p>
 
-		<a name="doc3"><h3 class="docs">Configuring Puppet Modules</h3></a>
+		<a name="configuringPuppet"><h3 class="docs">Configuring Puppet Modules</h3></a>
 
 		<p>
-			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b class="orange">manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
+			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b>manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
 
 		</p>
 
-		<a name="doc4"><h3 class="docs">Further Information</h3></a>
+		<a name="furtherInfo"><h3 class="docs">Further Information</h3></a>
 
 		<p>
 			For detailed instructions, necessary prerequisite applications and installation tips, please see the links below.
@@ -85,7 +128,7 @@
 				<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
 				<li><a href="http://stash/users/jennysa/repos/give-me-a-vagrant/browse" title="Give-Me-A-Vagrant git repository on Stash" target="_blank">Source code</a> Stash repository</li>	
 				<li>Woki introduction to <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived VMs</a>.</li>
-				<li><a href="https://puphpet.com/" title="PuPHPet - online GUI configurator for Puppet & Vagrant" target="_blank">PuPHPet</a> - the online GUI configurator for Puppet & Vagrant which this app was based off</li>
+				<li><a href="http://woki/display/IntDev/Intern+Project+Ideas" target="_blank">OCD Intern Project Ideas</a> - Summer 2013/2014</li>
 			</ul>
 		</p><br>
 
@@ -99,8 +142,13 @@
 		</ul>
 
 		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
-		<p>The entire booting and provisioning process may take around 30 minutes depending on the speed of your host machine and internet connection. This is mostly due to the creation of the solution.zip, which takes about 20 minutes.<br>
-		If you're impatient, check out the Vagrantfile and up the allocated memory.</p>
+		<p>The entire booting and provisioning process may take over 30 minutes depending on the speed of your host machine and internet connection. This is mostly due to the creation of the solution.zip, which takes about 20 minutes itself, and also the loading of Portal which, even after the script outputs that "Orion Health Platform is running", may take another 15 or so minutes before it can be accessed on http://localhost.<br>
+		You may wish to try increasing the memory allocated to your VM by editing your Vagrantfile (defaulted to 768 MB), or watch the log of the installation:
+
+		<div class="code">
+			$ vagrant ssh<br>
+			[vagrant@your-vm-name ~]$ sudo tail -f /opt/orionhealth/log/log.txt
+		</div>
 
 		<h3 class="docs"><a name="faq2" class="anchor">My application is not working on my browser.</a></h3>
 		<p>Beta versions may not have full cross-browser capability yet. Please use a final release version of the application.</p>
@@ -108,7 +156,7 @@
 		<h3 class="docs"><a name="faq3" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
 		<p>The command "vagrant up" should be able to take you through the entire booting up, installation and configuration. If this is not the case, and you are being returned with a prompt before the source code has completed, it may be due to the line endings setting on your text editor. Make sure that your line endings are set to Unix.<br>
 		e.g. on Sublime Text 2, go to View > Line Endings > and select Unix.<br>
-		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p>
+		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p><br>
 
 		<h3 class="docs"><a name="faq4" class="anchor">My vagrant won't boot due to port collisions.</a></h3>
 		<p>The vagrant VM is configured with hard-coded port forwarding, and so you cannot have two vagrants from this app running on your machine at the same time currently. Either destroy any existing VMs before running boot.sh, or change the port numbers in Vagrantfile yourself from "19080" to a port of your choice.</p>
@@ -118,6 +166,8 @@
 		<a name="help"><h2 class="docs">Help</h2></a>
 
 		<p>If you require any further assistance, please contact a member of the <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD team</a>.</p>
+
+	</div>
 
 	</div>
 

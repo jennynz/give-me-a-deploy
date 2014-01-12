@@ -17,18 +17,90 @@
 		<br><br>
 
 		<h1 class="docs">Give-Me-A-Vagrant: Empty VM<br>
-		<a href="#documentation" title="How to boot your VM"><div class="orange">Documentation</div></a>, 
-		<a href="#faqs"><div class="orange">FAQs</div></a> & 
-		<a href="#help"><div class="orange">Help</div></a>
+		<a href="#documentation" class="docsTitleLink">Documentation</a>, 
+		<a href="#faqs" class="docsTitleLink">FAQs</a> & 
+		<a href="#help" class="docsTitleLink">Help</a>
 		</h1>
 
 		<p>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_vagrantenv.html">Vagrant</a></span>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_devstackenv.html">DevStack</a></span>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_hpcloudenv.html">HP Cloud</a></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_vagrantenv.html">Provisioned Vagrant</a></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_emptyenv.html" class="current">Empty Vagrant</a></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Vagrant" title="Give-Me-A-Vagrant - Integrated Development">Docs on Woki</a></span>
 		</p>
+
+		<div class="docsSub">
+			This option on Give-Me-A-Vagrant simply outputs a Vagrantfile with a few necessary parameters pre-configured for convenience. It is very simple to boot, and you may add any provisioning you wish.
+		</div>
+
+
+		<a name="documentation"><h2 class="docs">Documentation</h2></a>
+
+		<ul>
+			<li class="star"><a href="#doc1">Booting up your VM</a></li>
+			<li class="star"><a href="#doc2">Accessing your VM</a></li>
+			<li class="star"><a href="#doc3">Provisioning your VM on $ vagrant up</a></li>
+			<li class="star"><a href="#doc4">Further Information</a></li>
+		</ul>
+
+		<a name="doc1"><h3 class="docs">Booting up your VM</h3></a>
+
+		<div class="code">
+			$ cd to/your/Vagrantfile/directory<br>
+			$ vagrant up
+		</div>
+
+		<a name="doc2"><h3 class="docs">Accessing your VM</h3></a>
+		
+		<div class="code">
+			$ vagrant ssh
+		</div>
+
+		<a name="doc3"><h3 class="docs">Provisioning your VM on $ vagrant up</h3></a>
+
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p><br>
+
+		<a name="doc4"><h3 class="docs">Further Information</h3></a>
+
+		<p>
+			<ul>
+				<li><a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant Documentation</a></li>
+				<li><a href="http://stash/users/jennysa/repos/vagrant-ohp-shell-install/browse">Stash repository</a> for installing OHP on a Vagrant using shell provisioning.</li>
+				<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
+				<li><a href="http://stash/users/jennysa/repos/give-me-a-vagrant/browse" title="Give-Me-A-Vagrant git repository on Stash" target="_blank">Source code</a> for this web app in Stash.</li>	
+			</ul>
+		</p><br>
+
+		<a name="faqs"><h2 class="docs">Troubleshooting & FAQs</h2></a>
+
+		<ul>
+			<li><a href="#faq1">FAQ#1</a></li>
+			<li><a href="#faq2">FAQ#2</a></li>
+			<li><a href="#faq3">FAQ#3</a></li>
+			<li><a href="#faq4">FAQ#4</a></li>
+		</ul>
+
+		<h3 class="docs"><a name="faq1" class="anchor">FAQ#1</a></h3>
+		<p>The entire booting and provisioning process may take around 30 minutes depending on the speed of your host machine and internet connection. This is mostly due to the creation of the solution.zip, which takes about 20 minutes.<br>
+		If you're impatient, check out the Vagrantfile and up the allocated memory.</p><br>
+
+		<h3 class="docs"><a name="faq2" class="anchor">FAQ#2</a></h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+		
+		<h3 class="docs"><a name="faq3" class="anchor">FAQ#3</a></h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+
+		<h3 class="docs"><a name="faq4" class="anchor">FAQ#4</a></h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<br>
+
+		<a name="help"><h2 class="docs">Help</h2></a>
+
+		<p>If you require any further assistance, please contact a member of the <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD team</a>.</p>
 
 	</div>
 

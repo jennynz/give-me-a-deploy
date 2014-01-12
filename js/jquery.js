@@ -66,7 +66,8 @@ $(document).ready(function(){
     $("#installInfo").hide();
   });
 
-  // Show documentation for different environments
+  // Show sections of documentation for different environments
+  // NOT CURRENTLY USED
 
   $("#showvagrantdocs").click(function(){
     $("vagrantdocs").toggle();

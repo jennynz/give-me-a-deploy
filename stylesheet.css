@@ -10,6 +10,7 @@ body {
     background-color: #FFF;
     margin-top: 6%;
     font-family: Arial, Verdana, Helvetica, sans-serif;
+    overflow-y: scroll; 
 }
 
 .index-page-wrap {
@@ -42,6 +43,25 @@ h1 {
 	color: #999;
 	font-size: 1.5em;
 	text-align: center;
+}
+
+a {
+	color: #888;
+	text-decoration: none;
+	/* HOVER OUT SLOWLY */
+	-webkit-transition: 0.5s ease-in-out;
+  	-moz-transition: 0.5s ease-in-out;
+  	-o-transition: 0.5s ease-in-out;
+  	-ms-transition: 0.5s ease-in-out;
+  	transition: 0.5s ease-in-out;
+}
+
+a.docsTitleLink {
+	color: #ff7700;
+}
+
+a.docsTitleLink:hover {
+	color: #008080;
 }
 
 h1.docs, h1.about {
@@ -136,7 +156,7 @@ a.headerlink:hover {color: #FF7700; border-bottom: dotted 2px #ff7700;}
 a.headerlink:active {color: #999; border-bottom: dotted 2px #999;}
 
 a.anchor {color: #777;}
-a.current {color: #008080; font-style: none; font-weight: bold; border-bottom: dotted 1px #008080;}
+a.current {color: #008080; font-style: none; font-weight: bold;}
 
 
 a.downloadlink {color: #008080; font-weight: bold;}
@@ -152,6 +172,7 @@ i {color: #999;}
 
 .orange {color: #FF7700; display: inline;}
 .teal {color: #008080; display: inline;}
+.indev {color: red; display: inline; font-weight: none; font-family: verdana; font-size: 0.8em;}
 
 img#logo {
 	margin-left: auto;
@@ -193,6 +214,35 @@ table.form:hover {
   	transition: 0s;
 }
 
+td.table-header {
+	text-align: center;
+	padding-left: 20px;
+}
+
+td.label {
+	text-align: right;
+	margin: 10px;
+	width: 30%;
+}
+
+td.docs-label {
+	text-align: right;
+	padding-right: 10px;
+	width: 20%;
+}
+
+td.content {
+	padding: 10px;
+}
+
+.input-field {
+	text-align: left;
+}
+
+td.table-footer {
+	text-align: center;
+}
+
 span.docslink {
 	white-space: nowrap;
 }
@@ -205,6 +255,26 @@ div.hiddenInfo {
 	min-width: 260px;
 	max-width: 650px;
 	text-align: center
+}
+
+div.docsSub {
+	color: #444;
+	font-size: 0.8em;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
+	background-color: #EFEFEF;
+	margin: 20px;
+	padding: 20px;
+}
+
+div.code {
+	background-color: #333;
+	background-color: rgb(30, 30, 30);
+	border-radius: 10px;
+	margin: 20px;
+	padding: 20px;
+	color: rgb(0, 200, 200);
+	font-size: 0.8em;
+	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
 }
 
 span.hiddenInfoSub {
@@ -254,6 +324,7 @@ textarea.source::-webkit-scrollbar-thumb {
 
 textarea.source:focus {
     color: #008080;
+    outline: none;
     border: solid 1px #FF7700;
 }
 textarea.source:focus::-webkit-scrollbar-thumb {
@@ -269,38 +340,27 @@ textarea#emptyenvsource {
 	height: 380px;
 }
 
-.table-header {
-	text-align: center;
-	padding-left: 20px;
-}
-
-.label {
-	text-align: right;
-	padding-right: 10px;
-	width: 30%;
-}
-
-.input-field {
-	text-align: left;
-}
-
-.table-footer {
-	text-align: center;
-}
 
 /* TEXT INPUT FIELDS */
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
 	font-family: Arial, Sans-Serif;
     color: #444;
     margin-bottom: 5px;
     display: block;
     padding: 4px;
     border: solid 1px #BBBBBB;
+}
+
+input[type="text"] {
     width: 90%;
 }
 
-input[type="text"]:focus {
+input[type="number"] {
+	width: 50px;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
     color: #008080;
     outline: none;
     border: solid 1px #FF7700;

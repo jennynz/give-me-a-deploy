@@ -27,6 +27,7 @@ function GenerateVagrantBoot(vmname) {
 
 function GenerateVagrantfile(vmname) {
 	// Get VM details from form.
+	var hostport = document.getElementById("hostport").value;
 	var os = document.getElementById("os").value;
 
 	// Generate string variables.
@@ -43,10 +44,10 @@ function GenerateVagrantfile(vmname) {
 
 		"Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|\n\n" + 
 
-		"# Allocate the VM more memory.\n" +
-		"config.vm.provider :virtualbox do |vb|\n" +
-	  	"  vb.customize [\"modifyvm\", :id, \"--memory\", \"768\"]\n" +
-		"end\n\n" +
+		"  # Allocate the VM more memory.\n" +
+		"  config.vm.provider :virtualbox do |vb|\n" +
+	  	"    vb.customize [\"modifyvm\", :id, \"--memory\", \"768\"]\n" +
+		"  end\n\n" +
 
 		"  # Every Vagrant VM requires a box to build off of.\n" +
 		"  config.vm.box = '" + box + "'\n\n" + 
@@ -58,7 +59,7 @@ function GenerateVagrantfile(vmname) {
 	  	"  config.vm.hostname = '" + vmname + "'\n\n" + 
 
 		"  # Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.\n" + 
-		"  config.vm.network 'forwarded_port', guest: 19080, host: 19080\n\n" + 
+		"  config.vm.network 'forwarded_port', guest: 19080, host: " + hostport + "\n\n" + 
 
 		"  # Set up VM and Puppet install OHP.\n" + 
 	 	"  config.vm.provision 'shell', path: 'install.sh'\n\n" + 
