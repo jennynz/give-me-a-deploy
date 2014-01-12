@@ -2,7 +2,6 @@ $(document).ready(function(){
 
   // Show relevant form fields according to selected VM environment
 
-  $("#email").hide();
   $('input:radio[name="vmenv"]').change(
     function(){
       if ($(this).val() == 'emptyenv') {
@@ -12,7 +11,7 @@ $(document).ready(function(){
       } else if ($(this).val() == 'vagrantenv') {
         $("#email").hide();
         $("#products").show();
-        $("#puppetscripts").show();
+        $("#puppetscripts").hide();
       } else if ($(this).val() == 'devstackenv') {
         $("#email").show();
         $("#products").show();

@@ -4,8 +4,7 @@ function GenerateHPCloudScripts(vmname) {
 	return (
 	"\n\n################################################################\n\n" +
 	"Give-Me-A-Vagrant for HP Cloud is currently in dev!\n" + 
-	"But it will probably/maybe/possibly look like something along the lines of what's below.. maybe. Not really sure.\n" +
-	"Check out this Stash repo for an example:\n\n" +
+	"Check out this Stash repo for an example of what it may eventually look like:\n\n" +
 	"http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse/Vagrantfile\n\n" +
 	"################################################################\n\n\n\n\n\n" +
 

@@ -19,7 +19,7 @@
 	<script src="js/jszip.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
-	<title>Give Me A Vagrant - Local VMs on demand</title>
+	<title>Give-Me-A-Vagrant - VMs on demand</title>
 </head>
 
 <body>
@@ -68,14 +68,8 @@
 						<input type="number" id="memory" value="768"> MB
 					</td>
 				</tr>
-				<tr id="email">
-					<td class="label">Email* <span class="indev">IN DEV!</span></td>
-					<td class="input-field">
-						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
-					</td>
-				</tr>
 				<tr id="products">
-					<td class="label">Products <span class="indev">IN DEV!</span></td>
+					<td class="label">Products</td>
 					<td class="checkbox-field">
 						<textarea rows="4" id="products" spellcheck="false">ohp_applications:
   foundation: 7.2.0.beta
@@ -89,15 +83,18 @@
 						<input type="text" id="VMName" autocapitalize="off" placeholder="Point us at your Puppet scripts in SVN and we'll provision the VM.">
 					</td>
 				</tr>
+				<tr id="email">
+					<td class="label">Email* <span class="indev">IN DEV!</span></td>
+					<td class="input-field">
+						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
+					</td>
+				</tr>
 				<tr>
 					<td colspan="2" class="table-footer">
-						<!--<input type="checkbox" name="savefile" id="savefile"> Save file to local machine automatically.<br><br>-->
-
-						<input type="button" class="button" value="Generate Source Code" onClick="GetCode();">
-						
-						<input type="reset" id="reset" class="button">
-
 						<br>
+						<!--<input type="checkbox" name="savescripts" id="savescripts"> Save script(s) to local machine automatically.<br><br>-->
+						<input type="button" class="button" value="Generate Source Code" onClick="GetCode();">
+						<input type="reset" id="reset" class="button">
 					</td>
 				</tr>
 			</table>

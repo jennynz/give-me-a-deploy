@@ -259,6 +259,10 @@ td.content {
 	padding: 10px;
 }
 
+tr#email, tr#puppetscripts {
+	display: none;
+}
+
 .input-field {
 	text-align: left;
 }

@@ -5,7 +5,7 @@
 	<script src="js/jquery.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
-	<title>Give Me A Vagrant - Local VMs on demand | Documentation, FAQs & Help</title>
+	<title>HP Cloud | Give-Me-A-Vagrant Docs</title>
 </head>
 
 <body>
@@ -50,6 +50,44 @@
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 		</p>
+		<table class="docs">
+			<tr>
+				<td class="docs-label">Virtual Environment*</td>
+				<td class="content">
+					"Provisioned Vagrant" checked. <i>Provisioned Vagrant</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">VM Name*</td>
+				<td class="content">
+					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Host Port*</td>
+				<td class="content">
+					This only requires configuring if you have more than one VM running, where you would have to specify different host ports for each VM to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Memory*</td>
+				<td class="content">
+					Customise the allocation of base memory to your VM. <i>768 MB</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Products <span class="indev">IN DEV!</span></td>
+				<td class="content">
+					Which Orion Health application you would like pre-installed on your Vagrant machine. The code that you write in here is directly written out to a solutionVersion.yaml file which is used to create a solution.zip for the OHP installation, so it is important that the formatting is exactly as seen in the example shown e.g. indentation is two spaces, each application on a new line with the correct characterisation for version number. <i>Portal 8.4.0.beta with Foundation 7.2.0.beta</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Puppet Scripts <span class="indev">IN DEV!</span></td>
+				<td class="content">
+					Point us at your Puppet scripts in Subversion, and we'll provision the VM with your own configuration of Portal. <i>http://subversion/src/Orchestral/Framework/PlatformBuild/trunk</i>
+				</td>
+			</tr>
+		</table>
 
 		<br>
 
