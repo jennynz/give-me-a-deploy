@@ -376,7 +376,7 @@ textarea#emptyenvsource {
 	height: 450px;
 }
 
-textarea#products {
+textarea#Products {
 	width: 90%;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
 	font-size: 1em;
@@ -407,7 +407,7 @@ input[type="number"] {
 	text-align: right;
 }
 
-input[type="text"]:focus, input[type="number"]:focus, textarea#products:focus {
+input[type="text"]:focus, input[type="number"]:focus, textarea#Products:focus {
     color: #008080;
     outline: none;
     border: solid 1px #FF7700;

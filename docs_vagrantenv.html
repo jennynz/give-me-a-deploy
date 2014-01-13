@@ -35,20 +35,24 @@
 
 			<h4 class="docsSub">tl;dr</h4>
 			<ul>
-				<li class="docsSub"><span class="teal">$ boot.sh</span> to kick off the entire booting and installation process.</li>
-				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
-				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
-				<li class="docsSub">All three scripts saved in the same directory.</li>
-				<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairing</a> on Stash account and repository cloning permissions for:
+				<li class="docsSub">Format of "Products" matches example, with a version of foundation included.</li>
+				<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories set up (all Dev and Testing should have this already):
 					<ul>
 						<li class="docsSub"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
 						<li class="docsSub"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
 						<li class="docsSub"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
 					</ul>
 				</li>
-				All Dev and Testing should have this already.</li>
+				</li>
 				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
 				<li class="docsSub"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.
+				<li class="docsSub">All three scripts saved in the same directory.</li>
+				<li class="docsSub"><span class="teal">$ boot.sh</span> to kick off the entire booting and installation process.</li>
+				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
+				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
+				
+
+			
 			</ul>
 		</div>
 
@@ -97,7 +101,9 @@
 			<tr>
 				<td class="docs-label">Products <span class="indev">IN DEV!</span></td>
 				<td class="content">
-					Which Orion Health application you would like pre-installed on your Vagrant machine. The code that you write in here is directly written out to a solutionVersion.yaml file which is used to create a solution.zip for the OHP installation, so it is important that the formatting is exactly as seen in the example shown e.g. indentation is two spaces, each application on a new line with the correct characterisation for version number. <i>Portal 8.4.0.beta with Foundation 7.2.0.beta</i>
+					The Orion Health application(s) you would like pre-installed on your Vagrant machine. The code that you write in here is directly written out to a solutionVersion.yaml file which is used to create a solution.zip for the OHP installation, so it is important that the formatting is exactly as seen in the example shown e.g. indentation is two spaces, each application on a new line with a space after the colon and the correct characterisation for version number.<br>
+					A version of <span class="teal">foundation</span> must be included in the products list for the installation to work.<br>
+					For a list of options, check out <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>. <i>Portal 8.4.0.beta with Foundation 7.2.0.beta</i>
 				</td>
 			</tr>
 			<tr>

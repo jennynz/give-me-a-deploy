@@ -67,11 +67,44 @@ function GenerateVagrantfile(vmname) {
 
 
 function GenerateVagrantInstall(vmname) {
-	// Get VM details to put in here as well
+	// Get list of products and version numbers from form.
+	var solutionVersion = document.getElementById("Products").value;
+	// Split lines into single-line string arrays, remove "ohp_applications:" at the front.
+	var solutionApplications = solutionVersion.split("\n  ").slice(1);
+	// Split again into names and versions.
+	var names = new Array();
+	var versions = new Array();
+	for (var i = 0; i < solutionApplications.length; i++) {
+		var splitstr = solutionApplications[i].split(": ");
+		names[i] = splitstr[0];
+		versions[i] = splitstr[1];
+	}
+
+	// Isolate the foundation version for the provisioning installer URL.
+	var foundationIndex = names.indexOf("foundation");
+	var foundationVersion = versions[foundationIndex];
+
+	// Write site.pp string variables.
+
+	// applications => ['portal', 'foundation'],
+	var applicationstr = "applications => ['";
+	for (var i = 0; i < names.length; i++) {
+		applicationstr = applicationstr.concat(names[i],"'");
+		if (i+1 == names.length) { applicationstr = applicationstr.concat("],\n"); }
+		else { applicationstr = applicationstr.concat(", '"); }
+	}
+
+	// application_versions => { 'portal' => '${portalVersion}', 'foundation' => '${foundationVersion}' },\n
+	var application_versionsstr = "application_versions => { '";
+	for (var i = 0; i < names.length; i++) {
+		application_versionsstr = application_versionsstr.concat(names[i], "' => '", versions[i], "'");
+		if (i+1 == names.length) { application_versionsstr = application_versionsstr.concat(" },\n"); }
+		else { application_versionsstr = application_versionsstr.concat(", '"); }
+	}
 
 	return (
 		"#!/bin/bash\n" +
-		"\n" +
+		"\n" + 
 		"##################################\n" +
 		"# Setup Installation Environment #\n" +
 		"##################################\n" +
@@ -80,8 +113,6 @@ function GenerateVagrantInstall(vmname) {
 		"sudo service iptables stop\n" +
 		"\n" +
 		"# Set up variables\n" +
-		"portalversion='8.4.0.beta';\n" +
-		"foundationversion='7.2.0.beta';\n" +
 		"installer='platform-linux-x64.sh';\n" +
 		"base_url='/vagrant';\n" +
 		"\n" +
@@ -108,7 +139,7 @@ function GenerateVagrantInstall(vmname) {
 		"sed -i -e '17s/.*/\\t\\t\\t<taskdef name=\"junit\" classname=\"org.apache.tools.ant.taskdefs.optional.junit.JUnitTask\" classpath=\"${common.build.dir}\\/anttasks\\/ant-junit.jar\"\\/>/' ./modules/PlatformBuild/build-tasks.xml\n" +
 		"\n" +
 		"# Download OHP provisioning installer from Ivy.\n" +
-		"wget http://ivy-rep-ro/orchestral/provisioning-installer/${foundationversion}/installers/${installer} --user=ivy-http --password=YouSayHello\n" +
+		"wget http://ivy-rep-ro/orchestral/provisioning-installer/" + foundationVersion + "/installers/${installer} --user=ivy-http --password=YouSayHello\n" +
 		"\n" +
 		"\n" +
 		"# Solution zip\n" +
@@ -119,15 +150,11 @@ function GenerateVagrantInstall(vmname) {
 		"touch solutionVersion.yaml solution.properties version.properties build.xml\n" +
 		"\n" +
 		"cat > solutionVersion.yaml <<EOL\n" +
-		"ohp_applications:\n" +
-		"  foundation: ${foundationversion}\n" +
-		"  portal: ${portalversion}\n" +
-		"puppet_modules:\n" +
-		"  puppet-solution_test: 0.1.0.beta\n" +
+		solutionVersion + "\n" +
 		"EOL\n" +
 		"\n" +
 		"cat > solution.properties <<EOL\n" +
-		"solution.applications=foundation,portal\n" +
+		"solution.applications=" + names + "\n" +
 		"EOL\n" +
 		"\n" +
 		"cat > version.properties <<EOL\n" +
@@ -164,8 +191,8 @@ function GenerateVagrantInstall(vmname) {
 		"    node_type => 'frontend',\n" +
 		"    group_name => 'my_group',\n" +
 		"    group_mode => 'standalone',\n" +
-		"    applications => ['portal', 'foundation'],\n" +
-		"    application_versions => { 'portal' => '${portalversion}', 'foundation' => '${foundationversion}' },\n" +
+		"    " + applicationstr +
+		"    " + application_versionsstr +
 		"    install_dir => '/opt/orionhealth',\n" +
 		"    admin_password => 'b',\n" +
 		"  }\n" +
@@ -291,7 +318,7 @@ function GenerateVagrantInstall(vmname) {
 		"sudo chown orion /vagrant/platform-linux-x64.sh\n" +
 		"sudo chown orion /opt/orionhealth/response.varfile\n" +
 		"su orion << 'EOF'\n" +
-		"/opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile\n" +
+		"/opt/orionhealth/${installer} -q -varfile /opt/orionhealth/response.varfile\n" +
 		"EOF\n" +
 		"\n" +
 		"# Start applications\n" +
