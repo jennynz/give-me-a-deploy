@@ -77,36 +77,36 @@
 
 		<p>
 			For working provisioned Vagrant source code to be output by GMAV, you are required to enter a few details which allow you to customise your Vagrant VM. However, the form is set with <i>pre-selected defaults</i> so that if you were to simply click "Generate Source Code" without making any changes to the form upon the loading of the page, the generated source code will output a fully functional CentOS Vagrant with 768 MB of memory allocated, and provisioned with Portal 8.4 beta.<br>
-			All fields are required, none may be left blank.<br><br>
+			* Required field, must not be left blank<br><br>
 		</p>
 
 		<table class="docs">
 			<tr>
-				<td class="docs-label">Virtual Environment</td>
+				<td class="docs-label">Virtual Environment*</td>
 				<td class="content">
 					"Provisioned Vagrant" checked. <i>Provisioned Vagrant</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">VM Name</td>
+				<td class="docs-label">Host Port*</td>
+				<td class="content">
+					If you have more than one VM running, a different host port for each VM must be specified in order to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
+				</td>
+			</tr>
+			<tr>
+				<td class="docs-label">Host Name</td>
 				<td class="content">
 					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">Host Port</td>
-				<td class="content">
-					This only requires configuring if you have more than one VM running, where you would have to specify different host ports for each VM to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">Memory</td>
+				<td class="docs-label">Memory*</td>
 				<td class="content">
 					Customise the allocation of base memory to your VM. <i>768 MB</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">Products</td>
+				<td class="docs-label">Products*</td>
 				<td class="content">
 					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number. A functioning version of Orion Health Foundation must be specified for the installer for work. <i>foundation 7.2.0.beta</i><br>
 					The code that you write in here is directly written out to several script files which str used to create a solution.zip for the OHP installation, hence the importance of formatting the text exactly as seen in the defaults shown.<br>

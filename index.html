@@ -38,38 +38,38 @@
 				<tr>
 					<td class="table-header" colspan="2">
 						Please fill in the following details.<br>
-						<h6>All fields are required</h6><br>
+						<h6>*Required Fields</h6><br>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Virtual Environment</td>
+					<td class="label">Virtual Environment*</td>
 					<td class="radio-field" required>
-						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv" checked> <a href="http://www.vagrantup.com" target="_blank">Provisioned Vagrant</a> on your local machine<br>
-						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> <a href="http://ocd-devstack/" target="_blank">DevStack</a> local server at Orion <span class="indev">IN DEV!</span><br>
-						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> <a href="http://www.hpcloud.com" target="_blank">HP Cloud</a> public server <span class="indev">IN DEV!</span><br>
-						<input type="radio" name="vmenv" id="emptyenv" value="emptyenv"> Empty Vagrant with no provisioning<br>
+						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv" checked> <b>Provisioned Vagrant</b>: local machine<br>
+						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> DevStack: local OpenStack server <span class="indev">IN DEV!</span><br>
+						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> HP Cloud: public server <span class="indev">IN DEV!</span><br>
+						<input type="radio" name="vmenv" id="emptyenv" value="emptyenv"> <b>Empty Vagrant</b>: no provisioning<br>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">VM Name</td>
-					<td class="input-field">
-						<input type="text" name="vmname" id="vmname" autocapitalize="off" value="portal-vm" required>
-					</td>
-				</tr>
-				<tr>
-					<td class="label">Host Port</td>
+					<td class="label">Host Port*</td>
 					<td class="input-field">
 						<input type="number" id="hostport" value="19080">
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Memory</td>
+					<td class="label">Host Name</td>
+					<td class="input-field">
+						<input type="text" name="vmname" id="vmname" autocapitalize="off" value="portal-vm" required>
+					</td>
+				</tr>
+				<tr>
+					<td class="label">Memory*</td>
 					<td class="input-field">
 						<input type="number" id="memory" value="768"> MB
 					</td>
 				</tr>
 				<tr id="products">
-					<td class="label">Products<br><h6>A foundation version must be specified</h6></td>
+					<td class="label">Products*<br><h6>A foundation version must be specified</h6></td>
 					<td class="checkbox-field">
 						<textarea rows="3" id="Products" spellcheck="false">foundation: 7.2.0.beta
 portal: 8.4.0.beta</textarea>
@@ -82,7 +82,7 @@ portal: 8.4.0.beta</textarea>
 					</td>
 				</tr>
 				<tr id="email">
-					<td class="label">Email* <span class="indev">IN DEV!</span></td>
+					<td class="label">Email <span class="indev">IN DEV!</span></td>
 					<td class="input-field">
 						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
 					</td>
@@ -108,6 +108,11 @@ portal: 8.4.0.beta</textarea>
 
 
 
+
+
+
+
+	<!-- 	PROVISIONED VAGRANT 	-->
 
 
 
@@ -174,6 +179,9 @@ portal: 8.4.0.beta</textarea>
 
 
 
+	<!-- 	DEVSTACK 	-->
+
+
 
 	<div id="whitespace">&nbsp;</div>
 
@@ -204,6 +212,11 @@ portal: 8.4.0.beta</textarea>
 
 
 
+
+	<!-- 	HP CLOUD 	-->
+
+
+
 	<div id="whitespace">&nbsp;</div>
 	<a class="anchor" name="hpcloudcode"><br></a>
 	<h1>Your provisioned Vagrantfile for <div class="orange">HP Cloud</div> is ready</h1>
@@ -225,12 +238,15 @@ portal: 8.4.0.beta</textarea>
 	<div class="footer">
 		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
-	
 
 
 
 
 
+
+
+
+	<!-- 	EMPTY VAGRANT 	-->
 
 
 
@@ -239,12 +255,12 @@ portal: 8.4.0.beta</textarea>
 	<a class="anchor" name="emptycode"><br></a>
 	<h1>Your <div class="orange">Vagrantfile</div> is ready</h1>
 
-	<h2>Simply <a class="headerlink" id="showemptyInfo">save</a> the following source code as "Vagrantfile" and run the command <a href="docs.html" class="headerlink" title="Click for documentation, FAQs and help">vagrant up</a>.</h2>
+	<h2>Simply <a class="headerlink" id="showemptyInfo">save</a> the following source code as "Vagrantfile" and run the command <span class="teal">vagrant up</span>.</h2>
 
 	<div class="hiddenInfo" id="emptyInfo">
-		Just <b>click</b> anywhere in the source code textarea below to select all, copy and paste into your text editor and save as "Vagrantfile", or <a class="downloadlink" onclick="DownloadSourceCode('emptyenvsource', 'Vagrantfile')">click here to download the file directly</a>.<br>
-		<i>Only HTML5-compatible browsers will download the file with the correct name, otherwise the name of the downloaded file will have to be manually changed to "Vagrantfile".<br>
-			N.B. If renaming the file, please note that <b>Vagrantfile has no extension</b>.</i>
+		Just <b>click</b> anywhere in the source code textarea below to select all, copy and paste into your text editor and save as "Vagrantfile", or <a class="downloadlink" id="showSaveInfo" onclick="DownloadSourceCode('emptyenvsource', 'Vagrantfile')">click here to download the file directly</a>.<br>
+		<i id="hiddenSaveInfo"><br>Only HTML5-compatible browsers will download the file with the correct name, otherwise the name of the downloaded file will have to be manually changed to "Vagrantfile".<br>
+			N.B. If renaming the file, please note that <b>Vagrantfile has no extension</b>.<br></i>
 		<br><br>
 	</div>
 

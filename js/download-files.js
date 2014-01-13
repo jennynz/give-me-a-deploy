@@ -17,7 +17,7 @@ function DownloadZip() {
   var blobLink = document.getElementById('blob');
   
   try {
-    blobLink.download = "here-is-your-vagrant.zip";
+    blobLink.download = "myVagrant.zip";
     blobLink.href = window.URL.createObjectURL(zip.generate({type:"blob"}));
   } catch(e) {
     blobLink.innerHTML += " (not supported on this browser)";

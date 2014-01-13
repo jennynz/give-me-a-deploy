@@ -1,4 +1,4 @@
-function GenerateVagrantBoot(vmname) {
+function GenerateVagrantBoot() {
 	return (
 		"#!/bin/bash\n\n" +
 
@@ -26,9 +26,18 @@ function GenerateVagrantBoot(vmname) {
 
 
 function GenerateVagrantfile(vmname) {
+
 	// Get VM details from form.
 	var memory = document.getElementById("memory").value;
 	var hostport = document.getElementById("hostport").value;
+
+	// If no VM name specified, omit config.vm.hostname
+	if (vmname == 'noName') {
+		var configHostname = "\n";
+	} else {
+		var configHostname = "\n  # Set the name of the host machine.\n  config.vm.hostname = '" + vmname + "'\n\n";
+	}
+
 
 	// Return code to be output into textbox
 	return (
@@ -49,10 +58,9 @@ function GenerateVagrantfile(vmname) {
 		"  config.vm.box = 'centos-64-x64-vbox4210-nocm'\n\n" + 
 
 		"  # The url from where the config.vm.box will be fetched if it doesn't already exist on the host machine.\n" + 
-		"  config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box'\n\n" +
+		"  config.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210-nocm.box'\n" +
 
-		"  # Set the name of the host machine.\n" +
-	  	"  config.vm.hostname = '" + vmname + "'\n\n" + 
+	  	configHostname + 
 
 		"  # Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.\n" + 
 		"  config.vm.network 'forwarded_port', guest: 19080, host: " + hostport + "\n\n" + 
@@ -66,7 +74,7 @@ function GenerateVagrantfile(vmname) {
 
 
 
-function GenerateVagrantInstall(vmname) {
+function GenerateVagrantInstall() {
 	// Get list of products and version numbers from form, split lines into arrays.
 	var products = document.getElementById("Products").value.split("\n");
 		
@@ -79,9 +87,16 @@ function GenerateVagrantInstall(vmname) {
 		versions[i] = splitstr[1];
 	}
 
-	// Isolate the foundation version for the provisioning installer URL.
+	// Check that a foundation version has been specified, isolate version number for provisioning installer URL.
 	var foundationIndex = names.indexOf("foundation");
+	if (foundationIndex == -1) {
+		alert("A foundation version must be specified. Please check your spelling and format of the foundation version.");
+		document.getElementById("vmdetails").reset();
+		return;
+	}
 	var foundationVersion = versions[foundationIndex];
+
+	// Verify correct formatting of products
 
 	// Write solutionVersion.yaml
 	var solutionVersion = "";
@@ -104,6 +119,8 @@ function GenerateVagrantInstall(vmname) {
 		if (i+1 == names.length) { application_versionsstr = application_versionsstr.concat(" },\n"); }
 		else { application_versionsstr = application_versionsstr.concat(", '"); }
 	}
+
+	window.location = "#vagrantcode";
 
 	return (
 		"#!/bin/bash\n" +

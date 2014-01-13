@@ -40,6 +40,17 @@ $(document).ready(function(){
 
   $("#showemptyInfo").click(function(){
     $("#emptyInfo").toggle();
+    $("#hiddenSaveInfo").hide();
+  });
+
+  // Info on HTML5 compatibility for downloading files separately.
+  $("#showSaveInfo").mouseenter(function(){
+    $("#hiddenSaveInfo").show();
+  });
+
+  $("#showSaveInfo").click(function(){
+    $("#hiddenSaveInfo").hide();
+    $("#emptyInfo").hide();
   });
 
   // Vagrantenv individual script info

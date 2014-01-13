@@ -304,6 +304,8 @@ div.hiddenInfo {
 	text-align: center
 }
 
+
+
 div.docsSub {
 	color: #444;
 	font-size: 0.8em;
@@ -333,6 +335,10 @@ span.hiddenInfoSub {
 	text-align: left;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
 	margin-top: -1.2em;
+}
+
+#hiddenSaveInfo {
+	display: none;
 }
 
 #whitespace {

@@ -1,4 +1,4 @@
-function GenerateDevStackScripts(vmname) {
+function GenerateDevStackScripts() {
 	
 	return (
 	"\n\n#################################################################\n\n" +
