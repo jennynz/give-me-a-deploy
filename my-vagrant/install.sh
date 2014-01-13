@@ -50,6 +50,8 @@ cat > solutionVersion.yaml <<EOL
 ohp_applications:
   foundation: ${foundationversion}
   portal: ${portalversion}
+puppet_modules:
+  puppet-solution_test: 0.1.0.beta
 EOL
 
 cat > solution.properties <<EOL
@@ -63,8 +65,8 @@ version.servicepack=0
 EOL
 
 cat > build.xml <<EOL
-<project name='VagrantSolution'>
-	<import file='../tooling/build-ocd-solution.xml'/>
+<project name='SolutionTest'>
+  <import file='../tooling/build-ocd-solution.xml'/>
 </project>
 EOL
 
