@@ -170,7 +170,7 @@ function GenerateVagrantInstall() {
 		"touch solutionVersion.yaml solution.properties version.properties build.xml\n" +
 		"\n" +
 		"cat > solutionVersion.yaml <<EOL\n" +
-		"ohp-applications:\n" +
+		"ohp_applications:\n" +
 		solutionVersion +
 		"EOL\n" +
 		"\n" +
