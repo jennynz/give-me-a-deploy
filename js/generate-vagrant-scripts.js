@@ -67,15 +67,14 @@ function GenerateVagrantfile(vmname) {
 
 
 function GenerateVagrantInstall(vmname) {
-	// Get list of products and version numbers from form.
-	var solutionVersion = document.getElementById("Products").value;
-	// Split lines into single-line string arrays, remove "ohp_applications:" at the front.
-	var solutionApplications = solutionVersion.split("\n  ").slice(1);
+	// Get list of products and version numbers from form, split lines into arrays.
+	var products = document.getElementById("Products").value.split("\n");
+		
 	// Split again into names and versions.
 	var names = new Array();
 	var versions = new Array();
-	for (var i = 0; i < solutionApplications.length; i++) {
-		var splitstr = solutionApplications[i].split(": ");
+	for (var i = 0; i < products.length; i++) {
+		var splitstr = products[i].split(": ");
 		names[i] = splitstr[0];
 		versions[i] = splitstr[1];
 	}
@@ -84,8 +83,13 @@ function GenerateVagrantInstall(vmname) {
 	var foundationIndex = names.indexOf("foundation");
 	var foundationVersion = versions[foundationIndex];
 
-	// Write site.pp string variables.
+	// Write solutionVersion.yaml
+	var solutionVersion = "";
+	for (var i = 0; i < products.length; i++) {
+		solutionVersion = solutionVersion.concat("  ", products[i], "\n");
+	}
 
+	// Write site.pp string variables.
 	// applications => ['portal', 'foundation'],
 	var applicationstr = "applications => ['";
 	for (var i = 0; i < names.length; i++) {
@@ -93,7 +97,6 @@ function GenerateVagrantInstall(vmname) {
 		if (i+1 == names.length) { applicationstr = applicationstr.concat("],\n"); }
 		else { applicationstr = applicationstr.concat(", '"); }
 	}
-
 	// application_versions => { 'portal' => '${portalVersion}', 'foundation' => '${foundationVersion}' },\n
 	var application_versionsstr = "application_versions => { '";
 	for (var i = 0; i < names.length; i++) {
@@ -150,7 +153,8 @@ function GenerateVagrantInstall(vmname) {
 		"touch solutionVersion.yaml solution.properties version.properties build.xml\n" +
 		"\n" +
 		"cat > solutionVersion.yaml <<EOL\n" +
-		solutionVersion + "\n" +
+		"ohp-applications:\n" +
+		solutionVersion +
 		"EOL\n" +
 		"\n" +
 		"cat > solution.properties <<EOL\n" +

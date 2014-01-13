@@ -38,11 +38,11 @@
 				<tr>
 					<td class="table-header" colspan="2">
 						Please fill in the following details.<br>
-						<h6>* Required fields</h6><br>
+						<h6>All fields are required</h6><br>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Virtual Environment*</td>
+					<td class="label">Virtual Environment</td>
 					<td class="radio-field" required>
 						<input type="radio" name="vmenv" id="vagrantenv" value="vagrantenv" checked> <a href="http://www.vagrantup.com" target="_blank">Provisioned Vagrant</a> on your local machine<br>
 						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> <a href="http://ocd-devstack/" target="_blank">DevStack</a> local server at Orion <span class="indev">IN DEV!</span><br>
@@ -51,19 +51,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="label">VM Name*</td>
+					<td class="label">VM Name</td>
 					<td class="input-field">
 						<input type="text" name="vmname" id="vmname" autocapitalize="off" value="portal-vm" required>
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Host Port*</td>
+					<td class="label">Host Port</td>
 					<td class="input-field">
 						<input type="number" id="hostport" value="19080">
 					</td>
 				</tr>
 				<tr>
-					<td class="label">Memory*</td>
+					<td class="label">Memory</td>
 					<td class="input-field">
 						<input type="number" id="memory" value="768"> MB
 					</td>
@@ -71,9 +71,8 @@
 				<tr id="products">
 					<td class="label">Products</td>
 					<td class="checkbox-field">
-						<textarea rows="4" id="Products" spellcheck="false">ohp_applications:
-  foundation: 7.2.0.beta
-  portal: 8.4.0.beta</textarea>
+						<textarea rows="3" id="Products" spellcheck="false">foundation: 7.2.0.beta
+portal: 8.4.0.beta</textarea>
 					</td>
 				</tr>
 				<tr id="puppetscripts">

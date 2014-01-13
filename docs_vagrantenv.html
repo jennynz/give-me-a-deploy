@@ -35,18 +35,25 @@
 
 			<h4 class="docsSub">tl;dr</h4>
 			<ul>
-				<li class="docsSub">Format of "Products" matches example, with a version of foundation included.</li>
-				<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories set up (all Dev and Testing should have this already):
+				<li class="docsSub"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
+				<li class="docsSub">You will need:
 					<ul>
-						<li class="docsSub"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
-						<li class="docsSub"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
-						<li class="docsSub"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
+						<li class="docsSub"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+						<li class="docsSub"><a href="http://www.vagrantup.com">Vagrant</a></li>
+						<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
+							<ul>
+								<li class="docsSub"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
+								<li class="docsSub"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
+								<li class="docsSub"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
+							</ul>
+						</li>
+						<li class="docsSub"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 					</ul>
 				</li>
-				</li>
+				<li class="docsSub">"Products" input format must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
+				<li class="docsSub">A foundation version must be specified.</li>
 				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
-				<li class="docsSub"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.
-				<li class="docsSub">All three scripts saved in the same directory.</li>
+				<li class="docsSub">All three scripts are saved in the same directory.</li>
 				<li class="docsSub"><span class="teal">$ boot.sh</span> to kick off the entire booting and installation process.</li>
 				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
 				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
@@ -70,46 +77,48 @@
 
 		<p>
 			For working provisioned Vagrant source code to be output by GMAV, you are required to enter a few details which allow you to customise your Vagrant VM. However, the form is set with <i>pre-selected defaults</i> so that if you were to simply click "Generate Source Code" without making any changes to the form upon the loading of the page, the generated source code will output a fully functional CentOS Vagrant with 768 MB of memory allocated, and provisioned with Portal 8.4 beta.<br>
-			* Required fields, cannot be left blank.<br><br>
+			All fields are required, none may be left blank.<br><br>
 		</p>
 
 		<table class="docs">
 			<tr>
-				<td class="docs-label">Virtual Environment*</td>
+				<td class="docs-label">Virtual Environment</td>
 				<td class="content">
 					"Provisioned Vagrant" checked. <i>Provisioned Vagrant</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">VM Name*</td>
+				<td class="docs-label">VM Name</td>
 				<td class="content">
 					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">Host Port*</td>
+				<td class="docs-label">Host Port</td>
 				<td class="content">
 					This only requires configuring if you have more than one VM running, where you would have to specify different host ports for each VM to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">Memory*</td>
+				<td class="docs-label">Memory</td>
 				<td class="content">
 					Customise the allocation of base memory to your VM. <i>768 MB</i>
 				</td>
 			</tr>
 			<tr>
-				<td class="docs-label">Products <span class="indev">IN DEV!</span></td>
+				<td class="docs-label">Products</td>
 				<td class="content">
-					The Orion Health application(s) you would like pre-installed on your Vagrant machine. The code that you write in here is directly written out to a solutionVersion.yaml file which is used to create a solution.zip for the OHP installation, so it is important that the formatting is exactly as seen in the example shown e.g. indentation is two spaces, each application on a new line with a space after the colon and the correct characterisation for version number.<br>
-					A version of <span class="teal">foundation</span> must be included in the products list for the installation to work.<br>
-					For a list of options, check out <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>. <i>Portal 8.4.0.beta with Foundation 7.2.0.beta</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">Puppet Scripts <span class="indev">IN DEV!</span></td>
-				<td class="content">
-					Point us at your Puppet scripts in Subversion, and we'll provision the VM with your own configuration of Portal. <i>http://subversion/src/Orchestral/Framework/PlatformBuild/trunk</i>
+					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number. A functioning version of Orion Health Foundation must be specified for the installer for work. <i>foundation 7.2.0.beta</i><br>
+					The code that you write in here is directly written out to several script files which str used to create a solution.zip for the OHP installation, hence the importance of formatting the text exactly as seen in the defaults shown.<br>
+					<table class="plain"><tr><td class="plain">
+					- Each application on a new line<br>
+					- Space after the colon<br>
+					- Version number string is exact<br>
+					</td><td class="plain">
+					e.g.<br>
+					applicationName: 1.2.3.beta<br>
+					<i>portal: 8.4.0.beta</i></td></tr></table>
+					For a list of options, please see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.
 				</td>
 			</tr>
 		</table>
