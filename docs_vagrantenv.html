@@ -35,13 +35,20 @@
 
 			<h4 class="docsSub">tl;dr</h4>
 			<ul>
-				<li class="docsSub">All three scripts in the same directory.</li>
-				<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairing</a> on Stash account and cloning permissions for <a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a>, <a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> and Subversion repository <a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> (all Dev and Testing should have this already).</li>
-				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
-				<li class="docsSub">Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.
 				<li class="docsSub"><span class="teal">$ boot.sh</span> to kick off the entire booting and installation process.</li>
 				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
 				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
+				<li class="docsSub">All three scripts saved in the same directory.</li>
+				<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairing</a> on Stash account and repository cloning permissions for:
+					<ul>
+						<li class="docsSub"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
+						<li class="docsSub"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
+						<li class="docsSub"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
+					</ul>
+				</li>
+				All Dev and Testing should have this already.</li>
+				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
+				<li class="docsSub"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.
 			</ul>
 		</div>
 
