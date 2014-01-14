@@ -39,37 +39,18 @@ $(document).ready(function(){
     $("#hiddenSaveInfo").hide();
   });
 
-  // Info on HTML5 compatibility for downloading files separately.
-  $("#showSaveInfo").mouseenter(function(){
-    $("#hiddenSaveInfo").show();
-  });
-
-  $("#showSaveInfo").click(function(){
-    $("#hiddenSaveInfo").hide();
-    $("#emptyInfo").hide();
-  });
-
   // Vagrantenv individual script info
 
-  $("#showrunInfo").mouseenter(function(){
-    $("#runInfo").show();
-  });
   $("#showrunInfo").click(function(){
-    $("#runInfo").hide();
+    $("#runInfo").toggle();
   });
 
-  $("#showvagrantfileInfo").mouseenter(function(){
-    $("#vagrantfileInfo").show();
-  });
   $("#showvagrantfileInfo").click(function(){
-    $("#vagrantfileInfo").hide();
+    $("#vagrantfileInfo").toggle();
   });
 
-  $("#showinstallInfo").mouseenter(function(){
-    $("#installInfo").show();
-  });
   $("#showinstallInfo").click(function(){
-    $("#installInfo").hide();
+    $("#installInfo").toggle();
   });
 
 });
