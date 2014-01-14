@@ -120,8 +120,6 @@ function GenerateVagrantInstall() {
 		else { application_versionsstr = application_versionsstr.concat(", '"); }
 	}
 
-	window.location = "#vagrantcode";
-
 	return (
 		"#!/bin/bash\n" +
 		"\n" + 

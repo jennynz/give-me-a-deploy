@@ -30,6 +30,9 @@ body {
     text-align: left;
 }
 
+#vagrantenvsection, #devstackenvsection, #hpcloudenvsection, #emptyenvsection {
+	display: none;
+}
 
 /* HEADER & TEXT STYLES */
 

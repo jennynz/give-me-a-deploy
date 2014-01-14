@@ -18,21 +18,38 @@ function GetCode()
 
 	// Generate complete script(s) and print to respective textboxes.
 	if (vmenv=="vagrantenv") {
+
 		PrintToTextbox(GenerateVagrantRun(), "vagrantenvrun");
 		PrintToTextbox(GenerateVagrantfile(vmname), "vagrantenvvagrantfile");
 		PrintToTextbox(GenerateVagrantInstall(), "vagrantenvinstall");
-		
+
+		$('#vagrantenvsection').show();
+      	$('#devstackenvsection, #hpcloudenvsection, #emptyenvsection').hide();
+      	window.location = "#vagrantcode";
+
 	} else if (vmenv=="devstackenv") {
-		window.location = "#devstackcode";
+		
 		PrintToTextbox(GenerateDevStackScripts(), vmenv);
 		
+		$('#devstackenvsection').show();
+      	$('#vagrantenvsection, #hpcloudenvsection, #emptyenvsection').hide();
+		window.location = "#devstackcode";
+		
 	} else if (vmenv=="hpcloudenv") {
-		window.location = "#hpcloudcode";
+		
 		PrintToTextbox(GenerateHPCloudScripts(), vmenv);
+
+		$('#hpcloudenvsection').show();
+      	$('#vagrantenvsection, #devstackenvsection, #emptyenvsection').hide();
+		window.location = "#hpcloudcode";
 		
 	} else if (vmenv=="emptyenv") {
-		window.location = "#emptycode";
+		
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
+
+		$('#emptyenvsection').show();
+      	$('#vagrantenvsection, #devstackenvsection, #hpcloudenvsection').hide();
+		window.location = "#emptycode";
 		
 	}
 

@@ -21,8 +21,28 @@ $(document).ready(function(){
         $("#products").show();
         $("#puppetscripts").show();
       }
+    });
+
+  // Show relevant sections for output source code
+
+  $('#submit').click(function(){
+    if ($('input:radio[name="vmenv"]').val() == 'devstackenv') {
+      $('#vagrantenvsection').hide();
+      $('#devstackenvsection').show();
+      $('#hpcloudenvsection').hide();
+      $('#emptyenvsection').hide();
+    } else if ($('input:radio[name="vmenv"]').val() == 'hpcloudenv') {
+      $('#vagrantenvsection').hide();
+      $('#devstackenvsection').hide();
+      $('#hpcloudenvsection').show();
+      $('#emptyenvsection').hide();;
+    } else if ($('input:radio[name="vmenv"]').val() == 'emptyenv') {
+      $('#vagrantenvsection').hide();
+      $('#devstackenvsection').hide();
+      $('#hpcloudenvsection').hide();
+      $('#emptyenvsection').show();
     }
-  );
+  });
 
   // Subheader info for each environment's script output
 
