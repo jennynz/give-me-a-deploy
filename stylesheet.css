@@ -68,6 +68,11 @@ h2.docs, h2.about {
 	text-align: left;
 }
 
+h2#vagrantsubheader {
+	margin-top: -0.8em;
+	margin-bottom: 0.2em;
+}
+
 h3.docs {
 	font-size: 1em;
 	text-align: left;
@@ -103,7 +108,6 @@ h3 {
 	font-size: 0.9em;
 	padding-top: 1em;
 	padding-bottom: 0.5em;
-	margin: 0px;
 }
 
 h6 {
@@ -169,17 +173,26 @@ a:hover {
 
 a:active {color: #008080;}
 
-a.headerlink {color: #008080; border-bottom: dotted 2px #bbb;}
-a.headerlink:hover {color: #FF7700; border-bottom: dotted 2px #ff7700;}
-a.headerlink:active {color: #999; border-bottom: dotted 2px #999;}
+a.downloadlink {
+	font-family: Arial, sans-serif;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #008080;
+	border-bottom: dotted 2px #bbb;
+}
+a.downloadlink:hover {color: #FF7700; border-bottom: dotted 2px #ff7700;}
+a.downloadlink:active {color: #999; border-bottom: dotted 2px #999;}
 
 a.anchor {color: #777;}
 a.current {color: #008080; font-style: none; font-weight: bold;}
 
-#showbootInfo, #showvagrantfileInfo, #showinstallInfo {
+a.scriptlink {
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
 	border-bottom: none;
+	color: #008080;
 }
+a.scriptlink:hover {color: #FF7700;}
+a.scriptlink:active {color: #999;}
 
 i {color: #999;}
 
@@ -293,8 +306,6 @@ div.hiddenInfo {
 	text-align: center
 }
 
-
-
 div.docsSub {
 	color: #444;
 	font-size: 0.8em;
@@ -373,7 +384,7 @@ textarea.source:focus::-webkit-scrollbar-thumb {
 	background-color: #FF7700;
 }
 
-textarea#vagrantenvbootsource, #vagrantenvvagrantfilesource, #vagrantenvinstallsource {
+textarea#vagrantenvrunsource, #vagrantenvvagrantfilesource, #vagrantenvinstallsource {
 	height: 150px;
 	margin-top: 0px;
 }

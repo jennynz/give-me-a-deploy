@@ -114,22 +114,23 @@ portal: 8.4.0.beta</textarea>
 	<a class="anchor" name="vagrantcode"><br></a>
 	<h1>Your provisioned <div class="orange">Vagrant</div> is ready</h1>
 
-	<h2>Simply <a id="blob" class="headerlink" onclick="DownloadZip()">save</a> these three scripts in the same directory,<br>
-	then run <span class="teal">run.sh</span></a>.</h2>
+	<h2 id="vagrantsubheader"><span class="teal">Save</span> these scripts to the <span class="teal">same directory</span>, <span class="teal">$ chmod +x run.sh</span>, then <span class="teal">$ run.sh</span>.</h2>
+
+	<center><a id="blob" class="downloadlink" onclick="DownloadZip()">Download all three scripts in a zip</a><br><br></center>
 
 	<div class="index-page-wrap">
 
-		<a class="headerlink" id="showrunInfo" onclick="DownloadSourceCode('vagrantenvrunsource', 'run.sh')">&#8595; run.sh</a>
+		<a class="scriptlink" id="showrunInfo" onclick="DownloadSourceCode('vagrantenvrunsource', 'run.sh')">&#8595; run.sh</a>
 		<span class="hiddenInfoSub" id="runInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of runing and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
 		</span>
 		<textarea rows="40" name="vagrantenvrunsource" class="source" id="vagrantenvrunsource" onClick="SelectAll('vagrantenvrunsource');" spellcheck="false"></textarea><br><br>
 		
-		<a class="headerlink" id="showvagrantfileInfo" onclick="DownloadSourceCode('vagrantenvvagrantfilesource', 'Vagrantfile')">&#8595; Vagrantfile</a>
+		<a class="scriptlink" id="showvagrantfileInfo" onclick="DownloadSourceCode('vagrantenvvagrantfilesource', 'Vagrantfile')">&#8595; Vagrantfile</a>
 		<span class="hiddenInfoSub" id="vagrantfileInfo">&nbsp;is the configuration file which allows run.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
 		</span>
 		<textarea rows="40" name="vagrantenvvagrantfilesource" class="source" id="vagrantenvvagrantfilesource" onClick="SelectAll('vagrantenvvagrantfilesource');" spellcheck="false"></textarea><br><br>
 		
-		<a class="headerlink" id="showinstallInfo" onclick="DownloadSourceCode('vagrantenvinstallsource', 'install.sh')">&#8595; install.sh</a>
+		<a class="scriptlink" id="showinstallInfo" onclick="DownloadSourceCode('vagrantenvinstallsource', 'install.sh')">&#8595; install.sh</a>
 		<span class="hiddenInfoSub" id="installInfo">&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
 		Once Platform and Portal have been installed and started, you can access them here:<br>
 		<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>

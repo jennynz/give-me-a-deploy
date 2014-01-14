@@ -8,8 +8,6 @@
 sudo service iptables stop
 
 # Set up variables
-portalversion='8.4.0.beta';
-foundationversion='7.2.0.beta';
 installer='platform-linux-x64.sh';
 base_url='/vagrant';
 
@@ -36,7 +34,7 @@ wget http://ivy-rep-ro/opensource/com.jcraft.jsch/0.1.50/jars/com.jcraft.jsch-no
 sed -i -e '17s/.*/\t\t\t<taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask" classpath="${common.build.dir}\/anttasks\/ant-junit.jar"\/>/' ./modules/PlatformBuild/build-tasks.xml
 
 # Download OHP provisioning installer from Ivy.
-wget http://ivy-rep-ro/orchestral/provisioning-installer/${foundationversion}/installers/${installer} --user=ivy-http --password=YouSayHello
+wget http://ivy-rep-ro/orchestral/provisioning-installer/7.2.0.beta/installers/${installer} --user=ivy-http --password=YouSayHello
 
 
 # Solution zip
@@ -47,8 +45,8 @@ cd modules/solution
 
 cat > solutionVersion.yaml <<EOL
 ohp_applications:
-  foundation: ${foundationversion}
-  portal: ${portalversion}
+  foundation: 7.2.0.beta
+  portal: 8.4.0.beta
 EOL
 
 cat > solution.properties <<EOL
@@ -88,8 +86,8 @@ node default {
     node_type => 'frontend',
     group_name => 'my_group',
     group_mode => 'standalone',
-    applications => ['portal', 'foundation'],
-    application_versions => { 'portal' => '${portalversion}', 'foundation' => '${foundationversion}' },
+    applications => ['foundation', 'portal'],
+    application_versions => { 'foundation' => '7.2.0.beta', 'portal' => '8.4.0.beta' },
     install_dir => '/opt/orionhealth',
     admin_password => 'b',
   }
@@ -196,29 +194,13 @@ yum install puppet -y
 # Install Puppet standard library for junit dependencies.
 sudo puppet module install --force puppetlabs/stdlib --modulepath=/vagrant/modules/puppet-ohp
 
-# Set the class path for java.
-sudo /opt/orionhealth/jre/bin/java -cp ohp-groovy-configure-lib/
-
-# Run Puppet installation of OHP, specifying module paths and manifest file.
-sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp
-
-# Copy across the solution.zip to the installation directory.
-sudo cp /vagrant/solution.zip /opt/orionhealth/solution.zip
-
 # Retrieve ant dependencies in the puppet-ohp directory which contains the build.xml.
 cd modules/puppet-ohp
 ant retrieve.groovy.dependencies
 
-# Change to orion user (this installer will not run as the root user on UNIX systems. Create a service user and run the installer as that user instead, execute platform installer
-chmod +x /vagrant/platform-linux-x64.sh
-sudo chown orion /vagrant/platform-linux-x64.sh
-sudo chown orion /opt/orionhealth/response.varfile
-su orion << 'EOF'
-/opt/orionhealth/platform-linux-x64.sh -q -varfile /opt/orionhealth/response.varfile
-EOF
-
-# Start applications
-/opt/orionhealth/bin/server.sh start
+# Run Puppet installation of OHP, specifying module paths and manifest file.
+cd ${base_url}
+sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp
 
 # Check status to verify successful installation
 /opt/orionhealth/bin/server.sh status

@@ -167,7 +167,6 @@ function GenerateVagrantInstall() {
 		"\n" +
 		"# Create and write the files required for a solution package\n" +
 		"cd modules/solution\n" +
-		"touch solutionVersion.yaml solution.properties version.properties build.xml\n" +
 		"\n" +
 		"cat > solutionVersion.yaml <<EOL\n" +
 		"ohp_applications:\n" +
@@ -203,7 +202,6 @@ function GenerateVagrantInstall() {
 		"cd ${base_url}\n" +
 		"\n" +
 		"# Write site.pp file in /manifests and environmental config file in /frontend\n" +
-		"touch manifests/site.pp\n" +
 		"cat > manifests/site.pp <<EOL\n" +
 		"node default {\n" +
 		"  class { 'ohp':\n" +
@@ -220,7 +218,6 @@ function GenerateVagrantInstall() {
 		"}\n" +
 		"EOL\n" +
 		"\n" +
-		"touch frontend/EnvironmentalConfig.xml.erb\n" +
 		"cat > frontend/EnvironmentalConfig.xml.erb <<EOL\n" +
 		"<?xml version='1.0' encoding='UTF-8'?><com.orchestral.core.configuration.api_6_0.ConfigurationService xmlns='http://www.orionhealth.com/configuration' version='3' type='SNAPSHOT' label='Environmental Configuration'>\n" +
 		"  <!-- NB: This is a fixture used for the system tests for the OHP class, this file is not used to deploy any real solution -->\n" +
@@ -321,29 +318,13 @@ function GenerateVagrantInstall() {
 		"# Install Puppet standard library for junit dependencies.\n" +
 		"sudo puppet module install --force puppetlabs/stdlib --modulepath=/vagrant/modules/puppet-ohp\n" +
 		"\n" +
-		"# Set the class path for java.\n" +
-		"sudo /opt/orionhealth/jre/bin/java -cp ohp-groovy-configure-lib/\n" +
-		"\n" +
-		"# Run Puppet installation of OHP, specifying module paths and manifest file.\n" +
-		"sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp\n" +
-		"\n" +
-		"# Copy across the solution.zip to the installation directory.\n" +
-		"sudo cp /vagrant/solution.zip /opt/orionhealth/solution.zip\n" +
-		"\n" +
 		"# Retrieve ant dependencies in the puppet-ohp directory which contains the build.xml.\n" +
 		"cd modules/puppet-ohp\n" +
 		"ant retrieve.groovy.dependencies\n" +
 		"\n" +
-		"# Change to orion user, execute platform installer\n" +
-		"chmod +x /vagrant/platform-linux-x64.sh\n" +
-		"sudo chown orion /vagrant/platform-linux-x64.sh\n" +
-		"sudo chown orion /opt/orionhealth/response.varfile\n" +
-		"su orion << 'EOF'\n" +
-		"/opt/orionhealth/${installer} -q -varfile /opt/orionhealth/response.varfile\n" +
-		"EOF\n" +
-		"\n" +
-		"# Start applications\n" +
-		"/opt/orionhealth/bin/server.sh start\n" +
+		"# Run Puppet installation of OHP, specifying module paths and manifest file.\n" +
+		"cd ${base_url}\n" +
+		"sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp\n" +
 		"\n" +
 		"# Check status to verify successful installation\n" +
 		"/opt/orionhealth/bin/server.sh status"

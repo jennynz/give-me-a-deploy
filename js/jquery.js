@@ -51,11 +51,11 @@ $(document).ready(function(){
 
   // Vagrantenv individual script info
 
-  $("#showbootInfo").mouseenter(function(){
-    $("#bootInfo").show();
+  $("#showrunInfo").mouseenter(function(){
+    $("#runInfo").show();
   });
-  $("#showbootInfo").click(function(){
-    $("#bootInfo").hide();
+  $("#showrunInfo").click(function(){
+    $("#runInfo").hide();
   });
 
   $("#showvagrantfileInfo").mouseenter(function(){
