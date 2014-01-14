@@ -26,10 +26,6 @@ $(document).ready(function(){
 
   // Subheader info for each environment's script output
 
-  $("#showvagrantInfo").click(function(){
-    $("#vagrantInfo").toggle();
-  });
-
   $("#showdevstackInfo").click(function(){
     $("#devstackInfo").toggle();
   });
@@ -74,25 +70,6 @@ $(document).ready(function(){
   });
   $("#showinstallInfo").click(function(){
     $("#installInfo").hide();
-  });
-
-  // Show sections of documentation for different environments
-  // NOT CURRENTLY USED
-
-  $("#showvagrantdocs").click(function(){
-    $("vagrantdocs").toggle();
-  });
-
-  $("#devstackdocs").click(function(){
-    $("#devstackdocs").toggle();
-  });
-
-  $("#showhpclouddocs").click(function(){
-    $("#hpclouddocs").toggle();
-  });
-
-  $("#showemptydocs").click(function(){
-    $("#emptydocs").toggle();
   });
 
 });

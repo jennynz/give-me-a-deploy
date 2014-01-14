@@ -10,10 +10,7 @@ function DownloadZip() {
   zip.file("Vagrantfile", vagrantfile);
   zip.file("install.sh", install);
 
-  // data URI
-  document.getElementById('dataURI').href = "data:application/zip;base64," + zip.generate();
-
-  // Blob
+  // Blob for Chrome and Firefox v.20+
   var blobLink = document.getElementById('blob');
   
   try {
@@ -26,21 +23,11 @@ function DownloadZip() {
 
 
 
-// Download scripts as single files
+// Download scripts as single files (requires HTML5 compatibility)
 function DownloadSourceCode(sourcelocation, filename) {
-
 	var content = document.getElementById(sourcelocation).value;
-
-	// If HTML5 compatible, do this.
-
-		var pom = document.createElement('a');
-		pom.setAttribute('href', 'data:application/plain;charset=utf-8,' + encodeURIComponent(content));
-		pom.setAttribute('download', filename);
-		pom.click();
-
-	// Otherwise use data:URI which downloads it to a file called "download" (can't specify file name).
-
-		// uriContent = "data:application/octet-stream," + encodeURIComponent(content);
-		// newWindow = window.open(uriContent, 'neuesDokument');
-
+	var pom = document.createElement('a');
+	pom.setAttribute('href', 'data:application/plain;charset=utf-8,' + encodeURIComponent(content));
+	pom.setAttribute('download', filename);
+	pom.click();
 }
