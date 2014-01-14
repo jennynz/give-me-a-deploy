@@ -1,12 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-	Downloading Zip Files on the client side
-	========================================
-
-	http://stuk.github.io/jszip/
-
--->
 <head>
 	<script src="js/script.js"></script>
 	<script src="js/generate-vagrant-scripts.js"></script>
@@ -29,7 +22,7 @@
 	
 	<h1><div class="orange">Instant VMs</div> at your fingertips</h1>
 
-	<h2>Provide us with a few details and we'll give you some <div class="teal">scripts</div><br>which boot up your <div class="teal">customised Vagrant</div> machine.</h2>
+	<h2>Provide us with a few details and we'll give you some <div class="teal">scripts</div><br>which run up your <div class="teal">customised Vagrant</div> machine.</h2>
 
 	<div class="index-page-wrap">
 
@@ -122,17 +115,17 @@ portal: 8.4.0.beta</textarea>
 	<h1>Your provisioned <div class="orange">Vagrant</div> is ready</h1>
 
 	<h2>Simply <a id="blob" class="headerlink" onclick="DownloadZip()">save</a> these three scripts in the same directory,<br>
-	then run <span class="teal">boot.sh</span></a>.</h2>
+	then run <span class="teal">run.sh</span></a>.</h2>
 
 	<div class="index-page-wrap">
 
-		<a class="headerlink" id="showbootInfo" onclick="DownloadSourceCode('vagrantenvbootsource', 'boot.sh')">&#8595; boot.sh</a>
-		<span class="hiddenInfoSub" id="bootInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of booting and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
+		<a class="headerlink" id="showrunInfo" onclick="DownloadSourceCode('vagrantenvrunsource', 'run.sh')">&#8595; run.sh</a>
+		<span class="hiddenInfoSub" id="runInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of runing and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
 		</span>
-		<textarea rows="40" name="vagrantenvbootsource" class="source" id="vagrantenvbootsource" onClick="SelectAll('vagrantenvbootsource');" spellcheck="false"></textarea><br><br>
+		<textarea rows="40" name="vagrantenvrunsource" class="source" id="vagrantenvrunsource" onClick="SelectAll('vagrantenvrunsource');" spellcheck="false"></textarea><br><br>
 		
 		<a class="headerlink" id="showvagrantfileInfo" onclick="DownloadSourceCode('vagrantenvvagrantfilesource', 'Vagrantfile')">&#8595; Vagrantfile</a>
-		<span class="hiddenInfoSub" id="vagrantfileInfo">&nbsp;is the configuration file which allows boot.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
+		<span class="hiddenInfoSub" id="vagrantfileInfo">&nbsp;is the configuration file which allows run.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
 		</span>
 		<textarea rows="40" name="vagrantenvvagrantfilesource" class="source" id="vagrantenvvagrantfilesource" onClick="SelectAll('vagrantenvvagrantfilesource');" spellcheck="false"></textarea><br><br>
 		

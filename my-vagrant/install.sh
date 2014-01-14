@@ -44,14 +44,11 @@ wget http://ivy-rep-ro/orchestral/provisioning-installer/${foundationversion}/in
 
 # Create and write the files required for a solution package
 cd modules/solution
-touch solutionVersion.yaml solution.properties version.properties build.xml
 
 cat > solutionVersion.yaml <<EOL
 ohp_applications:
   foundation: ${foundationversion}
   portal: ${portalversion}
-puppet_modules:
-  puppet-solution_test: 0.1.0.beta
 EOL
 
 cat > solution.properties <<EOL
@@ -83,7 +80,6 @@ sudo mv ${base_url}/modules/solution/solution.zip ${base_url}
 cd ${base_url}
 
 # Write site.pp file in /manifests and environmental config file in /frontend
-touch manifests/site.pp
 cat > manifests/site.pp <<EOL
 node default {
   class { 'ohp':
@@ -100,7 +96,6 @@ node default {
 }
 EOL
 
-touch frontend/EnvironmentalConfig.xml.erb
 cat > frontend/EnvironmentalConfig.xml.erb <<EOL
 <?xml version='1.0' encoding='UTF-8'?><com.orchestral.core.configuration.api_6_0.ConfigurationService xmlns='http://www.orionhealth.com/configuration' version='3' type='SNAPSHOT' label='Environmental Configuration'>
   <!-- NB: This is a fixture used for the system tests for the OHP class, this file is not used to deploy any real solution -->

@@ -1,4 +1,4 @@
-function GenerateVagrantBoot() {
+function GenerateVagrantRun() {
 	return (
 		"#!/bin/bash\n\n" +
 

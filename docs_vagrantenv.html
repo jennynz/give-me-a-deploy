@@ -31,7 +31,7 @@
 		</p>
 
 		<div class="docsSub">
-			The "Provisioned Vagrant" option on Give-Me-A-Vagrant gives you three scripts which work together to boot up your VM and install OH applications on it. All you need to do is call <b>boot.sh</b>, and it'll do the rest itself automatically.
+			The "Provisioned Vagrant" option on Give-Me-A-Vagrant gives you three scripts which work together to boot up your VM and install OH applications on it. All you need to do is call <b>run.sh</b>, and it'll do the rest itself automatically.
 
 			<h4 class="docsSub">tl;dr</h4>
 			<ul>
@@ -54,7 +54,7 @@
 				<li class="docsSub">A foundation version must be specified.</li>
 				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
 				<li class="docsSub">All three scripts are saved in the same directory.</li>
-				<li class="docsSub"><span class="teal">$ boot.sh</span> to kick off the entire booting and installation process.</li>
+				<li class="docsSub"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.</li>
 				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
 				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
 				
@@ -127,16 +127,16 @@
 
 		<div class="code">
 			$ cd to/your/script/directory<br>
-			$ boot.sh<br>
+			$ run.sh<br>
 			...<br>
 			$ vagrant destroy -f
 		</div>
 
 		<p>
-			Firstly, ensure that the three generated scripts (boot.sh, Vagrantfile, install.sh) are all located in the same directory.<br>
-			When you run the shell script, boot.sh, it will clone the required git repositories into the correct directories it creates, call the Vagrantfile in the same directory with "vagrant up" to boot up the VM, which will in turn call its shell provisioning script, install.sh, which completed the installation of the Orion Health applications.<br><br>	
+			Firstly, ensure that the three generated scripts (run.sh, Vagrantfile, install.sh) are all located in the same directory.<br>
+			When you run the shell script, run.sh, it will clone the required git repositories into the correct directories it creates, call the Vagrantfile in the same directory with "vagrant up" to boot up the VM, which will in turn call its shell provisioning script, install.sh, which completed the installation of the Orion Health applications.<br><br>	
 
-			To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by boot.sh or install.sh will still exist, so you may need to delete these manually.
+			To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by run.sh or install.sh will still exist, so you may need to delete these manually.
 		</p><br>
 
 		<h4 class="docs">Installation System Requirements</h4>
@@ -154,7 +154,7 @@
 			<li><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> on Subversion (SVN supports credential caching)</li>
 		</ul>
 		
-		<p>You do not have to clone these repositories prior to boot.sh yourself; the script will do it for you. If your Stash key pairs and SVN credentials are set up, the entire process after boot.sh should require no further action from teh
+		<p>You do not have to clone these repositories prior to run.sh yourself; the script will do it for you. If your Stash key pairs and SVN credentials are set up, the entire process after run.sh should require no further action from teh
 		</p>
 
 		<a name="manualAccess"><h3 class="docs">Manual access to your VM</h3></a>
@@ -213,7 +213,7 @@
 		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p><br>
 
 		<h3 class="docs"><a name="faq4" class="anchor">My vagrant won't boot due to port collisions.</a></h3>
-		<p>The vagrant VM is configured with hard-coded port forwarding, and so you cannot have two vagrants from this app running on your machine at the same time currently. Either destroy any existing VMs before running boot.sh, or change the port numbers in Vagrantfile yourself from "19080" to a port of your choice.</p><br>
+		<p>The vagrant VM is configured with hard-coded port forwarding, and so you cannot have two vagrants from this app running on your machine at the same time currently. Either destroy any existing VMs before running run.sh, or change the port numbers in Vagrantfile yourself from "19080" to a port of your choice.</p><br>
 
 		<a name="help"><h2 class="docs">Help</h2></a>
 

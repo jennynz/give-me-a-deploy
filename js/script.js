@@ -18,7 +18,7 @@ function GetCode()
 
 	// Generate complete script(s) and print to respective textboxes.
 	if (vmenv=="vagrantenv") {
-		PrintToTextbox(GenerateVagrantBoot(), "vagrantenvboot");
+		PrintToTextbox(GenerateVagrantRun(), "vagrantenvrun");
 		PrintToTextbox(GenerateVagrantfile(vmname), "vagrantenvvagrantfile");
 		PrintToTextbox(GenerateVagrantInstall(), "vagrantenvinstall");
 		

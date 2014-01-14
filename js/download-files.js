@@ -1,12 +1,12 @@
 // Download Vagrant in a zip
 function DownloadZip() {
   
-  var boot = document.getElementById("vagrantenvbootsource").value;
+  var run = document.getElementById("vagrantenvrunsource").value;
   var vagrantfile = document.getElementById("vagrantenvvagrantfilesource").value;
   var install = document.getElementById("vagrantenvinstallsource").value;
 
   var zip = new JSZip();
-  zip.file("boot.sh", boot);
+  zip.file("run.sh", run);
   zip.file("Vagrantfile", vagrantfile);
   zip.file("install.sh", install);
 
