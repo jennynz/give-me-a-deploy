@@ -85,8 +85,9 @@
 
 		<ul>
 			<li><a href="#faq1">Booting is taking ages.</a></li>
-			<li><a href="#faq2">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></li>
-			<li><a href="#faq3">What are the requirements for the host name?</a></li>
+			<li><a href="#faq2">Host Port: What is "Host Port"? / My vagrant won't boot due to port collisions.</a></li>
+			<li><a href="#faq3">Host name: What are the requirements for the host name?</a></li>
+			<li><a href="#faq4">Memory: What should the default memory be set to?</a></li>
 		</ul>
 
 		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
@@ -94,12 +95,25 @@
 
 		<h3 class="docs"><a name="faq2" class="anchor">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></h3>
 		<p>You cannot have more than one booted VM using the same host port on your machine. Fortunately, you can easily configure port forwarding between your host and guest machines in the Vagrantfile. Using Give-Me-A-Vagrant, enter a port which you do not already have forwarded to an existing VM in the field "Host Port", and you will be able to spin up multiple VMs on your one physical machine.<br>
-		<i>E.g. Your first VM may use the host port 19080, while the second uses 19081, the third 19082 etc.</i></p>
+		<i>E.g. Your first VM may use the host port 19080, while the second uses 19081, the third 19082 etc.</i><br><br>
+
+		To view all the VMs you have going, you can open Oracle VM VirtualBox Manager which should come with VirtualBox. From here, you can check port forwarding by right-clicking any running VMs, going to Settings... > Network > Port Forwarding.
+		</p>
 
 		<h3 class="docs"><a name="faq3" class="anchor">What are the requirements for the host name?</a></h3>
 		<p>
 			Your host name should only contain letters, numbers, hyphens or dots (full stops). It cannot start with a hyphen or dot.<br>
-			You are not required to enter a host name. If you were to leave the field blank, the Vagrantfile will omit the hostname configuration, and Vagrant will not manage the hostname.</p>
+			You are not required to enter a host name. If you were to leave the field blank, the Vagrantfile will omit the hostname configuration, and Vagrant will not manage the hostname.
+		</p>
+
+		<h3 class="docs"><a name="faq4" class="anchor">Memory: What should the default memory be set to?</a></h3>
+		<p>
+			Give-Me-A-Vagrant allows you to easily set your VM's system base memory. The default is set to 786 MB, but this may be changed to any number you wish.
+		</p>
+
+		<div class="quote">
+			"It would be a poor user experience (and mildly shocking) if a vagrant up from a base box instantly required many gigabytes of RAM. Instead, choose a value such as 512MB, which is usually enough to play around and do interesting things with a Vagrant machine, but can easily be increased when needed." <a href="http://docs.vagrantup.com" target="_blank">- Vagrant Docs</a>
+		</div>
 
 		<a name="help"><h2 class="docs">Help</h2></a>
 

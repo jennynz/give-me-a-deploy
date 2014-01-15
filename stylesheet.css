@@ -332,7 +332,6 @@ div.docsSub {
 }
 
 div.code {
-	background-color: #333;
 	background-color: rgb(30, 30, 30);
 	border-radius: 10px;
 	margin: 20px;
@@ -340,6 +339,18 @@ div.code {
 	color: rgb(0, 200, 200);
 	font-size: 0.8em;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
+}
+
+div.quote {
+	background: #ccc;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 15px 20px 15px 20px;
+	color: rgb(0, 100, 100);
+	font-size: 0.8em;
+	font-style: italic;
+	line-height: 150%;
+	text-align: center;
 }
 
 span.codeComment { color: #ccc; }
