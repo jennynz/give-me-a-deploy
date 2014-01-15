@@ -1,0 +1,81 @@
+<html>
+<head>
+<style>
+body {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-family: Gill Sans MT, arial, verdana, sans-serif;
+	font-size: 0.8em;
+}
+</style>
+</head>
+<body>
+	<h1>Give-Me-A-Vagrant Lightning Talk</h1>
+	<h3>Intern Project Demos, 11:30am @ Ernest Rutherford, Auckland Office, Wednesday 15 January 2014</h3>
+
+	<a href="http://slid.es/jennysahng/give-me-a-vagrant">Presentation slides</a>
+
+	<h2>Give-Me-A-Vagrant</h2>
+	<p>
+		Hello everyone, my name is Jenny Sahng and I'm one of the interns in the Orion Continuous Delivery team this summer. Over the last few weeks, I have been build this tool caled Give-Me-A-Vagrant which aims to make Virtual Machines (aka VMs) as quick and easy as possible for developers and testers at Orion Health.
+	</p>
+
+	<h2>Ideal for Software QA</h2>
+	<p>
+		VMs are ideal for software quality assurance, as they can provide a clean and consistent test environment.
+		<ol>
+			<li><b>Isolation</b>: VMs can <b>isolate</b> applications from one another, and from programmes on your daily OS to <b>minimise interference</b> with tests.</li>
+			<li><b>Consolidation</b>: They are much <b>quicker to boot</b>, <b>cheaper to maintain</b> than physical machines, and <b>multiple VMs</b> can be run on one physical machine.</li>
+			<li><b>Ease of testing</b>: VMs are <b>easily configurable</b> to fit your needs, and many virtualisation packages have features designed for testing like <b>snap shots</b>.</li>
+			<li><b>Mobility</b>: They are also able to be moved around and copied across physical machines as single files, making them flexible and easy to deploy.<br>
+			<a href="http://www.optimusqa.com/2013/02/20/benefits-virtual-machines-sqa/">Benefits of Using Virtual Machines for SQA</a>
+			</li>
+		</ol>
+		As you can see, smart utilisation of VMs can maximise efficiency and productivity.
+	</p>
+
+	<h2>Vagrant & Puppet</h2>
+	<a href="https://jtreminio.com/2013/06/make_vagrant_up_yours/">Make '$ vagrant up' yours</a><br>
+	<a href="http://blogs/richardpa/2014/01/14/introducing-puppet/">Puppet at Orion</a>
+	<p>
+		Vagrant is the command line VM manager. It is used by Give-Me-A-Vagrant because it makes it very simple to boot up and destroy exactly the kind of guest machine you want in a disposable environment.<br><br>
+
+		One of Vagrant's built-in automation tools is Puppet, which is used by the Continuous Delivery team to automate the installation and configuration of our Orion Health products. Give-Me-A-Vagrant uses the same OHP Puppet module in Stash that's used in production. This ensures consistency between development, testing and production environments.
+	</p>
+
+	<h2>How It Works</h2>
+	<p>
+		This web-based application is essentially a Javascript source code generator. It outputs code that you run to boot a VM that is already provisioned with Orion Health products. This tool aims to make VMs an increasingly widespread option for devs and testers by being fast, hands-free and user friendly.
+	</p>
+
+	<h3>Homepage</h3>
+	<p>
+		Here is the landing page when you arrive at Give-Me-A-Vagrant. As you can see, there are a few input fields for you to customise your VM. The default values there are fine for a typical setup, so we can just click Generate Source Code.
+	</p>
+
+	<h3>Source Code Generated</h3>
+	<p>
+		You're instantly taken to these three generated scripts which already have your customisations. Download them as zip, or just copy and paste.
+	</p>
+
+	<h3>Command line</h3>
+	<p>
+		Once they're in the same directory, make run.sh executable, and then run it. From here, you're hands are free. You can see here that it's started cloning some Git repositories from Stash. It'll carry you through the entire process from booting up your customised Vagrant, to downloading and writing out files, to Puppet installing the specified Orion Health products. As you can imagine, this is a much faster and more reliable process than doing all these steps manually. There's much less risk of missing a step, and it's automatic.
+	</p>
+
+	<h3>Platform/Portal</h3>
+	<p>
+		15-30 minutes later, there's Platform and Portal running on your browsers.<br>
+		Improvements to the current Give-Me-A-Vagrant app within the scope of my intern project may include functions to validate form entries, and tests on a wider range of products, as at the moment it has only been tested with Platform and Portal 8.4.0.beta.
+	</p>
+
+	<h3>Give-Me-A-Deploy?</h3>
+	<p>
+		While Give-Me-A-Vagrant is ideal for spinning up VMs locally using source code, it doesn't quite have the functionality to deploy a VM straight from the GUI. A possible continuation of this app may be to enable the interface to automatically spin up provisioned VMs in a cloud server (like HP Cloud). This would allow you to focus on your own code, without worrying about problems with the server.<br>
+		Making these on-demand VMs short-lived, meaning that they automatically expire after 48 hours, would eliminate idle VMs which waste resources, while continuing to provide consistent, fast and flexible environments for developers and testers.
+	</p>
+
+</body>
+</html>

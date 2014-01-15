@@ -18,35 +18,27 @@ function GetCode()
 
 	// Generate complete script(s) and print to respective textboxes.
 	if (vmenv=="vagrantenv") {
-
 		PrintToTextbox(GenerateVagrantRun(), "vagrantenvrun");
 		PrintToTextbox(GenerateVagrantfile(vmname), "vagrantenvvagrantfile");
 		PrintToTextbox(GenerateVagrantInstall(), "vagrantenvinstall");
-
 		$('#vagrantenvsection').show();
       	$('#devstackenvsection, #hpcloudenvsection, #emptyenvsection').hide();
       	window.location = "#vagrantcode";
 
 	} else if (vmenv=="devstackenv") {
-		
 		PrintToTextbox(GenerateDevStackScripts(), vmenv);
-		
 		$('#devstackenvsection').show();
       	$('#vagrantenvsection, #hpcloudenvsection, #emptyenvsection').hide();
 		window.location = "#devstackcode";
 		
 	} else if (vmenv=="hpcloudenv") {
-		
 		PrintToTextbox(GenerateHPCloudScripts(), vmenv);
-
 		$('#hpcloudenvsection').show();
       	$('#vagrantenvsection, #devstackenvsection, #emptyenvsection').hide();
 		window.location = "#hpcloudcode";
 		
 	} else if (vmenv=="emptyenv") {
-		
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
-
 		$('#emptyenvsection').show();
       	$('#vagrantenvsection, #devstackenvsection, #hpcloudenvsection').hide();
 		window.location = "#emptycode";
@@ -64,7 +56,6 @@ function ValidateVMName() {
 	} else {
 
 		var nameStart = vmname[0].charCodeAt();	// Convert the first character into its ASCII code to check that it is valid.
-
 		if ((nameStart == 45) || (nameStart == 46)) {
 			alert("The hostname cannot start with a hyphen or dot.");
 			document.getElementById("vmdetails").reset();
@@ -74,13 +65,12 @@ function ValidateVMName() {
 		for (var i = 0; i < vmname.length; i++) {	// Check that each character in the name is valid.
 			var nameCheck = vmname[i].charCodeAt();
 			if (!(((nameCheck > 64) && (nameCheck < 91)) || ((nameCheck > 96) && (nameCheck < 123)) || ((nameCheck > 47) && (nameCheck < 58)) || ((nameCheck == 45) || (nameCheck == 46))  )) {
-				alert("The hostname for the VM should only contain letters, numbers, hyphens or dots.\n It cannot start with a hyphen or dot.\n Please try again.");
+				alert("The hostname should only contain letters, numbers, hyphens or dots.\n It cannot start with a hyphen or dot.\n Please enter a valid hostname.");
 				document.getElementById("vmdetails").reset();
 				return;
 			}
 		}
 	}
-
 	return vmname;
 }
 

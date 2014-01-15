@@ -20,3 +20,12 @@ function DownloadZip() {
     blobLink.innerHTML += " (not supported on this browser)";
   }
 };
+
+// Download scripts as single files (requires HTML5 compatibility)
+function DownloadSourceCode(sourcelocation, filename) {
+  var content = document.getElementById(sourcelocation).value;
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:application/plain;charset=utf-8,' + encodeURIComponent(content));
+  pom.setAttribute('download', filename);
+  pom.click();
+};

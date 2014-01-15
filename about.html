@@ -16,13 +16,18 @@
 		<h1 class="about">About <div class="orange">Give</div>-<div class="orange">Me</div>-<div class="orange">A</div>-<div class="orange">Vagrant</div></h1>
 
 		<p>
-			Give-Me-A-Vagrant is a GUI configurator for the Vagrant automation tool. It provisions a VM with an operating system of your choice, and is able to also preload it with Orion Health products using Puppet.<br><br>
+			Give-Me-A-Vagrant web-based GUI application that generates scripts which automatically create, configure and provision Virtual Machines. It uses the <a href="http://www.vagrantup.com">Vagrant</a> command line VM manager with its built-in <a href="http://blogs/richardpa/2014/01/14/introducing-puppet/" target="_blank">Puppet automation tool</a> to install and configure Orion Health products using <a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">the same OHP Puppet modules used in production</a>. It aims to make Virtual Machines (aka VMs) as quick and easy as possible for users at Orion Health., as they provide ideal, consistent environments for development and testing.<br><br>
+
+			For more information, please see these <a href="http://slid.es/jennysahng/give-me-a-vagrant">presentation slides</a> and <a href="lightningtalk.html">lightning talk</a> from the intern projects demo, 13/01/2014.			
 		</p>
 
-		<h2 class="about">Next: <a href="give-me-a-deploy/index.html" title="Coming Soon">Give-Me-A-Deploy</a></h2>
+		<h2 class="about">Next: <a href="give-me-a-deploy/index.html" title="Coming Soon" class="headerlink">Give-Me-A-Deploy</a>?</h2>
 
 		<p>
-			Even better than deployable source code would be pre-configured VMs which can be spun up in a local (OpenStack) or cloud server (HP Cloud) and destroyed from a GUI interface. These <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived VMs</a> would eliminate the problem of resource wastage due to idling, and provide an efficient solution to the demand for fast and flexible development environments.<br><br>
+			While Give-Me-A-Vagrant is ideal for spinning up VMs locally using custom generated source code, it would be even better to have provisioned VMs spun up in a cloud server such as HP Cloud. A third party server would allow developers and testers to focus on their applications and code without worrying about potential server issues.<br><br>
+
+			By making these on-demand VMs also <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived</a> (automatically expiring after 48 hours), this would also eliminate the problem of idle VMs wasting server resources while continuing to provide an efficient solution to the demand for fast and flexible development environments.<br>
+			<span class="orange"><b>It's less time setting up your environments, and more time working in them.</b></span><br><br>
 		</p>
 
 		<br>

@@ -31,93 +31,75 @@
 		</p>
 
 		<div class="docsSub">
-			This option on Give-Me-A-Vagrant simply outputs a Vagrantfile with a few parameters pre-configured for your convenience. It is very simple to boot, and you may add any provisioning you wish.
+			The 'Empty Vagrant' option on Give-Me-A-Vagrant simply outputs a Vagrantfile with a few parameters pre-configured for your convenience. It is very simple to boot, and you may add any provisioning you wish.
 		</div>
 
 
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
 
-		<ul>
-			<li class="star"><a href="#boot">Booting up your VM</a></li>
-			<li class="star"><a href="#provision">Provisioning your VM</a></li>
-			<li class="star"><a href="#access">Accessing your VM</a></li>
-			<li class="star"><a href="#destroy">Destroying your VM</a></li>
-			<li class="star"><a href="#furtherInfo">Further Information</a></li>
-		</ul>
-
-		<a name="boot"><h3 class="docs">Booting up your VM</h3></a>
+		<p>
+			To boot up your Vagrant VM, go to your Vagrantfile in a command terminal and call $ vagrant up. Your configured Vagrant machine should be up and running within a few minutes. Accessing, destroying and checking the status of your VM is just as simple with the commands shown below.
+		</p>
 
 		<div class="code">
+			<table class="code"><tr><td class="code">
+			<span class="codeComment"># Boot</span><br>
 			$ cd to/your/Vagrantfile/directory<br>
-			$ vagrant up
-		</div>
+			$ vagrant up<br><br>
 
-		<p>
-			Booting up your Vagrant VM simply requires you to move to the directory with your Vagrantfile in a command terminal
-		</p><br>
+			<span class="codeComment"># Access</span><br>
+			$ vagrant ssh<br><br>
+
+			<span class="codeComment"># Destroy</span><br>
+			$ vagrant destroy -f
+			
+			</td><td width="60%" class="code">
+			<span class="codeComment"># Check status</span><br>
+			$ vagrant status<br>
+			<span class="codeOutput">Current machine states:<br>
+			default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running (virtualbox)<br><br>
+			The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or you can run `vagrant suspend` to simply suspend the virtual machine. In either case, to restart it again, simply run `vagrant up`.</span>
+			</td></tr></table>
+		</div>
 
 		<h4 class="docs">Installation System Requirements</h4>
 		<p>
-			In order for the scripts to run successfully, please install the following on your <b>local</b> machine:
+			In order for Vagrant to run, please install the following on your <b>host</b> machine:
 			<ul>
 				<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
 				<li><a href="http://www.vagrantup.com">Vagrant</a></li>
-				<li><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 			</ul>
 		</p>
 
-		<a name="provision"><h3 class="docs">Provisioning your VM</h3></a>
-
+		<h4 class="docs">Provisioning your VM</h4>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p><br>
-
-		<a name="access"><h3 class="docs">Accessing your VM</h3></a>
-		
-		<div class="code">
-			$ vagrant ssh
-		</div>
-
-		<a name="destroy"><h3 class="docs">Destroying your VM</h3></a>
-		
-		<div class="code">
-			$ vagrant destroy -f
-		</div>
-
-		<a name="furtherInfo"><h3 class="docs">Further Information</h3></a>
-
-		<p>
-			<ul>
-				<li><a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant Documentation</a></li>
-				<li><a href="http://stash/users/jennysa/repos/vagrant-ohp-shell-install/browse">Stash repository</a> for installing OHP on a Vagrant using shell provisioning.</li>
-				<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
-				<li><a href="http://stash/users/jennysa/repos/give-me-a-vagrant/browse" title="Give-Me-A-Vagrant git repository on Stash" target="_blank">Source code</a> for this web app in Stash.</li>	
-			</ul>
-		</p><br>
+			While it is possible to $ vagrant ssh and install software by hand, Vagrant can provision the VM with shell scripts, or with automation tools such as <a href="http://blogs/richardpa/2014/01/14/introducing-puppet/" target="_blank">Puppet, which is used by Orion Continuous Delivery</a>. For further information, please see:
+		</p>
+		<ul>
+			<li><a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant Docs</a> for more information on how to configure and provison your Vagrant.</li>
+			<li><a href="http://stash/users/jennysa/repos/vagrant-ohp-shell-install/browse">Stash repository</a> for installing OHP on a Vagrant using shell provisioning.</li>
+			<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
+		</ul>
 
 		<a name="faqs"><h2 class="docs">Troubleshooting & FAQs</h2></a>
 
 		<ul>
-			<li><a href="#faq1">FAQ#1</a></li>
-			<li><a href="#faq2">FAQ#2</a></li>
-			<li><a href="#faq3">FAQ#3</a></li>
-			<li><a href="#faq4">FAQ#4</a></li>
+			<li><a href="#faq1">Booting is taking ages.</a></li>
+			<li><a href="#faq2">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></li>
+			<li><a href="#faq3">What are the requirements for the host name?</a></li>
 		</ul>
 
-		<h3 class="docs"><a name="faq1" class="anchor">FAQ#1</a></h3>
-		<p>The entire booting and provisioning process may take around 30 minutes depending on the speed of your host machine and internet connection. This is mostly due to the creation of the solution.zip, which takes about 20 minutes.<br>
-		If you're impatient, check out the Vagrantfile and up the allocated memory.</p><br>
+		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
+		<p>The entire $ vagrant up process should take no more than five minutes, although this depends on the speed of your host machine and internet connection as the Vagrantfile will need to download the CentOS box to build off. If it looks like your boot is "stuck", hit Enter - often the booting up process may pause, or if you have added your own provisioning, it may stop before the provision and require you to call $ vagrant provision.</p>
 
-		<h3 class="docs"><a name="faq2" class="anchor">FAQ#2</a></h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-		
-		<h3 class="docs"><a name="faq3" class="anchor">FAQ#3</a></h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
+		<h3 class="docs"><a name="faq2" class="anchor">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></h3>
+		<p>You cannot have more than one booted VM using the same host port on your machine. Fortunately, you can easily configure port forwarding between your host and guest machines in the Vagrantfile. Using Give-Me-A-Vagrant, enter a port which you do not already have forwarded to an existing VM in the field "Host Port", and you will be able to spin up multiple VMs on your one physical machine.<br>
+		<i>E.g. Your first VM may use the host port 19080, while the second uses 19081, the third 19082 etc.</i></p>
 
-		<h3 class="docs"><a name="faq4" class="anchor">FAQ#4</a></h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-		<br>
+		<h3 class="docs"><a name="faq3" class="anchor">What are the requirements for the host name?</a></h3>
+		<p>
+			Your host name should only contain letters, numbers, hyphens or dots (full stops). It cannot start with a hyphen or dot.<br>
+			You are not required to enter a host name. If you were to leave the field blank, the Vagrantfile will omit the hostname configuration, and Vagrant will not manage the hostname.</p>
 
 		<a name="help"><h2 class="docs">Help</h2></a>
 

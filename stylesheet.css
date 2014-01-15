@@ -15,10 +15,10 @@ body {
 }
 
 .about-page-wrap {
-	width: 50%;
+	width: 80%;
 	margin: 0 auto;
 	min-width: 260px;
-    max-width: 500px;
+    max-width: 550px;
     text-align: left;
 }
 
@@ -60,6 +60,10 @@ a.docsTitleLink {
 a.docsTitleLink:hover {
 	color: #008080;
 }
+
+a.headerlink { color: #008080; border-bottom: dotted 2px #888}
+a.headerlink:hover { color: #ff7700; border-bottom: dotted 2px #ff7700 }
+a.headerlink:active { color: #888; border-bottom: dotted 2px #888 }
 
 h1.docs, h1.about {
 	font-size: 2em;
@@ -214,7 +218,7 @@ img.star {
 
 /* TABLE ELEMENTS */
 
-table {
+table.form, table.plain {
     font-family: Arial, sans-serif;
 	color: #666;
 	font-size: 0.8em;
@@ -245,6 +249,15 @@ table.form:hover {
 
 table.plain {
 	font-size: 1em;
+}
+
+table.code {
+	table-layout: fixed;
+	width: 100%;
+}
+
+td.code {
+	word-wrap: break-word;
 }
 
 td.plain {
@@ -328,6 +341,9 @@ div.code {
 	font-size: 0.8em;
 	font-family: Consolas, "Andale Mono", "Lucida Console", "Nimbus Mono", "Courier New", monospace ;
 }
+
+span.codeComment { color: #ccc; }
+span.codeOutput { color: #126E6E; }
 
 span.hiddenInfoSub {
 	display: none;
@@ -422,7 +438,7 @@ input[type="text"] {
 }
 
 input[type="number"] {
-	width: 50px;
+	width: 60px;
 	display: inline;
 	text-align: right;
 }
