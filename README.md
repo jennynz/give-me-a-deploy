@@ -1,9 +1,9 @@
-Give-Me-A-Vagrant
+Give-Me-A-Deploy
 =================
 
-Please refer to the Give-Me-A-Vagrant Docs or the Woki page for full details on this client-side GUI configurator for the Vagrant VM automation tool.
+Please refer to the Give-Me-A-Deploy Docs or the Woki page for full details on this client-side GUI configurator for the Vagrant VM automation tool.
 
-http://woki/display/IntDev/Give-Me-A-Vagrant
+http://woki/display/IntDev/Give-Me-A-Deploy
 
 Prerequisites
 -------------
@@ -18,8 +18,3 @@ You must also have SSH key pairs set up with your Stash account, and permission 
 * http://stash/projects/OCD/repos/tooling/browse
 * http://stash/projects/PUPPET/repos/puppet-ohp/browse
 * http://subversion/src/Orchestral/Framework/PlatformBuild/trunk
-
-/give-me-a-deploy
-----------------
-
-The **directory "give-me-a-deploy"** holds files for a prototype skeleton of what a web app that actually spins up and automatically destroys short-lived VMs might look like.

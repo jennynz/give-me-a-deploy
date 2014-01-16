@@ -229,7 +229,7 @@ img.star {
 
 /* TABLE ELEMENTS */
 
-table.form, table.plain {
+table.form, table.plain, table.docs {
     font-family: Arial, sans-serif;
 	color: #666;
 	font-size: 0.8em;
