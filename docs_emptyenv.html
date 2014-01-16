@@ -5,7 +5,7 @@
 	<script src="js/jquery.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
-	<title>Empty VM | Give-Me-A-Vagrant Docs</title>
+	<title>Empty VM | Give-Me-A-Deploy Docs</title>
 </head>
 
 <body>
@@ -16,22 +16,22 @@
 
 		<br><br>
 
-		<h1 class="docs">Give-Me-A-Vagrant: Empty VM<br>
+		<h1 class="docs">Give-Me-A-Deploy: Empty VM<br>
 		<a href="#documentation" class="docsTitleLink">Documentation</a>, 
 		<a href="#faqs" class="docsTitleLink">FAQs</a> & 
 		<a href="#help" class="docsTitleLink">Help</a>
 		</h1>
 
 		<p>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_vagrantenv.html">Provisioned Vagrant</a></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_provisionedenv.html">Provisioned Vagrant</a></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span></span>
 			<span class="docslink"><img src="favicon.ico" class="star"><a href="docs_emptyenv.html" class="current">Empty Vagrant</a></span>
-			<span class="docslink"><img src="favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Vagrant" title="Give-Me-A-Vagrant - Integrated Development">Docs on Woki</a></span>
+			<span class="docslink"><img src="favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a></span>
 		</p>
 
 		<div class="docsSub">
-			The 'Empty Vagrant' option on Give-Me-A-Vagrant simply outputs a Vagrantfile with a few parameters pre-configured for your convenience. It is very simple to boot, and you may add any provisioning you wish.
+			The 'Empty Vagrant' option simply outputs a Vagrantfile with a few custom configurations for your convenience. It is very simple to boot, and you may add whatever provisioning you wish.
 		</div>
 
 
@@ -94,7 +94,7 @@
 		<p>The entire $ vagrant up process should take no more than five minutes, although this depends on the speed of your host machine and internet connection as the Vagrantfile will need to download the CentOS box to build off. If it looks like your boot is "stuck", hit Enter - often the booting up process may pause, or if you have added your own provisioning, it may stop before the provision and require you to call $ vagrant provision.</p>
 
 		<h3 class="docs"><a name="faq2" class="anchor">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></h3>
-		<p>You cannot have more than one booted VM using the same host port on your machine. Fortunately, you can easily configure port forwarding between your host and guest machines in the Vagrantfile. Using Give-Me-A-Vagrant, enter a port which you do not already have forwarded to an existing VM in the field "Host Port", and you will be able to spin up multiple VMs on your one physical machine.<br>
+		<p>You cannot have more than one booted VM using the same host port on your machine. Fortunately, you can easily configure port forwarding between your host and guest machines in the Vagrantfile. Using Give-Me-A-Deploy, enter a port which you do not already have forwarded to an existing VM in the field "Host Port", and you will be able to spin up multiple VMs on your one physical machine.<br>
 		<i>E.g. Your first VM may use the host port 19080, while the second uses 19081, the third 19082 etc.</i><br><br>
 
 		To view all the VMs you have going, you can open Oracle VM VirtualBox Manager which should come with VirtualBox. From here, you can check port forwarding by right-clicking any running VMs, going to Settings... > Network > Port Forwarding.
@@ -108,7 +108,7 @@
 
 		<h3 class="docs"><a name="faq4" class="anchor">Memory: What should the default memory be set to?</a></h3>
 		<p>
-			Give-Me-A-Vagrant allows you to easily set your VM's system base memory. The default is set to 786 MB, but this may be changed to any number you wish.
+			Give-Me-A-Deploy allows you to easily set your VM's system base memory. The default is set to 786 MB, but this may be changed to any number you wish.
 		</p>
 
 		<div class="quote">

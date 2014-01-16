@@ -2,36 +2,42 @@
 
 body {
     background-color: #FFF;
-    margin-top: 6%;
+    margin-top: 50px;
     font-family: Arial, Verdana, Helvetica, sans-serif;
     overflow-y: scroll; 
 }
 
-.index-page-wrap {
+.index-page-wrap, .deployed-page-wrap, .about-page-wrap, .docs-page-wrap {
 	width: 80%;
 	margin: auto auto;
 	min-width: 260px;
+}
+
+.index-page-wrap {
 	max-width: 460px;
 }
 
+.deployed-page-wrap {
+	max-width: 550px;
+	text-align: center;
+}
+
 .about-page-wrap {
-	width: 80%;
-	margin: 0 auto;
-	min-width: 260px;
     max-width: 550px;
     text-align: left;
 }
 
 .docs-page-wrap {
-	width: 80%;
-	margin: 0 auto;
-	min-width: 260px;
     max-width: 800px;
     text-align: left;
 }
 
-#vagrantenvsection, #devstackenvsection, #hpcloudenvsection, #emptyenvsection {
+#provisionedenvsection, #emptyenvsection {
 	display: none;
+}
+
+span#devstackenvsection {
+	color: #000;
 }
 
 /* HEADER & TEXT STYLES */
@@ -78,6 +84,11 @@ h2.docs, h2.about {
 h2#vagrantsubheader {
 	margin-top: -0.8em;
 	margin-bottom: 0.2em;
+}
+
+h2.deployed {
+	margin-top: -0.8em;
+	margin-bottom: 1.5em;
 }
 
 h3.docs {
@@ -203,9 +214,9 @@ a.scriptlink:active {color: #999;}
 
 i {color: #999;}
 
-.orange {color: #FF7700; display: inline;}
-.teal {color: #008080; display: inline;}
-.indev {color: red; display: inline; font-weight: none; font-family: verdana; font-size: 0.8em;}
+.orange {color: #FF7700;}
+.teal {color: #008080;}
+.indev {color: red; font-weight: none; font-family: verdana; font-size: 0.8em;}
 
 img#logo {
 	margin-left: auto;
@@ -288,7 +299,7 @@ td.content {
 	padding: 10px;
 }
 
-tr#email, tr#puppetscripts {
+tr#email, tr#puppetscripts, tr#lifespan {
 	display: none;
 }
 
@@ -310,16 +321,6 @@ td.table-footer {
 
 span.docslink {
 	white-space: nowrap;
-}
-
-div.hiddenInfo {
-	display: none;
-	color: #444;
-	font-size: 0.8em;
-	margin: auto auto;
-	min-width: 260px;
-	max-width: 650px;
-	text-align: center
 }
 
 div.docsSub {
@@ -356,7 +357,7 @@ div.quote {
 span.codeComment { color: #ccc; }
 span.codeOutput { color: #126E6E; }
 
-span.hiddenInfoSub {
+span.hiddenInfo {
 	display: none;
 	color: #444;
 	font-size: 0.8em;
@@ -374,7 +375,7 @@ span.hiddenInfoSub {
 #whitespace {
 	background-color: #FFF;
 	width: 50px;
-	height: 500px;
+	height: 400px;
 	margin: 0 auto;
 	display: block;
 }
@@ -414,7 +415,7 @@ textarea.source:focus::-webkit-scrollbar-thumb {
 	background-color: #FF7700;
 }
 
-textarea#vagrantenvrunsource, #vagrantenvvagrantfilesource, #vagrantenvinstallsource {
+textarea#provisionedenvrunsource, #provisionedenvvagrantfilesource, #provisionedenvinstallsource {
 	height: 150px;
 	margin-top: 0px;
 }
@@ -452,6 +453,11 @@ input[type="number"] {
 	width: 60px;
 	display: inline;
 	text-align: right;
+}
+
+input[type="number"]#LifeSpan {
+	width: 40px;
+	margin-bottom: 0px;
 }
 
 input[type="text"]:focus, input[type="number"]:focus, textarea#Products:focus {

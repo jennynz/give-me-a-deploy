@@ -8,33 +8,28 @@
 	<script src="js/jquery.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
-	<title>Give Me A Deploy - Short-Lived VMs on demand</title>
+	<title>Give Me A Deploy - VMs on demand</title>
 </head>
 
-<body onLoad="startclcok()">
+<body>
 
-	<div class="index-page-wrap">
-		
-		<a href="index.html"><img id="Logo" src = "oh_logo.png" alt="Logo" name="top"/></a>
-		
-		<br><br>
-		
-		<h1>Your <div class="orange">VM</div> has been deployed</h1>
+	<center><a href="index.html"><img id="logo" src="oh_logo.png" name="top"/></a></center><br>
 
-		<h2>for the next <span class="teal">48 hours</span> on <a href="http://ocd-devstack/" class="headerlink">DevStack</a>.</h2>
+	<div class="deployed-page-wrap">
+		
+		<h1 class="deployed">Your <span class="orange">provisioned VM</span> has been <span class="orange">deployed</span></h1>
+		<h2 class="deployed">for the next <span class="teal">48 hours</span> on <a href="http://ocd-devstack/" class="headerlink">DevStack</a>.</h2>
 
 		<p>
 			Your VM will expire at [date & time], which is in [countdown].<br>
-			If you finish using your VM before its automatic expiry, please manually terminate the instance on DevStack.
+			If you finish using your VM before its automatic expiry, please manually terminate the instance on HP Cloud.
 		</p>
+
 	</div>
-
 	<br><br>
-
 	<div class="footer">
 		<a href="index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
-
 	<br><br>
 
 </body>

@@ -1,9 +1,11 @@
 // Download Vagrant in a zip
 function DownloadZip() {
   
-  var run = document.getElementById("vagrantenvrunsource").value;
-  var vagrantfile = document.getElementById("vagrantenvvagrantfilesource").value;
-  var install = document.getElementById("vagrantenvinstallsource").value;
+  var run = document.getElementById("provisionedenvrunsource").value;
+  var vagrantfile = document.getElementById("provisionedenvvagrantfilesource").value;
+  var install = document.getElementById("provisionedenvinstallsource").value;
+
+  var vmname = document.getElementById("vmname").value;
 
   var zip = new JSZip();
   zip.file("run.sh", run);
@@ -14,7 +16,7 @@ function DownloadZip() {
   var blobLink = document.getElementById('blob');
   
   try {
-    blobLink.download = "myVagrant.zip";
+    blobLink.download = vmname + ".zip";
     blobLink.href = window.URL.createObjectURL(zip.generate({type:"blob"}));
   } catch(e) {
     blobLink.innerHTML += " (not supported on this browser)";

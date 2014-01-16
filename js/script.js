@@ -17,30 +17,30 @@ function GetCode()
 	vmenv = document.querySelector('input[name="vmenv"]:checked').value;
 
 	// Generate complete script(s) and print to respective textboxes.
-	if (vmenv=="vagrantenv") {
-		PrintToTextbox(GenerateVagrantRun(), "vagrantenvrun");
-		PrintToTextbox(GenerateVagrantfile(vmname), "vagrantenvvagrantfile");
-		PrintToTextbox(GenerateVagrantInstall(), "vagrantenvinstall");
-		$('#vagrantenvsection').show();
-      	$('#devstackenvsection, #hpcloudenvsection, #emptyenvsection').hide();
+	if (vmenv=="provisionedenv") {
+		PrintToTextbox(GenerateVagrantRun(), "provisionedenvrun");
+		PrintToTextbox(GenerateVagrantfile(vmname), "provisionedenvvagrantfile");
+		PrintToTextbox(GenerateVagrantInstall(), "provisionedenvinstall");
+		$('#provisionedenvsection').show();
+      	$('#emptyenvsection').hide();
       	window.location = "#vagrantcode";
 
 	} else if (vmenv=="devstackenv") {
-		PrintToTextbox(GenerateDevStackScripts(), vmenv);
-		$('#devstackenvsection').show();
-      	$('#vagrantenvsection, #hpcloudenvsection, #emptyenvsection').hide();
-		window.location = "#devstackcode";
-		
+		var lifespanIsValid = ValidateLifespan();
+		if (lifespanIsValid == 1) {
+			window.location.href = "devstackdeployed.html"
+		}
+	
 	} else if (vmenv=="hpcloudenv") {
-		PrintToTextbox(GenerateHPCloudScripts(), vmenv);
-		$('#hpcloudenvsection').show();
-      	$('#vagrantenvsection, #devstackenvsection, #emptyenvsection').hide();
-		window.location = "#hpcloudcode";
+		var lifespanIsValid = ValidateLifespan();
+		if (lifespanIsValid == 1) {
+			window.location.href = "hpclouddeployed.html"
+	     }
 		
 	} else if (vmenv=="emptyenv") {
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
 		$('#emptyenvsection').show();
-      	$('#vagrantenvsection, #devstackenvsection, #hpcloudenvsection').hide();
+      	$('#provisionedenvsection').hide();
 		window.location = "#emptycode";
 		
 	}
@@ -72,6 +72,17 @@ function ValidateVMName() {
 		}
 	}
 	return vmname;
+}
+
+function ValidateLifespan() {
+	var lifespan = document.getElementById("LifeSpan").value;
+	if (lifespan > 96) {
+		alert("The maximum lifespan of the short-lived VM is 96 hours.");
+		return 0;
+	} else if (lifespan < 1) {
+		alert("The lifespan of the VM must be at least 1 hour long.")
+		return 0;
+	} else { return 1; }
 }
 
 function PrintToTextbox(code, printlocation) {
