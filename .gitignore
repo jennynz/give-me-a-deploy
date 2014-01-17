@@ -1,3 +1,4 @@
 Lightning Talk/
 *.zip
 portal-vm/*
+.vagrant*

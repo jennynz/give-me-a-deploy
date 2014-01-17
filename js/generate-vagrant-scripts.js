@@ -2,12 +2,22 @@ function GenerateVagrantRun() {
 	return (
 		"#!/bin/bash\n\n" +
 
-		"# Directories created to be mirrored across to the /vagrant directory in the VM.\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Creating directories to be mirrored across to the /vagrant directory in the VM\033[0m\"\n" +
+		"echo -e\n" +
+
 		"mkdir frontend\n" +
 		"mkdir -p modules/solution\n" +
 		"mkdir manifests\n\n" +
 
-		"# Cloning required files from Stash and move into appropriate directories.\n" +
+		"echo 'frontend/'\n" +
+		"echo 'modules/solution/'\n" +
+		"echo 'manifests/'\n\n" +
+
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Cloning required files from Stash and move into appropriate directories\033[0m\"\n" +
+		"echo -e\n" +
+
 		"git svn clone -rHEAD http://subversion/src/Orchestral/Framework/PlatformBuild/trunk\n" +
 		"mv trunk PlatformBuild\n" +
 		"mv PlatformBuild/ ./modules/\n\n" +
@@ -18,7 +28,10 @@ function GenerateVagrantRun() {
 		"git clone ssh://git@stash:7999/puppet/puppet-ohp.git\n" +
 		"mv puppet-ohp/ ./modules\n\n" +
 
-		"# Boot VM.\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Booting VM with Vagrant\033[0m\"\n" +
+		"echo -e\n" +
+
 		"vagrant up"
 	);
 }
@@ -123,9 +136,13 @@ function GenerateVagrantInstall() {
 	return (
 		"#!/bin/bash\n" +
 		"\n" + 
-		"##################################\n" +
-		"# Setup Installation Environment #\n" +
-		"##################################\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m#######################################################\033[0m\"\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m        SETTING UP OHP INSTALLATION ENVIRONMENT        \033[0m\"\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m#######################################################\033[0m\"\n" +
+		"echo -e\n" +
 		"\n" +
 		"# Remove firewalls to allow port forwarding\n" +
 		"sudo service iptables stop\n" +
@@ -136,9 +153,9 @@ function GenerateVagrantInstall() {
 		"\n" +
 		"cd ${base_url}\n" +
 		"\n" +
-		"\n" +
-		"# Install dependencies\n" +
-		"# ====================\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Installing dependencies\033[0m\"\n" +
+		"echo -e\n" +
 		"\n" +
 		"# java-1.7.0-openjdk  Default Java version on Vagrant is 1.6, but 1.7 required.\n" +
 		"# ant-apache-regexp   Fix error: 'No supported regular expression matcher found: java.lang.ClassNotFoundException: org.apache.tools.ant.util.regexp.Jdk14RegexpRegexp'\n" +
@@ -156,12 +173,16 @@ function GenerateVagrantInstall() {
 		"# Line 17 in build-tasks.xml (cloned from PlatformBuild/trunk in svn) needs to be edited to include path to ant-junit jar file\n" +
 		"sed -i -e '17s/.*/\\t\\t\\t<taskdef name=\"junit\" classname=\"org.apache.tools.ant.taskdefs.optional.junit.JUnitTask\" classpath=\"${common.build.dir}\\/anttasks\\/ant-junit.jar\"\\/>/' ./modules/PlatformBuild/build-tasks.xml\n" +
 		"\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Downloading provisioning installer from Ivy\033[0m\"\n" +
+		"echo -e\n" +
+		"\n" +
 		"# Download OHP provisioning installer from Ivy.\n" +
 		"wget http://ivy-rep-ro/orchestral/provisioning-installer/" + foundationVersion + "/installers/${installer} --user=ivy-http --password=YouSayHello\n" +
 		"\n" +
-		"\n" +
-		"# Solution zip\n" +
-		"# ============\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Creating solution.zip\033[0m\"\n" +
+		"echo -e\n" +
 		"\n" +
 		"# Create and write the files required for a solution package\n" +
 		"cd modules/solution\n" +
@@ -191,11 +212,9 @@ function GenerateVagrantInstall() {
 		"ant create.custom.solution.package\n" +
 		"sudo mv ${base_url}/modules/solution/solution.zip ${base_url}\n" +
 		"\n" +
-		"\n" +
-		"\n" +
-		"####################################\n" +
-		"# Install OHP using Puppet modules #\n" +
-		"####################################\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Installing Orion Health products with puppet-ohp module\033[0m\"\n" +
+		"echo -e\n" +
 		"\n" +
 		"cd ${base_url}\n" +
 		"\n" +
@@ -323,6 +342,10 @@ function GenerateVagrantInstall() {
 		"# Run Puppet installation of OHP, specifying module paths and manifest file.\n" +
 		"cd ${base_url}\n" +
 		"sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp\n" +
+		"\n" +
+		"echo -e\n" +
+		"echo -e \"\033[36m-->  Checking status of OHP to verify successful installation\033[0m\"\n" +
+		"echo -e\n" +
 		"\n" +
 		"# Check status to verify successful installation\n" +
 		"/opt/orionhealth/bin/server.sh status"

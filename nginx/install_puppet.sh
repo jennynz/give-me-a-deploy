@@ -7,3 +7,6 @@ sudo puppet module install --force puppetlabs/stdlib
 
 # Remove firewalls to allow port forwarding
 sudo service iptables stop
+
+# Install concat class for resource/vhost.pp:356
+puppet module install ripienaar/concat

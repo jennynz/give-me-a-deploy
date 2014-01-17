@@ -33,5 +33,3 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
 end
-
-#Error: Puppet::Parser::AST::Resource failed with error ArgumentError: Invalid resource type concat at /tmp/vagrant-puppet/modules-0/nginx/manifests/resource/vhost.pp:356 on node localhost.orion.internal

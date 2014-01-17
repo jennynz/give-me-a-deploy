@@ -12,6 +12,6 @@ node default {
     use_default_location => false,
     access_log           => '/var/log/nginx/rpm-repo_access.log',
     error_log            => '/var/log/nginx/rpm-repo_error.log',
-    require              => File['/var/lib/nginx/tmp'],
+    # require              => File['/var/lib/nginx/tmp'],
   }  
 }
