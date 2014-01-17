@@ -16,9 +16,7 @@ nginx::resource::vhost { 'give-me-a-deploy':
 # sudo service nginx start
 # sudo service nginx stop
 
+# default index when at 127.0.0.1:19080
 # /usr/share/nginx/html/index.html
-
-# Might need an EPEL repo for RHEL CentOS?
-# http://wiki.nginx.org/NginxPlatformFedora
 
 # sudo puppet apply /vagrant/manifests/site.pp --modulepath=/vagrant/modules/:/etc/puppet/modules/
