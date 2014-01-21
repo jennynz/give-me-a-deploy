@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = 'precise64'
+  config.vm.box_url = 'http://files.vagrantup.com/precise64.box'
+
+  # Create a forwarded port mapping which allows access to a specific port within the machine from a port on the host machine.
+  config.vm.network :forwarded_port, guest: 19080, host: 19081
+
+  # Install Nova Client & boot instance on HP Cloud
+  config.vm.provision :shell, path: 'install_nova_client.sh'
+
+end

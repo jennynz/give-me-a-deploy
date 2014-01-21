@@ -1,0 +1,38 @@
+Host *.perf *.ocd
+  GSSAPIAuthentication no
+  UserKnownHostsFile /dev/null
+  User root
+  PasswordAuthentication no
+  IdentityFile /home/vagrant/.ssh/puppet_id_rsa
+  IdentitiesOnly yes
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+
+Host haproxy.perf
+  Hostname 15.125.115.135
+
+Host puppet-master.perf
+  Hostname 15.125.X.X
+  DynamicForward 1080
+
+Host oracle.perf
+  Hostname 10.0.X.X
+  LocalForward 15021 localhost:1521
+ ProxyCommand nc -X 4 -x localhost:1080 %h %p
+
+Host balrajs-ohp-1.perf
+  Hostname 10.0.0.X
+  ProxyCommand nc -X 4 -x localhost:1080 %h %p
+
+Host puppet-master.ocd
+  Hostname 15.125.X.X
+  DynamicForward 1081
+
+Host oracle.ocd
+  Hostname 10.0.0.X
+  LocalForward 15021 localhost:1521
+  ProxyCommand nc -X 4 -x localhost:1081 %h %p
+
+Host balrajs-ohp-1.ocd
+  Hostname 10.0.0.X
+  ProxyCommand nc -X 4 -x localhost:1081 %h %p

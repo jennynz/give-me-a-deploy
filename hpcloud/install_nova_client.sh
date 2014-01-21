@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e
+
+apt-get update
+apt-get -y install python-pip
+pip install python-novaclient novaclient-auth-secretkey
+
+# Upgrade ruby 1.9.3
+apt-get -y install ruby1.9.1 ruby1.9.1-dev \
+  rubygems1.9.1 irb1.9.1 ri1.9.1 rdoc1.9.1 \
+  build-essential libopenssl-ruby1.9.1 libssl-dev zlib1g-dev
+
+update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 400 \
+         --slave   /usr/share/man/man1/ruby.1.gz ruby.1.gz \
+                        /usr/share/man/man1/ruby1.9.1.1.gz \
+        --slave   /usr/bin/ri ri /usr/bin/ri1.9.1 \
+        --slave   /usr/bin/irb irb /usr/bin/irb1.9.1 \
+        --slave   /usr/bin/rdoc rdoc /usr/bin/rdoc1.9.1
+
+update-alternatives --config ruby
+update-alternatives --config gem
+
+# Install git
+apt-get -y install git
+
+# Install curl
+apt-get -y install curl
+
+# Install required dependencies from gem file
+gem install bundler
+cd /opt/AHS/
+bundle install
+
+# # append source env to .profile
+# cat /vagrant/hp_cloud_prop.env >> /home/vagrant/.profile
+
+# copy ssh configuration
+cp -a /vagrant/config /home/vagrant/.ssh
+cp -a /opt/AHS/puppet_id_rsa /home/vagrant/.ssh
+chmod 600 /home/vagrant/.ssh/config /home/vagrant/.ssh/puppet_id_rsa
+
+# Copy variables into bash session
+export OS_AUTH_SYSTEM="secretkey"
+export OS_ACCESS_KEY_ID="YTJ3CDHULMMX8V8K4FVD"
+export OS_SECRET_KEY="8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5"
+
+export OS_REGION_NAME="region-a.geo-1"
+export OS_AUTH_URL="https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/"
+export OS_TENANT_NAME="Continuous-Delivery"
+
+export OS_PASSWORD=useapikey
+export OS_USERNAME=useapikey
+
+export INSTANCE_NAME=gmad-nginx
+
+# Boot nova instance
+nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b)" --key-name puppet ${INSTANCE_NAME} --user-data="/opt/AHS/nova/cloud_init.sh"
+
+# Add floating IP address to server
+# nova add-floating-ip ${FLOATING_IP} ${INSTANCE_NAME}
