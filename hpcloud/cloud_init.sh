@@ -1,17 +1,37 @@
 #!/bin/bash
 
-# Download and install puppet
-gem install puppet
+BASE_URL='/opt/nginx'
+mkdir ${BASE_URL}
+cd ${BASE_URL}
+mkdir modules
+mkdir manifests
+
+# Install puppet and download standard library, nginx and concat.
+yum -y install puppet
 puppet module install --force puppetlabs/stdlib
+puppet module install --force jfryman/nginx
+puppet module install --force ripienaar/concat
+
+# Write out site.pp
+cat > manifests/site.pp <<EOL
+# Install and bootstrap an NGINX instance
+class { 'nginx': }
+
+# Setup a new virtual host
+nginx::resource::vhost { 'give-me-a-deploy':
+  ensure               => present,
+  server_name          => ['give-me-a-deploy'],
+  listen_port          => 19082,
+  ssl                  => false,
+  www_root             => '/opt/nginx/html/',
+  use_default_location => false,
+  access_log           => '/var/log/nginx/rpm-repo_access.log',
+  error_log            => '/var/log/nginx/rpm-repo_error.log',
+}
+EOL
 
 # Remove firewalls to allow port forwarding
 service iptables stop
 
-# Install concat class for resource/vhost.pp:356
-puppet module install ripienaar/concat
-
 # Puppet install & boot nginx
-puppet apply /vagrant/manifests/site.pp --modulepath=/vagrant/modules/:/etc/puppet/modules/
-
-# Start the nginx server
-service nginx start
+puppet apply manifests/site.pp

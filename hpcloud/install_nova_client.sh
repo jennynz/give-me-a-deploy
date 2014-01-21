@@ -29,18 +29,11 @@ apt-get -y install curl
 
 # Install required dependencies from gem file
 gem install bundler
-cd /opt/AHS/
+cd /vagrant
 bundle install
 
-# # append source env to .profile
-# cat /vagrant/hp_cloud_prop.env >> /home/vagrant/.profile
-
-# copy ssh configuration
-cp -a /vagrant/config /home/vagrant/.ssh
-cp -a /opt/AHS/puppet_id_rsa /home/vagrant/.ssh
-chmod 600 /home/vagrant/.ssh/config /home/vagrant/.ssh/puppet_id_rsa
-
-# Copy variables into bash session
+# Append source env to .profile, and save variables to bash session.
+cat /vagrant/hp_cloud_prop.env >> /home/vagrant/.profile
 export OS_AUTH_SYSTEM="secretkey"
 export OS_ACCESS_KEY_ID="YTJ3CDHULMMX8V8K4FVD"
 export OS_SECRET_KEY="8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5"
@@ -54,8 +47,26 @@ export OS_USERNAME=useapikey
 
 export INSTANCE_NAME=gmad-nginx
 
-# Boot nova instance
-nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b)" --key-name puppet ${INSTANCE_NAME} --user-data="/opt/AHS/nova/cloud_init.sh"
+# copy ssh configuration
+cp -a /vagrant/config /home/vagrant/.ssh
+cp -a /vagrant/puppet_id_rsa /home/vagrant/.ssh
+chmod 400 /home/vagrant/.ssh/config /home/vagrant/.ssh/puppet_id_rsa
 
-# Add floating IP address to server
-# nova add-floating-ip ${FLOATING_IP} ${INSTANCE_NAME}
+# Boot nova instance
+nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b)" --key-name puppet ${INSTANCE_NAME} --user-data="/vagrant/cloud_init.sh" >/dev/null
+
+# Assign floating IP
+nova floating-ip-create >/dev/null
+FLOATING_IP="`nova floating-ip-list | awk '$4 == "None" { print $2 }'`"
+nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
+
+nova show ${INSTANCE_NAME}
+# echo -e "\n\n\e[00;36m    Give-Me-A-Deploy\e[00m"
+# echo -e "\e[00;36m    hosted on HP Cloud instance '${INSTANCE_NAME}'\e[00m"
+# echo -e "\e[00;36m    accessible at http://${FLOATING_IP}'\e[00m\n\n"
+
+rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
+
+echo -e "\n\n    Give-Me-A-Deploy"
+echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
+echo -e "    accessible at http://${FLOATING_IP}'\n\n"
