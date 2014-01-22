@@ -12,6 +12,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 19080, host: 19081
 
   # Install Nova Client & boot instance on HP Cloud
-  config.vm.provision :shell, path: 'install_nova_client.sh', keep_color: true
+  config.vm.provision :shell, path: 'install_nova_client.sh'
 
 end
