@@ -55,23 +55,17 @@ chmod 400 /home/vagrant/.ssh/config /home/vagrant/.ssh/puppet_id_rsa
 # Boot nova instance
 nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b)" --key-name puppet ${INSTANCE_NAME} --user-data="/vagrant/cloud_init.sh" >/dev/null
 
-# Assign floating IP
+# Assign a new floating IP
 export FLOATING_IP="`nova floating-ip-create | awk '$4 == "None" { print $2 }'`"
-export STATUS="`nova show ${INSTANCE_NAME} | awk '$2 == "status" { print $4 }'`"
-# while [ "${STATUS}" != "ACTIVE" ]
-# do
-# 	sleep 2
-# done
-
-if [ "${STATUS}" == "ACTIVE" ]
-then
-	echo -e "\n\n   ${INSTANCE_NAME} is active, assigning floating IP\n\n"
-fi
+while [ "`nova show ${INSTANCE_NAME} | awk '$2 == "status" { print $4 }'`" != "ACTIVE" ]
+do
+	sleep 2
+done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 nova show ${INSTANCE_NAME}
 
 # Sync across html files
-rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa" -aqz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
+rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no" -aqz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
