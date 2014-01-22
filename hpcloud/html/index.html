@@ -17,8 +17,6 @@
 
 			
 	<center><a href="index.html"><img id="logo" src="oh_logo.png" name="top"/></a></center><br>
-	
-	<span id="formsection">
 
 	<h1><span class="orange">Instant VMs</span> at your fingertips</h1>
 
@@ -92,7 +90,6 @@ portal: 8.4.0.beta</textarea>
 				<tr>
 					<td colspan="2" class="table-footer">
 						<br>
-						<!--<input type="checkbox" name="savescripts" id="savescripts"> Save script(s) to local machine automatically.<br><br>-->
 						<input type="button" id="submit" class="button" value="Generate Source Code" onClick="GetCode();">
 						<input type="reset" id="reset" class="button">
 					</td>
@@ -107,8 +104,6 @@ portal: 8.4.0.beta</textarea>
 		<a href="index.html">Home</a> | <a href="docs/docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
 
-	</span>
-
 
 
 
@@ -120,12 +115,12 @@ portal: 8.4.0.beta</textarea>
 
 	<span id="provisionedenvsection">
 
-	<div id="whitespace">&nbsp;</div>
+	<div class="placeholder">&nbsp;</div>
 
 	<a class="anchor" name="vagrantcode"><br></a>
 	<h1>Your <span class="orange">provisioned VM</span> is ready</h1>
 
-	<h2 id="vagrantsubheader"><span class="teal">Save</span> these scripts to the <span class="teal">same directory</span>, <span class="teal">$ chmod +x run.sh</span>, then <span class="teal">$ run.sh</span>.</h2>
+	<h2 class="subheader"><span class="teal">Save</span> these scripts to the <span class="teal">same directory</span>, <span class="teal">$ chmod +x run.sh</span>, then <span class="teal">$ run.sh</span>.</h2>
 
 	<center><a id="blob" class="downloadlink" onclick="DownloadZip()">Download all three scripts in a zip</a><br><br></center>
 
@@ -170,12 +165,12 @@ portal: 8.4.0.beta</textarea>
 
 	<span id="emptyenvsection">
 
-	<div id="whitespace">&nbsp;</div>
+	<div class="placeholder">&nbsp;</div>
 
 	<a class="anchor" name="emptycode"><br></a>
 	<h1>Your <span class="orange">Vagrantfile</span> is ready</h1>
 
-	<h2><a class="headerlink" onclick="DownloadSourceCode('emptyenvsource', 'Vagrantfile')">Click to save</a> the following source code as "<span class="teal">Vagrantfile</span>", then run the command <span class="teal">$ vagrant up</span>.</h2>
+	<h2 class="subheader"><a class="headerlink" onclick="DownloadSourceCode('emptyenvsource', 'Vagrantfile')">Click to save</a> the following source code as "<span class="teal">Vagrantfile</span>", then run the command <span class="teal">$ vagrant up</span>.</h2>
 
 	<div class="index-page-wrap">
 		<textarea rows="40" name="emptyenvsource" class="source" id="emptyenvsource" onClick="SelectAll('emptyenvsource');" spellcheck="false"></textarea>
