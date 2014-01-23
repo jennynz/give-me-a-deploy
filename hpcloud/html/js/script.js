@@ -1,10 +1,16 @@
+/* ==========================================================================
+    INDEX
+   ========================================================================== */
+
 // Single-click select all text in source code textarea
 function SelectAll(id) {
     document.getElementById(id).focus();
     document.getElementById(id).select();
 }
 
-
+/* ==========================================================================
+    GENERATE SOURCE CODE
+   ========================================================================== */
 
 // Generate and display customised source code
 function GetCode()
@@ -18,11 +24,11 @@ function GetCode()
 
 	// Generate complete script(s) and print to respective textboxes.
 	if (vmenv=="provisionedenv") {
-		PrintToTextbox(GenerateVagrantRun(), "provisionedenvrun");
-		PrintToTextbox(GenerateVagrantfile(vmname), "provisionedenvvagrantfile");
-		PrintToTextbox(GenerateVagrantInstall(), "provisionedenvinstall");
-		$('#provisionedenvsection').show();
-      	$('#emptyenvsection').hide();
+		PrintToTextbox(GenerateVagrantRun(), "provisionedenv-run");
+		PrintToTextbox(GenerateVagrantfile(vmname), "provisionedenv-vagrantfile");
+		PrintToTextbox(GenerateVagrantInstall(), "provisionedenv-install");
+		$('#provisionedenv-section').show();
+      	$('#emptyenv-section').hide();
       	window.location = "#vagrantcode";
 
 	} else if (vmenv=="devstackenv") {
@@ -39,8 +45,8 @@ function GetCode()
 		
 	} else if (vmenv=="emptyenv") {
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
-		$('#emptyenvsection').show();
-      	$('#provisionedenvsection').hide();
+		$('#emptyenv-section').show();
+      	$('#provisionedenv-section').hide();
 		window.location = "#emptycode";
 		
 	}
@@ -86,7 +92,7 @@ function ValidateLifespan() {
 }
 
 function PrintToTextbox(code, printlocation) {
-	printlocation = printlocation + "source";
+	printlocation = printlocation + "-source";
 	var sourcetextbox = document.getElementById(printlocation);
 	sourcetextbox.value = code;
 }

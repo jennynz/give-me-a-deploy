@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td class="label">Virtual Environment*</td>
-					<td class="radio-field" required>
+					<td class="content-radiofield">
 						<input type="radio" name="vmenv" id="provisionedenv" value="provisionedenv" checked> <b>Provisioned VM</b>: local machine<br>
 						<input type="radio" name="vmenv" id="devstackenv" value="devstackenv"> DevStack: local OpenStack server <span class="indev">IN DEV!</span><br>
 						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> HP Cloud: public server <span class="indev">IN DEV!</span><br>
@@ -43,19 +43,19 @@
 				</tr>
 				<tr>
 					<td class="label">Host Port*</td>
-					<td class="input-field">
+					<td class="content">
 						<input type="number" id="hostport" value="19080">
 					</td>
 				</tr>
 				<tr>
 					<td class="label">Host Name</td>
-					<td class="input-field">
+					<td class="content">
 						<input type="text" name="vmname" id="vmname" autocapitalize="off" value="portal-vm" required>
 					</td>
 				</tr>
 				<tr>
 					<td class="label">Memory*</td>
-					<td class="input-field">
+					<td class="content">
 						<input type="number" id="memory" value="768"> MB
 					</td>
 				</tr>
@@ -68,22 +68,20 @@ portal: 8.4.0.beta</textarea>
 				</tr>
 				<tr id="puppetscripts">
 					<td class="label">Puppet Scripts</td>
-					<td class="input-field">
+					<td class="content">
 						<input type="text" id="PuppetScripts" autocapitalize="off" placeholder="Point us at your Puppet scripts in SVN and we'll provision the VM.">
 					</td>
 				</tr>
 				<tr id="lifespan">
 					<td class="label">Extend life of VM?</td>
 					<td class="radio-field">
-						<!--<input type="radio" name="extendlife" id="extendlifeNo" value="" checked> No<br>
-						<input type="radio" name="extendlife" id="extendlifeYes" value=""> -->
 						Yes, I would like  
 						<input type="number" id="LifeSpan" min="1" max="96" value="48"> hours in total.<br>
 					</td>
 				</tr>
 				<tr id="email">
 					<td class="label">Email</td>
-					<td class="input-field">
+					<td class="content">
 						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
 					</td>
 				</tr>
@@ -113,37 +111,37 @@ portal: 8.4.0.beta</textarea>
 
 	<!-- 	PROVISIONED VAGRANT 	-->
 
-	<span id="provisionedenvsection">
+	<span id="provisionedenv-section">
 
 	<div class="placeholder">&nbsp;</div>
 
-	<a class="anchor" name="vagrantcode"><br></a>
+	<a name="vagrantcode"><br></a>
 	<h1>Your <span class="orange">provisioned VM</span> is ready</h1>
 
 	<h2 class="subheader"><span class="teal">Save</span> these scripts to the <span class="teal">same directory</span>, <span class="teal">$ chmod +x run.sh</span>, then <span class="teal">$ run.sh</span>.</h2>
 
-	<center><a id="blob" class="downloadlink" onclick="DownloadZip()">Download all three scripts in a zip</a><br><br></center>
+	<center><a id="blob" class="download-link" onclick="DownloadZip()">Download all three scripts in a zip</a><br><br></center>
 
 	<div class="index-page-wrap">
 
-		<a class="scriptlink" id="showrunInfo">run.sh</a>
-		<span class="hiddenInfo" id="runInfo">&nbsp;is an executable bash shell script which kicks off the entire automated process of runing and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
+		<a class="show-script-info" id="show-run-info">run.sh</a>
+		<span class="hidden-info" id="run-info">&nbsp;is an executable bash shell script which kicks off the entire automated process of runing and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
 		</span>
-		<textarea rows="40" name="provisionedenvrunsource" class="source" id="provisionedenvrunsource" onClick="SelectAll('provisionedenvrunsource');" spellcheck="false"></textarea><br><br>
+		<textarea rows="40" name="provisionedenv-run-source" class="source" id="provisionedenv-run-source" onClick="SelectAll('provisionedenv-run-source');" spellcheck="false"></textarea><br><br>
 		
-		<a class="scriptlink" id="showvagrantfileInfo">Vagrantfile</a>
-		<span class="hiddenInfo" id="vagrantfileInfo">&nbsp;is the configuration file which allows run.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
+		<a class="show-script-info" id="show-vagrantfile-info">Vagrantfile</a>
+		<span class="hidden-info" id="vagrantfile-info">&nbsp;is the configuration file which allows run.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
 		</span>
-		<textarea rows="40" name="provisionedenvvagrantfilesource" class="source" id="provisionedenvvagrantfilesource" onClick="SelectAll('provisionedenvvagrantfilesource');" spellcheck="false"></textarea><br><br>
+		<textarea rows="40" name="provisionedenv-vagrantfile-source" class="source" id="provisionedenv-vagrantfile-source" onClick="SelectAll('provisionedenv-vagrantfile-source');" spellcheck="false"></textarea><br><br>
 		
-		<a class="scriptlink" id="showinstallInfo">install.sh</a>
-		<span class="hiddenInfo" id="installInfo">&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
+		<a class="show-script-info" id="show-install-info">install.sh</a>
+		<span class="hidden-info" id="install-info">&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
 		Once Platform and Portal have been installed and started, you can access them here:<br>
 		<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>
 		<a href="http://localhost:19080/concerto" target="_blank">http://localhost:19080/concerto</a><br><br>
 		</span>
 
-		<textarea rows="40" name="provisionedenvinstallsource" class="source" id="provisionedenvinstallsource" onClick="SelectAll('provisionedenvinstallsource');" spellcheck="false"></textarea>
+		<textarea rows="40" name="provisionedenv-install-source" class="source" id="provisionedenv-install-source" onClick="SelectAll('provisionedenv-install-source');" spellcheck="false"></textarea>
 
 	</div>
 
@@ -163,17 +161,17 @@ portal: 8.4.0.beta</textarea>
 
 	<!-- 	EMPTY VAGRANT 	-->
 
-	<span id="emptyenvsection">
+	<span id="emptyenv-section">
 
 	<div class="placeholder">&nbsp;</div>
 
-	<a class="anchor" name="emptycode"><br></a>
+	<a name="emptycode"><br></a>
 	<h1>Your <span class="orange">Vagrantfile</span> is ready</h1>
 
-	<h2 class="subheader"><a class="headerlink" onclick="DownloadSourceCode('emptyenvsource', 'Vagrantfile')">Click to save</a> the following source code as "<span class="teal">Vagrantfile</span>", then run the command <span class="teal">$ vagrant up</span>.</h2>
+	<h2 class="subheader"><a class="header-link" onclick="DownloadSourceCode('emptyenv-source', 'Vagrantfile')">Click to save</a> the following source code as "<span class="teal">Vagrantfile</span>", then run the command <span class="teal">$ vagrant up</span>.</h2>
 
 	<div class="index-page-wrap">
-		<textarea rows="40" name="emptyenvsource" class="source" id="emptyenvsource" onClick="SelectAll('emptyenvsource');" spellcheck="false"></textarea>
+		<textarea rows="40" name="emptyenv-source" class="source" id="emptyenv-source" onClick="SelectAll('emptyenv-source');" spellcheck="false"></textarea>
 	</div>
 
 	<br><br>

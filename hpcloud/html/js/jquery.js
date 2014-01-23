@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 /* ==========================================================================
-    MAIN FORM
+    INDEX
    ========================================================================== */
 
   // Show relevant fields on form according to selected VM environment.
@@ -43,16 +43,16 @@ $(document).ready(function(){
 
   // Toggle information on each individual script for a Provisioned VM.
 
-  $("#showrunInfo").click(function(){
-    $("#runInfo").toggle();
+  $("#show-run-info").click(function(){
+    $("#run-info").toggle();
   });
 
-  $("#showvagrantfileInfo").click(function(){
-    $("#vagrantfileInfo").toggle();
+  $("#show-vagrantfile-info").click(function(){
+    $("#vagrantfile-info").toggle();
   });
 
-  $("#showinstallInfo").click(function(){
-    $("#installInfo").toggle();
+  $("#show-install-info").click(function(){
+    $("#install-info").toggle();
   });
 
 });
