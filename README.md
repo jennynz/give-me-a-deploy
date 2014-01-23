@@ -1,18 +1,16 @@
 Give-Me-A-Deploy
 =================
 
-Please refer to the Give-Me-A-Deploy Docs or the Woki page for full details on this client-side GUI configurator for the Vagrant VM automation tool.
-
-http://woki/display/IntDev/Give-Me-A-Deploy
+Please refer to the Give-Me-A-Deploy Docs or the [Woki page](http://woki/display/IntDev/Give-Me-A-Deploy) for full details on this client-side GUI configurator for the Vagrant VM automation tool.
 
 Prerequisites
 -------------
 
 For to be able to run the contents of this zip file, the following applications must be installed on your host machine:
-* VirtualBox https://www.virtualbox.org/wiki/Downloads
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 	* Ensure that the version is compatible with Vagrant
-* Vagrant http://www.vagrantup.com/
-* Git version control http://git-scm.com/downloads
+* [Vagrant](http://www.vagrantup.com/)
+* [Git version control](http://git-scm.com/downloads)
 
 You must also have SSH key pairs set up with your Stash account, and permission to clone the following repositories:
 * http://stash/projects/OCD/repos/tooling/browse
