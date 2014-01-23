@@ -64,7 +64,8 @@ done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 
 # Sync across html files
-rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no" -aqz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
+SYNC_TO_ADDRESS="root@${FLOATING_IP}:/usr/share/nginx/"
+rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no" -aqz  /vagrant/html "${SYNC_TO_ADDRESS}"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
