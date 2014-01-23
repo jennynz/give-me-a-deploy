@@ -9,12 +9,13 @@ require 'base64'
 
 # Establish a connection to HP Cloud service
 conn = Fog::Compute.new(
-  :provider      => "HP",
+  :provider       => "HP",
   :hp_access_key  => "YTJ3CDHULMMX8V8K4FVD",
-  :hp_secret_key => "8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5",
-  :hp_auth_uri   => "https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/",
-  :hp_tenant_id => "10647634461576",
-  :hp_avl_zone => "az-3.region-a.geo-1",
+  :hp_secret_key  => "8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5",
+  :hp_auth_uri    => "https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/",
+  :hp_tenant_id   => "10647634461576",
+  :hp_avl_zone    => "az-3.region-a.geo-1",
+  :version        => "v2",
   )
 
 conn.flavors.all
