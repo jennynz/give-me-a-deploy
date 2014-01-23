@@ -1,65 +1,57 @@
 #!/usr/bin/env ruby
 
-instance_id = '89015b29-a192-4d9f-96ed-fe5cedb644bc'
-
-server = nova.server(instance_id)
-floating_ip = nova.create_floating_ip
-
-success = nova.attach_floating_ip server_id: server.id, ip_id: floating_ip.id
-puts "attached: #{success}"
-
-
-
 require 'bundler'
 Bundler.require
 
-require 'openstack'
+require 'fog'
 require 'yaml'
 require 'base64'
 
-# Log in to OS
-os = OpenStack::Connection.create(
-  :username => "admin",
-  :api_key => "orionsys",
-  :auth_method => "password",
-  :auth_url => "http://ocd-devstack:5000/v2.0/",
-  :authtenant_name =>"admin",
-  :service_type =>"compute"
+# Establish a connection to HP Cloud service
+conn = Fog::Compute.new(
+  :provider      => "HP",
+  :hp_access_key  => "YTJ3CDHULMMX8V8K4FVD",
+  :hp_secret_key => "8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5",
+  :hp_auth_uri   => "https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/",
+  :hp_tenant_id => "10647634461576",
+  :hp_avl_zone => "az-3.region-a.geo-1",
   )
 
-boot_script = Base64::encode64(File.read('boot-script.sh'))
+conn.flavors.all
+conn.list_flavors
 
-# Create a new instance in OS
-server = os.create_server(
-  :name => "Portal Automation",
-  :imageRef => 'cb17598a-d083-41e5-8ccf-8d585f3a5202',
-  :flavorRef => '2',
-  :key_name => "akl-build8",
-  :user_data => Base64.encode64(File.read('boot-script.sh'))
-  )
+provision_script = Base64::encode64(File.read('cloud_init.sh'))
 
-puts "\n\nBooting up " + server.name + " VM on DevStack...\n\n"
+# Create a new server provisioned with NGINX
+new_server = conn.servers.create(
+  :name => "gmad-nginx",
+  :flavor_id => "t1.micro",
+  :image_id => 2,
+  :key_name => "puppet",
+  :user_data_encoded => [provision_script].pack('m'),
+  # :security_groups => ["aaa"]
+)
 
-while server.status != 'ACTIVE' do 
-  server.refresh
-  puts server.status
+while new_server['status'] != 'ACTIVE' do 
+  puts new_server['status']
   sleep(5)
 end
 
-puts "\n" + server.name + " is active.\n\n\n"
+puts "\n" + new_server.name + " is active."
+
+# Allocate a floating ip
+puts "Assigning floating IP...\n\n\n"
+address = conn.adresses.create
+address.new_server = new_server
+puts "\nFloating IP: " + address.ip + "\n\n\n"
 
 # Store information of existing instance created on OS in data set variable.
-servers = { 
-  :name => server.name,
-  :flavor => server.flavor['id'],
-  :image => server.image['id'],
-  :address => server.addresses.map { |a| a.address }.select{|ip| ip[/^192/]}.first,
-  :serverid => server.id
-  }
-
-  
+server_info = { 
+  :server_id => new_server.id
+  :floating_ip => address.ip
+}
 
 # Write server information to file.
-File.open('servers.yml', 'w') { |fh|
+File.open('server_info.yml', 'w') { |fh|
  fh.puts servers.to_yaml + "\n" + os.to_yaml
 }
