@@ -17,46 +17,46 @@
 		<br><br>
 
 		<h1 class="docs">Give-Me-A-Deploy: Provisioned Vagrant<br>
-		<a href="#documentation" class="docsTitleLink">Documentation</a>, 
-		<a href="#faqs" class="docsTitleLink">FAQs</a> & 
-		<a href="#help" class="docsTitleLink">Help</a>
+		<a href="#documentation" class="docs-title-link">Documentation</a>, 
+		<a href="#faqs" class="docs-title-link">FAQs</a> & 
+		<a href="#help" class="docs-title-link">Help</a>
 		</h1>
 
 		<p>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="provisionedenv.html" class="current">Provisioned VM</a></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="emptyenv.html">Empty Vagrant</a></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a></span>
+			<img src="../favicon.ico" class="star"><a href="provisionedenv.html" class="current">Provisioned Vagrant</a>
+			<img src="../favicon.ico" class="star"><a href="devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span>
+			<img src="../favicon.ico" class="star"><a href="hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span>
+			<img src="../favicon.ico" class="star"><a href="emptyenv.html">Empty Vagrant</a>
+			<img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a>
 		</p>
 
-		<div class="docsSub">
+		<div class="docs-infobox">
 			The "Provisioned Vagrant" option on Give-Me-A-Deploy gives you three scripts which work together to boot up your VM and install OH applications on it. All you need to do is call <b>run.sh</b>, and it'll do the rest itself automatically.
 
-			<h4 class="docsSub">tl;dr</h4>
+			<h4 class="docs-infobox">tl;dr</h4>
 			<ul>
-				<li class="docsSub"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
-				<li class="docsSub">You will need:
+				<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
+				<li class="docs-infobox">You will need:
 					<ul>
-						<li class="docsSub"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
-						<li class="docsSub"><a href="http://www.vagrantup.com">Vagrant</a></li>
-						<li class="docsSub"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
+						<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+						<li class="docs-infobox"><a href="http://www.vagrantup.com">Vagrant</a></li>
+						<li class="docs-infobox"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
 							<ul>
-								<li class="docsSub"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
-								<li class="docsSub"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
-								<li class="docsSub"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
+								<li class="docs-infobox"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
+								<li class="docs-infobox"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
+								<li class="docs-infobox"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
 							</ul>
 						</li>
-						<li class="docsSub"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
+						<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 					</ul>
 				</li>
-				<li class="docsSub">"Products" input format must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
-				<li class="docsSub">A foundation version must be specified.</li>
-				<li class="docsSub">Each concurrent VM on your host machine must have a different host port specified.</li>
-				<li class="docsSub">All three scripts are saved in the same directory.</li>
-				<li class="docsSub"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.</li>
-				<li class="docsSub"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
-				<li class="docsSub"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
+				<li class="docs-infobox">"Products" input format must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
+				<li class="docs-infobox">A foundation version must be specified.</li>
+				<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
+				<li class="docs-infobox">All three scripts are saved in the same directory.</li>
+				<li class="docs-infobox"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.</li>
+				<li class="docs-infobox"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
+				<li class="docs-infobox"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
 				
 
 			
@@ -83,41 +83,42 @@
 		<table class="docs">
 			<tr>
 				<td class="docs-label">Virtual Environment*</td>
-				<td class="content">
+				<td class="docs-content" colspan="2">
 					"Provisioned Vagrant" checked. <i>Provisioned Vagrant</i>
 				</td>
 			</tr>
 			<tr>
 				<td class="docs-label">Host Port*</td>
-				<td class="content">
+				<td class="docs-content" colspan="2">
 					If you have more than one VM running, a different host port for each VM must be specified in order to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
 				</td>
 			</tr>
 			<tr>
 				<td class="docs-label">Host Name</td>
-				<td class="content">
+				<td class="docs-content" colspan="2">
 					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
 				</td>
 			</tr>
 			<tr>
 				<td class="docs-label">Memory*</td>
-				<td class="content">
+				<td class="docs-content" colspan="2">
 					Customise the allocation of base memory to your VM. <i>768 MB</i>
 				</td>
 			</tr>
 			<tr>
 				<td class="docs-label">Products*</td>
-				<td class="content">
+				<td class="docs-content" width="50%">
 					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number. A functioning version of Orion Health Foundation must be specified for the installer for work. <i>foundation 7.2.0.beta</i><br>
-					The code that you write in here is directly written out to several script files which str used to create a solution.zip for the OHP installation, hence the importance of formatting the text exactly as seen in the defaults shown.<br>
-					<table class="plain"><tr><td class="plain">
+					The code that you write in here is directly written out to several script files which str used to create a solution.zip for the OHP installation, hence the importance of formatting the text exactly as seen in the defaults shown.
+				</td>
+				<td class="docs-content" width="50%">					
 					- Each application on a new line<br>
 					- Space after the colon<br>
-					- Version number string is exact<br>
-					</td><td class="plain">
-					e.g.<br>
-					applicationName: 1.2.3.beta<br>
-					<i>portal: 8.4.0.beta</i></td></tr></table>
+					- Version number string is exact<br><br>
+					
+					e.g. applicationName: 1.2.3.beta<br>
+					<i>portal: 8.4.0.beta</i><br><br>
+
 					For a list of options, please see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.
 				</td>
 			</tr>

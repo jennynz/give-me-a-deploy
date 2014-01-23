@@ -17,20 +17,20 @@
 		<br><br>
 
 		<h1 class="docs">Give-Me-A-Deploy: Empty VM<br>
-		<a href="#documentation" class="docsTitleLink">Documentation</a>, 
-		<a href="#faqs" class="docsTitleLink">FAQs</a> & 
-		<a href="#help" class="docsTitleLink">Help</a>
+		<a href="#documentation" class="docs-title-link">Documentation</a>, 
+		<a href="#faqs" class="docs-title-link">FAQs</a> & 
+		<a href="#help" class="docs-title-link">Help</a>
 		</h1>
 
 		<p>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="provisionedenv.html">Provisioned Vagrant</a></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="emptyenv.html" class="current">Empty Vagrant</a></span>
-			<span class="docslink"><img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a></span>
+			<img src="../favicon.ico" class="star"><a href="provisionedenv.html">Provisioned Vagrant</a>
+			<img src="../favicon.ico" class="star"><a href="devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span>
+			<img src="../favicon.ico" class="star"><a href="hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span>
+			<img src="../favicon.ico" class="star"><a href="emptyenv.html" class="current">Empty Vagrant</a>
+			<img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a>
 		</p>
 
-		<div class="docsSub">
+		<div class="docs-infobox">
 			The 'Empty Vagrant' option simply outputs a Vagrantfile with a few custom configurations for your convenience. It is very simple to boot, and you may add whatever provisioning you wish.
 		</div>
 
@@ -43,20 +43,20 @@
 
 		<div class="code">
 			<table class="code"><tr><td class="code">
-			<span class="codeComment"># Boot</span><br>
+			<span class="code-comment"># Boot</span><br>
 			$ cd to/your/Vagrantfile/directory<br>
 			$ vagrant up<br><br>
 
-			<span class="codeComment"># Access</span><br>
+			<span class="code-comment"># Access</span><br>
 			$ vagrant ssh<br><br>
 
-			<span class="codeComment"># Destroy</span><br>
+			<span class="code-comment"># Destroy</span><br>
 			$ vagrant destroy -f
 			
 			</td><td width="60%" class="code">
-			<span class="codeComment"># Check status</span><br>
+			<span class="code-comment"># Check status</span><br>
 			$ vagrant status<br>
-			<span class="codeOutput">Current machine states:<br>
+			<span class="code-output">Current machine states:<br>
 			default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running (virtualbox)<br><br>
 			The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or you can run `vagrant suspend` to simply suspend the virtual machine. In either case, to restart it again, simply run `vagrant up`.</span>
 			</td></tr></table>

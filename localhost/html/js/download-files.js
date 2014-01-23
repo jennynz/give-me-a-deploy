@@ -1,9 +1,9 @@
 // Download Vagrant in a zip
 function DownloadZip() {
   
-  var run = document.getElementById("provisionedenvrunsource").value;
-  var vagrantfile = document.getElementById("provisionedenvvagrantfilesource").value;
-  var install = document.getElementById("provisionedenvinstallsource").value;
+  var run = document.getElementById("provisionedenv-run-source").value;
+  var vagrantfile = document.getElementById("provisionedenv-vagrantfile-source").value;
+  var install = document.getElementById("provisionedenv-install-source").value;
 
   var vmname = document.getElementById("vmname").value;
 
