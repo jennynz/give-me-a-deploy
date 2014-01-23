@@ -47,7 +47,7 @@ puts "\nFloating IP: " + address.ip + "\n\n\n"
 
 # Store information of existing instance created on OS in data set variable.
 server_info = { 
-  :server_id => new_server.id
+  :server_id => new_server.id,
   :floating_ip => address.ip
 }
 
@@ -55,3 +55,11 @@ server_info = {
 File.open('server_info.yml', 'w') { |fh|
  fh.puts servers.to_yaml + "\n" + os.to_yaml
 }
+
+# instance_id = '89015b29-a192-4d9f-96ed-fe5cedb644bc'
+
+# server = nova.server(instance_id)
+# floating_ip = nova.create_floating_ip
+
+# success = nova.attach_floating_ip server_id: server.id, ip_id: floating_ip.id
+# puts "attached: #{success}"
