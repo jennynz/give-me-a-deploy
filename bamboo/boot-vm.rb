@@ -28,8 +28,6 @@ os = OpenStack::Connection.create(
 #   :version        => "v2",
 #   )
 
-provision_script = Base64::encode64(File.read('cloud_init.sh'))
-
 # Create a new server provisioned with NGINX
 # image = os.get_image('202e7659-f7c6-444a-8b32-872fe2ed080c')
 # image.name
@@ -40,7 +38,7 @@ gmadserver = os.create_server(
   :imageRef => '202e7659-f7c6-444a-8b32-872fe2ed080c',
   :flavorRef => '100',
   :key_name => 'puppet',
-  :user_data => Base64.encode64(File.read('provision_script.sh'))
+  :user_data => Base64::encode64(File.read('cloud_init.sh')),
   )
 
 # gmadserver = conn.servers.create(
