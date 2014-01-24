@@ -18,8 +18,6 @@ os = OpenStack::Connection.create(
   :region => "region-a.geo-1",
   )
 
-puts "\n\n" + os + "\n\n"
-
 # conn = Fog::Compute.new(
 #   :provider       => "HP",
 #   :hp_access_key  => "YTJ3CDHULMMX8V8K4FVD",
