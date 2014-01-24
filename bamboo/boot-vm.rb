@@ -20,7 +20,7 @@ os = OpenStack::Connection.create(
 
 # Create a new server provisioned with NGINX
 gmadserver = os.create_server(
-  :name => 'give-me-a-deploy',
+  :name => 'bamboo-gmad',
   :imageRef => '202e7659-f7c6-444a-8b32-872fe2ed080c',
   :flavorRef => '100',
   :key_name => 'puppet',
@@ -37,7 +37,7 @@ end
 puts gmadserver.name + " is ACTIVE."
 
 # Allocate a floating ip
-puts "Assigning floating IP...\n\n\n"
+puts "Assigning floating IP..."
 floating_ip = os.create_floating_ip
 ip_success = os.attach_floating_ip({:server_id=>gmadserver.id, :ip_id=>floating_ip.id})
 puts "attached: #{ip_success}\n\n"
@@ -50,5 +50,5 @@ server_info = {
 
 # Write server information to file.
 File.open('server_info.yml', 'w') { |fh|
- fh.puts servers.to_yaml + "\n" + os.to_yaml
+ fh.puts server_info.to_yaml + "\n" + os.to_yaml
 }
