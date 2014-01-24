@@ -14,7 +14,7 @@ conn = Fog::Compute.new(
   :hp_secret_key  => "8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5",
   :hp_auth_uri    => "https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/",
   :hp_tenant_id   => "10647634461576",
-  :hp_avl_zone    => "az-3.region-a.geo-1",
+  :hp_avl_zone    => "az-1.region-a.geo-1",
   :version        => "v2",
   )
 
@@ -25,7 +25,7 @@ provision_script = Base64::encode64(File.read('cloud_init.sh'))
 
 # Create a new server provisioned with NGINX
 new_server = conn.servers.create(
-  :name => "gmad-nginx",
+  :name => "gmad-nginx-bamboo",
   :flavor_id => "t1.micro",
   :image_id => 2,
   :key_name => "puppet",
