@@ -18,9 +18,6 @@ conn = Fog::Compute.new(
   :version        => "v2",
   )
 
-conn.flavors.all
-conn.list_flavors
-
 provision_script = Base64::encode64(File.read('cloud_init.sh'))
 
 # Create a new server provisioned with NGINX
