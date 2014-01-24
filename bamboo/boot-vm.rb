@@ -27,10 +27,9 @@ provision_script = Base64::encode64(File.read('cloud_init.sh'))
 new_server = conn.servers.create(
   :name => "gmad-nginx-bamboo",
   :flavor_id => "t1.micro",
-  :image => "CentOS 6.3 Server 64-bit 20130116 (b)",
+  :image_id => "202e7659-f7c6-444a-8b32-872fe2ed080c",
   :key_name => "puppet",
   :user_data_encoded => [provision_script].pack('m'),
-  # :security_groups => ["aaa"]
 )
 
 while new_server['status'] != 'ACTIVE' do 
