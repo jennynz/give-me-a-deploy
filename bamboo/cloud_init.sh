@@ -23,7 +23,7 @@ nginx::resource::vhost { 'give-me-a-deploy':
   server_name          => ['give-me-a-deploy'],
   listen_port          => 19082,
   ssl                  => false,
-  www_root             => '/usr/share/nginx/html/',
+  www_root             => '/usr/share/nginx/html',
   use_default_location => false,
   access_log           => '/var/log/nginx/rpm-repo_access.log',
   error_log            => '/var/log/nginx/rpm-repo_error.log',
@@ -36,4 +36,5 @@ service iptables stop
 # Puppet install & boot nginx
 puppet apply manifests/site.pp
 
-rm -y /usr/share/nginx/html/index.html
+# Delete the existing default index.html so the GMAD one can be synced across.
+# rm -f /usr/share/nginx/html/index.html
