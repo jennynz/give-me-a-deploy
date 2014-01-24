@@ -35,6 +35,3 @@ service iptables stop
 
 # Puppet install & boot nginx
 puppet apply manifests/site.pp
-
-# Delete the existing default index.html so the GMAD one can be synced across.
-# rm -f /usr/share/nginx/html/index.html

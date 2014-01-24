@@ -1,19 +1,5 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
 group :development, :test do
-  # gem 'fog'
   gem 'openstack'
-  # gem 'nova'
-  # gem 'net-ssh-simple'
-  # gem 'rubyzip'
-  # gem 'rake'
-  # gem 'puppetlabs_spec_helper', :require => false
-  # gem 'puppet', :require => false
-  # # including a newer version of rspec-puppet because 0.1.6 does not support the "have_*_resouce_count" functionality
-  # gem 'rspec-puppet', :git => 'https://github.com/rodjek/rspec-puppet.git', :ref => '8dc9ecbf0508fb8997dec23a2e555ed65af10538'
-  # gem 'rspec-system-puppet'
-  # gem 'rspec-system-serverspec'
-  # gem 'activesupport', '~>4.0'
-  # gem 'librarian-puppet'
-  # gem 'rspec_junit_formatter'
 end
