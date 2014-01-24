@@ -75,7 +75,7 @@ rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o
 sleep 30
 
 # ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@{FLOATING_IP}
-ssh -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no root@{FLOATING_IP} "echo \"I am in the HP Cloud instance\"; \"service nginx restart\""
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no root@${FLOATING_IP} "echo \"I am in the HP Cloud instance\"; \"service nginx restart\""
 # ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa root@${FLOATING_IP}
 
 echo -e "\n\n    Give-Me-A-Deploy"
