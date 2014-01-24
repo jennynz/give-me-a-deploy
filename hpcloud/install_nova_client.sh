@@ -65,8 +65,25 @@ nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 
 sleep 60
 
+nova show ${INSTANCE_NAME}
+
 # Sync across html files
+# ssh -i /home/vagrant/.ssh/puppet_id_rsa root@${FLOATING_IP}
+# rm -f /usr/share/nginx/html/index.html
+# exit
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -aqz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
+sleep 30
+
+# ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@{FLOATING_IP}
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no root@{FLOATING_IP}
+
+# ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa root@${FLOATING_IP}
+
+sleep 10
+service nginx restart
+sleep 10
+echo "I am in the HP Cloud instance"
+exit
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"

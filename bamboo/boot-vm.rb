@@ -8,13 +8,17 @@ require 'yaml'
 require 'base64'
 
 # Establish a connection to HP Cloud service
-conn = OpenStack::Connection.create(
-  :username => "jennysa",
-  :api_key => "orionsys",
-  :auth_method => "password",
+os = OpenStack::Connection.create(
+  :username => "YTJ3CDHULMMX8V8K4FVD",
+  :api_key => "8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5",
+  :auth_method => "key",
   :auth_url => "https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/",
-  :service_type =>"compute"
+  :authtenant_id =>"10647634461576",
+  :service_type =>"compute",
+  :region => "region-a.geo-1",
   )
+
+puts "\n\n" + os + "\n\n"
 
 # conn = Fog::Compute.new(
 #   :provider       => "HP",
@@ -33,15 +37,17 @@ image = os.get_image(8)
 image.name
 flavor = os.get_flavor(2)
 flavor.name
-newserver = os.create_server(
-  :name => "Portal Automation",
+gmadserver = os.create_server(
+  :name => "give-me-a-deploy",
   :imageRef => 'cb17598a-d083-41e5-8ccf-8d585f3a5202',
-  :flavorRef => '2',
-  :key_name => "akl-build8",
-  :user_data => Base64.encode64(File.read('boot-script.sh'))
+  # :imageRef => image.id,
+  :flavorRef => flavor.id,
+  # :flavorRef => '2',
+  # :key_name => "akl-build8",
+  :user_data => Base64.encode64(File.read('provision_script.sh'))
   )
 
-# new_server = conn.servers.create(
+# gmadserver = conn.servers.create(
 #   :name => "gmad-nginx-bamboo",
 #   :flavor_id => "100",
 #   :image_id => "202e7659-f7c6-444a-8b32-872fe2ed080c",
@@ -49,22 +55,34 @@ newserver = os.create_server(
 #   :user_data_encoded => [provision_script].pack('m'),
 # )
 
-while new_server['status'] != 'ACTIVE' do 
-  puts new_server['status']
+while gmadserver.status != 'ACTIVE' do 
+  puts gmadserver.status
+  gmadserver.refresh
   sleep(5)
 end
 
-puts "\n" + new_server.name + " is active."
+# while gmadserver['status'] != 'ACTIVE' do 
+#   puts gmadserver['status']
+#   sleep(5)
+# end
+
+puts "\n" + gmadserver.name + " is active."
 
 # Allocate a floating ip
 puts "Assigning floating IP...\n\n\n"
-address = conn.adresses.create
-address.new_server = new_server
-puts "\nFloating IP: " + address.ip + "\n\n\n"
+
+floating_ip = os.create_floating_ip
+success = os.attach_floating_ip({:server_id=>gmadserver.id, :ip_id=>floating_ip.id})
+puts "attached: ${success}"
+puts "\nFloating IP: " + floating_ip + "\n\n\n"
+
+# address = conn.adresses.create
+# address.gmadserver = gmadserver
+# puts "\nFloating IP: " + address.ip + "\n\n\n"
 
 # Store information of existing instance created on OS in data set variable.
 server_info = { 
-  :server_id => new_server.id,
+  :server_id => gmadserver.id,
   :floating_ip => address.ip
 }
 
@@ -72,11 +90,3 @@ server_info = {
 File.open('server_info.yml', 'w') { |fh|
  fh.puts servers.to_yaml + "\n" + os.to_yaml
 }
-
-# instance_id = '89015b29-a192-4d9f-96ed-fe5cedb644bc'
-
-# server = nova.server(instance_id)
-# floating_ip = nova.create_floating_ip
-
-# success = nova.attach_floating_ip server_id: server.id, ip_id: floating_ip.id
-# puts "attached: #{success}"
