@@ -31,17 +31,15 @@ os = OpenStack::Connection.create(
 provision_script = Base64::encode64(File.read('cloud_init.sh'))
 
 # Create a new server provisioned with NGINX
-image = os.get_image(8)
-image.name
-flavor = os.get_flavor(2)
-flavor.name
+# image = os.get_image('202e7659-f7c6-444a-8b32-872fe2ed080c')
+# image.name
+# flavor = os.get_flavor(2)
+# flavor.name
 gmadserver = os.create_server(
-  :name => "give-me-a-deploy",
-  :imageRef => 'cb17598a-d083-41e5-8ccf-8d585f3a5202',
-  # :imageRef => image.id,
-  :flavorRef => flavor.id,
-  # :flavorRef => '2',
-  # :key_name => "akl-build8",
+  :name => 'give-me-a-deploy',
+  :imageRef => '202e7659-f7c6-444a-8b32-872fe2ed080c',
+  :flavorRef => '100',
+  :key_name => 'puppet',
   :user_data => Base64.encode64(File.read('provision_script.sh'))
   )
 
