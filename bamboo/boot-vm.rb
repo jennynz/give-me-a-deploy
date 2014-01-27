@@ -28,30 +28,24 @@ gmadserver = os.create_server(
   )
 
 while gmadserver.status != 'ACTIVE' do 
-  puts gmadserver.status
+  puts "    " + gmadserver.status
   gmadserver.refresh
   sleep(5)
 end
 
-puts gmadserver.name + " is ACTIVE."
+puts "    " + gmadserver.name + " is ACTIVE."
 
 # Allocate a floating ip
-puts "Assigning floating IP..."
+puts "    Assigning floating IP..."
 floating_ip = os.create_floating_ip
-floating_ip_alone = os.get_floating_ip(floating_ip.id)
 ip_success = os.attach_floating_ip({:server_id=>gmadserver.id, :ip_id=>floating_ip.id})
-puts "attached: #{ip_success}\n\n"
-
-puts "\n\n    Give-Me-A-Deploy"
-puts "    hosted on HP Cloud instance \'" + gmadserver.name + "\'"
-puts "    accessible at http://" + floating_ip_alone + "\n\n"
+puts "    attached: #{ip_success}\n\n"
 
 # Store information of existing instance created on OS in data set variable.
 server_info = { 
   :server_name => gmadserver.name,
   :server_id => gmadserver.id,
-  :ip_id => floating_ip.id,
-  :ip => floating_ip_alone,
+  :ip_id => floating_ip,
 }
 
 # Write server information to file.
