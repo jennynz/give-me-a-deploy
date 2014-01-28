@@ -68,7 +68,7 @@ nova show ${INSTANCE_NAME}
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
 sleep 30
 
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "echo \"\"; echo \"\"; service nginx restart; echo \"\"; echo \"\";"
+# ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "echo \"\"; echo \"\"; service nginx restart; echo \"\"; echo \"\";"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
