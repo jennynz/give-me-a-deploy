@@ -48,7 +48,7 @@ puts "    attached: #{ip_success}\n\n"
 server_info = { 
   :server_name => gmadserver.name,
   :server_id => gmadserver.id,
-  :ip_id => floating_ip,
+  :ip_id => floating_ip.id,
 }
 
 # Write server information to file.
