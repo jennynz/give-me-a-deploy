@@ -137,11 +137,11 @@ function GenerateVagrantInstall() {
 		"#!/bin/bash\n" +
 		"\n" + 
 		"echo -e\n" +
-		"echo -e \"\033[36m#######################################################\033[0m\"\n" +
+		"echo -e \"#######################################################\"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m        SETTING UP OHP INSTALLATION ENVIRONMENT        \033[0m\"\n" +
+		"echo -e \"        SETTING UP OHP INSTALLATION ENVIRONMENT        \"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m#######################################################\033[0m\"\n" +
+		"echo -e \"#######################################################\"\n" +
 		"echo -e\n" +
 		"\n" +
 		"# Remove firewalls to allow port forwarding\n" +
@@ -154,7 +154,7 @@ function GenerateVagrantInstall() {
 		"cd ${base_url}\n" +
 		"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m-->  Installing dependencies\033[0m\"\n" +
+		"echo -e \"-->  Installing dependencies\"\n" +
 		"echo -e\n" +
 		"\n" +
 		"# java-1.7.0-openjdk  Default Java version on Vagrant is 1.6, but 1.7 required.\n" +
@@ -174,14 +174,14 @@ function GenerateVagrantInstall() {
 		"sed -i -e '17s/.*/\\t\\t\\t<taskdef name=\"junit\" classname=\"org.apache.tools.ant.taskdefs.optional.junit.JUnitTask\" classpath=\"${common.build.dir}\\/anttasks\\/ant-junit.jar\"\\/>/' ./modules/PlatformBuild/build-tasks.xml\n" +
 		"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m-->  Downloading provisioning installer from Ivy\033[0m\"\n" +
+		"echo -e \"-->  Downloading provisioning installer from Ivy\"\n" +
 		"echo -e\n" +
 		"\n" +
 		"# Download OHP provisioning installer from Ivy.\n" +
 		"wget http://ivy-rep-ro/orchestral/provisioning-installer/" + foundationVersion + "/installers/${installer} --user=ivy-http --password=YouSayHello\n" +
 		"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m-->  Creating solution.zip\033[0m\"\n" +
+		"echo -e \"-->  Creating solution.zip\"\n" +
 		"echo -e\n" +
 		"\n" +
 		"# Create and write the files required for a solution package\n" +
@@ -213,7 +213,7 @@ function GenerateVagrantInstall() {
 		"sudo mv ${base_url}/modules/solution/solution.zip ${base_url}\n" +
 		"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m-->  Installing Orion Health products with puppet-ohp module\033[0m\"\n" +
+		"echo -e \"-->  Installing Orion Health products with puppet-ohp module\"\n" +
 		"echo -e\n" +
 		"\n" +
 		"cd ${base_url}\n" +
@@ -344,7 +344,7 @@ function GenerateVagrantInstall() {
 		"sudo puppet apply --modulepath=/vagrant/modules/puppet-ohp /vagrant/manifests/site.pp\n" +
 		"\n" +
 		"echo -e\n" +
-		"echo -e \"\033[36m-->  Checking status of OHP to verify successful installation\033[0m\"\n" +
+		"echo -e \"-->  Checking status of OHP to verify successful installation\"\n" +
 		"echo -e\n" +
 		"\n" +
 		"# Check status to verify successful installation\n" +

@@ -37,14 +37,11 @@ cat /vagrant/hp_cloud_prop.env >> /home/vagrant/.profile
 export OS_AUTH_SYSTEM="secretkey"
 export OS_ACCESS_KEY_ID="YTJ3CDHULMMX8V8K4FVD"
 export OS_SECRET_KEY="8FXL9pZocUEIi9Bub3UyM/ZZvaQ5nxhXtbjTHWO5"
-
 export OS_REGION_NAME="region-a.geo-1"
 export OS_AUTH_URL="https://region-a.geo-1.identity.hpcloudsvc.com:35357/v2.0/"
 export OS_TENANT_NAME="Continuous-Delivery"
-
 export OS_PASSWORD=useapikey
 export OS_USERNAME=useapikey
-
 export INSTANCE_NAME=gmad-nginx
 
 # copy ssh configuration
@@ -68,15 +65,10 @@ sleep 60
 nova show ${INSTANCE_NAME}
 
 # Sync across html files
-# ssh -i /home/vagrant/.ssh/puppet_id_rsa root@${FLOATING_IP}
-# rm -f /usr/share/nginx/html/index.html
-# exit
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -aqz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
 sleep 30
 
-# ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@{FLOATING_IP}
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no root@${FLOATING_IP} "echo \"I am in the HP Cloud instance\"; \"service nginx restart\""
-# ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa root@${FLOATING_IP}
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "echo \"\"; echo \"\"; tail /usr/share/nginx/html/index.html; echo -e \"\nI am in the HP Cloud instance\"; service nginx restart"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
