@@ -60,9 +60,11 @@ do
 done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 
-sleep 120
+sleep 60
 
 nova show ${INSTANCE_NAME}
+
+sleep 60
 
 # Sync across html files
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
