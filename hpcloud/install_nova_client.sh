@@ -45,8 +45,8 @@ export OS_USERNAME=useapikeey
 export INSTANCE_NAME=gmad-nginx
 
 # copy ssh configuration
-cp -a /vagrant/config /home/vagrant/.ssh
-cp -a /vagrant/puppet_id_rsa /home/vagrant/.ssh
+sudo cp -a /vagrant/config /home/vagrant/.ssh
+sudo cp -a /vagrant/puppet_id_rsa /home/vagrant/.ssh
 chmod 400 /home/vagrant/.ssh/config /home/vagrant/.ssh/puppet_id_rsa
 
 # Boot nova instance
@@ -65,11 +65,11 @@ sleep 60
 nova show ${INSTANCE_NAME}
 
 # Sync across html files
-rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
+rsync -e "ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
 sleep 30
 
-# ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "echo \"\"; echo \"\"; service nginx restart; echo \"\"; echo \"\";"
+# ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} " echo \"\"; echo \"\"; service nginx restart; echo \"\"; echo \"\";"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
-echo -e "    accessible at http://${FLOATING_IP}/index.html'\n\n"
+echo -e "    accessible at http://${FLOATING_IP}/index.html\n\n"
