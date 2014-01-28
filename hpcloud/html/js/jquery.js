@@ -16,11 +16,6 @@ $(document).ready(function(){
       $("#products").show();
       $("#puppetscripts").hide();
       $("#lifespan").hide();
-    } else if ($(this).val() == 'devstackenv') {
-      $("#email").show();
-      $("#products").show();
-      $("#puppetscripts").show();
-      $("#lifespan").show();
     } else if ($(this).val() == 'hpcloudenv') {
       $("#email").show();
       $("#products").show();
