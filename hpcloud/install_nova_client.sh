@@ -60,15 +60,17 @@ do
 done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 
-sleep 60
+sleep 120
 
 nova show ${INSTANCE_NAME}
 
 # Sync across html files
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
-sleep 30
 
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "service nginx status; service nginx restart"
+sleep 60
+
+# Restart NGINX service to update with new html files
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "service nginx restart"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"

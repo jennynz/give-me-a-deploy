@@ -204,7 +204,7 @@ function GenerateVagrantInstall() {
 		"\n" +
 		"cat > build.xml <<EOL\n" +
 		"<project name='SolutionTest'>\n" +
-		"  <import file='../tooling/build-ocd-solution.xml'/>\n" +
+		"  <import file='../tooling/build.xml'/>\n" +
 		"</project>\n" +
 		"EOL\n" +
 		"\n" +

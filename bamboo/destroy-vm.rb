@@ -18,8 +18,7 @@ conn = OpenStack::Connection.create(
 )
 
 # Delete the floating IP
-floating_ip = conn.adresses.get(server_info[:floating_ip])
+conn.delete_floating_ip(server_info[:ip_id])
 
 # Destroy the existing instance
-server = os.get_server(server_info[:server_id])
-server.delete!
+conn.get_server(server_info[:server_id]).delete!
