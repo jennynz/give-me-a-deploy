@@ -4,7 +4,7 @@ require 'openstack'
 require 'yaml'
 
 server_info = YAML.load_file('server_info.yml')
-puts "\n\nShutting down " + server_info[:server_name] + " on HP Cloud.\n\n\n"
+puts "\n\n    Shutting down " + server_info[:server_name] + " on HP Cloud.\n\n"
 
 # Establish a connection to HP Cloud service
 conn = OpenStack::Connection.create(
@@ -23,4 +23,4 @@ conn.delete_floating_ip(server_info[:ip_id])
 # Destroy the existing instance
 conn.get_server(server_info[:server_id]).delete!
 
-puts "\n\n    The HP Cloud instance 'bamboo-gmad' has been destroyed.\n\n"
+puts "\n\n    The HP Cloud instance 'bamboo-gmad' has been destroyed.\n\n\n\n"
