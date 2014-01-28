@@ -61,6 +61,14 @@ done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 nova show ${INSTANCE_NAME}
 
+# Wait until NGINX server is up and running on instance and ready to receive files.
+response=1
+while [ $response -ne 0 ]; do
+	sleep 5
+    ssh -i hpcloud/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP exit
+    response=$?
+done
+
 # Sync across html files
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
 

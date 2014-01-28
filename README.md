@@ -1,5 +1,10 @@
+Continuously Delivering Give-Me-A-Deploy on Bamboo
+==================================================
+
+This directory contains the files for the Bamboo plan [Give-Me-A-Deploy on HP Cloud](http://bamboo/browse/ATT-GMAD) which aims to boot an HP Cloud instance provisioned with an NGINX server hosting the web app Give-Me-A-Vagrant, using a Ruby API Binding.
+
 Give-Me-A-Deploy
-=================
+----------------
 
 Please refer to the Give-Me-A-Deploy Docs or the [Woki page](http://woki/display/IntDev/Give-Me-A-Deploy) for full details on this client-side GUI configurator for the Vagrant VM automation tool.
 

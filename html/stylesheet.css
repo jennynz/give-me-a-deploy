@@ -1,0 +1,553 @@
+/* ==========================================================================
+		BODY LAYOUT
+   ========================================================================== */
+
+body {
+    background-color: #ffF;
+    margin-top: 50px;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    overflow-y: scroll; 
+}
+
+.index-page-wrap,
+.deployed-page-wrap,
+.about-page-wrap,
+.docs-page-wrap {
+	width: 80%;
+	margin: auto auto;
+	min-width: 260px;
+}
+
+.index-page-wrap {
+	max-width: 460px;
+}
+
+.deployed-page-wrap {
+	max-width: 550px;
+	text-align: center;
+}
+
+.about-page-wrap {
+    max-width: 550px;
+    text-align: left;
+}
+
+.docs-page-wrap {
+    max-width: 800px;
+    text-align: left;
+}
+
+/* ==========================================================================
+		DIVS & SPANS
+   ========================================================================== */
+
+.placeholder {
+	background-color: #FFF;
+	width: 50px;
+	height: 400px;
+	margin: 0 auto;
+	display: block;
+}
+
+.footer {
+	font-size: 0.8em;
+	text-align: center;
+	color: #666;
+}
+
+/* Index
+   ============================== */
+
+#provisionedenv-section,
+#emptyenv-section {
+	display: none;
+}
+
+span.hidden-info {
+	display: none;
+	color: #444;
+	font-size: 0.8em;
+	min-width: 260px;
+	max-width: 650px;
+	text-align: left;
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace ;
+	margin-top: -1.2em;
+}
+
+/* Docs
+   ============================== */
+
+div.docs-infobox {
+	color: #444;
+	font-size: 0.8em;
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+	background-color: #EFEFEF;
+	margin: 20px;
+	padding: 20px;
+}
+
+div.code {
+	background-color: rgb(30, 30, 30);
+	border-radius: 10px;
+	margin: 20px;
+	padding: 20px;
+	color: rgb(0, 200, 200);
+	font-size: 0.8em;
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+}
+
+span.code-comment { color: #ccc; }
+span.code-output { color: #126E6E; }
+
+div.quote {
+	background: #ccc;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 15px 20px 15px 20px;
+	color: rgb(0, 100, 100);
+	font-size: 0.8em;
+	font-style: italic;
+	line-height: 150%;
+	text-align: center;
+}
+
+/* ==========================================================================
+		HEADERS
+   ========================================================================== */
+
+h1 {
+	color: #999;
+	font-size: 1.5em;
+	text-align: center;
+}
+
+h2 {
+	color: #444;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+h3 {
+	color: #444;
+	font-size: 0.9em;
+	padding-top: 1em;
+	padding-bottom: 0.5em;
+}
+
+h6 {
+	color: #444;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+}
+
+h1.docs,
+h1.about {
+	font-size: 2em;
+	text-align: left;
+}
+
+h2.docs,
+h2.about {
+	font-size: 1.5em;
+	text-align: left;
+}
+
+/* Index
+   ============================== */
+
+h2.subheader {
+	margin-top: -0.5em;
+	margin-bottom: 1em;
+}
+
+h2.deployed {
+	margin-top: -0.8em;
+	margin-bottom: 1.5em;
+}
+
+/* Docs
+   ============================== */
+
+h3.docs {
+	font-size: 1em;
+	text-align: left;
+}
+
+h4.docs {
+	/* Font */
+	color: #666;
+	font-size: 0.9em;
+	font-weight: bold;
+
+	/* Positioning */
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	margin: 0;
+}
+
+h4.docs-infobox {
+	/* Font */
+	color: #666;
+	font-size: 1.25em;
+	font-weight: bold;
+
+	/* Positioning */
+	padding-top: 1em;
+	margin: 0;
+}
+
+/* ==========================================================================
+		LINKS
+   ========================================================================== */
+
+a {
+	color: #888;
+	text-decoration: none;
+
+	/* Slow Hover-out on Mouseexit */
+	-webkit-transition: 0.5s ease-in-out;
+  	-moz-transition: 0.5s ease-in-out;
+  	-o-transition: 0.5s ease-in-out;
+  	-ms-transition: 0.5s ease-in-out;
+  	transition: 0.5s ease-in-out;
+}
+
+a:hover {
+	color: #ff7700;
+
+	/* Fast Mouseenter */
+	-webkit-transition: 0;
+  	-moz-transition: 0;
+  	-o-transition: 0;
+  	-ms-transition: 0;
+  	transition: 0;
+}
+
+a:active {
+	color: #008080;
+}
+
+/* Index
+   ============================== */
+
+a.header-link {
+	color: #008080;
+	border-bottom: dotted 2px #888;
+}
+
+a.header-link:hover {
+	color: #ff7700;
+	border-bottom: dotted 2px #ff7700;
+}
+
+a.header-link:active {
+	color: #888;
+	border-bottom: dotted 2px #888;
+}
+
+a.download-link {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #008080;
+	border-bottom: dotted 2px #bbb;
+}
+a.download-link:hover { color: #ff7700; border-bottom: dotted 2px #ff7700; }
+a.download-link:active { color: #999; border-bottom: dotted 2px #999; }
+
+a.show-script-info {
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+	border-bottom: none;
+	color: #008080;
+}
+a.show-script-info:hover { color: #ff7700; }
+a.show-script-info:active { color: #999; }
+
+/* Docs
+   ============================== */
+
+a.docs-title-link { color: #ff7700; }
+a.docs-title-link:hover { color: #008080; }
+a.anchor { color: #777; }
+
+a.current {
+	color: #008080;
+	font-style: none;
+	font-weight: bold;
+}
+
+/* ==========================================================================
+		TEXT STYLES & CONTENT
+   ========================================================================== */
+
+.orange { color: #ff7700; }
+.teal { color: #008080; }
+.indev {
+	color: red;
+	font-weight: none;
+	font-family: verdana;
+	font-size: 0.8em;
+}
+
+i { color: #999; }
+
+p {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 0.8em;
+	color: #666;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Docs
+   ============================== */
+
+li {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 0.8em;
+	color: #666;
+	text-decoration: none;
+}
+
+li.star {
+ 	height: 19px;
+    margin: 10px 0;
+    background: url("favicon.ico") no-repeat left center;
+    list-style: none;
+    padding-left: 25px;
+    line-height: 20px;
+}
+
+li.docs-infobox {
+	color: #444;
+	font-size: 1em;
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+}
+
+/* ==========================================================================
+		IMAGES
+   ========================================================================== */
+
+img#logo {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Custom bullet for docs */
+img.star {
+	margin: 0 10px -3px 20px;
+}
+
+/* ==========================================================================
+		TABLE & FORM ELEMENTS & Form
+   ========================================================================== */
+
+table.form,
+table.docs {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+	color: #666;
+	font-size: 0.8em;
+}
+
+/* Index
+   ============================== */
+
+table.form {
+	/* Size & Positioning */
+	width: 100%;
+	max-width: 500px;
+	padding: 20px;
+
+	/* Color */
+	background-color: #E6E6E6;
+    border: 1px solid #999;
+    
+    /* Slow Hover-out on Mouseexit */
+    -webkit-transition: 0.5s ease-in-out;
+  	-moz-transition: 0.5s ease-in-out;
+  	-o-transition: 0.5s ease-in-out;
+  	-ms-transition: 0.5s ease-in-out;
+  	transition: 0.5s ease-in-out;
+}
+
+table.form:hover {
+    border-color: #ff7700;
+    box-shadow: 0 0 4px #ff7700;
+
+    /* Fast Hover-in on Mouseenter */
+    -webkit-transition: 0;
+  	-moz-transition: 0;
+  	-o-transition: 0;
+  	-ms-transition: 0;
+  	transition: 0;
+}
+
+td.table-header {
+	text-align: center;
+	padding-left: 20px;
+}
+
+td.label {
+	text-align: right;
+	margin: 10px;
+	width: 30%;
+}
+
+td.content { text-align: left; }
+td.content-radiofield {
+    color: #444;
+    margin-bottom: 5px;
+    padding: 4px;
+}
+
+tr#email,
+tr#puppetscripts,
+tr#lifespan {
+	display: none;
+}
+
+td.table-footer { text-align: center; }
+
+input[type="text"] { width: 90%; }
+input[type="number"] { width: 60px; }
+input[type="number"]#LifeSpan { width: 40px; }
+
+input[type="text"],
+input[type="number"] {
+	/* Size & Positioning */
+    margin-left: 8px;
+    margin-bottom: 5px;
+    padding: 4px;
+
+	/* Font */
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+    color: #444;
+    border: solid 1px #BBBBBB;
+}
+
+textarea#Products {
+	/* Size & Positioning */
+	width: 90%;
+	margin-left: 8px;
+	padding: 4px;
+	
+	/* Font */
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+	font-size: 1em;
+	color: #444;
+
+	/* Color */
+    border: solid 1px #BBBBBB;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea#Products:focus {
+    /* Font */
+    color: #008080;
+
+    /* Color */
+    outline: none;
+    border: solid 1px #ff7700;
+}
+
+.button {
+	appearance: button; /* CSS3 */	
+	-webkit-appearance: button; /* Safari and Chrome */
+	-moz-appearance: button; /* Firefox */
+	-ms-appearance: button; /* Internet Explorer */
+	-o-appearance: button; /* Opera */
+    font: menu;
+    color: #444;
+    display: inline-block;
+    padding: 4px 12px;
+}
+
+/* Docs
+   ============================== */
+
+table.code {
+	table-layout: fixed;
+	width: 100%;
+}
+
+td.code { word-wrap: break-word; }
+
+td.docs-label {
+	text-align: right;
+	vertical-align: top;
+	padding: 10px;
+	width: 20%;
+}
+
+td.docs-content {
+	vertical-align: top;
+	padding: 10px;
+}
+
+/* ==========================================================================
+		SOURCE CODE SECTIONS
+   ========================================================================== */
+
+textarea.source::-webkit-scrollbar { width: 10px; }
+textarea.source::-webkit-scrollbar-track { background-color: #E6E6E6; }
+textarea.source::-webkit-scrollbar-thumb { background-color: #008080; }
+textarea.source:focus::-webkit-scrollbar-thumb { background-color: #ff7700; }
+
+textarea.source {
+	/* Size & Positioning */
+	width: 100%;
+	min-width: 260px;
+	margin-right: 20px;
+	margin-left: -20px;
+	padding: 20px;
+
+	/* Color */
+    background-color: rgba(200, 200, 200, 0.5);
+    border: 1px solid #008080;
+
+    /* Font */
+    font-family:
+    	Consolas, "Andale Mono",
+    	"Lucida Console", "Nimbus Mono",
+    	"Courier New", monospace;
+    font-size: 0.8em;
+    color: #333;
+    text-align: left;
+
+    /* Other */
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
+    resize: vertical;
+}
+textarea.source:focus {
+    color: #008080;
+    outline: none;
+    border: solid 1px #ff7700;
+}
+
+#provisionedenv-run-source,
+#provisionedenv-vagrantfile-source,
+#provisionedenv-install-source { height: 150px; }
+
+#emptyenv-source { height: 450px; }

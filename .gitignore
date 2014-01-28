@@ -2,3 +2,4 @@ Lightning Talk/
 *.zip
 portal-vm/*
 .vagrant*
+hpcloud/
