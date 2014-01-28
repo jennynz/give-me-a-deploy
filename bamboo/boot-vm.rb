@@ -18,6 +18,9 @@ os = OpenStack::Connection.create(
   :region => "region-a.geo-1",
   )
 
+# if there is already an instance with name == ${INSTANCE_NAME}
+# delete that instance and the associated floating IP (if any)
+
 # Create a new server provisioned with NGINX
 gmadserver = os.create_server(
   :name => 'bamboo-gmad',

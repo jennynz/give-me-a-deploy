@@ -21,7 +21,8 @@ class { 'nginx': }
 nginx::resource::vhost { 'give-me-a-deploy':
   ensure               => present,
   server_name          => ['give-me-a-deploy'],
-  listen_port          => 19082,
+  listen_port          => 80,
+  listen_options			 => ['default_server'],
   ssl                  => false,
   www_root             => '/usr/share/nginx/html',
   use_default_location => false,
@@ -35,3 +36,23 @@ service iptables stop
 
 # Puppet install & boot nginx
 puppet apply manifests/site.pp
+
+rm -f /usr/share/nginx/html/index.html
+
+# echo "
+# location / {
+# 	root 		/usr/share/nginx/html;
+# 	index		index.html
+# }" >> /etc/nginx/nginx.conf
+
+# server {
+#   listen                *:80 default_server;
+
+#   server_name           give-me-a-deploy;
+#   root /usr/share/nginx/html/;
+#     index  index.html index.htm index.php;
+
+#   access_log            /var/log/nginx/rpm-repo_access.log;
+#   error_log             /var/log/nginx/rpm-repo_error.log;
+
+# }

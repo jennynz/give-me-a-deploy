@@ -5,7 +5,8 @@ class { 'nginx': }
 nginx::resource::vhost { 'give-me-a-deploy':
   ensure               => present,
   server_name          => ['give-me-a-deploy'],
-  listen_port          => 19080,
+  listen_port          => 80,
+  listen_options			 => ['default_server'],
   ssl                  => false,
   www_root             => '/vagrant/html',
   use_default_location => false,

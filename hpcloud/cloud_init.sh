@@ -25,7 +25,6 @@ nginx::resource::vhost { 'give-me-a-deploy':
   listen_options			 => ['default_server'],
   ssl                  => false,
   www_root             => '/usr/share/nginx/html/',
-  index_files					 => ['main.html']
   use_default_location => false,
   access_log           => '/var/log/nginx/rpm-repo_access.log',
   error_log            => '/var/log/nginx/rpm-repo_error.log',
@@ -38,4 +37,10 @@ service iptables stop
 # Puppet install & boot nginx
 puppet apply manifests/site.pp
 
-rm -f /usr/share/nginx/html/index.html
+# Download nginx startup script
+wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh
+sudo mv init-deb.sh /etc/init.d/nginx
+sudo chmod +x /etc/init.d/nginx
+sudo /usr/sbin/update-rc.d -f nginx defaults
+
+# rm -f /usr/share/nginx/html/index.html
