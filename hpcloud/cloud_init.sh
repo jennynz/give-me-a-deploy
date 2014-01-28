@@ -37,10 +37,21 @@ service iptables stop
 # Puppet install & boot nginx
 puppet apply manifests/site.pp
 
-# Download nginx startup script
-wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh
-sudo mv init-deb.sh /etc/init.d/nginx
-sudo chmod +x /etc/init.d/nginx
-sudo /usr/sbin/update-rc.d -f nginx defaults
+rm -f /usr/share/nginx/html/index.html
 
-# rm -f /usr/share/nginx/html/index.html
+echo "
+server {
+  listen                *:80 default_server;
+
+  server_name           give-me-a-deploy;
+  root /usr/share/nginx/html/;
+    index ndex.html index.htm index.php;
+
+  access_log            /var/log/nginx/rpm-repo_access.log;
+  error_log             /var/log/nginx/rpm-repo_error.log;
+
+  location / {
+	  root 		/usr/share/nginx/html;
+	  index		index.html
+
+}" >> /etc/nginx/nginx.conf
