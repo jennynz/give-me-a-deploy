@@ -61,6 +61,8 @@ done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
 nova show ${INSTANCE_NAME}
 
+# These sleeps are too long, or I dunno it's just not working...
+# The assignment of the floating IP didn't even work!
 sleep 30
 
 # Sync across html files
