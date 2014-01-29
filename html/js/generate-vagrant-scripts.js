@@ -23,6 +23,9 @@ function GenerateVagrantRun() {
 		"mv PlatformBuild/ ./modules/\n\n" +
 
 		"git clone ssh://git@stash:7999/ocd/tooling.git\n" +
+		"cd tooling\n" + 
+		"git checkout tags/intern-projects\n" +
+		"cd ..\n" +
 		"mv tooling/ ./modules/\n\n" +
 
 		"git clone ssh://git@stash:7999/puppet/puppet-ohp.git\n" +

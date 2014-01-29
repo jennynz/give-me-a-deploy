@@ -31,12 +31,7 @@ function GetCode()
 		$('#provisionedenv-section').show();
 	  	$('#emptyenv-section').hide();
 	  	window.location = "#vagrantcode";
-  
-  } else if (vmenv=="devstackenv") {
-		if (lifespanIsValid == 1) {
-	      window.location.href = "devstackdeployed.html"
-		}
-  
+ 
   } else if (vmenv=="hpcloudenv") {
 		if (lifespanIsValid == 1) {
 		  window.location.href = "hpclouddeployed.html"

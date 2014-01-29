@@ -16,26 +16,25 @@
 
 		<br><br>
 
-		<h1 class="docs">Give-Me-A-Deploy: Provisioned Vagrant<br>
+		<h1 class="docs">Give-Me-A-Deploy: Local Provisioned VM<br>
 		<a href="#documentation" class="docs-title-link">Documentation</a>, 
 		<a href="#faqs" class="docs-title-link">FAQs</a> & 
 		<a href="#help" class="docs-title-link">Help</a>
 		</h1>
 
 		<p>
-			<img src="../favicon.ico" class="star"><a href="provisionedenv.html" class="current">Provisioned Vagrant</a>
-			<img src="../favicon.ico" class="star"><a href="devstackenv.html">DevStack</a> <span class="indev">IN DEV!</span>
-			<img src="../favicon.ico" class="star"><a href="hpcloudenv.html">HP Cloud</a> <span class="indev">IN DEV!</span>
+			<img src="../favicon.ico" class="star"><a href="provisionedenv.html" class="current">Local Provisioned VM</a>
+			<img src="../favicon.ico" class="star"><a href="hpcloudenv.html">Provisioned VM on HP Cloud</a> <span class="indev">IN DEV!</span>
 			<img src="../favicon.ico" class="star"><a href="emptyenv.html">Empty Vagrant</a>
 			<img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a>
 		</p>
 
 		<div class="docs-infobox">
-			The "Provisioned Vagrant" option on Give-Me-A-Deploy gives you three scripts which work together to boot up your VM and install OH applications on it. All you need to do is call <b>run.sh</b>, and it'll do the rest itself automatically.
+			The "Provisioned VM on your local machine" option on Give-Me-A-Deploy gives you three scripts which work together to boot up a VM with OH applications already installed on it.<br>
+			All you need to do is call <b>run.sh</b>, and it'll handle the rest automatically.
 
 			<h4 class="docs-infobox">tl;dr</h4>
 			<ul>
-				<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
 				<li class="docs-infobox">You will need:
 					<ul>
 						<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
@@ -50,7 +49,8 @@
 						<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 					</ul>
 				</li>
-				<li class="docs-infobox">"Products" input format must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
+				<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
+				<li class="docs-infobox">The format of your input in the "Products" field must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
 				<li class="docs-infobox">A foundation version must be specified.</li>
 				<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
 				<li class="docs-infobox">All three scripts are saved in the same directory.</li>
@@ -76,7 +76,7 @@
 		<a name="usingGMAV"><h3 class="docs">Using Give-Me-A-Deploy for a provisioned VM</h3></a>
 
 		<p>
-			For working provisioned Vagrant source code to be output by GMAV, you are required to enter a few details which allow you to customise your Vagrant VM. However, the form is set with <i>pre-selected defaults</i> so that if you were to simply click "Generate Source Code" without making any changes to the form upon the loading of the page, the generated source code will output a fully functional CentOS Vagrant with 768 MB of memory allocated, and provisioned with Portal 8.4 beta.<br>
+			On the main landing page, enter a few details into the form to customise your VM. The form is preset with <i>defaults</i> for your convenience. Simply clicking "Generate Source Code" will output a default, fully functional CentOS Vagrant with 768 MB of memory allocated, provisioned with Portal 8.4 beta.<br>
 			* Required field, must not be left blank<br><br>
 		</p>
 
@@ -90,13 +90,13 @@
 			<tr>
 				<td class="docs-label">Host Port*</td>
 				<td class="docs-content" colspan="2">
-					If you have more than one VM running, a different host port for each VM must be specified in order to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
+					If you have more than one VM running, a different host port for each VM must be specified in order to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080". The host port is the port on your local host machine you would like forwarded to your guest machine (this can also be easily changed in the output Vagrantfile). <i>19080</i>
 				</td>
 			</tr>
 			<tr>
 				<td class="docs-label">Host Name</td>
 				<td class="docs-content" colspan="2">
-					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
+					This hostname should contain only letters, numbers, hyphens or full stop.<br>It can not start with a hyphen or full stop. <i>portal-vm</i>
 				</td>
 			</tr>
 			<tr>
@@ -108,7 +108,7 @@
 			<tr>
 				<td class="docs-label">Products*</td>
 				<td class="docs-content" width="50%">
-					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number. A functioning version of Orion Health Foundation must be specified for the installer for work. <i>foundation 7.2.0.beta</i><br>
+					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number. Please specify a working version of Orion Health Foundation, as the installer depends on this version number. <i>foundation 7.2.0.beta</i><br>
 					The code that you write in here is directly written out to several script files which str used to create a solution.zip for the OHP installation, hence the importance of formatting the text exactly as seen in the defaults shown.
 				</td>
 				<td class="docs-content" width="50%">					

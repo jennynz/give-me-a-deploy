@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd /vagrant
-
 # Download and install puppet
 rpm -ivh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-7.noarch.rpm
 yum install puppet -y
@@ -13,3 +11,12 @@ puppet module install --force ripienaar/concat
 
 # Remove firewalls to allow port forwarding
 sudo service iptables stop
+
+# Puppet install & boot nginx
+puppet apply /vagrant/manifests/site.pp --modulepath=/vagrant/modules/:/etc/puppet/modules/
+
+# Copy across files, overwrite index.html
+mv -f /vagrant/html/* /usr/share/nginx/html/
+
+# Restart NGINX
+service nginx restart
