@@ -69,10 +69,12 @@ while [ $response -ne 0 ]; do
     response=$?
 done
 
+sleep 10
+
 # Sync across html files
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
 
-sleep 60
+sleep 10
 
 # Restart NGINX service to update with new html files
 ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "service nginx restart"

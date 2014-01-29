@@ -39,6 +39,7 @@
 					<ul>
 						<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
 						<li class="docs-infobox"><a href="http://www.vagrantup.com">Vagrant</a></li>
+						<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 						<li class="docs-infobox"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
 							<ul>
 								<li class="docs-infobox"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
@@ -46,7 +47,6 @@
 								<li class="docs-infobox"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
 							</ul>
 						</li>
-						<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 					</ul>
 				</li>
 				<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
@@ -54,7 +54,9 @@
 				<li class="docs-infobox">A foundation version must be specified.</li>
 				<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
 				<li class="docs-infobox">All three scripts are saved in the same directory.</li>
-				<li class="docs-infobox"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.</li>
+				<li class="docs-infobox"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.
+					<ul><li class="docs-infobox"><span class="teal">$ chmod +x run.sh</span> first if you use Unix.</li></ul>
+				</li>
 				<li class="docs-infobox"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
 				<li class="docs-infobox"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
 				
