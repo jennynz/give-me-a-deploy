@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copy across files, overwrite index.html
-#sudo cp -f /vagrant/html/* /usr/share/nginx/html/
+sudo cp -r -f /vagrant/html/* /usr/share/nginx/html/
 
 # Restart NGINX
-#sudo service nginx restart
+sudo service nginx restart

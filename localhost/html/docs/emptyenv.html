@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="../js/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
+	<link rel="shortcut icon" href="../favicon.ico">
+	<title>Empty VM | Give-Me-A-Deploy Docs</title>
+</head>
+
+<body>
+
+	<div class="docs-page-wrap">
+		
+		<a href="../index.html"><img id="Logo" src="../oh_logo.png" alt="Logo" name="top"/></a>
+
+		<br><br>
+
+		<h1 class="docs">Give-Me-A-Deploy: Local Empty VM<br>
+		<a href="#documentation" class="docs-title-link">Documentation</a>, 
+		<a href="#faqs" class="docs-title-link">FAQs</a> & 
+		<a href="#help" class="docs-title-link">Help</a>
+		</h1>
+
+		<p>
+			<img src="../favicon.ico" class="star"><a href="provisionedenv.html">Local Provisioned VM</a>
+			<img src="../favicon.ico" class="star"><a href="hpcloudenv.html">Provisioned VM on HP Cloud</a> <span class="indev">IN DEV!</span>
+			<img src="../favicon.ico" class="star"><a href="emptyenv.html" class="current">Local Empty VM</a>
+			<img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a>
+		</p>
+
+		<div class="docs-infobox">
+			The 'Empty Vagrant' option simply outputs a Vagrantfile with a few custom configurations for your convenience. It is very simple to boot, and you may add whatever provisioning you wish.
+		</div>
+
+
+		<a name="documentation"><h2 class="docs">Documentation</h2></a>
+
+		<p>
+			To boot up your Vagrant VM, go to your Vagrantfile in a command terminal and call $ vagrant up. Your configured Vagrant machine should be up and running within a few minutes. Accessing, destroying and checking the status of your VM is just as simple with the commands shown below.
+		</p>
+
+		<div class="code">
+			<table class="code"><tr><td class="code">
+			<span class="code-comment"># Boot</span><br>
+			$ cd to/your/Vagrantfile/directory<br>
+			$ vagrant up<br><br>
+
+			<span class="code-comment"># Access</span><br>
+			$ vagrant ssh<br><br>
+
+			<span class="code-comment"># Destroy</span><br>
+			$ vagrant destroy -f
+			
+			</td><td width="60%" class="code">
+			<span class="code-comment"># Check status</span><br>
+			$ vagrant status<br>
+			<span class="code-output">Current machine states:<br>
+			default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running (virtualbox)<br><br>
+			The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or you can run `vagrant suspend` to simply suspend the virtual machine. In either case, to restart it again, simply run `vagrant up`.</span>
+			</td></tr></table>
+		</div>
+
+		<h4 class="docs">Installation System Requirements</h4>
+		<p>
+			In order for Vagrant to run, please install the following on your <b>host</b> machine:
+			<ul>
+				<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+				<li><a href="http://www.vagrantup.com">Vagrant</a></li>
+			</ul>
+		</p>
+
+		<h4 class="docs">Provisioning your VM</h4>
+		<p>
+			While it is possible to $ vagrant ssh and install software by hand, Vagrant can provision the VM with shell scripts, or with automation tools such as <a href="http://blogs/richardpa/2014/01/14/introducing-puppet/" target="_blank">Puppet, which is used by Orion Continuous Delivery</a>. For further information, please see:
+		</p>
+		<ul>
+			<li><a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant Docs</a> for more information on how to configure and provison your Vagrant.</li>
+			<li><a href="http://stash/users/jennysa/repos/vagrant-ohp-shell-install/browse">Stash repository</a> for installing OHP on a Vagrant using shell provisioning.</li>
+			<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
+		</ul>
+
+		<a name="faqs"><h2 class="docs">Troubleshooting & FAQs</h2></a>
+
+		<ul>
+			<li><a href="#faq1">Booting is taking ages.</a></li>
+			<li><a href="#faq2">Host Port: What is "Host Port"? / My vagrant won't boot due to port collisions.</a></li>
+			<li><a href="#faq3">Host name: What are the requirements for the host name?</a></li>
+			<li><a href="#faq4">Memory: What should the default memory be set to?</a></li>
+		</ul>
+
+		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
+		<p>The entire $ vagrant up process should take no more than five minutes, although this depends on the speed of your host machine and internet connection as the Vagrantfile will need to download the CentOS box to build off. If it looks like your boot is "stuck", hit Enter - often the booting up process may pause, or if you have added your own provisioning, it may stop before the provision and require you to call $ vagrant provision.</p>
+
+		<h3 class="docs"><a name="faq2" class="anchor">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></h3>
+		<p>You cannot have more than one booted VM using the same host port on your machine. Fortunately, you can easily configure port forwarding between your host and guest machines in the Vagrantfile. Using Give-Me-A-Deploy, enter a port which you do not already have forwarded to an existing VM in the field "Host Port", and you will be able to spin up multiple VMs on your one physical machine.<br>
+		<i>E.g. Your first VM may use the host port 19080, while the second uses 19081, the third 19082 etc.</i><br><br>
+
+		To view all the VMs you have going, you can open Oracle VM VirtualBox Manager which should come with VirtualBox. From here, you can check port forwarding by right-clicking any running VMs, going to Settings... > Network > Port Forwarding.
+		</p>
+
+		<h3 class="docs"><a name="faq3" class="anchor">What are the requirements for the host name?</a></h3>
+		<p>
+			Your host name should only contain letters, numbers, hyphens or dots (full stops). It cannot start with a hyphen or dot.<br>
+			You are not required to enter a host name. If you were to leave the field blank, the Vagrantfile will omit the hostname configuration, and Vagrant will not manage the hostname.
+		</p>
+
+		<h3 class="docs"><a name="faq4" class="anchor">Memory: What should the default memory be set to?</a></h3>
+		<p>
+			Give-Me-A-Deploy allows you to easily set your VM's system base memory. The default is set to 786 MB, but this may be changed to any number you wish.
+		</p>
+
+		<div class="quote">
+			"It would be a poor user experience (and mildly shocking) if a vagrant up from a base box instantly required many gigabytes of RAM. Instead, choose a value such as 512MB, which is usually enough to play around and do interesting things with a Vagrant machine, but can easily be increased when needed." <a href="http://docs.vagrantup.com" target="_blank">- Vagrant Docs</a>
+		</div>
+
+		<a name="help"><h2 class="docs">Help</h2></a>
+
+		<p>If you require any further assistance, please contact a member of the <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD team</a>.</p>
+
+	</div>
+
+	<br><br>
+
+	<div class="footer">
+		<a href="../index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="../about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
+		</div>
+		<br><br><br><br>
+	</div>
+</body>
+</html>
