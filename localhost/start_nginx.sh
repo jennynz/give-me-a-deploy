@@ -15,11 +15,8 @@ sudo service iptables stop
 # Puppet install & boot nginx
 puppet apply /vagrant/manifests/site.pp --modulepath=/vagrant/modules/:/etc/puppet/modules/
 
-# Move across files, overwrite index.html
-mv -f /vagrant/html/* /usr/share/nginx/html/
-
 # Copy across files, overwrite index.html
-# cp -r -f /vagrant/html/* /usr/share/nginx/html/
+cp -r -f /vagrant/html/* /usr/share/nginx/html/
 
 # Restart NGINX
 service nginx restart
