@@ -102,12 +102,6 @@ function GenerateVagrantInstall() {
 		names[i] = splitstr[0];
 		versions[i] = splitstr[1];
 	}
-	// Get rid of any indentation
-	for (var i = 0; i < names.length; i++) {
-		if (names[i].indexOf("  ") != -1) {
-		  names[i].replace("  ","");
-		}
-	}
 
 	// Check that a foundation version has been specified, isolate version number for provisioning installer URL.
 	var foundationIndex = names.indexOf("foundation");

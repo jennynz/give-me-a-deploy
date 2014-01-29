@@ -538,7 +538,6 @@ textarea.source {
     /* Other */
     overflow-x: hidden;
     -ms-overflow-x: hidden;
-    resize: vertical;
 }
 textarea.source:focus {
     color: #008080;
