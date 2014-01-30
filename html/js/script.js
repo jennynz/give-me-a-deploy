@@ -18,8 +18,7 @@ function GetCode()
 
   // Check that input is valid.
   var vmname = ValidateVMName();
-  var lifespanIsValid = ValidateLifespan();
-
+  
   // Specify the VM environment.
   vmenv = document.querySelector('input[name="vmenv"]:checked').value;
   
@@ -31,11 +30,6 @@ function GetCode()
 		$('#provisionedenv-section').show();
 	  	$('#emptyenv-section').hide();
 	  	window.location = "#vagrantcode";
- 
-  } else if (vmenv=="hpcloudenv") {
-		if (lifespanIsValid == 1) {
-		  window.location.href = "hpclouddeployed.html"
-    }
   	
   } else if (vmenv=="emptyenv") {
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
@@ -74,19 +68,35 @@ function ValidateVMName() {
 	return vmname;
 }
 
+function PrintToTextbox(code, printLocation) {
+	printLocation = printLocation + "-source";
+	var sourceTextbox = document.getElementById(printLocation);
+	sourceTextbox.value = code;
+}
+
+/* ==========================================================================
+    DEPLOY HP CLOUD INSTANCE
+   ========================================================================== */
+
+function Deploy() {
+
+	// Check that input is valid.
+	var lifespanIsValid = ValidateLifespan();
+	
+	if (lifespanIsValid == 1) {
+		window.location.href = "hpclouddeployed.html";
+	}
+}
+
 function ValidateLifespan() {
 	var lifespan = document.getElementById("LifeSpan").value;
 	if (lifespan > 96) {
 		alert("The maximum lifespan of the short-lived VM is 96 hours.");
 		return 0;
 	} else if (lifespan < 1) {
-		alert("The lifespan of the VM must be at least 1 hour long.")
+		alert("The lifespan of the VM must be at least 1 hour long.");
 		return 0;
-	} else { return 1; }
-}
-
-function PrintToTextbox(code, printLocation) {
-	printLocation = printLocation + "-source";
-	var sourceTextbox = document.getElementById(printLocation);
-	sourceTextbox.value = code;
+	} else {
+		return 1;
+	}
 }

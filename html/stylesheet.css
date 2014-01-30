@@ -419,7 +419,8 @@ td.content-radiofield {
 
 tr#email,
 tr#puppetscripts,
-tr#lifespan {
+tr#lifespan,
+#deploy {
 	display: none;
 }
 
