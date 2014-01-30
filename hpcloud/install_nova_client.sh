@@ -56,22 +56,39 @@ nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b
 export FLOATING_IP="`nova floating-ip-create | awk '$4 == "None" { print $2 }'`"
 while [ "`nova show ${INSTANCE_NAME} | awk '$2 == "status" { print $4 }'`" != "ACTIVE" ]
 do
-	sleep 2
+	echo $?
+  sleep 2
 done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
+
+sleep 30
+
 nova show ${INSTANCE_NAME}
 
-# These sleeps are too long, or I dunno it's just not working...
-# The assignment of the floating IP didn't even work!
+sleep 30
+
+echo ''
+echo ''
+echo "    Floating IP set to $FLOATING_IP."
+echo ''
+
+sleep 30
+
+echo ''
+echo '    Rsyncing across HTML files'
+echo ''
+echo ''
+
 sleep 30
 
 # Sync across html files
-rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@${FLOATING_IP}:/usr/share/nginx/
+rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@$FLOATING_IP:/usr/share/nginx/
 
 sleep 30
 
 # Restart NGINX service to update with new html files
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@${FLOATING_IP} "service nginx restart"
+#ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "service nginx restart"
+#ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "service nginx restart"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
