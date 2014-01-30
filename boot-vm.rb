@@ -23,7 +23,7 @@ os = OpenStack::Connection.create(
 
 # Create a new server provisioned with NGINX
 gmadserver = os.create_server(
-  :name => 'Give-Me-A-Deploy',
+  :name => 'bamboo-gmad',
   :imageRef => '202e7659-f7c6-444a-8b32-872fe2ed080c',
   :flavorRef => '100',
   :key_name => 'puppet',
