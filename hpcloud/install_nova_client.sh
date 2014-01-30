@@ -27,11 +27,6 @@ apt-get -y install git
 # Install curl
 apt-get -y install curl
 
-# Install required dependencies from gem file
-gem install bundler
-cd /vagrant
-bundle install
-
 # Append source env to .profile, and save variables to bash session.
 cat /vagrant/hp_cloud_prop.env >> /home/vagrant/.profile
 export OS_AUTH_SYSTEM="secretkey"
