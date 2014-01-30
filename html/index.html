@@ -15,12 +15,13 @@
 
 <body>
 
-			
+	<span id="form-section">
+
 	<center><a href="index.html"><img id="logo" src="oh_logo.png" name="top"/></a></center><br>
 
 	<h1><span class="orange">Instant VMs</span> at your fingertips</h1>
 
-	<h2>Provide us with a few details and we'll give you some <span class="teal">scripts</span><br>to boot up your <span class="teal">customised machine</span> with <span class="teal">vagrant</span>.</h2>
+	<h2>Provide us with a few details and we'll give you some <span class="teal">code</span><br>to spin up a <span class="teal">customised virtual machine</span>.</h2>
 
 	<div class="index-page-wrap">
 
@@ -34,7 +35,7 @@
 				</tr>
 				<tr>
 					<td class="label">Virtual Environment*</td>
-					<td class="content-radiofield">
+					<td class="content">
 						<input type="radio" name="vmenv" id="provisionedenv" value="provisionedenv" checked> Provisioned VM on your local machine<br>
 						<input type="radio" name="vmenv" id="hpcloudenv" value="hpcloudenv"> Provisioned VM on HP Cloud <span class="indev">IN DEV!</span><br>
 						<input type="radio" name="vmenv" id="emptyenv" value="emptyenv"> Empty VM on your local machine<br>
@@ -60,25 +61,24 @@
 				</tr>
 				<tr id="products">
 					<td class="label">Products*<br><h6>A foundation version must be specified</h6></td>
-					<td class="checkbox-field">
+					<td class="content">
 						<textarea rows="3" id="Products" spellcheck="false">foundation: 7.2.0.final
 portal: 8.4.0.beta</textarea>
 					</td>
 				</tr>
-				<tr id="puppetscripts">
+				<tr id="puppetscripts" class="hidden">
 					<td class="label">Puppet Scripts</td>
 					<td class="content">
 						<input type="text" id="PuppetScripts" autocapitalize="off" placeholder="Point us at your Puppet scripts in SVN and we'll provision the VM.">
 					</td>
 				</tr>
-				<tr id="lifespan">
+				<tr id="lifespan" class="hidden">
 					<td class="label">Extend life of VM?</td>
-					<td class="radio-field">
-						Yes, I would like  
-						<input type="number" id="LifeSpan" min="1" max="96" value="48"> hours in total.<br>
+					<td class="content">
+						&nbsp;&nbsp;Yes, I would like <input type="number" id="LifeSpan" min="1" max="96" value="48"> hours in total.<br>
 					</td>
 				</tr>
-				<tr id="email">
+				<tr id="email" class="hidden">
 					<td class="label">Email</td>
 					<td class="content">
 						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
@@ -102,6 +102,8 @@ portal: 8.4.0.beta</textarea>
 		<a href="index.html">Home</a> | <a href="docs/docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
 
+	</span>
+
 
 
 
@@ -111,7 +113,7 @@ portal: 8.4.0.beta</textarea>
 
 	<!-- 	PROVISIONED VAGRANT 	-->
 
-	<span id="provisionedenv-section">
+	<span id="provisionedenv-section" class="hidden">
 
 	<div class="placeholder">&nbsp;</div>
 
@@ -120,27 +122,42 @@ portal: 8.4.0.beta</textarea>
 
 	<h2 class="subheader"><span class="teal">Save</span> these scripts to the <span class="teal">same directory</span>, <span class="teal">$ chmod +x run.sh</span>, then <span class="teal">$ run.sh</span>.</h2>
 
-	<center><a id="blob" class="download-link" onclick="DownloadZip()">Download all three scripts in a zip</a><br><br></center>
+	<div class="hidden">
+		<p>
+			<a id="blob" class="download-link" onclick="DownloadZip()">Click here to download all three scripts in a zip</a><br>
+			For more information on these scripts, click the filenames above the textboxes below, or read the <a href="docs/docs.html">docs</a>.	
+		</p><br>
+	</div>
 
 	<div class="index-page-wrap">
 
-		<a class="show-script-info" id="show-run-info">run.sh</a>
-		<span class="hidden-info" id="run-info">&nbsp;is an executable bash shell script which kicks off the entire automated process of runing and provisioning your customised virtual machine. It clones Stash repositories, spins up a Vagrant VM and installs the OH products.<br><br>
-		</span>
+		<div class="left-text">
+			<a class="show-script-info" id="show-run-info">run.sh</a>
+			<span class="hidden" id="run-info">
+				&nbsp;is an executable bash shell script which kicks off the entire automated process of runing and provisioning your customised virtual machine. It clones Stash repositories, spins up VM with the <a href="http://www.vagrantup.com" target="_blank">Vagrant command line VM manager</a> and installs your specified OH products with the <a href="http://puppetlabs.com/puppet" target="_blank">Puppet automation tool</a>.<br>
+				After you run.sh, you're hands-free; you don't have to do anything else until the entire booting and installation is complete.<br><br>
+			</span>
+		</div>
 		<textarea rows="40" name="provisionedenv-run-source" class="source" id="provisionedenv-run-source" onClick="SelectAll('provisionedenv-run-source');" spellcheck="false"></textarea><br><br>
 		
-		<a class="show-script-info" id="show-vagrantfile-info">Vagrantfile</a>
-		<span class="hidden-info" id="vagrantfile-info">&nbsp;is the configuration file which allows run.sh to spin up the VM by simply calling <b>vagrant up</b>. It also calls install.sh as its provisioning shell script, to preload the newly created VM with the required dependencies and applications.<br><br>
-		</span>
+		<div class="left-text">
+			<a class="show-script-info" id="show-vagrantfile-info">Vagrantfile</a>
+			<span class="hidden" id="vagrantfile-info">
+				&nbsp;is the configuration file used by run.sh to spin up the VM. It also calls install.sh as its shell provisioning script, to preload the newly created VM with your products and their dependencies.<br><br>
+			</span>
+		</div>
 		<textarea rows="40" name="provisionedenv-vagrantfile-source" class="source" id="provisionedenv-vagrantfile-source" onClick="SelectAll('provisionedenv-vagrantfile-source');" spellcheck="false"></textarea><br><br>
 		
-		<a class="show-script-info" id="show-install-info">install.sh</a>
-		<span class="hidden-info" id="install-info">&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
-		Once Platform and Portal have been installed and started, you can access them here:<br>
-		<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>
-		<a href="http://localhost:19080/concerto" target="_blank">http://localhost:19080/concerto</a><br><br>
-		</span>
-
+		<div class="left-text">
+			<a class="show-script-info" id="show-install-info">install.sh</a>
+			<span class="hidden" id="install-info">
+				&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
+				E.g. If your specified products were foundation and portal, access them here:<br>
+				<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>
+				<a href="http://localhost:19080/concerto" target="_blank">http://localhost:19080/concerto</a><br>
+				N.B. The port value should match the host port value you specified in the form.<br><br>
+			</span>
+		</div>
 		<textarea rows="40" name="provisionedenv-install-source" class="source" id="provisionedenv-install-source" onClick="SelectAll('provisionedenv-install-source');" spellcheck="false"></textarea>
 
 	</div>
@@ -161,7 +178,7 @@ portal: 8.4.0.beta</textarea>
 
 	<!-- 	EMPTY VAGRANT 	-->
 
-	<span id="emptyenv-section">
+	<span id="emptyenv-section" class="hidden">
 
 	<div class="placeholder">&nbsp;</div>
 

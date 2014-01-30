@@ -55,16 +55,30 @@ body {
 	color: #666;
 }
 
+.left-text {
+	text-align: left;
+}
+
+.hidden {
+	display: none;
+}
+
+.hasTooltip {
+	color: red;
+}
+
 /* Index
    ============================== */
 
 #provisionedenv-section,
-#emptyenv-section {
-	display: none;
+#emptyenv-section,
+#form-section {
+	text-align: center;
 }
 
-span.hidden-info {
-	display: none;
+#run-info,
+#vagrantfile-info,
+#install-info {
 	color: #444;
 	font-size: 0.8em;
 	min-width: 260px;
@@ -127,13 +141,11 @@ div.quote {
 h1 {
 	color: #999;
 	font-size: 1.5em;
-	text-align: center;
 }
 
 h2 {
 	color: #444;
 	font-size: 1.2em;
-	text-align: center;
 }
 
 h3 {
@@ -153,13 +165,11 @@ h6 {
 h1.docs,
 h1.about {
 	font-size: 2em;
-	text-align: left;
 }
 
 h2.docs,
 h2.about {
 	font-size: 1.5em;
-	text-align: left;
 }
 
 /* Index
@@ -169,6 +179,9 @@ h2.subheader {
 	margin-top: -0.5em;
 	margin-bottom: 1em;
 }
+
+/* Deployed
+   ============================== */
 
 h2.deployed {
 	margin-top: -0.8em;
@@ -256,14 +269,19 @@ a.header-link:active {
 }
 
 a.download-link {
-	font-family: Arial, Verdana, Helvetica, sans-serif;
-	font-size: 0.8em;
-	font-weight: bold;
+	font-weight: bolder;
+	line-height: 2.5em;
 	color: #008080;
 	border-bottom: dotted 2px #bbb;
 }
-a.download-link:hover { color: #ff7700; border-bottom: dotted 2px #ff7700; }
-a.download-link:active { color: #999; border-bottom: dotted 2px #999; }
+a.download-link:hover {
+	color: #ff7700;
+	border-bottom: dotted 2px #ff7700;
+}
+a.download-link:active {
+	color: #999;
+	border-bottom: dotted 2px #999;
+}
 
 a.show-script-info {
 	font-family:
@@ -410,18 +428,11 @@ td.label {
 	width: 30%;
 }
 
-td.content { text-align: left; }
-td.content-radiofield {
-    color: #444;
-    margin-bottom: 5px;
-    padding: 4px;
-}
-
-tr#email,
-tr#puppetscripts,
-tr#lifespan,
-#deploy {
-	display: none;
+td.content {
+	text-align: left;
+  color: #444;
+  margin-bottom: 5px;
+  padding: 4px;
 }
 
 td.table-footer { text-align: center; }
@@ -482,6 +493,10 @@ textarea#Products:focus {
     color: #444;
     display: inline-block;
     padding: 4px 12px;
+}
+
+#deploy {
+	display: none;
 }
 
 /* Docs

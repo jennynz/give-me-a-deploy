@@ -36,5 +36,3 @@ service iptables stop
 
 # Puppet install & boot nginx
 puppet apply manifests/site.pp
-
-rm /usr/share/nginx/html/index.html
