@@ -40,9 +40,8 @@ export OS_USERNAME=useapikeey
 export INSTANCE_NAME=gmad-nginx
 
 # copy ssh configuration
-sudo cp -a /vagrant/config /home/vagrant/.ssh
 sudo cp -a /vagrant/puppet_id_rsa /home/vagrant/.ssh
-chmod 400 /home/vagrant/.ssh/config /home/vagrant/.ssh/puppet_id_rsa
+chmod 400 /home/vagrant/.ssh/puppet_id_rsa
 
 # Boot nova instance
 nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b)" --key-name puppet ${INSTANCE_NAME} --user-data="/vagrant/cloud_init.sh" >/dev/null
@@ -87,4 +86,4 @@ sleep 30
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
-echo -e "    accessible at http://${FLOATING_IP}/index.html\n\n"
+echo -e "    accessible at http://${FLOATING_IP}\n\n"
