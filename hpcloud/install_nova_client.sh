@@ -80,8 +80,7 @@ ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAut
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@$FLOATING_IP:/usr/share/nginx/
 
 # Restart NGINX service to update with new html files
-ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "cd /opt/nginx; service nginx restart"
-# ssh -i /home/vagrant/.ssh/puppet_id_rsa root@$FLOATING_IP "su -l -c 'service nginx restart'"
+ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "cd /opt/nginx; su -l -c 'service nginx restart'"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"

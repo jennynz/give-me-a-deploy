@@ -122,14 +122,9 @@ portal: 8.4.0.beta</textarea>
 
 	<h2 class="subheader"><span class="teal">Save</span> these scripts to the <span class="teal">same directory</span>, <span class="teal">$ chmod +x run.sh</span>, then <span class="teal">$ run.sh</span>.</h2>
 
-	<div class="hidden">
-		<p>
-			<a id="blob" class="download-link" onclick="DownloadZip()">Click here to download all three scripts in a zip</a><br>
-			For more information on these scripts, click the filenames above the textboxes below, or read the <a href="docs/docs.html">docs</a>.	
-		</p><br>
-	</div>
-
 	<div class="index-page-wrap">
+
+		<p><a id="blob" class="download-link" onclick="DownloadZip()">Click here to download all three scripts in a zip</a><br></p>
 
 		<div class="left-text">
 			<a class="show-script-info" id="show-run-info">run.sh</a>
@@ -160,9 +155,57 @@ portal: 8.4.0.beta</textarea>
 		</div>
 		<textarea rows="40" name="provisionedenv-install-source" class="source" id="provisionedenv-install-source" onClick="SelectAll('provisionedenv-install-source');" spellcheck="false"></textarea>
 
+		<textarea name="readme" class="hidden" id="readme">
+# Give-Me-A-Deploy #
+Give-Me-A-Deploy is a web-based GUI configurator which generates executable source code that spins up Virtual Machines provisioned with Orion Health products. It aims to make Virtual Machines faster and easier for testers and developers at Orion Health, as they provide clean and consistent environments.
+
+## Booting a Provisioned VM on your local machine ##
+
+> Save these scripts to the same directory, $ chmod +x run.sh, then $ run.sh.
+
+1. Extract these files to the same directory.
+2. Navigate to that directory in your command prompt.
+3. If you are not on Windows, run the command `chmod +x run.sh`.
+4. Run the shell script; just type `run.sh` and enter.
+5. Make yourself a cuppa, wait for 15-30 minutes until the booting and installation completes.
+
+Please **do **not** clone any repositories manually**, and **do not call `vagrant up`**; this will be done automatically by the scripts. After calling `run.sh`, no further interaction from the user is required until the specified Orion Health products are installed and accessible from your browser.
+
+### Prerequisites ###
+
+Before running the generated script `run.sh`, which kicks off the entire booting and provisioning process, please install the following on your host machine:
+
+- [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - ensure that the version is compatible with Vagrant
+- [Vagrant](http://www.vagrantup.com/)
+- [Git version control](http://git-scm.com/downloads)
+
+You must also have SSH key pairs set up with your Stash account, and permission to clone the following repositories:
+
+* [OCD tooling (Stash)](http://stash/projects/OCD/repos/tooling/browse)
+* [puppet-ohp (Stash)](http://stash/projects/PUPPET/repos/puppet-ohp/browse) - these are the same OHP Puppet modules used in Production, ensuring consistency across the development and production environments
+* [PlatformBuild/trunk (Subversion)](http://subversion/src/Orchestral/Framework/PlatformBuild/trunk)
+
+You are **not** required to clone these repositories yourself manually. This will all be done automatically by `run.sh`.
+
+## Accessing Products ##
+
+Once the process is complete, your Orion Health applications should be accessible at http://localhost:HOST_PORT/product_name.
+
+*E.g. If the input in the 'Host Port' and 'Products' fields of the form were kept as the defaults, go to [http://localhost:19080/conductor](http://localhost:19080/conductor) for Orion Health Platform and [http://localhost:19080/concerto](http://localhost:19080/concerto) for Orion Health Portal.*
+
+## Further Information ##
+
+For more information, click the filenames above each of the textboxes where the scripts were generated on the Give-Me-A-Deploy page, have a read of the Docs and the About page, or go to the [Give-Me-A-Deploy Woki page](http://woki/display/IntDev/Give-Me-A-Deploy).
+		</textarea>
+
+		<br><br>
+		<p>
+			For more information on these scripts, click the filenames above each of the source code textboxes, or have a read of the <a href="docs/docs.html">docs</a>.
+		</p>
+
 	</div>
 
-	<br><br>
+	<br>
 
 	<div class="footer">
 		<a href="index.html">Home</a> | <a href="docs/docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>

@@ -63,10 +63,6 @@ body {
 	display: none;
 }
 
-.hasTooltip {
-	color: red;
-}
-
 /* Index
    ============================== */
 
@@ -176,8 +172,8 @@ h2.about {
    ============================== */
 
 h2.subheader {
-	margin-top: -0.5em;
-	margin-bottom: 1em;
+	margin-top: -0.7em;
+	margin-bottom: 0.5em;
 }
 
 /* Deployed
@@ -270,7 +266,7 @@ a.header-link:active {
 
 a.download-link {
 	font-weight: bolder;
-	line-height: 2.5em;
+	line-height: 3em;
 	color: #008080;
 	border-bottom: dotted 2px #bbb;
 }

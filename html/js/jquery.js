@@ -58,19 +58,4 @@ $(document).ready(function(){
     $("#install-info").toggle();
   });
 
-  // QTip for download and docs info.
-
-  $('.hasTooltip').each(function() {
-    $(this).qtip({
-      content: {
-        text: $(this).next('div')
-      }
-      style: { classes: 'qtip-light qtip-shadow qtip-rounded' }
-    });
-  });
-
-  $('#content a[href]').qtip({
-      content: 'i am a qtip'
-   });
-
 });
