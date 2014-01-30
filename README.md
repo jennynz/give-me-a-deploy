@@ -1,5 +1,4 @@
-Give-Me-A-Deploy (GMAD)
-==
+# Give-Me-A-Deploy (GMAD) #
 This repository contains all the files from the development and implementation of an intern project called Give-Me-A-Deploy, a web-based GUI configurator which generates executable source code that spins up Virtual Machines provisioned with Orion Health products. It aims to make Virtual Machines faster and easier for testers and developers at Orion Health, as they provide clean and consistent environments.
 
 ## Using Give-Me-A-Deploy locally ##
