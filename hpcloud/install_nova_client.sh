@@ -81,7 +81,9 @@ rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o
 sleep 30
 
 # Restart NGINX service to update with new html files
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "service nginx restart"
+ssh -i /home/vagrant/.ssh/puppet_id_rsa root@$FLOATING_IP "echo $PATH | su -l -c | echo $PATH | service nginx restart"
+#ssh -i /home/vagrant/.ssh/puppet_id_rsa root@$FLOATING_IP 'service nginx restart'
+# ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "service nginx restart"
 #ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "service nginx restart"
 
 echo -e "\n\n    Give-Me-A-Deploy"
