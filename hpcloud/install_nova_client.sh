@@ -50,7 +50,6 @@ nova boot --flavor standard.xsmall --image "CentOS 6.3 Server 64-bit 20130116 (b
 export FLOATING_IP="`nova floating-ip-create | awk '$4 == "None" { print $2 }'`"
 while [ "`nova show ${INSTANCE_NAME} | awk '$2 == "status" { print $4 }'`" != "ACTIVE" ]
 do
-	echo $?
   sleep 2
 done
 nova add-floating-ip ${INSTANCE_NAME} ${FLOATING_IP}
@@ -74,13 +73,18 @@ echo ''
 echo ''
 
 # Make directory to sync files across to, delete default nginx index.html.
-ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "mkdir -p /usr/share/nginx/html/; rm -f /usr/share/nginx/html/index.html"
+ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "mkdir -p /usr/share/nginx/html/; cd /usr/share/nginx/html/; rm -f index.html;"
 
 # Sync across html files
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@$FLOATING_IP:/usr/share/nginx/
+echo ''
+echo ''
+echo '    HTML files synced to HP Cloud instance successfully.'
+echo ''
+echo ''
 
 # Restart NGINX service to update with new html files
-ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "cd /opt/nginx; su -l -c 'service nginx restart'"
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "su -l -c 'service nginx restart'"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"

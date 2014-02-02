@@ -116,7 +116,22 @@ div.code {
 }
 
 span.code-comment { color: #ccc; }
-span.code-output { color: #126E6E; }
+span.code-output { color: #126e6e; }
+
+span.code {
+	/* Background box */
+	background-color: #ddd;
+	border: solid 1px #ccc;
+	border-radius: 4px;
+	padding: 1px;
+
+	/* Font */
+	color: #126e6e;
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+}
 
 div.quote {
 	background: #ccc;
