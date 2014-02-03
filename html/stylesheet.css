@@ -168,7 +168,7 @@ span.command {
 	border: solid 1px #ccc;
 	border-radius: 4px;
 	padding: 0 3px 1px 3px;
-	
+
 	/* Font */
 	color: #555;
 	font-family:
@@ -282,15 +282,14 @@ h4.docs {
 
 a {
 	color: #008080;
-/*	border-bottom: dotted 1px #ccc;
-*/	text-decoration: none;
+	text-decoration: none;
 
 	/* Slow Hover-out on Mouseexit */
 	-webkit-transition: 0.5s ease-in-out;
-  	-moz-transition: 0.5s ease-in-out;
-  	-o-transition: 0.5s ease-in-out;
-  	-ms-transition: 0.5s ease-in-out;
-  	transition: 0.5s ease-in-out;
+	-moz-transition: 0.5s ease-in-out;
+	-o-transition: 0.5s ease-in-out;
+	-ms-transition: 0.5s ease-in-out;
+	transition: 0.5s ease-in-out;
 }
 
 a:hover {
@@ -298,10 +297,10 @@ a:hover {
 
 	/* Fast Mouseenter */
 	-webkit-transition: 0;
-  	-moz-transition: 0;
-  	-o-transition: 0;
-  	-ms-transition: 0;
-  	transition: 0;
+	-moz-transition: 0;
+	-o-transition: 0;
+	-ms-transition: 0;
+	transition: 0;
 }
 
 a:active {
@@ -422,19 +421,10 @@ li.docs-infobox {
 		IMAGES
    ========================================================================== */
 
-img#logo {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 /* Custom bullet for docs */
-img.star {
-	margin: 0 10px -3px 20px;
-}
+img.star { margin: 0 10px -3px 20px; }
 
-img.border {
-  border-radius: 4px;
-}
+img.border { border-radius: 4px; }
 img.border:hover {
 	box-shadow: 0 0 10px #ff7700;
   border-radius: 4px;
