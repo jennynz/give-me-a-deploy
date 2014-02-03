@@ -17,9 +17,7 @@
 		<br><br>
 
 		<h1 class="docs">Give-Me-A-Deploy: Provisioned VM on HP Cloud<br>
-		<a href="#documentation" class="docs-title-link">Documentation</a>, 
-		<a href="#faqs" class="docs-title-link">FAQs</a> & 
-		<a href="#help" class="docs-title-link">Help</a>
+		<span class="orange">An idea for the future?</span>
 		</h1>
 
 		<p>
@@ -30,117 +28,72 @@
 		</p>
 
 		<div class="docs-infobox">
-			A <a href="http://www.hpcloud.com" target="_blank">public cloud server such as HP Cloud</a> is the most reliable solution to hosting VMs.<br>
-			Eventually, this web application may be able to deploy the VM on HP Cloud straight from this GUI interface itself, instead of relying on an executable output source code. The VMs could also be timed to be <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived</a>, to reduce the number of idle VMs which are paid for by the number of hours per instance.<br>
-			To see an example of a VM on HP Cloud, see <a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse">Vagrant on HP Cloud</a>.
+			A <a href="http://www.hpcloud.com" target="_blank">public cloud service such as HP Cloud Computing</a> is the most reliable environment to host VMs in. Eventually, this web application may be able to deploy your provisioned VM onto an HP Cloud instance straight from this GUI interface. The VMs could also be timed to be <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived</a>, reducing resource wastage due to idle VMs while providing fast and flexible dev & test environments.<br>
 		</div>
 
-		<a name="documentation"><h2 class="docs">Documentation</h2></a>
-
-		<ul>
-			<li class="star"><a href="#doc1">Booting up your VM on HP Cloud</a></li>
-			<li class="star"><a href="#doc2">Manage your VM with HP Cloud</a></li>
-			<li class="star"><a href="#doc3">Accessing your cloud Portal</a></li>
-			<li class="star"><a href="#doc4">Further Information</a></li>
-		</ul>
-
-		<a name="doc1"><h3 class="docs">Booting up your VM on HP Cloud</h3></a>
+		<a name="documentation"><h2 class="docs">Short-lived VMs as a mainstream test environment at Orion Health</h2></a>
 
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			In a recent survey of VM usage...
 		</p>
-		<table class="docs">
-			<tr>
-				<td class="docs-label">Virtual Environment*</td>
-				<td class="content">
-					"Provisioned Vagrant" checked. <i>Provisioned Vagrant</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">VM Name*</td>
-				<td class="content">
-					This hostname should contain only letters, numbers, hyphens or full stop. It can not start with a hyphen or full stop. <i>portal-vm</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">Host Port*</td>
-				<td class="content">
-					This only requires configuring if you have more than one VM running, where you would have to specify different host ports for each VM to avoid port collisions when setting up port forwarding. The guest port is set to a default of "19080" (this may be changed if desired in the output Vagrantfile). The host port is the port on your local host machine you would like forwarded to your guest machine. <i>19080</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">Memory*</td>
-				<td class="content">
-					Customise the allocation of base memory to your VM. <i>768 MB</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">Products <span class="indev">IN DEV!</span></td>
-				<td class="content">
-					Which Orion Health application you would like pre-installed on your Vagrant machine. The code that you write in here is directly written out to a solutionVersion.yaml file which is used to create a solution.zip for the OHP installation, so it is important that the formatting is exactly as seen in the example shown e.g. indentation is two spaces, each application on a new line with the correct characterisation for version number. <i>Portal 8.4.0.beta with Foundation 7.2.0.beta</i>
-				</td>
-			</tr>
-			<tr>
-				<td class="docs-label">Puppet Scripts <span class="indev">IN DEV!</span></td>
-				<td class="content">
-					Point us at your Puppet scripts in Subversion, and we'll provision the VM with your own configuration of Portal. <i>http://subversion/src/Orchestral/Framework/PlatformBuild/trunk</i>
-				</td>
-			</tr>
-		</table>
+		<ul>
+			<li><b><span class="teal">75% were unhappy</span></b> with performance</li>
+			<li><b><span class="teal">79%</span></b> of VMs run <b>24/7</b></li>
+			<li><b><span class="teal">0.8% utilisation</span></b> of VMs (usage/uptime)</li>
+			<li><b><span class="teal">1-5 day wait time</span></b> for a new VM</li>
+		</ul>
+		<p>
+			This may be a result of VMs not being able to be spun up by developers and testers due to the lack of available APIs, and also the difficulty of provisioning the VMs with Orion Health products and its dependencies once a VM is acquired.<br><br>
 
-		<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" target="_blank">- Short-lived VMs, built on demand</a></i>
+		</p>
 
-		<a name="doc2"><h3 class="docs">Manage your VM with HP Cloud</h3></a>
+		<h3 class="docs">Why VMs, and why on a public cloud?</h3>
+
+		<p>
+			VMs are ideal for software quality assurance, as they can provide a clean and consistent test environment. Smart utilisation of VMs can maximise efficiency and productivity.
+		</p>
 
 		<ol>
-			<li>Instruction #1</li>
-			<li>Instruction #2</li>
-			<li>Instruction #3</li>
+			<li><b><span class="orange">Isolation</span></b><br>
+				VMs can isolate applications from one another, and from programmes on your daily OS to <b>minimise interference</b> with tests.</li><br>
+			<li><b><span class="orange">Consolidation</span></b><br>
+				They are much <b>quicker to boot</b> and <b>cheaper to maintain</b> than physical machines. <b>Multiple VMs</b> can be run on one physical machine.</li><br>
+			<li><b><span class="orange">Ease of testing</span></b><br>
+				VMs are <b>easily configurable</b> to fit your needs. Also, many virtualisation packages come with features designed for testing like <b>snap shots</b>.</li><br>
+			<li><b><span class="orange">Mobility</span></b><br>
+				Images can be moved around and copied across physical machines as <b>single files</b>, making them <b>flexible</b> and <b>easy to deploy</b>.</li>
 		</ol>
 
-		<a name="doc3"><h3 class="docs">Accessing your cloud Portal</h3></a>
+		<p>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><a href="http://www.optimusqa.com/blog/benefits-virtual-machines-sqa/" target="_blank">- Benefits of Using Virtual Machines for SQA</a></i><br><br>
+
+			By outsourcing the hosting of our VMs to a public cloud such as HP Cloud (already used by the Orion Continuous Delivery team for testing and development of tooling), this allows us as developers to focus on our own code, without having to worry about potential problems with the server. It saves us from using up our own resources, and is also more consistent than our current local OpenStack server, <a href="http://ocd-devstack" target="_blank">DevStack</a>, which tends to fail when overloaded.
+		</p>
+
+		<h3 class="docs">HP Cloud & OpenStack API</h3>
 
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p><br>
-
-		<a name="doc4"><h3 class="docs">Further Information</h3></a>
-
+			HP Cloud is based on <a href="http://www.openstack.org/foundation/companies/profile/hp">OpenStack technology</a>. In order for Give-Me-A-Deploy to be able to "talk" to the HP Cloud Compute service, the proposed extension on this current app would require some server-side script that implements some OpenStack API. There are several options for this:
+		</p>
+		<ul>
+			<li>OpenStack's comment-line client, Nova, written in Python.</li>
+			<li>OpenStack's Ruby API binding, Ruby Fog.</li>
+			<li>HP Cloud's own extensions to the Ruby Fog binding.</li>
+		</ul>
 		<p>
-			<ul>
-				<li><a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse">Vagrant on HP Cloud</a></li>
-				<li>Detailed instructions and documentation on <a href="http://woki/display/IntDev/Installing+Platform+with+Puppet+Apply" title="Installing Platform with Puppet Apply" target="_blank">installing Platform with Puppet Apply</a>.</li>
-				<li><a href="http://stash/users/jennysa/repos/give-me-A-Deploy/browse" title="Give-Me-A-Deploy git repository on Stash" target="_blank">Source code</a> for this web app in Stash.</li>	
-			</ul>
-		</p><br>
+			These options will have to be further investigated with respect to the capabilities of the server-side language chosen.
 
-		<a name="faqs"><h2 class="docs">Troubleshooting & FAQs</h2></a>
+		<h3 class="docs">The advantage of VMs being short-lived</h3>
+
+		VMs need not take up resources and remain idleMaking these on-demand VMs short-lived, meaning that they automatically expire after 48 hours, would eliminate idle VMs which waste resources, while continuing to provide consistent, fast and flexible environments for developers and testers.
+
+		<h3 class="docs">Further information & links</h3>
 
 		<ul>
-			<li><a href="#faq1">FAQ#1</a></li>
-			<li><a href="#faq2">FAQ#2</a></li>
-			<li><a href="#faq3">FAQ#3</a></li>
-			<li><a href="#faq4">FAQ#4</a></li>
+			<li><a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse" target="_blank">Vagrant on HP Cloud Stash repository</a> - an example of how to use an OpenStack API to boot up an instance in HP Cloud.</li>
+			<li><a href="http://stash/users/jennysa/repos/give-me-A-deploy/browse" target="_blank">Stash repository of Give-Me-A-Deploy</a> served on an nginx server on an HP Cloud instance for the Bamboo plan <a href="http://bamboo/browse/ATT-GMAD" target="_blank">Give-Me-A-Deploy on HP Cloud</a>.</li>	
 		</ul>
-
-		<h3 class="docs"><a name="faq1" class="anchor">FAQ#1</a></h3>
-		<p>The entire booting and provisioning process may take around 30 minutes depending on the speed of your host machine and internet connection. This is mostly due to the creation of the solution.zip, which takes about 20 minutes.<br>
-		If you're impatient, check out the Vagrantfile and up the allocated memory.</p><br>
-
-		<h3 class="docs"><a name="faq2" class="anchor">FAQ#2</a></h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-		
-		<h3 class="docs"><a name="faq3" class="anchor">FAQ#3</a></h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-
-		<h3 class="docs"><a name="faq4" class="anchor">FAQ#4</a></h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-		<br>
-
-		<a name="help"><h2 class="docs">Help</h2></a>
-
-		<p>If you require any further assistance, please contact a member of the <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD team</a>.</p>
 
 	</div>
 

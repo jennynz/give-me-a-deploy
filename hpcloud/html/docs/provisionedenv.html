@@ -25,7 +25,7 @@
 		<p>
 			<img src="../favicon.ico" class="star"><a href="provisionedenv.html" class="current">Local Provisioned VM</a>
 			<img src="../favicon.ico" class="star"><a href="hpcloudenv.html">Provisioned VM on HP Cloud</a> <span class="indev">IN DEV!</span>
-			<img src="../favicon.ico" class="star"><a href="emptyenv.html">Empty Vagrant</a>
+			<img src="../favicon.ico" class="star"><a href="emptyenv.html">Local Empty VM</a>
 			<img src="../favicon.ico" class="star"><a href="http://woki/display/IntDev/Give-Me-A-Deploy" title="Give-Me-A-Deploy - Integrated Development">Docs on Woki</a>
 		</p>
 
@@ -151,30 +151,27 @@
 		<h4 class="docs">Installation System Requirements</h4>
 		<p>In order for the scripts to run successfully, please install the following on your <b>local</b> machine:</p>
 		<ul>
-			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
 			<li><a href="http://www.vagrantup.com">Vagrant</a></li>
 			<li><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
 		</ul>
 
 		<p><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairs</a> must be set up on your Stash account, and cloning permissions granted to the following repositories (all Dev and Testing should have this already):</p>
 		<ul>
-			<li><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a> on Stash</li>
-			<li><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> on Stash</li>
-			<li><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> on Subversion (SVN supports credential caching)</li>
+			<li><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a> in Stash</li>
+			<li><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> in Stash</li>
+			<li><a href="http://subversiin/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> in Subversion (SVN supports credential caching)</li>
 		</ul>
 		
 		<p>You <b>do not have to clone these repositories yourself</b>; the script will do it for you, and place them in the correct directories. If your Stash key pairs and SVN credentials are set up, the entire process after run.sh should require no further action from the user.</p>
 
 		<a name="manualAccess"><h3 class="docs">Manual access to your VM</h3></a>
-
+		<div class="code">
+			$ vagrant ssh
+		</div>
 		<p>
-			For a <b>Vagrant</b> VM, access your virtual machine by ssh'ing into the box with the command, 'ssh vagrant'.<br><br>
-
-			For <b>OpenStack</b>, log in to <a href="http://ocd-devstack/">DevStack</a> with the username as 'admin' and the password being 'orionsys'. Go to 'project', and click 'instances'. You may manually terminate your instance from this GUI panel, and it is recommended that you do so if you have finished with your VM to save on server resources.<br>
-			You can gain access into the instance, 'ssh root@192.168.50.3' with the IP of your instance.<br><br>
-
-			For <b>HP Cloud</b> or key pairing and authentication and all that mumbo-jumbo, I wouldn't have a clue.
-		</p><br>
+			Vagrant makes accessing your VM very simple; access your virtual machine by ssh'ing into the box with the command 'vagrant ssh' in the directory where you've booted up your VM (where the Vagrantfile is located).<br><br>
+		</p>
 
 		<a name="configuringPuppet"><h3 class="docs">Configuring Puppet Modules</h3></a>
 

@@ -106,7 +106,11 @@ function GenerateVagrantInstall() {
 	// Check that a foundation version has been specified, isolate version number for provisioning installer URL.
 	var foundationIndex = names.indexOf("foundation");
 	if (foundationIndex == -1) {
-		alert("A foundation version must be specified. Please check your spelling and format of the foundation version.");
+		alert("A foundation version must be specified. Please check your spelling and format of the foundation version.\n\n" +
+			"E.g. foundation: 7.2.0.final\n\n" +
+			"N.B. Semicolon and space, no space before 'foundation'.\n" +
+			"Give-Me-A-Deploy currently does not support indented product definitions such as CaseMan.\n" + 
+			"For these products, please enter the details into the appropriate solution files and site.pp manually.");
 		document.getElementById("vmdetails").reset();
 		return;
 	}

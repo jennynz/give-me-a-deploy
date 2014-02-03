@@ -11,16 +11,22 @@ $(document).ready(function(){
       $("#products").hide();
       $("#puppetscripts").hide();
       $("#lifespan").hide();
+      $("#generate").show();
+      $("#deploy").hide();
     } else if ($(this).val() == 'provisionedenv') {
       $("#email").hide();
       $("#products").show();
       $("#puppetscripts").hide();
       $("#lifespan").hide();
+      $("#generate").show();
+      $("#deploy").hide();
     } else if ($(this).val() == 'hpcloudenv') {
       $("#email").show();
       $("#products").show();
       $("#puppetscripts").show();
       $("#lifespan").show();
+      $("#generate").hide();
+      $("#deploy").show();
     }
   });
 
@@ -30,6 +36,8 @@ $(document).ready(function(){
     $("#products").show();
     $("#puppetscripts").hide();
     $("#lifespan").hide();
+    $("#generate").show();
+    $("#deploy").hide();
   });
 
 /* ==========================================================================
@@ -50,4 +58,11 @@ $(document).ready(function(){
     $("#install-info").toggle();
   });
 
+/* ==========================================================================
+    DEPLOYED SECTION
+   ========================================================================== */
+
+  // Initialize jQuery popup overlay function.
+  $("#slidein").popup();
+  
 });

@@ -45,7 +45,7 @@ body {
 	background-color: #FFF;
 	width: 50px;
 	height: 400px;
-	margin: 0 auto;
+	margin: auto auto;
 	display: block;
 }
 
@@ -55,26 +55,83 @@ body {
 	color: #666;
 }
 
+.left-text {
+	text-align: left;
+}
+
+.hidden {
+	display: none;
+}
+
 /* Index
    ============================== */
 
 #provisionedenv-section,
-#emptyenv-section {
-	display: none;
+#emptyenv-section,
+#form-section {
+	text-align: center;
 }
 
-span.hidden-info {
-	display: none;
-	color: #444;
-	font-size: 0.8em;
+#run-info,
+#vagrantfile-info,
+#install-info {
+	/* Size & Positioning */
 	min-width: 260px;
 	max-width: 650px;
-	text-align: left;
+	margin-top: -1.2em;
+
+	/* Font */
+	color: #444;
+	font-size: 0.8em;
 	font-family:
 		Consolas, "Andale Mono",
 		"Lucida Console", "Nimbus Mono",
 		"Courier New", monospace ;
-	margin-top: -1.2em;
+	text-align: left;
+}
+
+/* Deployed
+   ============================== */
+
+.popup {
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 20px;
+  display:none;
+}
+
+.center {
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#slidein_background {
+    -webkit-transition: all 0.3s;
+       -moz-transition: all 0.3s;
+            transition: all 0.3s;
+}
+
+#slidein,
+#slidein_wrapper {
+    -webkit-transition: all 0.3s ease-out;
+       -moz-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+}
+
+#slidein {
+    -webkit-transform: translateX(0) translateY(+40%);
+       -moz-transform: translateX(0) translateY(+40%);
+        -ms-transform: translateX(0) translateY(+40%);
+            transform: translateX(0) translateY(+40%);
+}
+
+.popup_visible #slidein {
+    -webkit-transform: translateX(0) translateY(0);
+       -moz-transform: translateX(0) translateY(0);
+        -ms-transform: translateX(0) translateY(0);
+            transform: translateX(0) translateY(0);
 }
 
 /* Docs
@@ -106,7 +163,22 @@ div.code {
 }
 
 span.code-comment { color: #ccc; }
-span.code-output { color: #126E6E; }
+span.code-output { color: #126e6e; }
+
+span.code {
+	/* Background box */
+	background-color: #ddd;
+	border: solid 1px #ccc;
+	border-radius: 4px;
+	padding: 1px;
+
+	/* Font */
+	color: #126e6e;
+	font-family:
+		Consolas, "Andale Mono",
+		"Lucida Console", "Nimbus Mono",
+		"Courier New", monospace;
+}
 
 div.quote {
 	background: #ccc;
@@ -127,13 +199,11 @@ div.quote {
 h1 {
 	color: #999;
 	font-size: 1.5em;
-	text-align: center;
 }
 
 h2 {
 	color: #444;
 	font-size: 1.2em;
-	text-align: center;
 }
 
 h3 {
@@ -153,22 +223,23 @@ h6 {
 h1.docs,
 h1.about {
 	font-size: 2em;
-	text-align: left;
 }
 
 h2.docs,
 h2.about {
 	font-size: 1.5em;
-	text-align: left;
 }
 
 /* Index
    ============================== */
 
 h2.subheader {
-	margin-top: -0.5em;
-	margin-bottom: 1em;
+	margin-top: -0.7em;
+	margin-bottom: 0.5em;
 }
+
+/* Deployed
+   ============================== */
 
 h2.deployed {
 	margin-top: -0.8em;
@@ -256,14 +327,19 @@ a.header-link:active {
 }
 
 a.download-link {
-	font-family: Arial, Verdana, Helvetica, sans-serif;
-	font-size: 0.8em;
-	font-weight: bold;
+	font-weight: bolder;
+	line-height: 3em;
 	color: #008080;
 	border-bottom: dotted 2px #bbb;
 }
-a.download-link:hover { color: #ff7700; border-bottom: dotted 2px #ff7700; }
-a.download-link:active { color: #999; border-bottom: dotted 2px #999; }
+a.download-link:hover {
+	color: #ff7700;
+	border-bottom: dotted 2px #ff7700;
+}
+a.download-link:active {
+	color: #999;
+	border-bottom: dotted 2px #999;
+}
 
 a.show-script-info {
 	font-family:
@@ -356,12 +432,13 @@ img.star {
 }
 
 /* ==========================================================================
-		TABLE & FORM ELEMENTS & Form
+		TABLE & FORM ELEMENTS
    ========================================================================== */
 
 table.form,
+table#deployed-vms,
 table.docs {
-    font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-family: Arial, Verdana, Helvetica, sans-serif;
 	color: #666;
 	font-size: 0.8em;
 }
@@ -377,26 +454,26 @@ table.form {
 
 	/* Color */
 	background-color: #E6E6E6;
-    border: 1px solid #999;
-    
-    /* Slow Hover-out on Mouseexit */
-    -webkit-transition: 0.5s ease-in-out;
-  	-moz-transition: 0.5s ease-in-out;
-  	-o-transition: 0.5s ease-in-out;
-  	-ms-transition: 0.5s ease-in-out;
-  	transition: 0.5s ease-in-out;
+  border: 1px solid #999;
+  
+  /* Slow Hover-out on Mouseexit */
+  -webkit-transition: 0.5s ease-in-out;
+	-moz-transition: 0.5s ease-in-out;
+	-o-transition: 0.5s ease-in-out;
+	-ms-transition: 0.5s ease-in-out;
+	transition: 0.5s ease-in-out;
 }
 
 table.form:hover {
-    border-color: #ff7700;
-    box-shadow: 0 0 4px #ff7700;
+  border-color: #ff7700;
+  box-shadow: 0 0 4px #ff7700;
 
-    /* Fast Hover-in on Mouseenter */
-    -webkit-transition: 0;
-  	-moz-transition: 0;
-  	-o-transition: 0;
-  	-ms-transition: 0;
-  	transition: 0;
+  /* Fast Hover-in on Mouseenter */
+  -webkit-transition: 0;
+	-moz-transition: 0;
+	-o-transition: 0;
+	-ms-transition: 0;
+	transition: 0;
 }
 
 td.table-header {
@@ -410,17 +487,11 @@ td.label {
 	width: 30%;
 }
 
-td.content { text-align: left; }
-td.content-radiofield {
-    color: #444;
-    margin-bottom: 5px;
-    padding: 4px;
-}
-
-tr#email,
-tr#puppetscripts,
-tr#lifespan {
-	display: none;
+td.content {
+	text-align: left;
+  color: #444;
+  margin-bottom: 5px;
+  padding: 4px;
 }
 
 td.table-footer { text-align: center; }
@@ -432,14 +503,14 @@ input[type="number"]#LifeSpan { width: 40px; }
 input[type="text"],
 input[type="number"] {
 	/* Size & Positioning */
-    margin-left: 8px;
-    margin-bottom: 5px;
-    padding: 4px;
+  margin-left: 8px;
+  margin-bottom: 5px;
+  padding: 4px;
 
 	/* Font */
 	font-family: Arial, Verdana, Helvetica, sans-serif;
-    color: #444;
-    border: solid 1px #BBBBBB;
+  color: #444;
+  border: solid 1px #BBBBBB;
 }
 
 textarea#Products {
@@ -457,18 +528,18 @@ textarea#Products {
 	color: #444;
 
 	/* Color */
-    border: solid 1px #BBBBBB;
+  border: solid 1px #BBBBBB;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 textarea#Products:focus {
-    /* Font */
-    color: #008080;
+  /* Font */
+  color: #008080;
 
-    /* Color */
-    outline: none;
-    border: solid 1px #ff7700;
+  /* Color */
+  outline: none;
+  border: solid 1px #ff7700;
 }
 
 .button {
@@ -477,10 +548,80 @@ textarea#Products:focus {
 	-moz-appearance: button; /* Firefox */
 	-ms-appearance: button; /* Internet Explorer */
 	-o-appearance: button; /* Opera */
-    font: menu;
-    color: #444;
-    display: inline-block;
-    padding: 4px 12px;
+  font: menu;
+  color: #444;
+  display: inline-block;
+  padding: 4px 12px;
+}
+
+#deploy {
+	display: none;
+}
+
+/* Deployed
+   ============================== */
+
+hr {
+	border: 0;
+	color: #ccc;
+	background-color: #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+table#deployed-vms {
+  text-align: left;
+}
+
+td.deployed-header {
+	font-size: 1.25em;
+	font-weight: bold;
+	padding-bottom: 1.2em;
+}
+
+tbody#deployed-list {
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #444;
+}
+
+td.deployed-name {
+	width: 50%;
+}
+
+td.deployed-expiry { }
+
+td.deployed-options {
+	width: 30%;
+	text-align: right;
+}
+
+td.deployed-footer {
+	margin: 10px;
+	text-align: center;
+	color: #444;
+	white-space: nowrap;
+}
+
+input[type="text"]#expiry-email {
+	/* Size & Positioning */
+  width: 166px;
+  padding: 0;
+  margin-left: 0;
+
+	/* Font */
+  color: #444;
+  border: none;
+}
+input[type="text"]#expiry-email:hover {
+	border-bottom: solid 1px #555;
+}
+input[type="text"]#expiry-email:focus {
+	color: #126e6e;
+	border-bottom: solid 1px #126e6e;
+}
+
+.deployed-option {
+	padding: 2px 4px;
 }
 
 /* Docs
@@ -538,7 +679,6 @@ textarea.source {
     /* Other */
     overflow-x: hidden;
     -ms-overflow-x: hidden;
-    resize: vertical;
 }
 textarea.source:focus {
     color: #008080;
