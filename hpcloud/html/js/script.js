@@ -90,17 +90,30 @@ function Deploy() {
 		alert("The following popup is only a mock-up of this feature.\n\nThe 'Provisioned VM on HP Cloud' option is yet to be developed.");
 		
 		// Add new deployed VM to table.
-		$("#deployed-list").append(
-			"<tr>" +
-      "<td class='deployed-name'>" + vmname + "</td>" +
-      "<td class='deployed-expiry'>" + lifespan + " hours</td>" +
-      "<td class='deployed-options'>" +
-      "<input type='button' class='button deployed-option' value='Retire'> " +
-      "<input type='button' class='button deployed-option' value='Extend'>" +
-      "</td>" +
-      "</tr>"
-    );
-		
+		if (lifespan == 1) {
+			$("#deployed-list").append(
+				"<tr>" +
+	      "<td class='deployed-name'>" + vmname + "</td>" +
+	      "<td class='deployed-expiry'>" + lifespan + " hour</td>" +
+	      "<td class='deployed-options'>" +
+	      "<input type='button' class='button deployed-option' value='Retire'> " +
+	      "<input type='button' class='button deployed-option' value='Extend'>" +
+	      "</td>" +
+	      "</tr>"
+	    );
+		} else {
+			$("#deployed-list").append(
+				"<tr>" +
+	      "<td class='deployed-name'>" + vmname + "</td>" +
+	      "<td class='deployed-expiry'>" + lifespan + " hours</td>" +
+	      "<td class='deployed-options'>" +
+	      "<input type='button' class='button deployed-option' value='Retire'> " +
+	      "<input type='button' class='button deployed-option' value='Extend'>" +
+	      "</td>" +
+	      "</tr>"
+    	);
+		}
+
 		// Show deployed VMs in popup overlay.
 		$('#slidein').popup('show');
 	}
