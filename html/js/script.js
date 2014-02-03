@@ -80,17 +80,33 @@ function PrintToTextbox(code, printLocation) {
 
 function Deploy() {
 
+	var vmname = document.getElementById("vmname").value;
+	var lifespan = document.getElementById("LifeSpan").value;
+
 	// Check that input is valid.
-	var lifespanIsValid = ValidateLifespan();
+	var lifespanIsValid = ValidateLifespan(lifespan);
 	
 	if (lifespanIsValid == 1) {
-		$('#slidein').popup('show');
 		alert("The following popup is only a mock-up of this feature.\n\nThe 'Provisioned VM on HP Cloud' option is yet to be developed.");
+		
+		// Add new deployed VM to table.
+		$("#deployed-list").append(
+			"<tr>" +
+      "<td class='deployed-name'>" + vmname + "</td>" +
+      "<td class='deployed-expiry'>" + lifespan + " hours</td>" +
+      "<td class='deployed-options'>" +
+      "<input type='button' class='button deployed-option' value='Retire'> " +
+      "<input type='button' class='button deployed-option' value='Extend'>" +
+      "</td>" +
+      "</tr>"
+    );
+		
+		// Show deployed VMs in popup overlay.
+		$('#slidein').popup('show');
 	}
 }
 
-function ValidateLifespan() {
-	var lifespan = document.getElementById("LifeSpan").value;
+function ValidateLifespan(lifespan) {
 	if (lifespan > 96) {
 		alert("The maximum lifespan of the short-lived VM is 96 hours.");
 		return 0;
