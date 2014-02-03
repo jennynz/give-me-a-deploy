@@ -89,12 +89,16 @@ function Deploy() {
 	if (lifespanIsValid == 1) {
 		alert("The following popup is only a mock-up of this feature.\n\nThe 'Provisioned VM on HP Cloud' option is yet to be developed.");
 		
-		// Add new deployed VM to table.
+		// Insert the custom VM name and lifespan into the popup header, and VM details into table.
+		$("#deployed-vm-name").replaceWith("<span id='deployed-vm-name' class='orange'>" + vmname + "</span>");
+
 		if (lifespan == 1) {
+			$("#deployed-vm-lifespan").replaceWith("<span id='deployed-vm-lifespan' class='teal'>1 hour</span>");
+
 			$("#deployed-list").append(
 				"<tr>" +
 	      "<td class='deployed-name'>" + vmname + "</td>" +
-	      "<td class='deployed-expiry'>" + lifespan + " hour</td>" +
+	      "<td class='deployed-expiry'>1 hour</td>" +
 	      "<td class='deployed-options'>" +
 	      "<input type='button' class='button deployed-option' value='Retire'> " +
 	      "<input type='button' class='button deployed-option' value='Extend'>" +
@@ -102,6 +106,8 @@ function Deploy() {
 	      "</tr>"
 	    );
 		} else {
+			$("#deployed-vm-lifespan").replaceWith("<span id='deployed-vm-lifespan' class='teal'>" + lifespan + " hours");
+
 			$("#deployed-list").append(
 				"<tr>" +
 	      "<td class='deployed-name'>" + vmname + "</td>" +

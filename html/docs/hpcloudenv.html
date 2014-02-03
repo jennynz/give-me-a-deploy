@@ -17,7 +17,7 @@
 		<br><br>
 
 		<h1 class="docs">Give-Me-A-Deploy: Provisioned VM on HP Cloud<br>
-		<span class="orange">An idea for the future?</span>
+		<span class="orange">A possible solution for devs and testers</span>
 		</h1>
 
 		<p>
@@ -72,11 +72,11 @@
 
 		<ol>
 			<li><b><span class="orange">Isolation</span></b><br>
-				VMs can isolate applications from one another, and from programmes on your daily OS to <b>minimise interference</b> with tests.</li><br>
+				VMs can isolate applications from one another, and from programmes on your daily OS to <b>minimise interference</b> with tests.</li>
 			<li><b><span class="orange">Consolidation</span></b><br>
-				They are much <b>quicker to boot</b> and <b>cheaper to maintain</b> than physical machines. <b>Multiple VMs</b> can be run on one physical machine.</li><br>
+				They are much <b>quicker to boot</b> and <b>cheaper to maintain</b> than physical machines. <b>Multiple VMs</b> can be run on one physical machine.</li>
 			<li><b><span class="orange">Ease of testing</span></b><br>
-				VMs are <b>easily configurable</b> to fit your needs. Also, many virtualisation packages come with features designed for testing like <b>snap shots</b>.</li><br>
+				VMs are <b>easily configurable</b> to fit your needs. Also, many virtualisation packages come with features designed for testing like <b>snap shots</b>.</li>
 			<li><b><span class="orange">Mobility</span></b><br>
 				Images can be moved around and copied across physical machines as <b>single files</b>, making them <b>flexible</b> and <b>easy to deploy</b>.</li>
 		</ol>
@@ -99,35 +99,28 @@
 		</ul>
 		<p>
 			These options will have to be further investigated with respect to the capabilities of the server-side language chosen.
+		</p>
 
 		<h3 class="docs">The advantage of VMs being short-lived</h3>
 
-		<table>
-			<tr>
-				<td class="docs-short-lived">
-					<p>
-						On-demand, disposable VMs already eliminate the issue of 24/7 VMs. However, there is still the likelihood of VMs being booted and left running long after they have been used.<br><br>
+		<p>
+			<a href="deployed_popup.PNG"><img src="deployed_popup.PNG" width="100%" id="docs-deployed" class="border"></a>
 
-						By making the deployed VMs short-lived (automatically self-terminating after x number of hours) as well as encouraging users to retire unused VMs manually from the GUI interface, we would minimise resource wastage due to idle VMs, while continuing to provide consistent, fast and flexible environments for developers and testers.
-					</p>
+			On-demand, disposable VMs already eliminate the issue of 24/7 VMs. However, there is still the likelihood of VMs being booted and left running long after they have been used.<br><br>
 
-					<h3 class="docs">Further information & links</h3>
+			By making the deployed VMs short-lived (automatically self-terminating after x number of hours) as well as encouraging users to retire unused VMs manually from the GUI interface, we would minimise resource wastage due to idle VMs, while continuing to provide consistent, fast and flexible environments for developers and testers.
+		</p>
 
-					<ul>
-						<li><a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse" target="_blank">Vagrant on HP Cloud Stash repository</a> - an example of how to use an OpenStack API to boot up an instance in HP Cloud.</li>
-						<li><a href="http://stash/users/jennysa/repos/give-me-A-deploy/browse" target="_blank">Stash repository of Give-Me-A-Deploy</a> served on an nginx server on an HP Cloud instance for the Bamboo plan <a href="http://bamboo/browse/ATT-GMAD" target="_blank">Give-Me-A-Deploy on HP Cloud</a>.</li>
-						<li><a href="https://github.com/ruby-openstack/ruby-openstack" target="_blank">Ruby OpenStack API Binding on GitHub</a></li>
-						<li><a href="https://docs.hpcloud.com/bindings/fog/compute/" target="_blank">Ruby Fog Bindings Compute examples</a> for HP Cloud.<br>
-							<i>N.B. OCD have used the OpenStack binding as opposed to the HP Cloud-specific binding for their tooling, so the OpenStack binding may be recommended for the purposes of consistency.</i></li>
-						<li><a href="https://docs.hpcloud.com/cli/nova/reference" target="_blank">Python Novaclient Command Line Reference</a> from HP Cloud</li>
-					</ul>
+		<h3 class="docs">Further information & links</h3>
 
-				</td>
-				<td>
-					<img src="deployed_popup.PNG" width="100%" class="border">
-				</td>
-			</tr>
-		</table>
+		<ul>
+			<li><a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse" target="_blank">Vagrant on HP Cloud</a> - a simple example on Stash of how to use OpenStack API to boot up an HP Cloud instance.</li>
+			<li><a href="http://stash/users/jennysa/repos/give-me-A-deploy/browse" target="_blank">Stash repository of Give-Me-A-Deploy</a> served on an nginx server on an HP Cloud instance for the Bamboo plan <a href="http://bamboo/browse/ATT-GMAD" target="_blank">Give-Me-A-Deploy on HP Cloud</a>.</li>
+			<li><a href="https://github.com/ruby-openstack/ruby-openstack" target="_blank">Ruby OpenStack API Binding on GitHub</a></li>
+			<li><a href="https://docs.hpcloud.com/bindings/fog/compute/" target="_blank">Ruby Fog Bindings Compute examples</a> for HP Cloud.<br>
+				<i>N.B. OCD use the OpenStack binding as opposed to the HP Cloud-specific binding for their tooling, so the former may be recommended for consistency.</i></li>
+			<li><a href="https://docs.hpcloud.com/cli/nova/reference" target="_blank">Python Novaclient Command Line Reference</a> from HP Cloud</li>
+		</ul>
 
 	</div>
 

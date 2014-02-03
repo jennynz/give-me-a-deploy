@@ -77,12 +77,6 @@ rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o
 echo ''
 echo ''
 echo '    HTML files synced to HP Cloud instance successfully.'
-echo ''
-echo ''
-
-# Restart NGINX service to update with new html files
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "less /opt/nginx/html/index.html; less /usr/share/nginx/html/index.html; su -l -c 'service nginx restart'; less /opt/nginx/html/index.html;"
-
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
 echo -e "    accessible at http://${FLOATING_IP}\n\n"

@@ -17,7 +17,7 @@
 		<br><br>
 
 		<h1 class="docs">Give-Me-A-Deploy: Provisioned VM on HP Cloud<br>
-		<span class="orange">An idea for the future?</span>
+		<span class="orange">A possible solution for devs and testers</span>
 		</h1>
 
 		<p>
@@ -33,20 +33,36 @@
 
 		<a name="documentation"><h2 class="docs">Short-lived VMs as a mainstream test environment at Orion Health</h2></a>
 
-		<p>
-			In a recent survey of VM usage...
-		</p>
-		<ul>
-			<li><b><span class="teal">75% were unhappy</span></b> with performance</li>
-			<li><b><span class="teal">79%</span></b> of VMs run <b>24/7</b></li>
-			<li><b><span class="teal">0.8% utilisation</span></b> of VMs (usage/uptime)</li>
-			<li><b><span class="teal">1-5 day wait time</span></b> for a new VM</li>
-		</ul>
-		<p>
-			This may be a result of VMs not being able to be spun up by developers and testers due to the lack of available APIs, and also the difficulty of provisioning the VMs with Orion Health products and its dependencies once a VM is acquired.<br><br>
+		<table>
+			<tr>
+				<td class="docs-vmsurvey">
+					<p>
+						In a recent survey of VM usage...
+					</p>
+					<ul>
+						<li><b><span class="teal">75% were unhappy</span></b> with performance</li>
+						<li><b><span class="teal">79%</span></b> of VMs run <b>24/7</b></li>
+						<li><b><span class="teal">0.8% utilisation</span></b> of VMs (usage/uptime)</li>
+						<li><b><span class="teal">1-5 day wait time</span></b> for a new VM</li>
+					</ul>
+					<p>
+						This may be a result of VMs not being able to be spun up by developers and testers due to the lack of available APIs, and also the difficulty of provisioning the VMs with Orion Health products and its dependencies once a VM is acquired.<br><br>
 
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" target="_blank">- Short-lived VMs, built on demand</a></i>
-		</p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" target="_blank">- Short-lived VMs, built on demand</a></i><br><br>
+					</p>
+				</td>
+				<td>
+					<p>
+						VMs need not be complicated.<br>
+						Ideally, VMs would make testing and software quality assurance faster, easier, and less expensive in terms of both computational resources and maintenance costs.<br><br>
+
+						If VMs could be made accessible and quick to boot and configure to your needs, there would also be no need for 24/7 VMs which waste resources while idling for the majority of their uptime.<br><br>
+
+						A GUI configurator which deploys a custom VM at the click of a button would provide just that: <b><span class="orange">hassle-free, disposable VMs, built on demand</span></b>.
+					</p>
+				</td>
+			</tr>
+		</table>
 
 		<h3 class="docs">Why VMs, and why on a public cloud?</h3>
 
@@ -56,11 +72,11 @@
 
 		<ol>
 			<li><b><span class="orange">Isolation</span></b><br>
-				VMs can isolate applications from one another, and from programmes on your daily OS to <b>minimise interference</b> with tests.</li><br>
+				VMs can isolate applications from one another, and from programmes on your daily OS to <b>minimise interference</b> with tests.</li>
 			<li><b><span class="orange">Consolidation</span></b><br>
-				They are much <b>quicker to boot</b> and <b>cheaper to maintain</b> than physical machines. <b>Multiple VMs</b> can be run on one physical machine.</li><br>
+				They are much <b>quicker to boot</b> and <b>cheaper to maintain</b> than physical machines. <b>Multiple VMs</b> can be run on one physical machine.</li>
 			<li><b><span class="orange">Ease of testing</span></b><br>
-				VMs are <b>easily configurable</b> to fit your needs. Also, many virtualisation packages come with features designed for testing like <b>snap shots</b>.</li><br>
+				VMs are <b>easily configurable</b> to fit your needs. Also, many virtualisation packages come with features designed for testing like <b>snap shots</b>.</li>
 			<li><b><span class="orange">Mobility</span></b><br>
 				Images can be moved around and copied across physical machines as <b>single files</b>, making them <b>flexible</b> and <b>easy to deploy</b>.</li>
 		</ol>
@@ -77,22 +93,33 @@
 			HP Cloud is based on <a href="http://www.openstack.org/foundation/companies/profile/hp">OpenStack technology</a>. In order for Give-Me-A-Deploy to be able to "talk" to the HP Cloud Compute service, the proposed extension on this current app would require some server-side script that implements some OpenStack API. There are several options for this:
 		</p>
 		<ul>
-			<li>OpenStack's comment-line client, Nova, written in Python.</li>
 			<li>OpenStack's Ruby API binding, Ruby Fog.</li>
 			<li>HP Cloud's own extensions to the Ruby Fog binding.</li>
+			<li>OpenStack's comment-line client, Nova, written in Python.</li>
 		</ul>
 		<p>
 			These options will have to be further investigated with respect to the capabilities of the server-side language chosen.
+		</p>
 
 		<h3 class="docs">The advantage of VMs being short-lived</h3>
 
-		VMs need not take up resources and remain idleMaking these on-demand VMs short-lived, meaning that they automatically expire after 48 hours, would eliminate idle VMs which waste resources, while continuing to provide consistent, fast and flexible environments for developers and testers.
+		<p>
+			<a href="deployed_popup.PNG"><img src="deployed_popup.PNG" width="100%" id="docs-deployed" class="border"></a>
+
+			On-demand, disposable VMs already eliminate the issue of 24/7 VMs. However, there is still the likelihood of VMs being booted and left running long after they have been used.<br><br>
+
+			By making the deployed VMs short-lived (automatically self-terminating after x number of hours) as well as encouraging users to retire unused VMs manually from the GUI interface, we would minimise resource wastage due to idle VMs, while continuing to provide consistent, fast and flexible environments for developers and testers.
+		</p>
 
 		<h3 class="docs">Further information & links</h3>
 
 		<ul>
-			<li><a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse" target="_blank">Vagrant on HP Cloud Stash repository</a> - an example of how to use an OpenStack API to boot up an instance in HP Cloud.</li>
-			<li><a href="http://stash/users/jennysa/repos/give-me-A-deploy/browse" target="_blank">Stash repository of Give-Me-A-Deploy</a> served on an nginx server on an HP Cloud instance for the Bamboo plan <a href="http://bamboo/browse/ATT-GMAD" target="_blank">Give-Me-A-Deploy on HP Cloud</a>.</li>	
+			<li><a href="http://stash/users/richardpa/repos/vagrant-on-hpcloud/browse" target="_blank">Vagrant on HP Cloud</a> - a simple example on Stash of how to use OpenStack API to boot up an HP Cloud instance.</li>
+			<li><a href="http://stash/users/jennysa/repos/give-me-A-deploy/browse" target="_blank">Stash repository of Give-Me-A-Deploy</a> served on an nginx server on an HP Cloud instance for the Bamboo plan <a href="http://bamboo/browse/ATT-GMAD" target="_blank">Give-Me-A-Deploy on HP Cloud</a>.</li>
+			<li><a href="https://github.com/ruby-openstack/ruby-openstack" target="_blank">Ruby OpenStack API Binding on GitHub</a></li>
+			<li><a href="https://docs.hpcloud.com/bindings/fog/compute/" target="_blank">Ruby Fog Bindings Compute examples</a> for HP Cloud.<br>
+				<i>N.B. OCD use the OpenStack binding as opposed to the HP Cloud-specific binding for their tooling, so the former may be recommended for consistency.</i></li>
+			<li><a href="https://docs.hpcloud.com/cli/nova/reference" target="_blank">Python Novaclient Command Line Reference</a> from HP Cloud</li>
 		</ul>
 
 	</div>

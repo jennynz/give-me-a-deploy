@@ -59,7 +59,8 @@ body {
 	text-align: left;
 }
 
-.hidden {
+.hidden,
+#deploy {
 	display: none;
 }
 
@@ -98,7 +99,6 @@ body {
   border-radius: 4px;
   background-color: #fff;
   padding: 20px;
-  display:none;
 }
 
 .center {
@@ -397,6 +397,7 @@ li {
 	font-size: 0.8em;
 	color: #666;
 	text-decoration: none;
+	margin-bottom: 0.5em;
 }
 
 li.star {
@@ -429,6 +430,21 @@ img#logo {
 /* Custom bullet for docs */
 img.star {
 	margin: 0 10px -3px 20px;
+}
+
+img.border {
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+img.border:hover {
+	box-shadow: 0 0 10px #ff7700;
+  border-radius: 4px;
+}
+
+img#docs-deployed {
+  width: 40%;
+  float: right;
+  margin-left: 20px
 }
 
 /* ==========================================================================
@@ -554,10 +570,6 @@ textarea#Products:focus {
   padding: 4px 12px;
 }
 
-#deploy {
-	display: none;
-}
-
 /* Deployed
    ============================== */
 
@@ -644,6 +656,18 @@ td.docs-label {
 td.docs-content {
 	vertical-align: top;
 	padding: 10px;
+}
+
+td.docs-vmsurvey {
+	vertical-align: top;
+	width: 50%;
+	padding-right: 20px;
+}
+
+td.docs-short-lived {
+	vertical-align: top;
+	width: 60%;
+	padding-right: 20px;
 }
 
 /* ==========================================================================

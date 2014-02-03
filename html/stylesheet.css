@@ -397,6 +397,7 @@ li {
 	font-size: 0.8em;
 	color: #666;
 	text-decoration: none;
+	margin-bottom: 0.5em;
 }
 
 li.star {
@@ -434,6 +435,16 @@ img.star {
 img.border {
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border-radius: 4px;
+}
+img.border:hover {
+	box-shadow: 0 0 10px #ff7700;
+  border-radius: 4px;
+}
+
+img#docs-deployed {
+  width: 40%;
+  float: right;
+  margin-left: 20px
 }
 
 /* ==========================================================================
@@ -655,7 +666,7 @@ td.docs-vmsurvey {
 
 td.docs-short-lived {
 	vertical-align: top;
-	width: 50%;
+	width: 60%;
 	padding-right: 20px;
 }
 
