@@ -5,6 +5,7 @@ mkdir ${BASE_URL}
 cd ${BASE_URL}
 mkdir modules
 mkdir manifests
+mkdir html
 
 # Install puppet and download standard library, nginx and concat.
 yum -y install puppet
@@ -24,7 +25,7 @@ nginx::resource::vhost { 'give-me-a-deploy':
   listen_port          => 80,
   listen_options			 => ['default_server'],
   ssl                  => false,
-  www_root             => '/usr/share/nginx/html/',
+  www_root             => '/opt/nginx/html/',
   use_default_location => false,
   access_log           => '/var/log/nginx/rpm-repo_access.log',
   error_log            => '/var/log/nginx/rpm-repo_error.log',

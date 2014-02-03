@@ -72,11 +72,8 @@ echo '    Rsyncing across HTML files'
 echo ''
 echo ''
 
-# Make directory to sync files across to, delete default nginx index.html.
-ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "mkdir -p /usr/share/nginx/html/; cd /usr/share/nginx/html/; rm -f index.html;"
-
 # Sync across html files
-rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@$FLOATING_IP:/usr/share/nginx/
+rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@$FLOATING_IP:/opt/nginx/
 echo ''
 echo ''
 echo '    HTML files synced to HP Cloud instance successfully.'
@@ -84,7 +81,7 @@ echo ''
 echo ''
 
 # Restart NGINX service to update with new html files
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "less /usr/share/nginx/html/index.html; su -l -c 'service nginx restart'; less /usr/share/nginx/html/index.html;"
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "less /opt/nginx/html/index.html; less /usr/share/nginx/html/index.html; su -l -c 'service nginx restart'; less /opt/nginx/html/index.html;"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"

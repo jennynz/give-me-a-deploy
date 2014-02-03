@@ -98,7 +98,6 @@ body {
   border-radius: 4px;
   background-color: #fff;
   padding: 20px;
-  display:none;
 }
 
 .center {
@@ -554,10 +553,6 @@ textarea#Products:focus {
   padding: 4px 12px;
 }
 
-#deploy {
-	display: none;
-}
-
 /* Deployed
    ============================== */
 
@@ -644,6 +639,12 @@ td.docs-label {
 td.docs-content {
 	vertical-align: top;
 	padding: 10px;
+}
+
+td.docs-vmsurvey {
+	vertical-align: top;
+	width: 50%;
+	padding-right: 20px;
 }
 
 /* ==========================================================================
