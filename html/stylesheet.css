@@ -59,7 +59,8 @@ body {
 	text-align: left;
 }
 
-.hidden {
+.hidden,
+#deploy {
 	display: none;
 }
 
@@ -430,6 +431,11 @@ img.star {
 	margin: 0 10px -3px 20px;
 }
 
+img.border {
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
 /* ==========================================================================
 		TABLE & FORM ELEMENTS
    ========================================================================== */
@@ -642,6 +648,12 @@ td.docs-content {
 }
 
 td.docs-vmsurvey {
+	vertical-align: top;
+	width: 50%;
+	padding-right: 20px;
+}
+
+td.docs-short-lived {
 	vertical-align: top;
 	width: 50%;
 	padding-right: 20px;
