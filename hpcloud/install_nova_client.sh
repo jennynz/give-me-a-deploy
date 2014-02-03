@@ -84,7 +84,7 @@ echo ''
 echo ''
 
 # Restart NGINX service to update with new html files
-ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "su -l -c 'service nginx restart'"
+ssh -t -t -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no root@$FLOATING_IP "less /usr/share/nginx/html/index.html; su -l -c 'service nginx restart'; less /usr/share/nginx/html/index.html;"
 
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"

@@ -62,13 +62,14 @@
 		<h4 class="docs">Installation System Requirements</h4>
 		<p>
 			In order for <span class="code">vagrant up</span> to work, please install the following on your <b>host</b> machine:
-			<ul>
-				<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
-				<li><a href="http://www.vagrantup.com">Vagrant</a></li>
-			</ul>
 		</p>
+		<ul>
+			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
+			<li><a href="http://www.vagrantup.com">Vagrant</a></li>
+		</ul>
+		
 
-		<h4 class="docs">Provisioning your VM</h4>
+		<h3 class="docs">Further information on Provisioning your VM</h3>
 		<p>
 			While it is possible to <span class="code">vagrant ssh</span> and install software by hand, Vagrant can provision the VM with shell scripts, or with automation tools such as <a href="http://blogs/richardpa/2014/01/14/introducing-puppet/" target="_blank">Puppet (used by the Orion Continuous Delivery team)</a> to provision your VM upon booting. For further information, please see:
 		</p>
@@ -102,11 +103,9 @@
 
 			You can easily configure port forwarding between your host and guest machines in the Vagrantfile yourself; simply change the value of <span class="code">host: #NUMBER</span> in the <span class="code">'forwarded_port'</span> configuration line of the Vagrantfile.
 		</p>
-
 		<div class="code">
 			config.vm.network 'forwarded_port', guest: 19080, host: 19081
 		</div>
-
 		<p>
 			To view all the VMs you have going and the ports you are using up on your host, open Oracle VM VirtualBox Manager (this GUI manager should come with VirtualBox). From here, you can check port forwarding by right-clicking any running VMs, going to Settings... &#8594; Network &#8594; Port Forwarding.
 		</p>
@@ -121,7 +120,6 @@
 		<p>
 			The default setting for the VM's system base memory is 786 MB, but this can be customised to any number you wish (within the capabilities of your host machine). For installing multiple Orion Health products, we recommend a base memory of around 1536 MB.
 		</p>
-
 		<div class="quote">
 			"It would be a poor user experience (and mildly shocking) if a vagrant up from a base box instantly required many gigabytes of RAM. Instead, choose a value such as 512MB, which is usually enough to play around and do interesting things with a Vagrant machine, but can easily be increased when needed." <a href="http://docs.vagrantup.com" target="_blank">- Vagrant Docs</a>
 		</div>

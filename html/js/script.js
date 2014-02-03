@@ -84,7 +84,8 @@ function Deploy() {
 	var lifespanIsValid = ValidateLifespan();
 	
 	if (lifespanIsValid == 1) {
-		window.location.href = "hpclouddeployed.html";
+		$('#slidein').popup('show');
+		alert("The following popup is only a mock-up of this feature.\n\nThe 'Provisioned VM on HP Cloud' option is yet to be developed.");
 	}
 }
 

@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="js/script.js"></script>
-	<script src="js/generate-vagrant-scripts.js"></script>
-	<script src="js/generate-empty-vagrantfile.js"></script>
-	<script src="js/download-files.js"></script>
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/jquery.js"></script>
-	<script src="js/jszip.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<link rel="shortcut icon" href="favicon.ico">
 	<title>Give-Me-A-Deploy - VMs on demand</title>
@@ -81,6 +74,7 @@ portal: 8.4.0.beta</textarea>
 				<tr id="email" class="hidden">
 					<td class="label">Email</td>
 					<td class="content">
+						&nbsp;<input name='sendExpiryEmail' type='checkbox' value='expiryEmail' checked> Email me of imminent VM expiry to<br>
 						<input type="text" name="email" id="Email" autocapitalize="off" value="@orionhealth.com" required>
 					</td>
 				</tr>
@@ -240,7 +234,74 @@ For more information, click the filenames above each of the textboxes where the 
 		<a href="index.html">Home</a> | <a href="docs/docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
 	</div>
 	<br><br><br><br>
+
 	</span>
+
+
+
+
+
+
+
+	<!--  DEPLOYED POP-UP 	-->
+
+	<div id="slidein" class="popup">
+		<div class="center">
+
+			<h1><span class="orange"><!--$('#vmname').val()-->portal-84-beta</span> has been deployed</h1>
+			<h2 class="subheader">for the next <span class="teal"><!--$('#lifespan').val()-->48 hours</span> on <span class="teal">HP Cloud</span>.</h2>
+			
+			<br><hr>
+
+			<table id="deployed-vms">
+				<tr>
+					<td class="deployed-header"><i>Name</i></td>
+					<td class="deployed-header" colspan="2"><i>Expires in</i></td>
+				</tr>
+				<tr class="deployed-list">
+					<td class="deployed-name">regression-testing</td>
+					<td class="deployed-expiry">6 hours</td>
+					<td class="deployed-options">
+						<input type="button" class="button deployed-option" value="Retire">
+						<input type="button" class="button deployed-option" value="Extend">
+					</td>
+				</tr>
+				<tr class="deployed-list">
+					<td class="deployed-name">portal-84-beta</td>
+					<td class="deployed-expiry">48 hours</td>
+					<td class="deployed-options">
+						<input type="button" class="button deployed-option" value="Retire">
+						<input type="button" class="button deployed-option" value="Extend">
+					</td>
+				</tr>
+				<tr>
+					<td class="deployed-footer" colspan="3">
+						<hr><br><br>
+						<i>Be a tidy kiwi - retire VMs that aren't in use.</i><br><br>
+						<input name='sendExpiryEmail' type='checkbox' value='expiryEmail' checked> Email me of imminent VM expiry to <input type="text" name="expiryemail" id="expiry-email" autocapitalize="off" value="your.name@orionhealth.com">
+					</td>
+				</tr>
+			</table><br>
+
+			<input type="button" class="slidein_close button" value="Close">
+
+		</div>
+	</div>
+
+
+
+
+
+
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/generate-vagrant-scripts.js"></script>
+	<script src="js/generate-empty-vagrantfile.js"></script>
+	<script src="js/download-files.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/jszip.js"></script>
+	<script src="js/jquery.popupoverlay.js"></script>
+
 
 </body>
 </html>

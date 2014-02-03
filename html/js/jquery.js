@@ -58,4 +58,16 @@ $(document).ready(function(){
     $("#install-info").toggle();
   });
 
+/* ==========================================================================
+    DEPLOYED SECTION
+   ========================================================================== */
+
+  // Initialize jQuery popup overlay function.
+  $("#slidein").popup();
+
+  // Add new deployed VM to table.
+  // $("#deploy").click(function(){
+    
+  // })
+
 });
