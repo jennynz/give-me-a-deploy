@@ -74,9 +74,11 @@ echo ''
 
 # Sync across html files
 rsync -e "ssh -i /home/vagrant/.ssh/puppet_id_rsa -o StrictHostKeyChecking=no -o GSSAPIAuthentication=no" -avz  /vagrant/html root@$FLOATING_IP:/opt/nginx/
-echo ''
-echo ''
-echo '    HTML files synced to HP Cloud instance successfully.'
+sleep 30
+echo -e "\n\n    HTML files synced to HP Cloud instance successfully."
+sleep 30
+echo -e "\n\n    Waiting on server to complete startup..."
+sleep 60
 echo -e "\n\n    Give-Me-A-Deploy"
 echo -e "    hosted on HP Cloud instance '${INSTANCE_NAME}'"
 echo -e "    accessible at http://${FLOATING_IP}\n\n"

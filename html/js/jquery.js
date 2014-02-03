@@ -40,9 +40,8 @@ $(document).ready(function(){
     $("#deploy").hide();
   });
 
-/* ==========================================================================
-    PROVISIONED VM SECTION
-   ========================================================================== */
+/* Provisioned VM section
+   ============================== */
 
   // Toggle information on each individual script for a Provisioned VM.
 
@@ -58,11 +57,19 @@ $(document).ready(function(){
     $("#install-info").toggle();
   });
 
-/* ==========================================================================
-    DEPLOYED SECTION
-   ========================================================================== */
+/* Deployed section
+   ============================== */
 
   // Initialize jQuery popup overlay function.
   $("#slidein").popup();
+
+});
+
+/* ==========================================================================
+    DOCS
+   ========================================================================== */
   
+// Toggle tl;dr in Local Provisioned VM infobox
+$("#show-tldr").click(function(){
+  $("#tldr").toggle();
 });

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<script src="../js/jquery.js"></script>
 	<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
 	<link rel="shortcut icon" href="../favicon.ico">
-	<title>Provisioned Vagrant | Give-Me-A-Deploy Docs</title>
+	<title>Local Provisioned VM | Give-Me-A-Deploy Docs</title>
 </head>
 
 <body>
@@ -31,38 +29,39 @@
 
 		<div class="docs-infobox">
 			The "Provisioned VM on your local machine" option on Give-Me-A-Deploy gives you three scripts which work together to boot up a VM with OH applications already installed on it.<br>
-			All you need to do is call <b>run.sh</b>, and it'll handle the rest automatically.
+			All you need to do is call <span class="command">run.sh</span>, and it'll handle all the rest automatically.<br><br>
 
-			<h4 class="docs-infobox">tl;dr</h4>
-			<ul>
-				<li class="docs-infobox">You will need:
-					<ul>
-						<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
-						<li class="docs-infobox"><a href="http://www.vagrantup.com">Vagrant</a></li>
-						<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
-						<li class="docs-infobox"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
-							<ul>
-								<li class="docs-infobox"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
-								<li class="docs-infobox"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
-								<li class="docs-infobox"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
-				<li class="docs-infobox">The format of your input in the "Products" field must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
-				<li class="docs-infobox">A foundation version must be specified.</li>
-				<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
-				<li class="docs-infobox">All three scripts are saved in the same directory.</li>
-				<li class="docs-infobox"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.
-					<ul><li class="docs-infobox"><span class="teal">$ chmod +x run.sh</span> first if you use Unix.</li></ul>
-				</li>
-				<li class="docs-infobox"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
-				<li class="docs-infobox"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
-				
+			<a id="show-tldr" onClick="ShowTLDR();">tl;dr? Click here for a summary</a>
 
-			
-			</ul>
+			<span class="hidden" id="tldr">
+				<ul>
+					<li class="docs-infobox">You will need:
+						<ul>
+							<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+							<li class="docs-infobox"><a href="http://www.vagrantup.com">Vagrant</a></li>
+							<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
+							<li class="docs-infobox"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
+								<ul>
+									<li class="docs-infobox"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
+									<li class="docs-infobox"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
+									<li class="docs-infobox"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
+					<li class="docs-infobox">The format of your input in the "Products" field must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
+					<li class="docs-infobox">A foundation version must be specified.</li>
+					<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
+					<li class="docs-infobox">All three scripts are saved in the same directory.</li>
+					<li class="docs-infobox">
+						<span class="command">run.sh</span> is all you need to do to kick off the entire booting and installation process.<br>
+						Do NOT $ vagrant up or run install.sh. <span class="command">chmod +x run.sh</span> first if you use Unix.</li>
+					<li class="docs-infobox"><span class="command">vagrant ssh</span> to access your VM.</li>
+					<li class="docs-infobox"><span class="command">vagrant destroy -f</span> to delete your VM.</li>
+				</ul>
+			</span>
+
 		</div>
 
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
@@ -136,7 +135,7 @@
 			$ cd to/your/script/directory<br>
 			$ chmod +x run.sh<br>
 			$ run.sh<br>
-			...<br>
+			<span class="output">...</span><br>
 			$ vagrant destroy -f
 		</div>
 
@@ -226,14 +225,15 @@
 
 	</div>
 
-	</div>
-
 	<br><br>
 
 	<div class="footer">
 		<a href="../index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="../about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
-		</div>
-		<br><br><br><br>
 	</div>
+	<br><br><br><br>
+
+	<script src="../js/jquery-1.10.2.min.js"></script>
+	<script src="../js/jquery.js"></script>
+
 </body>
 </html>
