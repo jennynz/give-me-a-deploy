@@ -37,6 +37,18 @@ body {
     text-align: left;
 }
 
+.hidden,
+#deploy {
+	display: none;
+}
+
+/* Positioning
+   ============================== */
+
+.float-right { float: right; }
+.float-left { float: left; }
+.text-top { vertical-align: top; }
+
 /* ==========================================================================
 		DIVS & SPANS
    ========================================================================== */
@@ -57,11 +69,6 @@ body {
 
 .left-text {
 	text-align: left;
-}
-
-.hidden,
-#deploy {
-	display: none;
 }
 
 /* Index
@@ -137,59 +144,69 @@ body {
 /* Docs
    ============================== */
 
-div.docs-infobox {
-	color: #444;
+div.docs-infobox,
+div.code {
+	/* Background box */
+	margin: 15px 20px 10px 0;
+	padding: 20px;
+  border-radius: 4px;
+
+	/* Font */
 	font-size: 0.8em;
 	font-family:
 		Consolas, "Andale Mono",
 		"Lucida Console", "Nimbus Mono",
 		"Courier New", monospace;
+}
+
+div.docs-infobox {
 	background-color: #EFEFEF;
-	margin: 20px;
-	padding: 20px;
+	color: #444;
 }
 
 div.code {
 	background-color: rgb(30, 30, 30);
-	border-radius: 10px;
-	margin: 20px;
-	padding: 20px;
 	color: rgb(0, 200, 200);
-	font-size: 0.8em;
-	font-family:
-		Consolas, "Andale Mono",
-		"Lucida Console", "Nimbus Mono",
-		"Courier New", monospace;
 }
 
-span.code-comment { color: #ccc; }
-span.code-output { color: #126e6e; }
-
-span.code {
+span.command {
 	/* Background box */
 	background-color: #ddd;
 	border: solid 1px #ccc;
 	border-radius: 4px;
-	padding: 1px;
+	padding: 0 3px 1px 3px;
 
 	/* Font */
-	color: #126e6e;
+	color: #555;
 	font-family:
 		Consolas, "Andale Mono",
 		"Lucida Console", "Nimbus Mono",
 		"Courier New", monospace;
 }
 
+span.code {
+	color: #126e6e;
+	font-family:
+	Consolas, "Andale Mono",
+	"Lucida Console", "Nimbus Mono",
+	"Courier New", monospace;
+}
+span.comment { color: #ccc; }
+span.output { color: #126e6e; }
+
 div.quote {
-	background: #ccc;
+	background: #eee;
 	border-radius: 10px;
 	margin: 20px;
-	padding: 15px 20px 15px 20px;
-	color: rgb(0, 100, 100);
+	padding: 15px;
+	color: #555;
 	font-size: 0.8em;
 	font-style: italic;
 	line-height: 150%;
 	text-align: center;
+
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 4px;
 }
 
 /* ==========================================================================
@@ -266,46 +283,35 @@ h4.docs {
 	margin: 0;
 }
 
-h4.docs-infobox {
-	/* Font */
-	color: #666;
-	font-size: 1.25em;
-	font-weight: bold;
-
-	/* Positioning */
-	padding-top: 1em;
-	margin: 0;
-}
-
 /* ==========================================================================
 		LINKS
    ========================================================================== */
 
 a {
-	color: #888;
+	color: #008080;
 	text-decoration: none;
 
 	/* Slow Hover-out on Mouseexit */
 	-webkit-transition: 0.5s ease-in-out;
-  	-moz-transition: 0.5s ease-in-out;
-  	-o-transition: 0.5s ease-in-out;
-  	-ms-transition: 0.5s ease-in-out;
-  	transition: 0.5s ease-in-out;
+	-moz-transition: 0.5s ease-in-out;
+	-o-transition: 0.5s ease-in-out;
+	-ms-transition: 0.5s ease-in-out;
+	transition: 0.5s ease-in-out;
 }
 
 a:hover {
-	color: #ff7700;
+	border-bottom: dotted 1px #ff7700;
 
 	/* Fast Mouseenter */
 	-webkit-transition: 0;
-  	-moz-transition: 0;
-  	-o-transition: 0;
-  	-ms-transition: 0;
-  	transition: 0;
+	-moz-transition: 0;
+	-o-transition: 0;
+	-ms-transition: 0;
+	transition: 0;
 }
 
 a:active {
-	color: #008080;
+	color: #ff7700;;
 }
 
 /* Index
@@ -422,28 +428,17 @@ li.docs-infobox {
 		IMAGES
    ========================================================================== */
 
-img#logo {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 /* Custom bullet for docs */
-img.star {
-	margin: 0 10px -3px 20px;
-}
+img.star { margin: 0 10px -3px 20px; }
 
-img.border {
-	box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  border-radius: 4px;
-}
+img.border { border-radius: 4px; }
 img.border:hover {
 	box-shadow: 0 0 10px #ff7700;
   border-radius: 4px;
 }
 
 img#docs-deployed {
-  width: 40%;
-  float: right;
+  width: 40%;  
   margin-left: 20px
 }
 

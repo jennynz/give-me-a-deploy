@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<script src="../js/jquery.js"></script>
 	<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
 	<link rel="shortcut icon" href="../favicon.ico">
-	<title>Provisioned Vagrant | Give-Me-A-Deploy Docs</title>
+	<title>Local Provisioned VM | Give-Me-A-Deploy Docs</title>
 </head>
 
 <body>
@@ -31,55 +29,55 @@
 
 		<div class="docs-infobox">
 			The "Provisioned VM on your local machine" option on Give-Me-A-Deploy gives you three scripts which work together to boot up a VM with OH applications already installed on it.<br>
-			All you need to do is call <b>run.sh</b>, and it'll handle the rest automatically.
+			All you need to do is call <span class="command">run.sh</span>, and it'll handle all the rest automatically.<br><br>
 
-			<h4 class="docs-infobox">tl;dr</h4>
-			<ul>
-				<li class="docs-infobox">You will need:
-					<ul>
-						<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
-						<li class="docs-infobox"><a href="http://www.vagrantup.com">Vagrant</a></li>
-						<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
-						<li class="docs-infobox"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
-							<ul>
-								<li class="docs-infobox"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
-								<li class="docs-infobox"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
-								<li class="docs-infobox"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Portal 8.4 beta.</li>
-				<li class="docs-infobox">The format of your input in the "Products" field must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
-				<li class="docs-infobox">A foundation version must be specified.</li>
-				<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
-				<li class="docs-infobox">All three scripts are saved in the same directory.</li>
-				<li class="docs-infobox"><span class="teal">$ run.sh</span> to kick off the entire booting and installation process.
-					<ul><li class="docs-infobox"><span class="teal">$ chmod +x run.sh</span> first if you use Unix.</li></ul>
-				</li>
-				<li class="docs-infobox"><span class="teal">$ vagrant ssh</span> to access your VM.</li>
-				<li class="docs-infobox"><span class="teal">$ vagrant destroy -f</span> to delete your VM.</li>
-				
+			<a id="show-tldr" onClick="ShowTLDR();">tl;dr? Click here for a summary</a>
 
-			
-			</ul>
+			<span class="hidden" id="tldr">
+				<ul>
+					<li class="docs-infobox">You will need:
+						<ul>
+							<li class="docs-infobox"><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a></li>
+							<li class="docs-infobox"><a href="http://www.vagrantup.com">Vagrant</a></li>
+							<li class="docs-infobox"><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
+							<li class="docs-infobox"><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">Stash SSH key pairing</a> and repository cloning permissions for following repositories:
+								<ul>
+									<li class="docs-infobox"><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a></li>
+									<li class="docs-infobox"><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a></li>
+									<li class="docs-infobox"><a href="http://subversion/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> from Subversion</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="docs-infobox"><b>Tip:</b> Just click "Generate Source Code" - the default scripts give a fully functioning CentOS Vagrant provisioned with Foundation 7.2.0.final and Portal 8.4 beta.</li>
+					<li class="docs-infobox">The format of your input in the "Products" field must match default examples exactly, see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.</li>
+					<li class="docs-infobox">A foundation version must be specified.</li>
+					<li class="docs-infobox">Each concurrent VM on your host machine must have a different host port specified.</li>
+					<li class="docs-infobox">All three scripts are saved in the same directory.</li>
+					<li class="docs-infobox">
+						<span class="command">run.sh</span> is all you need to do to kick off the entire booting and installation process.<br>
+						Do NOT $ vagrant up or run install.sh. <span class="command">chmod +x run.sh</span> first if you use Unix.</li>
+					<li class="docs-infobox"><span class="command">vagrant ssh</span> to access your VM.</li>
+					<li class="docs-infobox"><span class="command">vagrant destroy -f</span> to delete your VM.</li>
+				</ul>
+			</span>
+
 		</div>
 
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
 
 		<ul>
-			<li class="star"><a href="#usingGMAV">Using Give-Me-A-Deploy for a provisioned VM</a></li>
-			<li class="star"><a href="#howToBoot">How to boot your VM</a></li>
-			<li class="star"><a href="#manualAccess">Manual access to your VM</a></li>
+			<li class="star"><a href="#getStarted">Get started with a provisioned VM using Give-Me-A-Deploy</a></li>
+			<li class="star"><a href="#compatibility">Compatible products & versions</a></li>
 			<li class="star"><a href="#configuringPuppet">Configuring Puppet Modules</a></li>
 			<li class="star"><a href="#furtherInfo">Further Information</a></li>
 		</ul>
 
-		<a name="usingGMAV"><h3 class="docs">Using Give-Me-A-Deploy for a provisioned VM</h3></a>
+		<a name="getStarted"><h3 class="docs">Get started with a provisioned VM using Give-Me-A-Deploy</h3></a>
 
 		<p>
-			On the main landing page, enter a few details into the form to customise your VM. The form is preset with <i>defaults</i> for your convenience. Simply clicking "Generate Source Code" will output a default, fully functional CentOS Vagrant with 768 MB of memory allocated, provisioned with Portal 8.4 beta.<br>
-			* Required field, must not be left blank<br><br>
+			The Give-Me-A-Deploy app requires you to provide some details for you to customise your VM. Simply clicking "Generate Source Code" with the <i>preset defaults</i> will output a fully functional CentOS Vagrant with 768 MB of memory allocated, provisioned with Foundation 7.2.0.final and Portal 8.4 beta.<br>
+			* indicates a required field which must not be left blank<br><br>
 		</p>
 
 		<table class="docs">
@@ -110,8 +108,9 @@
 			<tr>
 				<td class="docs-label">Products*</td>
 				<td class="docs-content" width="50%">
-					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number. Please specify a working version of Orion Health Foundation, as the installer depends on this version number. <i>foundation 7.2.0.beta</i><br>
-					The strnig that you write in here is directly written out to several script files which are then used to create a solution.zip for the OHP installation, hence the importance of formatting the text exactly as seen in the defaults shown.
+					The Orion Health application(s) you would like pre-installed on your Vagrant machine must each be on a new line with a specfied version number.<br>
+					Please specify a working version of Orion Health Foundation, as the provisioning installer also uses this version number. <i>foundation 7.2.0.beta</i><br>
+					The string that you write in here is directly written out to several script files which are then used to create a solution.zip for the OHP installation. Therefore, it is very important to follow the correct format, exactly as seen in the defaults.
 				</td>
 				<td class="docs-content" width="50%">					
 					- Each application on a new line<br>
@@ -119,58 +118,70 @@
 					- Version number string is exact<br><br>
 					
 					e.g. applicationName: 1.2.3.beta<br>
-					<i>portal: 8.4.0.beta</i><br><br>
+					<i>foundation: 7.2.0.final<br>portal: 8.4.0.beta</i><br><br>
 
-					For a list of options, please see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.
+					For a list of product names and versions, please see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.
 				</td>
 			</tr>
 		</table>
 
+		<table>
+			<tr>
+				<td>
+					<h4 class="docs">Booting your VM</h4>
+
+					<div class="code float-left">
+						$ cd to/your/script/directory<br>
+						$ chmod +x run.sh<br>
+						$ run.sh<br>
+						<span class="output">...</span><br>
+						$ vagrant destroy -f
+					</div>
+
+					<p>
+						First, ensure that the three generated scripts (run.sh, Vagrantfile, install.sh) are all located in the same directory. <i>You can just click "Download all three scripts in a zip" which gives the three files to you in the same zipped folder (you will have to unzip them before trying to run the scripts).</i><br><br>
+
+						When you <span class="command">run.sh</span>, it will clone the required git repositories into the newly created directories, call the Vagrantfile to boot up the VM, which will in turn call its shell provisioning script, install.sh, which completes the installation of the Orion Health applications.<br><br>	
+
+						To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by run.sh or install.sh will still exist, so you may need to delete these manually.
+					</p>
+				</td>
+				<td rowspan="2" class="text-top">
+					<h4 class="docs">Installation System Requirements</h4>
+					<p>In order for the scripts to run successfully, please install the following on your <b>local</b> machine:</p>
+					<ul>
+						<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
+						<li><a href="http://www.vagrantup.com">Vagrant</a></li>
+						<li><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
+					</ul>
+
+					<p><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairs</a> must be set up on your Stash account, and cloning permissions granted to the following repositories (all Dev and Testing should have this already):</p>
+					<ul>
+						<li><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a> in Stash</li>
+						<li><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> in Stash</li>
+						<li><a href="http://subversiin/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> in Subversion (SVN supports credential caching)</li>
+					</ul>
+					
+					<p>You <b>do not have to clone these repositories yourself</b>; the script will do it for you, and place them in the correct directories. If your Stash key pairs and SVN credentials are set up, the entire process after run.sh should require no further action from the user.</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h4 class="docs">Manual access to your VM</h3>
+					<div class="code float-left">
+						$ vagrant ssh
+					</div>
+					<p>
+						Vagrant makes accessing your VM very simple; access your virtual machine by ssh'ing into the box with the command 'vagrant ssh' in the directory where you've booted up your VM (where the Vagrantfile is located).<br><br>
+					</p>
+				</td>
+			</tr>
+		</table>
+
+		<a name="compatibility"><h3 class="docs">Compatible products & versions</h3></a>
+
 		<p>
-			Some stuff here about how it's not too good at handling indentations, not sure how it'll work for Caseman, might just have to type it out in the solution files manually after generating script
-		</p>
-
-		<a name="howToBoot"><h3 class="docs">How to boot your VM</h3></a>
-
-		<div class="code">
-			$ cd to/your/script/directory<br>
-			$ chmod +x run.sh<br>
-			$ run.sh<br>
-			...<br>
-			$ vagrant destroy -f
-		</div>
-
-		<p>
-			First, ensure that the three generated scripts (run.sh, Vagrantfile, install.sh) are all located in the same directory.<br>
-			<i>You can click the link "Download all three scripts in a zip" to have them already in the same directory.</i>
-			When you run the shell script, run.sh, it will clone the required git repositories into the correct directories it creates, call the Vagrantfile in the same directory with "vagrant up" to boot up the VM, which will in turn call its shell provisioning script, install.sh, which completed the installation of the Orion Health applications.<br><br>	
-
-			To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by run.sh or install.sh will still exist, so you may need to delete these manually.
-		</p><br>
-
-		<h4 class="docs">Installation System Requirements</h4>
-		<p>In order for the scripts to run successfully, please install the following on your <b>local</b> machine:</p>
-		<ul>
-			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
-			<li><a href="http://www.vagrantup.com">Vagrant</a></li>
-			<li><a href="http://git-scm.com/downloads">Git version control</a> for cloning Stash repositories.</li>
-		</ul>
-
-		<p><a href="http://stash/plugins/servlet/ssh/keys/user" target="_blank">SSH key pairs</a> must be set up on your Stash account, and cloning permissions granted to the following repositories (all Dev and Testing should have this already):</p>
-		<ul>
-			<li><a href="http://stash/projects/OCD/repos/tooling/browse" target="_blank">tooling.git</a> in Stash</li>
-			<li><a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse" target="_blank">puppet-ohp.git</a> in Stash</li>
-			<li><a href="http://subversiin/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> in Subversion (SVN supports credential caching)</li>
-		</ul>
-		
-		<p>You <b>do not have to clone these repositories yourself</b>; the script will do it for you, and place them in the correct directories. If your Stash key pairs and SVN credentials are set up, the entire process after run.sh should require no further action from the user.</p>
-
-		<a name="manualAccess"><h3 class="docs">Manual access to your VM</h3></a>
-		<div class="code">
-			$ vagrant ssh
-		</div>
-		<p>
-			Vagrant makes accessing your VM very simple; access your virtual machine by ssh'ing into the box with the command 'vagrant ssh' in the directory where you've booted up your VM (where the Vagrantfile is located).<br><br>
+			asdfaoisjsf
 		</p>
 
 		<a name="configuringPuppet"><h3 class="docs">Configuring Puppet Modules</h3></a>
@@ -226,14 +237,15 @@
 
 	</div>
 
-	</div>
-
 	<br><br>
 
 	<div class="footer">
 		<a href="../index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="../about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
-		</div>
-		<br><br><br><br>
 	</div>
+	<br><br><br><br>
+
+	<script src="../js/jquery-1.10.2.min.js"></script>
+	<script src="../js/jquery.js"></script>
+
 </body>
 </html>

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<script src="../js/jquery.js"></script>
 	<link type="text/css" rel="stylesheet" href="../stylesheet.css"/>
 	<link rel="shortcut icon" href="../favicon.ico">
-	<title>Empty VM | Give-Me-A-Deploy Docs</title>
+	<title>Local Empty VM | Give-Me-A-Deploy Docs</title>
 </head>
 
 <body>
@@ -37,23 +35,24 @@
 		<a name="documentation"><h2 class="docs">Documentation</h2></a>
 
 		<p>
-			<a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant's official documentation</a> covers every feature of Vagrant in great detail, including instructions on provisioning with shell scripts, Puppet modules and Chef cookbooks.<br>
-			To boot up your Vagrant VM, navigate to your Vagrantfile in a command terminal and call <span class="code">vagrant up</span>. Your configured Vagrant machine should be up and running within a few minutes. Accessing, destroying and checking the status of your VM is just as simple with the commands shown below.
+			<a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant's official documentation</a> covers every feature of Vagrant in great detail, including instructions on provisioning with shell scripts, Puppet modules and Chef cookbooks.<br><br>
+			
+			To boot up your Vagrant VM, navigate to your Vagrantfile in a command terminal and call <span class="command">vagrant up</span>. Your configured Vagrant machine should be up and running within a few minutes. Accessing, destroying and checking the status of your VM is just as simple with the commands shown below.
 		</p>
 
 		<div class="code">
 			<table class="code"><tr><td class="code">
-			<span class="code-comment"># Boot</span><br>
+			<span class="code comment"># Boot</span><br>
 			$ cd to/your/Vagrantfile/directory<br>
 			$ vagrant up<br><br>
-			<span class="code-comment"># Access</span><br>
+			<span class="code comment"># Access</span><br>
 			$ vagrant ssh<br><br>
-			<span class="code-comment"># Destroy</span><br>
+			<span class="code comment"># Destroy</span><br>
 			$ vagrant destroy -f
 			</td><td width="60%" class="code">
-			<span class="code-comment"># Check status</span><br>
+			<span class="code comment"># Check status</span><br>
 			$ vagrant status<br>
-			<span class="code-output">Current machine states:<br>
+			<span class="code output">Current machine states:<br>
 			default&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;running (virtualbox)<br><br>
 			The VM is running. To stop this VM, you can run `vagrant halt` to shut it down forcefully, or you can run `vagrant suspend` to simply suspend the virtual machine. In either case, to restart it again, simply run `vagrant up`.</span>
 			</td></tr></table>
@@ -61,7 +60,7 @@
 
 		<h4 class="docs">Installation System Requirements</h4>
 		<p>
-			In order for <span class="code">vagrant up</span> to work, please install the following on your <b>host</b> machine:
+			In order for <span class="command">vagrant up</span> to work, please install the following on your <b>host</b> machine:
 		</p>
 		<ul>
 			<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
@@ -71,7 +70,7 @@
 
 		<h3 class="docs">Further information on Provisioning your VM</h3>
 		<p>
-			While it is possible to <span class="code">vagrant ssh</span> and install software by hand, Vagrant can provision the VM with shell scripts, or with automation tools such as <a href="http://blogs/richardpa/2014/01/14/introducing-puppet/" target="_blank">Puppet (used by the Orion Continuous Delivery team)</a> to provision your VM upon booting. For further information, please see:
+			While it is possible to <span class="command">vagrant ssh</span> and install software by hand, Vagrant can provision the VM with shell scripts, or with automation tools such as <a href="http://blogs/richardpa/2014/01/14/introducing-puppet/" target="_blank">Puppet (used by the Orion Continuous Delivery team)</a> to provision your VM upon booting. For further information, please see:
 		</p>
 		<ul>
 			<li><a href="http://docs.vagrantup.com/v2/" target="_blank">Vagrant Docs</a> for more information on how to configure and provison your Vagrant.</li>
@@ -91,9 +90,9 @@
 
 		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
 		<p>
-			The entire process from <span class="code">vagrant up</span> should take no more than five minutes. However, this does depends on the speed of your host machine, and also your internet connection as the Vagrantfile will automatically download a CentOS box to build off.<br><br>
+			The entire process from <span class="command">vagrant up</span> should take no more than five minutes. However, this does depends on the speed of your host machine, and also your internet connection as the Vagrantfile will automatically download a CentOS box to build off.<br><br>
 
-			If it looks like your boot is "stuck", try hit your Enter key - often the booting up process may pause, or if you have added your own provisioning, it may stop before the provision command and require you to call <span class="code">vagrant provision</span>. You may also like to check that the line endings on your Vagrantfile are set to Unix (On Sublime Text 2, View &#8594; Line Endings &#8594; &#10003; Unix).
+			If it looks like your boot is "stuck", try hit your Enter key - often the booting up process may pause, or if you have added your own provisioning, it may stop before the provision command and require you to call <span class="command">vagrant provision</span>. You may also like to check that the line endings on your Vagrantfile are set to Unix (On Sublime Text 2, View &#8594; Line Endings &#8594; &#10003; Unix).
 		</p>
 
 		<h3 class="docs"><a name="faq2" class="anchor">What is "Host Port"? / My vagrant won't boot due to port collisions.</a></h3>
@@ -101,12 +100,10 @@
 			You cannot have more than one booted VM using the same host port on your machine. The Give-Me-A-Deploy form allows you to enter a custom host port to avoid this problem. Enter the number of a port which you do not already have forwarded to an existing VM in the "Host Port" field, and you will be able to spin up multiple VMs on your one physical machine.<br>
 			<i>E.g. Your first VM may use the host port 19080, while the second uses 19081, the third 19082 etc.</i><br><br>
 
-			You can easily configure port forwarding between your host and guest machines in the Vagrantfile yourself; simply change the value of <span class="code">host: #NUMBER</span> in the <span class="code">'forwarded_port'</span> configuration line of the Vagrantfile.
-		</p>
-		<div class="code">
-			config.vm.network 'forwarded_port', guest: 19080, host: 19081
-		</div>
-		<p>
+			You can easily configure port forwarding between your host and guest machines in the Vagrantfile yourself; simply change the value of <span class="command">host: #NUMBER</span> in the <span class="command">'forwarded_port'</span> configuration line of the Vagrantfile.<br><br>
+
+			<i>E.g.</i> <span class="code">config.vm.network 'forwarded_port', guest: 19080, host: 19081</span><br><br>
+
 			To view all the VMs you have going and the ports you are using up on your host, open Oracle VM VirtualBox Manager (this GUI manager should come with VirtualBox). From here, you can check port forwarding by right-clicking any running VMs, going to Settings... &#8594; Network &#8594; Port Forwarding.
 		</p>
 
@@ -117,12 +114,12 @@
 		</p>
 
 		<h3 class="docs"><a name="faq4" class="anchor">What should the memory be set to?</a></h3>
+		<div class="quote">
+			"It would be a poor user experience (and mildly shocking) if a vagrant up from a base box instantly required many gigabytes of RAM. Instead, choose a value such as 512MB, which is usually enough to play around and do interesting things with a Vagrant machine, but can easily be increased when needed." - <a href="http://docs.vagrantup.com" target="_blank">Vagrant Docs</a>
+		</div>
 		<p>
 			The default setting for the VM's system base memory is 786 MB, but this can be customised to any number you wish (within the capabilities of your host machine). For installing multiple Orion Health products, we recommend a base memory of around 1536 MB.
 		</p>
-		<div class="quote">
-			"It would be a poor user experience (and mildly shocking) if a vagrant up from a base box instantly required many gigabytes of RAM. Instead, choose a value such as 512MB, which is usually enough to play around and do interesting things with a Vagrant machine, but can easily be increased when needed." <a href="http://docs.vagrantup.com" target="_blank">- Vagrant Docs</a>
-		</div>
 
 		<a name="help"><h2 class="docs">Help</h2></a>
 
@@ -134,8 +131,7 @@
 
 	<div class="footer">
 		<a href="../index.html">Home</a> | <a href="docs.html" title="Documentation, FAQs & Help">Docs</a> | <a href="../about.html">About</a> | <a href="http://woki/display/IntDev/Continuous+Delivery" title="Orion Continuous Delivery" target="_blank">OCD</a> | <a href="#top">Top</a>
-		</div>
-		<br><br><br><br>
 	</div>
+	<br><br><br><br>
 </body>
 </html>

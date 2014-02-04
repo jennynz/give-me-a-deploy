@@ -29,7 +29,7 @@ function GetCode()
 		PrintToTextbox(GenerateVagrantInstall(), "provisionedenv-install");
 		$('#provisionedenv-section').show();
 	  	$('#emptyenv-section').hide();
-	  	window.location = "#vagrantcode";
+	  	window.location = "#provisionedcode";
   	
   } else if (vmenv=="emptyenv") {
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
@@ -87,7 +87,7 @@ function Deploy() {
 	var lifespanIsValid = ValidateLifespan(lifespan);
 	
 	if (lifespanIsValid == 1) {
-		alert("The following popup is only a mock-up of this feature.\n\nThe 'Provisioned VM on HP Cloud' option is yet to be developed.");
+		alert("Please note that the following popup is a mock-up of this feature, which is yet to be developed.");
 		
 		// Insert the custom VM name and lifespan into the popup header, and VM details into table.
 		$("#deployed-vm-name").replaceWith("<span id='deployed-vm-name' class='orange'>" + vmname + "</span>");

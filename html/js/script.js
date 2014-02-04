@@ -29,7 +29,7 @@ function GetCode()
 		PrintToTextbox(GenerateVagrantInstall(), "provisionedenv-install");
 		$('#provisionedenv-section').show();
 	  	$('#emptyenv-section').hide();
-	  	window.location = "#vagrantcode";
+	  	window.location = "#provisionedcode";
   	
   } else if (vmenv=="emptyenv") {
 		PrintToTextbox(GenerateEmptyVagrantfile(vmname), vmenv);
