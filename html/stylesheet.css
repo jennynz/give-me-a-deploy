@@ -37,6 +37,18 @@ body {
     text-align: left;
 }
 
+.hidden,
+#deploy {
+	display: none;
+}
+
+/* Positioning
+   ============================== */
+
+.float-right { float: right; }
+.float-left { float: left; }
+.text-top { vertical-align: top; }
+
 /* ==========================================================================
 		DIVS & SPANS
    ========================================================================== */
@@ -57,11 +69,6 @@ body {
 
 .left-text {
 	text-align: left;
-}
-
-.hidden,
-#deploy {
-	display: none;
 }
 
 /* Index
@@ -140,7 +147,7 @@ body {
 div.docs-infobox,
 div.code {
 	/* Background box */
-	margin: 20px;
+	margin: 15px 20px 10px 0;
 	padding: 20px;
   border-radius: 4px;
 
@@ -431,8 +438,7 @@ img.border:hover {
 }
 
 img#docs-deployed {
-  width: 40%;
-  float: right;
+  width: 40%;  
   margin-left: 20px
 }
 
