@@ -53,8 +53,8 @@ $(document).ready(function(){
     $("#vagrantfile-info").toggle();
   });
 
-  $("#show-install-info").click(function(){
-    $("#install-info").toggle();
+  $("#show-provisioning-info").click(function(){
+    $("#provisioning-info").toggle();
   });
 
 /* Deployed section

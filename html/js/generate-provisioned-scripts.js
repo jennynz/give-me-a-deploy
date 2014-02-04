@@ -90,7 +90,7 @@ function GenerateVagrantfile(vmname) {
 
 
 
-function GenerateVagrantInstall() {
+function GenerateVagrantProvisioning() {
 	// Get list of products and version numbers from form, split lines into arrays.
 	var products = document.getElementById("Products").value.split("\n");
 		

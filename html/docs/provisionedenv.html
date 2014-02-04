@@ -56,7 +56,7 @@
 					<li class="docs-infobox">All three scripts are saved in the same directory.</li>
 					<li class="docs-infobox">
 						<span class="command">run.sh</span> is all you need to do to kick off the entire booting and installation process.<br>
-						Do NOT $ vagrant up or run install.sh. <span class="command">chmod +x run.sh</span> first if you use Unix.</li>
+						Do NOT $ vagrant up or run provisioning.sh. <span class="command">chmod +x run.sh</span> first if you use Unix.</li>
 					<li class="docs-infobox"><span class="command">vagrant ssh</span> to access your VM.</li>
 					<li class="docs-infobox"><span class="command">vagrant destroy -f</span> to delete your VM.</li>
 				</ul>
@@ -139,11 +139,11 @@
 					</div>
 
 					<p>
-						First, ensure that the three generated scripts (run.sh, Vagrantfile, install.sh) are all located in the same directory. <i>You can just click "Download all three scripts in a zip" which gives the three files to you in the same zipped folder (you will have to unzip them before trying to run the scripts).</i><br><br>
+						First, ensure that the three generated scripts (run.sh, Vagrantfile, provisioning.sh) are all located in the same directory. <i>You can just click "Download all three scripts in a zip" which gives the three files to you in the same zipped folder (you will have to unzip them before trying to run the scripts).</i><br><br>
 
-						When you <span class="command">run.sh</span>, it will clone the required git repositories into the newly created directories, call the Vagrantfile to boot up the VM, which will in turn call its shell provisioning script, install.sh, which completes the installation of the Orion Health applications.<br><br>	
+						When you <span class="command">run.sh</span>, it will clone the required git repositories into the newly created directories, call the Vagrantfile to boot up the VM, which will in turn call its shell provisioning script, provisioning.sh, which completes the installation of the Orion Health applications.<br><br>	
 
-						To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by run.sh or install.sh will still exist, so you may need to delete these manually.
+						To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by run.sh or provisioning.sh will still exist, so you may need to delete these manually.
 					</p>
 				</td>
 				<td rowspan="2" class="text-top">

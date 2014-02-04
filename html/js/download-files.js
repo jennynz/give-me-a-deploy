@@ -3,7 +3,7 @@ function DownloadZip() {
   
   var run = document.getElementById("provisionedenv-run-source").value;
   var vagrantfile = document.getElementById("provisionedenv-vagrantfile-source").value;
-  var install = document.getElementById("provisionedenv-install-source").value;
+  var provisioning = document.getElementById("provisionedenv-provisioning-source").value;
   var readme = document.getElementById("readme").value;
 
   var vmname = document.getElementById("vmname").value;
@@ -11,7 +11,7 @@ function DownloadZip() {
   var zip = new JSZip();
   zip.file("run.sh", run);
   zip.file("Vagrantfile", vagrantfile);
-  zip.file("install.sh", install);
+  zip.file("provisioning.sh", provisioning);
   zip.file("README.md", readme);
 
   // Blob for Chrome and Firefox v.20+

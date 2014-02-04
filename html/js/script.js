@@ -26,7 +26,7 @@ function GetCode()
   if (vmenv=="provisionedenv") {
 		PrintToTextbox(GenerateVagrantRun(), "provisionedenv-run");
 		PrintToTextbox(GenerateVagrantfile(vmname), "provisionedenv-vagrantfile");
-		PrintToTextbox(GenerateVagrantInstall(), "provisionedenv-install");
+		PrintToTextbox(GenerateVagrantProvisioning(), "provisionedenv-provisioning");
 		$('#provisionedenv-section').show();
 	  	$('#emptyenv-section').hide();
 	  	window.location = "#provisionedcode";
