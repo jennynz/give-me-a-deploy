@@ -82,7 +82,7 @@ function GenerateVagrantfile(vmname) {
 		"  config.vm.network 'forwarded_port', guest: 19080, host: " + hostport + "\n\n" + 
 
 		"  # Set up VM and Puppet install OHP.\n" + 
-	 	"  config.vm.provision 'shell', path: 'install.sh'\n\n" + 
+	 	"  config.vm.provision 'shell', path: 'provisioning.sh'\n\n" + 
 
 		"end"
 	);	
