@@ -228,8 +228,8 @@
 		<a name="configuringPuppet"><h3 class="docs">Configuring Puppet Modules</h3></a>
 
 		<p>
-			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b>manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <b>modules/puppet-ohp/ohp/manifests/init.pp</b>. More details tips on configuratino of Puppet manifest files can be found on <a href="http://woki/pages/viewpage.action?pageId=256388430" title="Feedback on Documentation of OCD Installation & Testing Processes">this</a> Woki page.
-		</p><br>
+			To configure the installation of OHP using Puppet modules, the parameters may be set in the manifest file <b>manifests/site.pp</b>. The documentation on the options for the parameters are found in the manifest file <a href="http://stash/projects/PUPPET/repos/puppet-ohp/browse/ohp/manifests/init.pp" target="_blank">init.pp</a> (modules/puppet-ohp/ohp/manifests/init.pp) from the OHP puppet module.
+		</p>
 
 		<a name="furtherInfo"><h3 class="docs">Further Information</h3></a>
 
@@ -241,35 +241,26 @@
 				<li>Woki introduction to <a href="http://woki/display/IntDev/Short-lived+VMs%2C+built+on+demand" title="Short-lived VMs, built on demand" target="_blank">short-lived VMs</a>.</li>
 				<li><a href="http://woki/display/IntDev/Intern+Project+Ideas" target="_blank">OCD Intern Project Ideas</a> - Summer 2013/2014</li>
 			</ul>
-		</p><br>
+		</p>
 
 		<a name="faqs"><h2 class="docs">Troubleshooting & FAQs</h2></a>
 
 		<ul>
 			<li><a href="#faq1">Booting is taking ages.</a></li>
-			<li><a href="#faq2">My application is not working on my browser.</a></li>
-			<li><a href="#faq3">My "vagrant up" stops before provisioning, but with no errors.</a></li>
-			<li><a href="#faq4">My vagrant won't boot due to port collisions.</a></li>
+			<li><a href="#faq2">My "vagrant up" stops before provisioning, but with no errors.</a></li>
+			<li><a href="#faq3">My vagrant won't boot due to port collisions.</a></li>
 		</ul>
 
 		<h3 class="docs"><a name="faq1" class="anchor">Booting is taking ages.</a></h3>
 		<p>The entire booting and provisioning process may take over 30 minutes depending on the speed of your host machine and internet connection. This is mostly due to the creation of the solution.zip, which takes about 20 minutes itself, and also the loading of Portal which, even after the script outputs that "Orion Health Platform is running", may take another 15 or so minutes before it can be accessed on http://localhost.<br>
-		You may wish to try increasing the memory allocated to your VM by editing your Vagrantfile (defaulted to 768 MB), or watch the log of the installation:
-
-		<div class="code">
-			$ vagrant ssh<br>
-			[vagrant@your-vm-name ~]$ sudo tail -f /opt/orionhealth/log/log.txt
-		</div>
-
-		<h3 class="docs"><a name="faq2" class="anchor">My application is not working on my browser.</a></h3>
-		<p>Beta versions may not have full cross-browser capability yet. Please use a final release version of the application.</p><br>
+		You may wish to try increasing the memory allocated to your VM by editing your Vagrantfile (defaulted to 768 MB), or watch the log of the installation by ssh'ing into your VM and running <span class="command">sudo tail -f /opt/orionhealth/log/log.txt</span>.
 		
-		<h3 class="docs"><a name="faq3" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
+		<h3 class="docs"><a name="faq2" class="anchor">My "vagrant up" stops before provisioning, but with no errors.</a></h3>
 		<p>The command "vagrant up" should be able to take you through the entire booting up, installation and configuration. If this is not the case, and you are being returned with a prompt before the source code has completed, it may be due to the line endings setting on your text editor. Make sure that your line endings are set to Unix.<br>
 		e.g. on Sublime Text 2, go to View > Line Endings > and select Unix.<br>
-		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p><br>
+		If this error persists, some machines require extra prompting, and banging on the 'enter' key may nudge things along.</p>
 
-		<h3 class="docs"><a name="faq4" class="anchor">My vagrant won't boot due to port collisions.</a></h3>
+		<h3 class="docs"><a name="faq3" class="anchor">My vagrant won't boot due to port collisions.</a></h3>
 		<p>The vagrant VM is configured with hard-coded port forwarding, and so you cannot have two vagrants from this app running on your machine at the same time currently. Either destroy any existing VMs before running run.sh, or change the port numbers in Vagrantfile yourself from "19080" to a port of your choice.</p><br>
 
 		<a name="help"><h2 class="docs">Help</h2></a>
