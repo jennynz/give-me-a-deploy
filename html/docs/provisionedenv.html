@@ -123,11 +123,12 @@
 					For a list of product names and versions, please see <a href="http://pacman/conductor/ohp" target="_blank">Pacman</a>.
 				</td>
 			</tr>
-		</table>
+		</table><br>
 
 		<table>
 			<tr>
 				<td>
+
 					<h4 class="docs">Booting your VM</h4>
 
 					<div class="code float-left">
@@ -139,15 +140,32 @@
 					</div>
 
 					<p>
-						First, ensure that the three generated scripts (run.sh, Vagrantfile, provisioning.sh) are all located in the same directory. <i>You can just click "Download all three scripts in a zip" which gives the three files to you in the same zipped folder (you will have to unzip them before trying to run the scripts).</i><br><br>
+						Firstly, ensure that the three generated scripts (run.sh, Vagrantfile, provisioning.sh) are all in the same directory. <i>You can just click "Download all three scripts in a zip" which will give them to you in one zipped folder. Unzip them before trying to run the scripts.</i> In your command terminal, navigate to the directory with the three scripts and then run the command <span class="command">run.sh</span>.<br><br>
 
-						When you <span class="command">run.sh</span>, it will clone the required git repositories into the newly created directories, call the Vagrantfile to boot up the VM, which will in turn call its shell provisioning script, provisioning.sh, which completes the installation of the Orion Health applications.<br><br>	
+						When you <span class="command">run.sh</span>, it will clone the required git repositories into the newly created directories, call the Vagrantfile to boot up the VM, which will in turn call its shell provisioning script, provisioning.sh, which completes the installation of the Orion Health applications.
+					</p><br>
 
-						To destroy your VM, simply run "vagrant destroy -f" in the same directory as your Vagrantfile. The directories created and files downloaded by run.sh or provisioning.sh will still exist, so you may need to delete these manually.
+					<h4 class="docs">Destroying your VM</h4>
+
+					<p>
+						To destroy your VM, simply run <span class="command">vagrant destroy -f</span> in the same directory. You can also do this through the Oracle VM Virtualbox Manager. Right-click on your VM &#8594; Close &#8594; Power Off (Ctrl+F), then Right-click &#8594; Remove (Ctrl+R). The directories created and files downloaded by run.sh or provisioning.sh will still exist, so you may need to delete these manually. Make sure you vagrant destroy, and don't just delete the directory - your booted VM will stay running in the background unless you terminate it.
+					</p><br>
+
+					<h4 class="docs">Manual access to your VM</h3>
+
+					<div class="code float-right">
+						$ vagrant ssh
+					</div>
+
+					<p>
+						Access your virtual machine by ssh'ing into the box with the command <span class="command">vagrant ssh</span> in the directory where you booted your VM.<br><br>
 					</p>
+
 				</td>
-				<td rowspan="2" class="text-top">
+				<td class="system-reqs text-top">
+
 					<h4 class="docs">Installation System Requirements</h4>
+
 					<p>In order for the scripts to run successfully, please install the following on your <b>local</b> machine:</p>
 					<ul>
 						<li><a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> - please ensure that you download a version that is compatible with Vagrant.</li>
@@ -162,18 +180,10 @@
 						<li><a href="http://subversiin/src/Orchestral/Framework/PlatformBuild/trunk" target="_blank">PlatformBuild/trunk</a> in Subversion (SVN supports credential caching)</li>
 					</ul>
 					
-					<p>You <b>do not have to clone these repositories yourself</b>; the script will do it for you, and place them in the correct directories. If your Stash key pairs and SVN credentials are set up, the entire process after run.sh should require no further action from the user.</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h4 class="docs">Manual access to your VM</h3>
-					<div class="code float-left">
-						$ vagrant ssh
-					</div>
 					<p>
-						Vagrant makes accessing your VM very simple; access your virtual machine by ssh'ing into the box with the command 'vagrant ssh' in the directory where you've booted up your VM (where the Vagrantfile is located).<br><br>
+						You <b>do not have to clone these repositories yourself</b>; the script will do it for you, and place them in the correct directories. If your Stash key pairs and SVN credentials are set up, the entire process after run.sh should require no further action from the user.
 					</p>
+
 				</td>
 			</tr>
 		</table>
@@ -181,7 +191,38 @@
 		<a name="compatibility"><h3 class="docs">Compatible products & versions</h3></a>
 
 		<p>
-			asdfaoisjsf
+			Give-Me-A-Deploy has only been tested on the latest versions of foundation and portal. Below is a list of product combinations which have been tested to work successfully:
+
+			<table><tr><td class="text-top">
+				<ul>
+					<li><b>foundation: 7.2.0.final</b>
+						<ul>
+							<li class="inner">(foundation only)</li>
+							<li class="inner">portal: 8.4.0.beta</li>
+							<li class="inner">portal: 8.3.0.final</li>
+							<li class="inner">portal: 7.4.8.beta</li>
+							<li class="inner">portal: 7.4.7.final</li>
+							<li class="inner">portal: 7.3.7.beta</li>
+							<li class="inner">portal: 7.3.6.final</li>
+							<li class="inner">portal: 7.2.4.beta</li>
+						</ul>
+					</li>
+				</ul>
+			</td><td class="text-top">
+				<ul>
+					<li><b>foundation: 7.2.0.beta</b>
+						<ul>
+							<li class="inner">(foundation only)</li>
+							<li class="inner">portal: 8.4.0.beta</li>
+							<li class="inner">portal: 8.3.0.final</li>
+							<li class="inner">portal: 7.4.8.beta</li>
+						</ul>
+					</li>
+				</ul>
+			</td></tr></table>
+
+		<p>
+			For a complete list of tested products and versions, and also error logs and an explanation behind how Give-Me-A-Deploy processes the 'Products' input field, please see <a href="http://woki/pages/viewpage.action?pageId=260954981" target="_blank">Tested Products & Error Logs on the Woki</a>.
 		</p>
 
 		<a name="configuringPuppet"><h3 class="docs">Configuring Puppet Modules</h3></a>
