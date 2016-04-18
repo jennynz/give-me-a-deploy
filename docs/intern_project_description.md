@@ -1,4 +1,42 @@
-# Automated deployment of virtual machines for testing
+# Intern Project: Portal Automation Library Environments Built on Demand
+
+## Introduction
+
+The process of deploying Orion Health products for testing can be an arduous task taking up to days to complete. The intention of this Intern Project is to automate the deployment of these aforementioned products in a short-lived VM environment for testing. The automation process forms a part of the continuous integration framework in reducing the time to release of software products as well as in improving the reliability of software testing in a deployed environment.
+
+## Objectives
+
+The workflow can be divided into two main phases: the automation of the deployment environment using services internal to Orion Health (Phase I), followed by the replacement of internal services for third-party services (Phase II). The key undertakings of each respective phase are outlined below.
+
+### Phase I
+
+* Spin up a VM on the local OpenStack (devstack)
+* Install Portal on the VM instance 
+* Configure Portal to be independent of any external databases
+* Run Portal Automation Library Tests
+* Destroy VM upon successful test run
+* Automate processes via Bamboo
+
+### Phase II
+	
+* Switch out internal Selenium-grid service for Saucelabs
+* Switch out local OpenStack for HP Cloud
+
+## Potential Benefits
+
+There are several potential advantages of automating the deployment process.
+
+* Easy configurability - by specifying the applications required as well as the OS and flavour of the VM desired, an environment tailored to the developer's needs can automatically be generated.
+* Isolation - because the Portal installation is independent of any external databases, the developer will not need to worry about disrupting the work of other developers when making changes to the environment.
+* Consistency and reliability - short-lived testing environments can improve software reliability as developers will no longer need to face uncertain software environments running on existing virtual machines. Furthermore, moving the deployment of test environments to HP Cloud will free up internal server resources, the shortage of which is closely associated with the inconsistencies of the current build: http://bamboo/browse/CPO-PORTALAUTOMATION
+* Time savings - this project could help realise cost savings in terms of time saved for developers. The automation of the deployment of test environments could improve productivity by enabling developers to focus time and effort on the actual development of reliable software rather than on error fixing in building the development environment.
+
+## Further information
+
+* [Continuous Delivery](http://martinfowler.com/bliki/ContinuousDelivery.html)
+* [Talk on Continuous Delivery](http://yow.eventer.com/events/1004/talks/1062)
+
+# Intern project proposal: Automated deployment of virtual machines for testing
 
 ## Project Deliverables
 

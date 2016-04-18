@@ -45,7 +45,7 @@ Included in this repository are the files for automating the hosting of GMAD liv
 ## Documentation
 
 * For end user documentation on how to use this app, system requirements, how to manage your VM, background information on VMs and the potential gains from using VMs for testing, please see the Docs on the actual Give-Me-A-Deploy web app (html/docs).
-* For developers wishing to know more about how this app works, or to build on the current app, please see the [Developer Documentation](docs/developer_documentation.md).
+* For developers wishing to know more about how this app works or to see ideas on improvements to functionality/UI, please see the [Developer Documentation](docs/developer_documentation.md).
 * For any further documentation, please contact [Jenny Sahng](mailto:jenny.s@hotmail.co.nz). This may include:
   * Information on automating the booting of a provisioned HP Cloud instance with Bamboo, which gets Give-Me-A-Deply live (hosted on an NGINX server using a Ruby API binding) and accessible to other users, and also provides a stepping stone for practising continuous delivery on our own internal applications and tools.
   * A list of all the compatible Orion Health products and versions that this app has been tested on (as of February 2014)

@@ -132,14 +132,14 @@ portal: 8.4.0.beta</textarea>
 		<div class="left-text">
 			<a class="show-script-info" id="show-vagrantfile-info">Vagrantfile</a>
 			<span class="hidden" id="vagrantfile-info">
-				&nbsp;is the configuration file used by run.sh to spin up the VM. It also calls provisioning.sh as its shell provisioning script, to preload the newly created VM with your products and their dependencies.<br><br>
+				&nbsp;is the configuration file used by run.sh to spin up the VM. It also calls install.sh as its shell provisioning script, to preload the newly created VM with your products and their dependencies.<br><br>
 			</span>
 		</div>
 		<textarea rows="40" name="provisionedenv-vagrantfile-source" class="source" id="provisionedenv-vagrantfile-source" onClick="SelectAll('provisionedenv-vagrantfile-source');" spellcheck="false"></textarea><br><br>
 		
 		<div class="left-text">
-			<a class="show-script-info" id="show-provisioning-info">provisioning.sh</a>
-			<span class="hidden" id="provisioning-info">
+			<a class="show-script-info" id="show-install-info">install.sh</a>
+			<span class="hidden" id="install-info">
 				&nbsp;is the shell provisioning script called by the Vagrantfile. It downloads and creates all the necessary files and directories for the installation, then automatically installs and starts the OH applications.<br>
 				E.g. If your specified products were foundation and portal, access them here:<br>
 				<a href="http://localhost:19080/conductor" target="_blank">http://localhost:19080/conductor</a><br>
@@ -147,7 +147,7 @@ portal: 8.4.0.beta</textarea>
 				N.B. The port value should match the host port value you specified in the form.<br><br>
 			</span>
 		</div>
-		<textarea rows="40" name="provisionedenv-provisioning-source" class="source" id="provisionedenv-provisioning-source" onClick="SelectAll('provisionedenv-provisioning-source');" spellcheck="false"></textarea>
+		<textarea rows="40" name="provisionedenv-install-source" class="source" id="provisionedenv-install-source" onClick="SelectAll('provisionedenv-install-source');" spellcheck="false"></textarea>
 
 		<textarea name="readme" class="hidden" id="readme">
 # Give-Me-A-Deploy #
@@ -163,7 +163,7 @@ Give-Me-A-Deploy is a web-based GUI configurator which generates executable sour
 4. Run the shell script; just type `run.sh` and enter.
 5. Make yourself a cuppa, wait for 15-30 minutes until the booting and installation completes.
 
-Please **do not clone any repositories manually**, and **do not call `vagrant up`**; this will be done automatically by the scripts. After calling `run.sh`, no further interaction from the user is required until the specified Orion Health products are installed and accessible from your browser.
+Please **do **not** clone any repositories manually**, and **do not call `vagrant up`**; this will be done automatically by the scripts. After calling `run.sh`, no further interaction from the user is required until the specified Orion Health products are installed and accessible from your browser.
 
 ### Prerequisites ###
 
@@ -189,7 +189,7 @@ Once the process is complete, your Orion Health applications should be accessibl
 
 ## Further Information ##
 
-For more information, click the filenames above each of the textboxes where the scripts were generated on the Give-Me-A-Deploy page, have a read of the Docs and the About page on the web app, or go to the [Give-Me-A-Deploy Woki page](http://woki/display/IntDev/Give-Me-A-Deploy).
+For more information, click the filenames above each of the textboxes where the scripts were generated on the Give-Me-A-Deploy page, have a read of the Docs and the About page, or go to the [Give-Me-A-Deploy Woki page](http://woki/display/IntDev/Give-Me-A-Deploy).
 		</textarea>
 
 		<br><br>

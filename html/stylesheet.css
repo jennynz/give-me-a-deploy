@@ -82,7 +82,7 @@ body {
 
 #run-info,
 #vagrantfile-info,
-#provisioning-info {
+#install-info {
 	/* Size & Positioning */
 	min-width: 260px;
 	max-width: 650px;
@@ -147,7 +147,7 @@ body {
 div.docs-infobox,
 div.code {
 	/* Background box */
-	margin: 5px 20px 5px 10px;
+	margin: 15px 20px 10px 0;
 	padding: 20px;
   border-radius: 4px;
 
@@ -406,10 +406,6 @@ li {
 	margin-bottom: 0.5em;
 }
 
-li.inner {
-	font-size: 1em;
-}
-
 li.star {
  	height: 19px;
     margin: 10px 0;
@@ -657,11 +653,6 @@ td.docs-content {
 	padding: 10px;
 }
 
-td.system-reqs {
-	width: 40%;
-	padding-left: 20px;
-}
-
 td.docs-vmsurvey {
 	vertical-align: top;
 	width: 50%;
@@ -716,6 +707,6 @@ textarea.source:focus {
 
 #provisionedenv-run-source,
 #provisionedenv-vagrantfile-source,
-#provisionedenv-provisioning-source { height: 150px; }
+#provisionedenv-install-source { height: 150px; }
 
 #emptyenv-source { height: 450px; }

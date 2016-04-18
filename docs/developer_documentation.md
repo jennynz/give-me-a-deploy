@@ -6,7 +6,7 @@ Give-Me-A-Deploy (GMAD) started as an intern project over the summer of 2013/201
 
 Give-Me-A-Deloy makes use of JavaScript libraries in order to produce a customised string, which is printed out into a textbox and then able to be downloaded as a Vagrantfile in a zip along with other meta-phase shell scripts and any required dependencies. The user should be able to download the zip file and just run one of the included shell scripts. This should execute the entire automated process of spinning up a VM (whether on the local machine - Vagrant, on a local server - DevStack, or on the cloud - HP Cloud), and installing and configuring the desired OH products.
 
-## A provisioned VM on your local machine
+## Option 1: A provisioned VM on your local machine
 
 ### Purely client-side
 
@@ -32,6 +32,21 @@ The parameters which are able to be customised by GMAD are currently very basic.
 ### provisioning.sh
 
 This is the provisioning shell script which is called by Vagrantfile and executed inside the newly created guest machine. It essentially sets up the installation environment with all the required dependencies, then uses the repositories cloned in the metaphase by run.sh (e.g. OHP Puppet module, OCD tooling) to Puppet install and start Platform and the other specified applications.
+
+## Option 2: Provisioned VM on HP Cloud (to be developed)
+
+Even better than deployable source code would be pre-configured VMs automatically spun up a pubic cloud server (HP Cloud) and destroyed from a GUI interface. These short-lived VMs would eliminate the problem of idle VMs, and provide an efficient solution the the demand for fast and flexible VMs for development. This would require some server-side scripts which implement the HP Cloud/OpenStack APIs to allow the app to control the booting and destroying of instances in the cloud.
+
+This option could first be developed with the local OpenStack Server at Orion, DevStack. This would require the user's machine to use either the OpenStack command line client, Nova, written in Python and available through pip, or the Ruby API binding, Fog. The same puppet modules would be required for the installation and configuration of the Orion Health applications.
+
+Some preliminary experiments on automating the creation of a provisioned HP Cloud instance from a local machine was done with Nova and nginx as the provisioned application (serving GMAD, in fact). For specific details on how this was done, please see Hosting Give-Me-A-Deploy on an nginx server or the give-me-a-deploy/hpcloud/ directory in Stash. The same basic structure of install_nova_client.sh calling a cloud_init.sh script which provisions the HP Cloud instance with the application of your choice using Puppet could be replicated. Instead of puppet installing an nginx module, the OHP module would be used instead, with the appropriate changes to site.pp made. The cloud_init.sh script would likely be much more complex than the one for booting an nginx server, as many of the same dependencies that are fetched from provisioning.sh would be required in this new instance also.
+ 
+## Option 3: Empty VM on your local machine
+
+This option is just a Vagrantfile generator, which makes it even easier for a vagrant VM to be configured with basic options, as sometimes the syntax or available options may not be very obvious (although they are quite clearly set out in the [Vagrant Docs](https://www.vagrantup.com/docs/virtualbox/configuration.html)). The usefulness of this option is questionable: would there be a demand for such a configurator from users who require VMs, when Vagrant already makes VMs so straight forward? The purpose of this option was to serve as a testing ground during the initial stages of this app's development.
+
+*Is this option necessary/useful?*
+It would make for a cleaner UX if it were removed, as it is quite an "odd-one-out" compared with the other two options. If most users of this app would already be comfortable with using and configuring Vagrant, with the aid of their official docs, is it necessary to have this feature at all?
 
 ## Thoughts on improvements
 
@@ -63,19 +78,3 @@ This is the provisioning shell script which is called by Vagrantfile and execute
 ### Analytics
 
 * Take some metrics, maybe another survey down the track when users have used GMAD to see if opinions towards using VMs have improved (initial opinions towards using VMs was largely unenthusiastic as of December 2013).
-
-## "Empty VM on your local machine"
-
-This option is just a Vagrantfile generator, which makes it even easier for a vagrant VM to be configured with basic options, as sometimes the syntax or available options may not be very obvious (although they are quite clearly set out in the [Vagrant Docs](https://www.vagrantup.com/docs/virtualbox/configuration.html)). The usefulness of this option is questionable: would there be a demand for such a configurator from users who require VMs, when Vagrant already makes VMs so straight forward? The purpose of this option was to serve as a testing ground during the initial stages of this app's development.
-
-*Is this option necessary/useful?*
-It would make for a cleaner UX if it were removed, as it is quite an "odd-one-out" compared with the other two options. If most users of this app would already be comfortable with using and configuring Vagrant, with the aid of their official docs, is it necessary to have this feature at all?
-
-## "Provisioned VM on HP Cloud" (to be developed)
-
-Even better than deployable source code would be pre-configured VMs automatically spun up a pubic cloud server (HP Cloud) and destroyed from a GUI interface. These short-lived VMs would eliminate the problem of idle VMs, and provide an efficient solution the the demand for fast and flexible VMs for development. This would require some server-side scripts which implement the HP Cloud/OpenStack APIs to allow the app to control the booting and destroying of instances in the cloud.
-
-This option could first be developed with the local OpenStack Server at Orion, DevStack. This would require the user's machine to use either the OpenStack command line client, Nova, written in Python and available through pip, or the Ruby API binding, Fog. The same puppet modules would be required for the installation and configuration of the Orion Health applications.
-
-Some preliminary experiments on automating the creation of a provisioned HP Cloud instance from a local machine was done with Nova and nginx as the provisioned application (serving GMAD, in fact). For specific details on how this was done, please see Hosting Give-Me-A-Deploy on an nginx server or the give-me-a-deploy/hpcloud/ directory in Stash. The same basic structure of install_nova_client.sh calling a cloud_init.sh script which provisions the HP Cloud instance with the application of your choice using Puppet could be replicated. Instead of puppet installing an nginx module, the OHP module would be used instead, with the appropriate changes to site.pp made. The cloud_init.sh script would likely be much more complex than the one for booting an nginx server, as many of the same dependencies that are fetched from provisioning.sh would be required in this new instance also.
- 
