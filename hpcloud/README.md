@@ -1,7 +1,7 @@
 Hosting Give-Me-A-Deploy on an HP Cloud instance
 =====================
 
-This process was initially automated using Bamboo, which would boot an HP Cloud instance provisioned with an NGINX server hosting the web app Give-Me-A-Vagrant using a Ruby API Binding. It is a start on a fully-fledged example of continuous delivery, where each commit would kick off some tests, and only if passed would the changes to the actual app (in ``html/``) be pushed live, all in an automated fashion.
+This process was initially automated using Bamboo, which would boot an HP Cloud instance provisioned with an NGINX server hosting the web app Give-Me-A-Deploy using a Ruby API Binding. It is a start on a fully-fledged example of continuous delivery, where each commit would kick off some tests, and only if passed would the changes to the actual app (in ``html/``) be pushed live, all in an automated fashion.
 
 To boot the HP Cloud instance from your local machine, call ```$ vagrant up```.
 
