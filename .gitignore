@@ -1,5 +1,5 @@
-Lightning Talk/
 *.zip
 portal-vm/*
 .vagrant*
 hpcloud/
+puppet_id_rsa
