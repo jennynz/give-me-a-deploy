@@ -2,9 +2,9 @@
 
 This repository contains all the files for Give-Me-A-Deploy, a summer internship project at Orion Health as part of the Orion Continunous Delivery team. Give-Me-A-Deploy is a web-based GUI configurator for virtual machines (VM) which generates executable source code that spins up custom VMs provisioned with Orion Health products. It aims to make VMs faster and easier for testers and developers at Orion Health, as they provide clean and consistent environments. It uses the Vagrant command line VM manager to package images into lightweight, mobile files, and the Puppet automation tool to install selected Orion Health products. It uses the same Puppet modules that are used in production, to ensure consistency between the development and production environments.
 
-## Files
+## Folders
 
-* *`html/`* The entire client-side web app. To get started locally, simply clone this repository and open **html/index.html**. Prerequisites are outlined in the section below.
+* `html/` The entire client-side web app. **To get started locally, or to just have a look around the app, simply clone this repository and open [html/index.html](html/index.html)**. Prerequisites are outlined in the section below.
 * `docs/` Extra documentation including [more information for developer](docs/developer_documentation.md), the [lightning talk](docs/lightningTalk.md) that I gave at the end of my internship, and the [intern project description](docs/intern_project_description.md).
 * `localhost` A simple test that uses Puppet, Vagrant and Bamboo to automatically set up a local NGINX server hosting Give-Me-A-Deploy.
 * `hpcloud/` A trial for automatically spinning up an HP Cloud instance using Bamboo, using an NGINX server hosting Give-Me-A-Deploy as a simple test case for provisioning rather than a full Orion Health product.
@@ -12,7 +12,7 @@ This repository contains all the files for Give-Me-A-Deploy, a summer internship
 
 ## Prerequisites for using Give-Me-A-Deploy locally
 
-The requirements of your host machine depend on the type of Virtual Environment you select. *If you just want to have a look at the web-based app without executing the generated source code, you can simply clone the repository and open [`html/index.html`](html/index.html) in your browser*.
+The requirements of your host machine depend on the type of Virtual Environment you select. **If you just want to have a look at the web-based app without executing the generated source code, you can simply clone the repository and open [`html/index.html`](html/index.html) in your browser**.
 
 ### 1. Provisioned VM on your local machine ####
 
@@ -52,8 +52,8 @@ Included in this repository are the files for automating the hosting of GMAD liv
 
 ## Documentation
 
-* For end user documentation on how to use this app, system requirements, how to manage your VM, background information on VMs and the potential gains from using VMs for testing, please see the [Docs on the actual Give-Me-A-Deploy web app](html/docs/docs/html). Please note that some links point to pages on the Orion Health intranet and may not be accessible to public.
-* For developers wishing to know more about how this app works or to see ideas on improvements to functionality/UI, please see the [Developer Documentation](docs/developer_documentation.md).
+* **For end user documentation** on how to use this app, system requirements, how to manage your VM, background information on VMs and the potential gains from using VMs for testing, please see the [Docs on the actual Give-Me-A-Deploy web app](html/docs/docs/html). Please note that some links point to pages on the Orion Health intranet and may not be accessible to public.
+* **For developers** wishing to know more about how this app works or to see ideas on improvements to functionality/UI, please see the [Developer Documentation](docs/developer_documentation.md).
 * For any further documentation, please contact [Jenny Sahng](mailto:jenny.s@hotmail.co.nz). This may include:
   * Information on automating the booting of a provisioned HP Cloud instance with Bamboo, which gets Give-Me-A-Deply live (hosted on an NGINX server using a Ruby API binding) and accessible to other users, and also provides a stepping stone for practising continuous delivery on our own internal applications and tools.
-  * A list of all the compatible Orion Health products and versions that this app has been tested on (as of February 2014)
+  * A list of all the compatible Orion Health products and versions that this app has been tested on (as of February 2014).
